@@ -1,20 +1,18 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 
-const SplashPage = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-      <Text>SignIn</Text>
+      <Text> Startup page </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
+    <Text>Click Here</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-      <Text>SignUp</Text>
-</TouchableOpacity>
     </View>
   );
 };
 
-export default SplashPage;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {
