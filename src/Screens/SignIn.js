@@ -2,56 +2,31 @@ import React from "react";
 import authStore from "../../Stores/authStore";
 import { useState } from "react";
 import { Icon } from "native-base";
-
-import {
-  Text,
-  TextInput,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from "react-native";
-
+import { observer } from "mobx-react";
 import styled from "styled-components/native";
 
-//Styles compounents
-export const HubLogoImage = styled.Image`
-  flex: 1;
-  /* resizemode: contain; */
-  justify-content: center;
-`;
 
-export const HomeBackground = styled.ImageBackground`
-  flex: 2;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-`;
-export const TextStyled = styled.Text`
-  color: #ded9fe;
-`;
-export const InputStyled = styled.TextInput`
-  color: white;
-`;
+//Images 
+import Pet1 from "../../assets/images/Pet4.gif"
 
-export const Iconstyled = styled(Icon)`
-  color: red;
-`;
 
 const SignIn = ({ navigation }) => {
+  if (authStore.user) navigation.replace("Home");
+
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
-  const [passwordIcon, setPasswordIcon] = useState("eye");
-  const [passwordVisibilty, setPasswordVisibilty] = useState(true);
-
-  const handleSubmit = async () => {
+const handleSubmit = async () => {
     await authStore.signin(user);
-    if (authStore.user) navigation.navigate("Tabs");
   };
 
-  const handlePassword = () => {
+  //Eye icon 
+const [passwordIcon, setPasswordIcon] = useState("eye");
+const [passwordVisibilty, setPasswordVisibilty] = useState(true);
+
+    const handlePassword = () => {
     if (passwordIcon === "eye") {
       setPasswordIcon("eye-off");
       setPasswordVisibilty(false);
@@ -62,101 +37,93 @@ const SignIn = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <InputStyled
-        style={styles.input}
-        placeholder="Username"
-        autoCapitalize="none"
-        onChangeText={(username) => setUser({ ...user, username })}
-      />
-
-      <InputStyled
-        style={styles.input}
-        placeholder="Password"
-        autoCapitalize="none"
-        secureTextEntry={passwordVisibilty}
-        onChangeText={(password) => setUser({ ...user, password })}
-      />
-
-      <Iconstyled
-        name={passwordIcon}
-        type="MaterialCommunityIcons"
+    <>
+     <BackgroundIMG source={Pet1}>
+        <AuthContainer>
+          <AuthTextInput
+            placeholder="Username"
+            placeholderTextColor="white"
+            onChangeText={(username) => setUser({ ...user, username })}
+          />
+          <AuthTextInput
+            placeholder="Password"
+            placeholderTextColor="white"
+            secureTextEntry={passwordVisibilty}
+            onChangeText={(password) => setUser({ ...user, password })}
+          />
+           <Iconstyled
+      name={passwordIcon}
+      type="MaterialCommunityIcons"
         onPress={handlePassword}
-      />
-
-      <TouchableOpacity
-        style={styles.submitButton}
-        // onPress={() => navigation.navigate("Dashboard")}
-        onPress={handleSubmit}
-      >
-        <TextStyled style={styles.submitButtonText}> Sign In </TextStyled>
-      </TouchableOpacity>
-      <TextStyled> Create a New Account </TextStyled>
-      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-        <TextStyled style={styles.text}> Sign Up </TextStyled>
-      </TouchableOpacity>
-    </View>
+             />
+          <AuthButton onPress={handleSubmit}>
+            <AuthButtonText>Sign in</AuthButtonText>
+          </AuthButton>
+          <AuthOther onPress={() => navigation.navigate("signup")}>
+            Click here to register!
+          </AuthOther>
+        </AuthContainer>
+        </BackgroundIMG>
+    </>
   );
 };
 
-export default SignIn;
+export default observer(SignIn);
 
-const styles = StyleSheet.create({
-  container: {
-    // paddingTop:"25%",
-    justifyContent: "center",
-    backgroundColor: "rgba(222, 217, 254, 0.4)",
-    alignItems: "center",
-    fontSize: 35,
-  },
-  text: {
-    textDecorationLine: "underline",
-  },
-  input: {
-    textAlign: "center",
+//****************  STYLING  *************//
+export const BackgroundIMG= styled.ImageBackground`
+flex: 1;
+height:90%;
+width:100%;
+justify-content:center;
+`;
+export const AuthContainer = styled.View`
+  flex: 2;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  padding-right: 60px;
+  padding-left: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
 
-    margin: "5%",
-    height: "14%",
-    width: "80%",
-    borderColor: "rgba(239, 236, 253, 0.8)",
-    backgroundColor: "rgba(239, 236, 253, 0.8)",
-    borderWidth: 0.5,
-    fontSize: 18,
-    borderRadius: 100,
-  },
-  submitButton: {
-    backgroundColor: "#BDB2FF",
-    padding: "3%",
-    color: "white",
-    margin: "1%",
-    height: "10%",
-    width: "30%",
-    borderRadius: 20,
-  },
-  submitButtonText: {},
-});
+export const AuthTitle = styled.Text`
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom-color: red;
+`;
 
-// import React from "react";
-// import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+export const AuthTextInput = styled.TextInput`
+  align-self: stretch;
+  text-align: left;
+  height: 40px;
+  margin-bottom: 30px;
+  color: white;
+  border-bottom-color: #F0BA00;
+  border-bottom-width: 1px;
+`;
 
-// const SignIn = ({ navigation }) => {
-//   return (
-//     <View style={styles.container}>
+export const AuthButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
+  background-color: #F0BA00;
+  margin-top: 30px;
+`;
 
-//       <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
-//     <Text>Click Here</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
+export const AuthButtonText = styled.Text`
+  color: #fcfdff;
+  font-weight: bold;
+  font-size: 18px;
+`;
 
-// export default SignIn;
+export const AuthOther = styled.Text`
+  color: white;
+  margin-top: 15px;
+`;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     backgroundColor: "#8fcbbc",
-//   },
-// });
+export const Iconstyled = styled(Icon)`
+  color: #F0BA00;
+`;
+

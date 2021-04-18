@@ -9,9 +9,6 @@ import Tabs from "./src/Navigation/Tabs";
 
 const { Navigator, Screen } = createStackNavigator();
 
-
-
-
 export default function App() {
   return (
     <NavigationContainer>
@@ -33,6 +30,12 @@ export default function App() {
       <Screen
             name="SignIn"
             component={SignIn}
+            options={{
+              headerBackTitle:true,
+              headerTintColor: "white",
+              headerTitle: "",
+              headerTransparent: true,
+            }}
           />
       <Screen
             name="SignUp"
