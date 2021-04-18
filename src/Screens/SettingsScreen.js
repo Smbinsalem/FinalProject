@@ -1,11 +1,18 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+
+
+
 
 const SettingsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+     
+      <Text> PROFILE </Text>
       <Text> Settings Screen </Text>
-      <Button title="Click Here" OnPress={() => alert("Button Clicked !")} />
+      <TouchableOpacity onPress={() => alert("Button Clicked !")}>
+    <Text>Click Here</Text>
+      </TouchableOpacity>
     </View>
   );
 };

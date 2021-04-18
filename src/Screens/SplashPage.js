@@ -1,18 +1,18 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 
-const HomeScreen = ({ navigation }) => {
+const SplashPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text> Home Screen </Text>
-      <TouchableOpacity onPress={() => alert("Button Clicked !")}>
+      <Text> Startup page </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Tabs")}>
     <Text>Click Here</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default HomeScreen;
+export default SplashPage;
 
 const styles = StyleSheet.create({
   container: {
