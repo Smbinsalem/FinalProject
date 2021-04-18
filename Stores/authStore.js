@@ -1,12 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
-import roomStore from "./roomStore";
 
 //decode
 import decode from "jwt-decode";
 
 //storage
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class AuthStore {
   user = null;
