@@ -6,6 +6,9 @@ import SplashPage from "./src/Screens/SplashPage";
 import SignIn from "./src/Screens/SignIn";
 import SignUp from "./src/Screens/SignUp";
 import Tabs from "./src/Navigation/Tabs";
+import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
+import Host from "./src/Screens/SignUp/HostSignUp";
+import SignUpAs from "./src/Screens/SignUp/SignUpAS";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -47,6 +50,10 @@ export default function App() {
             headerTransparent: true,
           }}
         />
+        <Screen name="SignUpAs" component={SignUpAs} />
+        <Screen name="PetOwner" component={PetOwner} />
+        <Screen name="Host" component={Host} />
+
         <Screen
           name="Tabs"
           component={Tabs}

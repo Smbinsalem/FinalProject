@@ -23,7 +23,8 @@ const SignUp = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.navigate("Tabs");
+    if (authStore.user) navigation.navigate("SignUpAs");
+    // if (authStore.user) navigation.navigate("Tabs");
   };
 
   return (
@@ -78,7 +79,7 @@ const SignUp = ({ navigation }) => {
           />
 
           <AuthButton onPress={handleSubmit}>
-            <AuthButtonText>Sign Up</AuthButtonText>
+            <AuthButtonText>Next</AuthButtonText>
           </AuthButton>
           <AuthOther onPress={() => navigation.navigate("SignIn")}>
             Click here if you already have an account!
