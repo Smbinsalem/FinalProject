@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Button, StyleSheet,TouchableOpacity } from "react-native";
 
-const FindScreen = ({ navigation }) => {
+const ExploreScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text> Find Screen </Text>
+      <Text> Explore Screen </Text>
       <TouchableOpacity onPress={() => alert("Button Clicked !")}>
     <Text>Click Here</Text>
       </TouchableOpacity>
@@ -12,7 +12,7 @@ const FindScreen = ({ navigation }) => {
   );
 };
 
-export default FindScreen;
+export default ExploreScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -9,10 +9,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
 import HomeScreen from "../Screens/HomeScreen";
-import FindScreen from "../Screens/FindScreen";
+import FindScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
-import SettingsScreen from "../Screens/SettingsScreen";
+import SettingsScreen from "../Screens/ProfileScreen";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,8 +92,8 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="Find"
-        component={FindScreen}
+        name="Explore"
+        component={ExploreScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -104,7 +104,7 @@ const Tabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/find.png")}
+                source={require("../../assets/icons/explore.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,
@@ -173,8 +173,8 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -185,7 +185,7 @@ const Tabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/settings.png")}
+                source={require("../../assets/icons/profile.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,

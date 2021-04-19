@@ -20,11 +20,11 @@ const SignoutButton = () => {
   );
 };
 
-const SettingsScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text> PROFILE </Text>
-      <Text> Settings Screen </Text>
+      <Text> Profile Screen </Text>
       <TouchableOpacity onPress={() => alert("Button Clicked !")}>
         <Text>Click Here</Text>
       </TouchableOpacity>
@@ -35,7 +35,7 @@ const SettingsScreen = ({ navigation }) => {
   );
 };
 
-export default SettingsScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {
