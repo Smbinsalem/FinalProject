@@ -13,7 +13,7 @@ const SignoutButton = () => {
 
   const handlePress = () => {
     authStore.signout();
-    navigation.navigate("onBoarding");
+    navigation.navigate("SplashPage");
   };
   return (
     <SignoutButtonStyled name="logout" type="AntDesign" onPress={handlePress} />
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#8fcbbc",
+    backgroundColor: "#fff",
   },
 });
 

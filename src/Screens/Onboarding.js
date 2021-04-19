@@ -124,7 +124,6 @@ const Onboarding = ({ navigation }) => {
                   {item.description}
                 </Text>
               </View>
-              {/* Button */}
             </View>
           ))}
         </Animated.ScrollView>
@@ -146,6 +145,7 @@ const Onboarding = ({ navigation }) => {
             }}
             onPress={() => navigation.navigate("SplashPage")}
           >
+           {/* Button */}
             <Text style={{ ...FONTS.h1, color: COLORS.white }}>
               {completed ? "Let's Go" : "Skip"}
             </Text>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   dot: {
     borderRadius: SIZES.radius,
-    backgroundColor: COLORS.blue,
+    backgroundColor:'#f0ba00',
     marginHorizontal: SIZES.radius / 2,
   },
 });

@@ -33,7 +33,7 @@ const CustomeTabBarButton = ({ children, onPress }) => {
           width: 70,
           height: 100,
           borderRadius: 35,
-          backgroundColor: "#e32f45",
+          backgroundColor: "#F0BA00",
         }}
       >
         {children}
@@ -53,7 +53,7 @@ const Tabs = () => {
           left: 20,
           right: 20,
           elevation: 0,
-          backgroundColor: "#fff",
+          backgroundColor: "#172A3A",
           borderRadius: 15,
           height: 80,
           ...styles.shadow,
@@ -78,11 +78,11 @@ const Tabs = () => {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#F0BA00" : "#748c94",
                 }}
               />
               <Text
-                style={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
+                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
                 HOME
               </Text>
@@ -109,11 +109,11 @@ const Tabs = () => {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#F0BA00" : "#748c94",
                 }}
               />
               <Text
-                style={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
+                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
                 FIND
               </Text>
@@ -126,14 +126,15 @@ const Tabs = () => {
         name="Post"
         component={PostScreen}
         options={{
-          tabBarIcon: () => (
+          tabBarIcon: ({focused}) => (
             <Image
               source={require("../../assets/icons/post.png")}
               resizeMode="contain"
               style={{
                 width: 30,
                 height: 30,
-                tintColor: "#fff",
+               tintColor: focused ? "#172A3A" : "#FFF",
+                
               }}
             />
           ),
@@ -159,11 +160,11 @@ const Tabs = () => {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#F0BA00" : "#748c94",
                 }}
               />
               <Text
-                style={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
+                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
                 CHAT
               </Text>
@@ -189,11 +190,11 @@ const Tabs = () => {
                 style={{
                   width: 25,
                   height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
+                  tintColor: focused ? "#F0BA00" : "#748c94",
                 }}
               />
               <Text
-                style={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
+                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
                 SETTINGS
               </Text>

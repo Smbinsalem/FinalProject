@@ -3,7 +3,8 @@ import authStore from "../../Stores/authStore";
 import { useState } from "react";
 import { Icon } from "native-base";
 import styled from "styled-components/native";
-
+import { Calendar } from "react-native-calendars";
+import DropDownPicker from "react-native-dropdown-picker";
 //Images
 import Pet1 from "../../assets/images/Pet8.jpeg";
 
@@ -24,8 +25,8 @@ const SignUp = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signup(user);
     if (authStore.user) navigation.navigate("SignUpAs");
-    // if (authStore.user) navigation.navigate("Tabs");
   };
+
 
   return (
     <>
@@ -59,11 +60,22 @@ const SignUp = ({ navigation }) => {
               setUser({ ...user, contactNumber })
             }
           />
-          <AuthTextInput
+          {/* <AuthTextInput
             placeholder="Gender"
             placeholderTextColor="white"
             onChangeText={(gender) => setUser({ ...user, gender })}
-          />
+          /> */}
+          {/* Ex */}
+          <DropDownPicker
+        items={[
+          { label: "Female", value: "Female" },
+          { label: "Male", value: "Male" },
+        
+        ]}
+        placeholder="Gender"
+        containerStyle={{ height: 40, width: 320}}
+        onChangeItem={(item) => setUser({ ...user, gender: item.value })}
+      />
           <AuthTextInput
             placeholder="Username"
             autoCapitalize="none"
