@@ -22,11 +22,7 @@ const SignUp = ({ navigation }) => {
     password: "",
   });
 
-  const handleSubmit = async () => {
-    await authStore.signup(user);
-    if (authStore.user) navigation.navigate("SignUpAs");
-  };
-
+  const handleSubmit =  () => authStore.signup(user, navigation);
 
   return (
     <>
@@ -65,6 +61,7 @@ const SignUp = ({ navigation }) => {
             placeholderTextColor="white"
             onChangeText={(gender) => setUser({ ...user, gender })}
           /> */}
+          
           {/* Ex */}
           <DropDownPicker
         items={[

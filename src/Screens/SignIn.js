@@ -16,10 +16,9 @@ const SignIn = ({ navigation }) => {
     password: "",
   });
 
-  const handleSubmit = async () => {
-    await authStore.signin(user);
-    if (authStore.user) navigation.navigate("Tabs");
-  };
+  const handleSubmit = () => authStore.signin(user,navigation);
+ 
+  
 
   //Eye icon
   const [passwordIcon, setPasswordIcon] = useState("eye");

@@ -9,7 +9,6 @@ import Pet1 from "../../../assets/images/Pet8.jpeg";
 const PetOwnerSignUp = ({ navigation }) => {
   const [petOwner, setPetOwner] = useState({
     bio: "",
-    pet: "",
   });
 
   const handleSubmit = async () => {

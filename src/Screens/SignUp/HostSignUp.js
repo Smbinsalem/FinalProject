@@ -1,12 +1,25 @@
 import React from "react";
-import { Text } from "react-native";
-import authStore from "../../../Stores/authStore";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+//Mobx
+import hostStore from "../../../Stores/hostStore";
+
+
+//Style
 import styled from "styled-components/native";
+
+//Native content
+import DropDownPicker from "react-native-dropdown-picker";
 
 //Images
 import Pet1 from "../../../assets/images/Pet8.jpeg";
+
+
+
 const HostSignUp = ({ navigation }) => {
+  //  useEffect(() => {
+  //   authStore.fetchUsers();
+  // }, []); 
   const [host, setHost] = useState({
     bio: "",
     location: "",
@@ -14,10 +27,13 @@ const HostSignUp = ({ navigation }) => {
   });
 
   const handleSubmit = async () => {
-    await authStore.signup(host);
-    if (authStore.user) navigation.navigate("Tabs");
+    await hostStore.createHost(host);
+    if (hostStore.hosts) navigation.navigate("Tabs");
     // if (authStore.user) navigation.navigate("Tabs");
   };
+  // useEffect(() => {
+  //   hostStore.fetchHost();
+  // }, []); 
   return (
     <BackgroundIMG source={Pet1}>
       <Container>
@@ -26,19 +42,26 @@ const HostSignUp = ({ navigation }) => {
           placeholderTextColor="white"
           onChangeText={(location) => setHost({ ...host, location })}
         />
+        <DropDownPicker
+        items={[
+          { label: "Dogs", value: "Dogs" },
+          { label: "Cats", value: "Cats" },
+          { label: "Birds", value: "Birds" },
+          { label: "Fish", value: "Fish" },
+          { label: "Reptiles", value: "Reptiles" },
+        
+        ]}
+        placeholder="Type of pets"
+        containerStyle={{ height: 40, width: 320}}
+        onChangeItem={(item) => setHost({ ...host, typeOfPets: item.value })}
+      />
         <AuthTextInput
-          placeholder="Type of Pets"
+          placeholder="Biography"
           placeholderTextColor="white"
-          onChangeText={(typeOfPets) => setHost({ ...host, typeOfPets })}
+          onChangeText={(bio) => setHost({ ...host, bio })}
         />
-        <AuthTextInput
-          placeholder="Bio"
-          placeholderTextColor="white"
-          onChangeText={(Bio) => setHost({ ...host, Bio })}
-        />
-
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText>Sign Up</AuthButtonText>
+          <AuthButtonText>Done</AuthButtonText>
         </AuthButton>
       </Container>
     </BackgroundIMG>

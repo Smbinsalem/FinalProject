@@ -38,22 +38,22 @@ class AuthStore {
   };
 
   //sign up
-  signup = async (userData) => {
+  signup = async (userData, navigation) => {
     try {
       const res = await instance.post("/users/signup", userData);
       this.setUser(res.data.token);
-      console.log("signup", res.data.token);
+      navigation.navigate("SignUpAs");
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
   };
 
   //sign in
-  signin = async (userData) => {
+  signin = async (userData, navigation) => {
     try {
       const res = await instance.post("/users/signin", userData);
       this.setUser(res.data.token);
-      console.log("signin", res.data.token);
+      navigation.navigate("Tabs")
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }
