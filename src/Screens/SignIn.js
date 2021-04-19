@@ -5,28 +5,27 @@ import { Icon } from "native-base";
 import { observer } from "mobx-react";
 import styled from "styled-components/native";
 
-
-//Images 
-import Pet1 from "../../assets/images/Pet8.jpeg"
-
+//Images
+import Pet1 from "../../assets/images/Pet8.jpeg";
 
 const SignIn = ({ navigation }) => {
-  if (authStore.user) navigation.replace("Home");
+  // if (authStore.user) navigation.replace("Home");
 
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
-const handleSubmit = async () => {
+  const handleSubmit = async () => {
     await authStore.signin(user);
+    if (authStore.user) navigation.navigate("Tabs");
   };
 
-  //Eye icon 
-const [passwordIcon, setPasswordIcon] = useState("eye");
-const [passwordVisibilty, setPasswordVisibilty] = useState(true);
+  //Eye icon
+  const [passwordIcon, setPasswordIcon] = useState("eye");
+  const [passwordVisibilty, setPasswordVisibilty] = useState(true);
 
-    const handlePassword = () => {
+  const handlePassword = () => {
     if (passwordIcon === "eye") {
       setPasswordIcon("eye-off");
       setPasswordVisibilty(false);
@@ -38,24 +37,26 @@ const [passwordVisibilty, setPasswordVisibilty] = useState(true);
 
   return (
     <>
-     <BackgroundIMG source={Pet1}>
+      <BackgroundIMG source={Pet1}>
         <AuthContainer>
           <AuthTextInput
             placeholder="Username"
+            autoCapitalize="none"
             placeholderTextColor="white"
             onChangeText={(username) => setUser({ ...user, username })}
           />
           <AuthTextInput
             placeholder="Password"
+            autoCapitalize="none"
             placeholderTextColor="white"
             secureTextEntry={passwordVisibilty}
             onChangeText={(password) => setUser({ ...user, password })}
           />
-           <Iconstyled
-      name={passwordIcon}
-      type="MaterialCommunityIcons"
-        onPress={handlePassword}
-             />
+          <Iconstyled
+            name={passwordIcon}
+            type="MaterialCommunityIcons"
+            onPress={handlePassword}
+          />
           <AuthButton onPress={handleSubmit}>
             <AuthButtonText>Sign in</AuthButtonText>
           </AuthButton>
@@ -63,7 +64,7 @@ const [passwordVisibilty, setPasswordVisibilty] = useState(true);
             Click here to register!
           </AuthOther>
         </AuthContainer>
-        </BackgroundIMG>
+      </BackgroundIMG>
     </>
   );
 };
@@ -71,11 +72,11 @@ const [passwordVisibilty, setPasswordVisibilty] = useState(true);
 export default observer(SignIn);
 
 //****************  STYLING  *************//
-export const BackgroundIMG= styled.ImageBackground`
-flex: 1;
-height:90%;
-width:100%;
-justify-content:center;
+export const BackgroundIMG = styled.ImageBackground`
+  flex: 1;
+  height: 90%;
+  width: 100%;
+  justify-content: center;
 `;
 export const AuthContainer = styled.View`
   flex: 2;
@@ -100,7 +101,7 @@ export const AuthTextInput = styled.TextInput`
   height: 40px;
   margin-bottom: 30px;
   color: white;
-  border-bottom-color: #F0BA00;
+  border-bottom-color: #f0ba00;
   border-bottom-width: 1px;
 `;
 
@@ -108,7 +109,7 @@ export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
-  background-color: #F0BA00;
+  background-color: #f0ba00;
   margin-top: 30px;
 `;
 
@@ -124,6 +125,5 @@ export const AuthOther = styled.Text`
 `;
 
 export const Iconstyled = styled(Icon)`
-  color: #F0BA00;
+  color: #f0ba00;
 `;
-
