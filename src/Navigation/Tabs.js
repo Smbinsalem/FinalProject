@@ -9,10 +9,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
 import HomeScreen from "../Screens/HomeScreen";
-import FindScreen from "../Screens/ExploreScreen";
+import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
-import SettingsScreen from "../Screens/ProfileScreen";
+import ProfileScreen from "../Screens/ProfileScreen";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -115,7 +115,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                FIND
+                Explore
               </Text>
             </View>
           ),
@@ -196,7 +196,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                SETTINGS
+                PROFILE
               </Text>
             </View>
           ),
