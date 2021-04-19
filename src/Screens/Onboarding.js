@@ -89,8 +89,9 @@ const Onboarding = ({ navigation }) => {
                   source={item.img}
                   resizeMode="cover"
                   style={{
-                    width: "100%",
-                    height: "100%",
+                    marginTop:"20%",
+                    width: "90%",
+                    height: "50%",
                   }}
                 />
               </View>

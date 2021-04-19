@@ -7,7 +7,7 @@ import styled from "styled-components/native";
 
 
 //Images 
-import Pet1 from "../../assets/images/Pet4.gif"
+import Pet1 from "../../assets/images/Pet8.jpeg"
 
 
 const SignIn = ({ navigation }) => {

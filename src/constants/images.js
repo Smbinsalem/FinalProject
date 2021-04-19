@@ -1,6 +1,6 @@
-export const onboarding1 = require("../../assets/images/onboarding-1.png");
-export const onboarding2 = require("../../assets/images/onboarding-2.png");
-export const onboarding3 = require("../../assets/images/onboarding-3.png");
+export const onboarding1 = require("../../assets/images/Pet1.gif");
+export const onboarding2 = require("../../assets/images/Pet3.gif");
+export const onboarding3 = require("../../assets/images/Pet2.gif");
 
 export default {
   onboarding1,
