@@ -83,7 +83,9 @@ const ProfileScreen = ({ navigation }) => {
       <FullNameWrapper>
       <ProfileInfoStyled> {authStore.user.firstName}</ProfileInfoStyled>
       <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
+     
       </FullNameWrapper>
+      <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
       <ProfileInfoStyled> {authStore.user.email}</ProfileInfoStyled>
       <EditProfileStyled onPress={() => alert("Button Clicked !")}>
         <Text>Edit Profile</Text>
