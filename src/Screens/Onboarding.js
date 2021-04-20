@@ -12,7 +12,7 @@ import {
 // constants
 import { images, theme } from "../constants";
 import Tabs from "../Navigation/Tabs";
-const { onboarding1, onboarding2, onboarding3 } = images;
+const { onboarding1, onboarding2, onboarding3, onboarding1a } = images;
 
 // theme
 const { COLORS, FONTS, SIZES } = theme;
@@ -23,6 +23,7 @@ const onBoardings = [
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
     img: onboarding1,
+    img1: onboarding1a,
   },
   {
     title: "Navigation",
@@ -85,11 +86,18 @@ const Onboarding = ({ navigation }) => {
                   justifyContent: "center",
                 }}
               >
+                {/* <Image
+                  source={item.img1}
+                  resizeMode="contain"
+                  style={{
+                    width: "90%",
+                    height: "20%",
+                  }}
+                /> */}
                 <Image
                   source={item.img}
-                  resizeMode="cover"
+                  resizeMode="contain"
                   style={{
-                    marginTop:"20%",
                     width: "90%",
                     height: "50%",
                   }}
@@ -141,11 +149,11 @@ const Onboarding = ({ navigation }) => {
               borderBottomLeftRadius: 30,
               borderBottomRightRadius: 0,
               borderTopRightRadius: 0,
-              backgroundColor: COLORS.blue,
+              backgroundColor: COLORS.yellow,
             }}
             onPress={() => navigation.navigate("SplashPage")}
           >
-           {/* Button */}
+            {/* Button */}
             <Text style={{ ...FONTS.h1, color: COLORS.white }}>
               {completed ? "Let's Go" : "Skip"}
             </Text>
@@ -217,7 +225,7 @@ const styles = StyleSheet.create({
   },
   dot: {
     borderRadius: SIZES.radius,
-    backgroundColor:'#f0ba00',
+    backgroundColor: "#f0ba00",
     marginHorizontal: SIZES.radius / 2,
   },
 });
