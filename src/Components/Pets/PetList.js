@@ -1,33 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import { ListItem } from "native-base";
+import PetItem from "./PetItem";
+import petStore from "../../../Stores/petStore";
 import { observer } from "mobx-react";
-import { TouchableOpacity,ScrollView } from "react-native";
+import { List, Content } from "native-base";
 
-const TextStyled = styled.Text`
-  color: black;
-  font-size: 10;
-  margin-top: 10;
-  margin-bottom: 10;
-  margin-left: 16;
-  width: 100%;
-`;
+let PetList = ({ navigation }) => {
+  const PetList = petStore.pets.map((pet) => (
+    <PetItem navigation={navigation} pet={pet} key={pet.id} />
+  ));
 
-const PetItem = ({ pet, navigation }) => {
-  return (
-    <>
-    <ScrollView/>
-      <ListItem>
-        <TouchableOpacity onPress={() => navigation.navigate("PetDetail")}>
-          <TextStyled>
-           Pet: {pet.name} {`\n`}
-            Type: {pet.type}{`\n`}
-            Breed: {pet.breed}{`\n`}
-          </TextStyled>
-        </TouchableOpacity>
-      </ListItem>
-    </>
-  );
+  return <Content>{PetList}</Content>;
 };
-
-export default observer(PetItem);
+export default observer(PetList);
