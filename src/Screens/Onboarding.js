@@ -35,7 +35,7 @@ const onBoardings = [
     title: "Destination",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
-    img: onboarding3,
+    img: onboarding1a,
   },
 ];
 
@@ -99,7 +99,7 @@ const Onboarding = ({ navigation }) => {
                   resizeMode="contain"
                   style={{
                     width: "90%",
-                    height: "50%",
+                    height: "40%",
                   }}
                 />
               </View>
