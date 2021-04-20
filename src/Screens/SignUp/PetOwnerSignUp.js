@@ -1,6 +1,6 @@
 import React from "react";
 import { Text } from "react-native";
-import authStore from "../../../Stores/authStore";
+import ownerStore from "../../../Stores/ownerStore";
 import { useState } from "react";
 import styled from "styled-components/native";
 
@@ -12,17 +12,17 @@ const PetOwnerSignUp = ({ navigation }) => {
   });
 
   const handleSubmit = async () => {
-    await authStore.signup(petOwner);
-    if (authStore.user) navigation.navigate("Tabs");
+    await ownerStore.createOwner(petOwner);
+    if (ownerStore.owners) navigation.navigate("Tabs");
   };
   return (
     <BackgroundIMG source={Pet1}>
       <Container>
-        <AuthTextInput
+        {/* <AuthTextInput
           placeholder="Add Pet"
           placeholderTextColor="white"
           onChangeText={(pet) => setPetOwner({ ...petOwner, pet })}
-        />
+        /> */}
         <AuthTextInput
           placeholder="Bio"
           placeholderTextColor="white"
