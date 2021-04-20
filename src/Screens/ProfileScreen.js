@@ -9,7 +9,10 @@ import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
 //images
 import Pet1 from "../../assets/images/Pet8.jpeg";
+import hostStore from "../../Stores/hostStore";
 
+//component
+import PetList from "../Components/Pets/PetList"
 
 
 //Profile
@@ -69,8 +72,9 @@ const SignoutButton = () => {
     <SignoutButtonStyled name="logout" type="AntDesign" onPress={handlePress} />
   );
 };
-// authStore.user.image
-const ProfileScreen = ({ navigation }) => {
+// hostStore.hosts.image
+const ProfileScreen = ({ navigation, route}) => {
+  // const {hosts} = route.params; 
   return (
     <View>  
 <StyledView>
@@ -78,13 +82,13 @@ const ProfileScreen = ({ navigation }) => {
       </StyledView>
     <ProfileWrapper> 
       {/* <Text> PROFILE </Text> */} 
-      <ProfileUsernameStyled> {authStore.user.username}</ProfileUsernameStyled>
+      <ProfileUsernameStyled> {authStore.user.firstName}</ProfileUsernameStyled>
       <ProfileImage source={Pet1}   accessibilityLabel='Profile pic'/>
       <FullNameWrapper>
       <ProfileInfoStyled> {authStore.user.firstName}</ProfileInfoStyled>
       <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
-     
       </FullNameWrapper>
+      <ProfileInfoStyled> {authStore.user.contactNumber}</ProfileInfoStyled>
       <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
       <ProfileInfoStyled> {authStore.user.email}</ProfileInfoStyled>
       <EditProfileStyled onPress={() => alert("Button Clicked !")}>
@@ -92,6 +96,7 @@ const ProfileScreen = ({ navigation }) => {
       </EditProfileStyled>
       
     </ProfileWrapper>
+    <PetList/>
     </View>
   );
 };

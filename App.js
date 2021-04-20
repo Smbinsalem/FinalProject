@@ -75,6 +75,13 @@ export default function App() {
             headerShown: false,
           }}
         />
+        {/* <Screen
+          name="PetDetail"
+          component={PetDetail}
+          options={{
+            headerShown: false,
+          }}
+        /> */}
         
       </Navigator>
     </NavigationContainer>

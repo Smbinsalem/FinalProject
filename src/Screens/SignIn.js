@@ -23,15 +23,15 @@ const SignIn = ({ navigation }) => {
   const handleSubmit = () => authStore.signin(user, navigation);
 
   //Eye icon
-  const [passwordIcon, setPasswordIcon] = useState("eye-outline");
+  const [passwordIcon, setPasswordIcon] = useState("eye-off-outline");
   const [passwordVisibilty, setPasswordVisibilty] = useState(true);
 
   const handlePassword = () => {
-    if (passwordIcon === "eye-outline") {
-      setPasswordIcon("eye-off-outline");
+    if (passwordIcon === "eye-off-outline") {
+      setPasswordIcon("eye-outline");
       setPasswordVisibilty(false);
     } else {
-      setPasswordIcon("eye-outline");
+      setPasswordIcon("eye-off-outline");
       setPasswordVisibilty(true);
     }
   };
@@ -81,7 +81,9 @@ export const PasswordView= styled.View`
 flex-direction:row;
 flex-wrap:wrap;
 width:100%;
-justify-content: center;
+justify-content: space-between;
+/* border-bottom-color: #f0ba00;
+  border-bottom-width: 1px; */
 `;
 export const BackgroundIMG = styled.ImageBackground`
   flex: 1;
@@ -110,6 +112,7 @@ export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
   height: 40px;
+  width:85%;
   margin-bottom: 30px;
   color: white;
   border-bottom-color: #f0ba00;
@@ -117,7 +120,7 @@ export const AuthTextInput = styled.TextInput`
 `;
 
 export const AuthButton = styled.TouchableOpacity`
-  align-self: stretch;
+  /* align-self: stretch; */
   align-items: center;
   padding: 20px;
   background-color: #f0ba00;
