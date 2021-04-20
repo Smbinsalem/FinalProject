@@ -3,8 +3,8 @@ import instance from "./instance";
 
 // What we need CRUD
 
-// ********NOTE********
-// will change all routes based on the backend
+// ***NOTE***
+// all routes fixed!
 
 class OwnerStore {
   owners = [];
@@ -21,30 +21,35 @@ class OwnerStore {
     }
   };
 
+  // *** Note ***
+  // Delete Owner Route was: /users/petOwners/${petOwnerId} // *** removed petOwnerId  ***
+
   deleteOwner = async (petOwnerId) => {
     try {
-      await instance.delete(`/users/petOwners/${petOwnerId}`);
+      await instance.delete(`/users/petOwners`);
       this.owners = this.owners.filter((owner) => owner.id !== petOwnerId);
     } catch (error) {
       console.error("OwnerStore -> deleteOwner -> error", error);
     }
   };
+
   //after signing up we create a pet-owner profile
+
   createOwner = async (data) => {
     try {
-      const response = await instance.post(
-        `/users/petOwners`,
-        data
-      );
+      const response = await instance.post(`/users/petOwners`, data);
       this.owners.push(response.data);
     } catch (error) {
       console.error("OwnerStore -> createOwner -> error", error);
     }
   };
 
+  // *** Note ***
+  // Update Owner Route was: /users/petOwners/${petOwnerId} // *** removed petOwnerId  ***
+
   updateOwner = async (petOwnerId) => {
     try {
-      await instance.put(`/users/petOwners/${petOwnerId}`);
+      await instance.put(`/users/petOwners`);
       this.owners = this.owners.filter((owner) => owner.id !== petOwnerId);
     } catch (error) {
       console.error("OwnerStore -> updateOwner -> error", error);
