@@ -28,7 +28,7 @@ const HostSignUp = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await hostStore.createHost(host);
-    if (hostStore.hosts) navigation.navigate("Tabs");
+    if (hostStore.hosts) navigation.navigate("HostTabs");
     // if (authStore.user) navigation.navigate("Tabs");
   };
   // useEffect(() => {

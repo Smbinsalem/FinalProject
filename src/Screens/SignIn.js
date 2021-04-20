@@ -1,10 +1,14 @@
 import React from "react";
-import authStore from "../../Stores/authStore";
 import { useState } from "react";
-import { Icon } from "native-base";
-import { observer } from "mobx-react";
-import styled from "styled-components/native";
 
+//Mobx
+import authStore from "../../Stores/authStore";
+import { observer } from "mobx-react";
+
+//Styling
+import { View, ScrollView } from "react-native";
+import styled from "styled-components/native";
+import { Icon } from "native-base";
 //Images
 import Pet1 from "../../assets/images/Pet8.jpeg";
 
@@ -19,15 +23,15 @@ const SignIn = ({ navigation }) => {
   const handleSubmit = () => authStore.signin(user, navigation);
 
   //Eye icon
-  const [passwordIcon, setPasswordIcon] = useState("eye");
+  const [passwordIcon, setPasswordIcon] = useState("eye-outline");
   const [passwordVisibilty, setPasswordVisibilty] = useState(true);
 
   const handlePassword = () => {
-    if (passwordIcon === "eye") {
-      setPasswordIcon("eye-off");
+    if (passwordIcon === "eye-outline") {
+      setPasswordIcon("eye-off-outline");
       setPasswordVisibilty(false);
     } else {
-      setPasswordIcon("eye");
+      setPasswordIcon("eye-outline");
       setPasswordVisibilty(true);
     }
   };
@@ -36,12 +40,14 @@ const SignIn = ({ navigation }) => {
     <>
       <BackgroundIMG source={Pet1}>
         <AuthContainer>
+          
           <AuthTextInput
             placeholder="Username"
             autoCapitalize="none"
             placeholderTextColor="white"
             onChangeText={(username) => setUser({ ...user, username })}
           />
+          <PasswordView>
           <AuthTextInput
             placeholder="Password"
             autoCapitalize="none"
@@ -54,7 +60,7 @@ const SignIn = ({ navigation }) => {
             type="MaterialCommunityIcons"
             onPress={handlePassword}
           />
-
+        </PasswordView>
           <AuthButton onPress={handleSubmit}>
             <AuthButtonText>Sign in</AuthButtonText>
           </AuthButton>
@@ -70,6 +76,13 @@ const SignIn = ({ navigation }) => {
 export default observer(SignIn);
 
 //****************  STYLING  *************//
+export const PasswordView= styled.View`
+/* flex:1; */
+flex-direction:row;
+flex-wrap:wrap;
+width:100%;
+justify-content: center;
+`;
 export const BackgroundIMG = styled.ImageBackground`
   flex: 1;
   height: 90%;

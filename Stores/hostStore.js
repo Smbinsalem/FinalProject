@@ -33,7 +33,7 @@ class HostStore {
   createHost = async (data) => {
     try {
       const response = await instance.post(
-        `/users/petHosts/createPetHost`,
+        `/users/petHosts`,
         data
       );
       this.hosts.push(response.data);
