@@ -7,9 +7,59 @@ import authStore from "../../Stores/authStore";
 //navigation
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
+//images
+import Pet1 from "../../assets/images/Pet8.jpeg";
+
+
+
+//Profile
+export const ProfileWrapper = styled.View`
+margin-top:23%;
+  margin-bottom: 20px;
+  background-color:rgba(138, 165, 188, 0.4);
+  padding:1%;
+`;
+
+export const ProfileImage = styled.Image`
+  width: 175px;
+  height: 175px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 100px;
+`;
+
+export const ProfileUsernameStyled = styled.Text`
+  color: #f0ba00;
+  
+  font-weight: bold;
+  font-size: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+`;
+export const  ProfileInfoStyled= styled.Text`
+  color: black;
+  font-size: 20px;
+  margin-top:7%;
+  `;
+export const FullNameWrapper = styled.View`
+flex-direction:row;
+margin-top:1%; 
+  `;
+export const EditProfileStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding:10px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  width:90%;
+  `;
 
 const SignoutButton = () => {
   const navigation = useNavigation();
+
 
   const handlePress = () => {
     authStore.signout();
@@ -19,18 +69,27 @@ const SignoutButton = () => {
     <SignoutButtonStyled name="logout" type="AntDesign" onPress={handlePress} />
   );
 };
-
+// authStore.user.image
 const ProfileScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text> PROFILE </Text>
-      <Text> Profile Screen </Text>
-      <TouchableOpacity onPress={() => alert("Button Clicked !")}>
-        <Text>Click Here</Text>
-      </TouchableOpacity>
-      <StyledView>
+    <View>  
+<StyledView>
         <SignoutButton />
       </StyledView>
+    <ProfileWrapper> 
+      {/* <Text> PROFILE </Text> */} 
+      <ProfileUsernameStyled> {authStore.user.username}</ProfileUsernameStyled>
+      <ProfileImage source={Pet1}   accessibilityLabel='Profile pic'/>
+      <FullNameWrapper>
+      <ProfileInfoStyled> {authStore.user.firstName}</ProfileInfoStyled>
+      <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
+      </FullNameWrapper>
+      <ProfileInfoStyled> {authStore.user.email}</ProfileInfoStyled>
+      <EditProfileStyled onPress={() => alert("Button Clicked !")}>
+        <Text>Edit Profile</Text>
+      </EditProfileStyled>
+      
+    </ProfileWrapper>
     </View>
   );
 };

@@ -33,7 +33,7 @@ class OwnerStore {
   createOwner = async (data) => {
     try {
       const response = await instance.post(
-        `/users/petOwners/createPetOwner`,
+        `/users/petOwners`,
         data
       );
       this.owners.push(response.data);

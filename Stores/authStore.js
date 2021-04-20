@@ -53,6 +53,7 @@ class AuthStore {
     try {
       const res = await instance.post("/users/signin", userData);
       this.setUser(res.data.token);
+      
       navigation.navigate("Tabs")
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
