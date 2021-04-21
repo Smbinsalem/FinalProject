@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Button } from "react-native";
 import authStore from "../../Stores/authStore";
 import { useState } from "react";
 import { Icon, Label } from "native-base";
@@ -8,6 +8,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 //Calendar
 import { Calendar } from "react-native-calendars";
+import DatePicker from "react-native-date-picker";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 //Images
 import Pet1 from "../../assets/images/Pet8.jpeg";
@@ -38,6 +40,29 @@ const SignUp = ({ navigation }) => {
 
   const handleSubmit = () => authStore.signup(user, navigation);
 
+  // Date example
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState("date");
+  const [show, setShow] = useState(false);
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === "ios");
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+    setUser({ ...user, dateOfBirth });
+  };
+
+  const showDatepicker = () => {
+    showMode("date");
+  };
+
+  // const showTimepicker = () => {
+  //   showMode("time");
+  // };
   return (
     <>
       <BackgroundIMG source={Pet1}>
@@ -59,12 +84,15 @@ const SignUp = ({ navigation }) => {
               placeholderTextColor="white"
               onChangeText={(email) => setUser({ ...user, email })}
             />
+            {/* Manually  adding a date */}
             {/* <AuthTextInput
             placeholder="Date of Birth"
             placeholderTextColor="white"
             onChangeText={(dateOfBirth) => setUser({ ...user, dateOfBirth })}
           /> */}
-            <Label>Date Of Birth</Label>
+
+            {/* A Whole calender */}
+            {/* <Label>Date Of Birth</Label>
             <Calendar
               minDate={"1921-01-01"}
               // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
@@ -144,7 +172,24 @@ const SignUp = ({ navigation }) => {
                 textMonthFontSize: 16,
                 textDayHeaderFontSize: 16,
               }}
-            />
+            /> */}
+
+            <View>
+              <View>
+                <Button onPress={showDatepicker} title="Show date picker!" />
+              </View>
+
+              {show && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={date}
+                  mode={mode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={onChange}
+                />
+              )}
+            </View>
             <AuthTextInput
               placeholder="Contact Number"
               placeholderTextColor="white"
