@@ -40,27 +40,29 @@ const SignIn = ({ navigation }) => {
     <>
       <BackgroundIMG source={Pet1}>
         <AuthContainer>
-          
-          <AuthTextInput
-            placeholder="Username"
-            autoCapitalize="none"
-            placeholderTextColor="white"
-            onChangeText={(username) => setUser({ ...user, username })}
-          />
-          <PasswordView>
-          <AuthTextInput
-            placeholder="Password"
-            autoCapitalize="none"
-            placeholderTextColor="white"
-            secureTextEntry={passwordVisibilty}
-            onChangeText={(password) => setUser({ ...user, password })}
-          />
-          <Iconstyled
-            name={passwordIcon}
-            type="MaterialCommunityIcons"
-            onPress={handlePassword}
-          />
-        </PasswordView>
+          <FieldView>
+            <AuthTextInput
+              placeholder="Username"
+              autoCapitalize="none"
+              placeholderTextColor="white"
+              onChangeText={(username) => setUser({ ...user, username })}
+            />
+            <Iconstyled name={passwordIcon} type="MaterialCommunityIcons" />
+          </FieldView>
+          <FieldView>
+            <AuthTextInput
+              placeholder="Password"
+              autoCapitalize="none"
+              placeholderTextColor="white"
+              secureTextEntry={passwordVisibilty}
+              onChangeText={(password) => setUser({ ...user, password })}
+            />
+            <Iconstyled
+              name={passwordIcon}
+              type="MaterialCommunityIcons"
+              onPress={handlePassword}
+            />
+          </FieldView>
           <AuthButton onPress={handleSubmit}>
             <AuthButtonText>Sign in</AuthButtonText>
           </AuthButton>
@@ -76,14 +78,11 @@ const SignIn = ({ navigation }) => {
 export default observer(SignIn);
 
 //****************  STYLING  *************//
-export const PasswordView= styled.View`
-/* flex:1; */
-flex-direction:row;
-flex-wrap:wrap;
-width:100%;
-justify-content: space-between;
-/* border-bottom-color: #f0ba00;
-  border-bottom-width: 1px; */
+export const FieldView = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
 `;
 export const BackgroundIMG = styled.ImageBackground`
   flex: 1;
@@ -92,7 +91,7 @@ export const BackgroundIMG = styled.ImageBackground`
   justify-content: center;
 `;
 export const AuthContainer = styled.View`
-  flex: 2;
+  flex: 4;
   align-self: stretch;
   justify-content: center;
   align-items: center;
@@ -112,7 +111,7 @@ export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
   height: 40px;
-  width:85%;
+  width: 85%;
   margin-bottom: 30px;
   color: white;
   border-bottom-color: #f0ba00;
@@ -120,7 +119,7 @@ export const AuthTextInput = styled.TextInput`
 `;
 
 export const AuthButton = styled.TouchableOpacity`
-  /* align-self: stretch; */
+  align-self: stretch;
   align-items: center;
   padding: 20px;
   background-color: #f0ba00;

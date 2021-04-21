@@ -5,12 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const ExploreScreen = ({ navigation }) => {
   return (
-    <ScrollView
-      style={{
-        backgroundColor: "#fff",
-        flex: 1,
-      }}
-    >
+    <>
       <View
         style={{
           backgroundColor: "#172A3A",
@@ -39,29 +34,40 @@ const ExploreScreen = ({ navigation }) => {
           <View style={{ width: "50%" }}>
             <Text
               style={{
+                top: -20,
                 fontSize: 28,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
             >
-              allo
+              Hi Petly
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
             <Image
               source={require("../../assets/images/Pet6.png")}
-              style={{ height: 60, width: 60 }}
+              style={{
+                top: -20,
+                height: 60,
+                width: 60,
+                borderTopLeftRadius: 20,
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+                borderTopRightRadius: 20,
+              }}
             />
           </View>
         </View>
       </View>
       <LinearGradient
-        colors={["rgba(23, 42, 58,0.4)", "transparent"]}
+        colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
           left: 0,
           right: 0,
           height: 100,
-          marginTop: -45,
+          marginTop: -50,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
         }}
       >
         <View
@@ -82,380 +88,401 @@ const ExploreScreen = ({ navigation }) => {
             style={{
               fontWeight: "bold",
               fontSize: 18,
-              width: 260,
+              width: 270,
             }}
           />
           <Image
             source={require("../../assets/icons/find.png")}
-            style={{ height: 20, width: 20, left: 25 }}
+            style={{ height: 20, width: 20 }}
           />
         </View>
       </LinearGradient>
 
-      <View
+      <ScrollView
         style={{
-          flexDirection: "row",
-          paddingHorizontal: 20,
-          width: "100%",
-          alignItems: "center",
+          backgroundColor: "#fff",
+          flex: 1,
         }}
       >
-        <View style={{ width: "50%" }}>
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontSize: 17,
-              color: "#172A3A",
-            }}
-          >
-            Recommended
-          </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingHorizontal: 20,
+            width: "100%",
+            alignItems: "center",
+          }}
+        >
+          <View style={{ width: "50%" }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 17,
+                color: "#172A3A",
+              }}
+            >
+              Recommended
+            </Text>
+          </View>
+          <View style={{ width: "50%", alignItems: "flex-end" }}>
+            <View
+              style={{
+                backgroundColor: "#F0BA00",
+                paddingHorizontal: 20,
+                paddingVertical: 5,
+                borderRadius: 15,
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 13,
+                  color: "#FFF",
+                }}
+              >
+                More
+              </Text>
+            </View>
+          </View>
         </View>
-        <View style={{ width: "50%", alignItems: "flex-end" }}>
-          <View
+
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ height: 400 }}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Detail")}
             style={{
+              height: 250,
+              elevation: 2,
               backgroundColor: "#F0BA00",
-              paddingHorizontal: 20,
-              paddingVertical: 5,
+              marginLeft: 20,
+              marginTop: 20,
               borderRadius: 15,
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 13,
-                color: "#FFF",
-              }}
-            >
-              More
-            </Text>
-          </View>
-        </View>
-      </View>
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ height: 400 }}
-      >
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Detail")}
-          style={{
-            height: 250,
-            elevation: 2,
-            backgroundColor: "#F0BA00",
-            marginLeft: 20,
-            marginTop: 20,
-            borderRadius: 15,
-            marginBottom: 10,
-            borderTopLeftRadius: 30,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            borderTopRightRadius: 30,
-            width: 160,
-          }}
-        >
-          <Image
-            source={require("../../assets/images/Pet12.jpg")}
-            style={{
-              width: 160,
-              height: 190,
+              marginBottom: 10,
               borderTopLeftRadius: 30,
               borderBottomLeftRadius: 30,
               borderBottomRightRadius: 30,
               borderTopRightRadius: 30,
-            }}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              paddingTop: 10,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              SAMANTHA
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                color: "#172A3A",
-                paddingLeft: 35,
-              }}
-            >
-              10 KD
-            </Text>
-          </View>
-          <Text
-            style={{
-              paddingHorizontal: 10,
-              fontWeight: "bold",
-              color: "#fff",
-              paddingTop: 3,
-            }}
-          >
-            Al-Dasma
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Detail")}
-          style={{
-            height: 250,
-            elevation: 2,
-            backgroundColor: "#F0BA00",
-            marginLeft: 20,
-            marginTop: 20,
-            borderRadius: 15,
-            marginBottom: 10,
-            borderTopLeftRadius: 30,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            borderTopRightRadius: 30,
-            width: 160,
-          }}
-        >
-          <Image
-            source={require("../../assets/images/Pet13.jpg")}
-            style={{
               width: 160,
-              height: 190,
-              borderTopLeftRadius: 30,
-              borderBottomLeftRadius: 30,
-              borderBottomRightRadius: 30,
-              borderTopRightRadius: 30,
-            }}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              paddingTop: 10,
-              paddingHorizontal: 10,
             }}
           >
-            <Text
+            <Image
+              source={require("../../assets/images/Pet12.jpg")}
               style={{
-                fontWeight: "bold",
+                width: 160,
+                height: 190,
+                borderTopLeftRadius: 30,
+                borderBottomLeftRadius: 30,
+                borderBottomRightRadius: 30,
+                borderTopRightRadius: 30,
+              }}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 10,
+                paddingHorizontal: 10,
               }}
             >
-              SAMANTHA
-            </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                SAMANTHA
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "#172A3A",
+                  paddingLeft: 35,
+                }}
+              >
+                10 KD
+              </Text>
+            </View>
             <Text
               style={{
+                paddingHorizontal: 10,
                 fontWeight: "bold",
-                color: "#172A3A",
-                paddingLeft: 35,
+                color: "#fff",
+                paddingTop: 3,
               }}
             >
-              10 KD
+              Al-Dasma
             </Text>
-          </View>
-          <Text
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Detail")}
             style={{
-              paddingHorizontal: 10,
-              fontWeight: "bold",
-              color: "#fff",
-              paddingTop: 3,
-            }}
-          >
-            Al-Dasma
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Detail")}
-          style={{
-            height: 250,
-            elevation: 2,
-            backgroundColor: "#F0BA00",
-            marginLeft: 20,
-            marginTop: 20,
-            borderRadius: 15,
-            marginBottom: 10,
-            borderTopLeftRadius: 30,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            borderTopRightRadius: 30,
-            width: 160,
-          }}
-        >
-          <Image
-            source={require("../../assets/images/Pet14.jpg")}
-            style={{
-              width: 160,
-              height: 190,
-              borderTopLeftRadius: 30,
-              borderBottomLeftRadius: 30,
-              borderBottomRightRadius: 30,
-              borderTopRightRadius: 30,
-            }}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              paddingTop: 10,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              SAMANTHA
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                color: "#172A3A",
-                paddingLeft: 35,
-              }}
-            >
-              10 KD
-            </Text>
-          </View>
-          <Text
-            style={{
-              paddingHorizontal: 10,
-              fontWeight: "bold",
-              color: "#fff",
-              paddingTop: 3,
-            }}
-          >
-            Al-Dasma
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Detail")}
-          style={{
-            height: 250,
-            elevation: 2,
-            backgroundColor: "#F0BA00",
-            marginLeft: 20,
-            marginTop: 20,
-            borderRadius: 15,
-            marginBottom: 10,
-            borderTopLeftRadius: 30,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            borderTopRightRadius: 30,
-            width: 160,
-          }}
-        >
-          <Image
-            source={require("../../assets/images/Pet15.jpg")}
-            style={{
-              width: 160,
-              height: 190,
-              borderTopLeftRadius: 30,
-              borderBottomLeftRadius: 30,
-              borderBottomRightRadius: 30,
-              borderTopRightRadius: 30,
-            }}
-          />
-          <View
-            style={{
-              flexDirection: "row",
-              paddingTop: 10,
-              paddingHorizontal: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              SAMANTHA
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                color: "#172A3A",
-                paddingLeft: 35,
-              }}
-            >
-              10 KD
-            </Text>
-          </View>
-          <Text
-            style={{
-              paddingHorizontal: 10,
-              fontWeight: "bold",
-              color: "#fff",
-              paddingTop: 3,
-            }}
-          >
-            Al-Dasma
-          </Text>
-        </TouchableOpacity>
-      </ScrollView>
-
-      <View
-        style={{
-          flexDirection: "row",
-          paddingHorizontal: 20,
-          width: "100%",
-          alignItems: "center",
-          marginTop: -80,
-        }}
-      >
-        <View style={{ width: "50%" }}>
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontSize: 17,
-              color: "#172A3A",
-            }}
-          >
-            Featured
-          </Text>
-          <View
-            style={{
-              backgroundColor: "#b1e5d3",
-              width: 115,
-              marginTop: -5,
-            }}
-          ></View>
-        </View>
-        <View style={{ width: "50%", alignItems: "flex-end" }}>
-          <View
-            style={{
+              height: 250,
+              elevation: 2,
               backgroundColor: "#F0BA00",
-              paddingHorizontal: 20,
-              paddingVertical: 5,
+              marginLeft: 20,
+              marginTop: 20,
               borderRadius: 15,
+              marginBottom: 10,
+              borderTopLeftRadius: 30,
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              borderTopRightRadius: 30,
+              width: 160,
             }}
           >
+            <Image
+              source={require("../../assets/images/Pet13.jpg")}
+              style={{
+                width: 160,
+                height: 190,
+                borderTopLeftRadius: 30,
+                borderBottomLeftRadius: 30,
+                borderBottomRightRadius: 30,
+                borderTopRightRadius: 30,
+              }}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 10,
+                paddingHorizontal: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                SAMANTHA
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "#172A3A",
+                  paddingLeft: 35,
+                }}
+              >
+                10 KD
+              </Text>
+            </View>
+            <Text
+              style={{
+                paddingHorizontal: 10,
+                fontWeight: "bold",
+                color: "#fff",
+                paddingTop: 3,
+              }}
+            >
+              Al-Dasma
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Detail")}
+            style={{
+              height: 250,
+              elevation: 2,
+              backgroundColor: "#F0BA00",
+              marginLeft: 20,
+              marginTop: 20,
+              borderRadius: 15,
+              marginBottom: 10,
+              borderTopLeftRadius: 30,
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              borderTopRightRadius: 30,
+              width: 160,
+            }}
+          >
+            <Image
+              source={require("../../assets/images/Pet14.jpg")}
+              style={{
+                width: 160,
+                height: 190,
+                borderTopLeftRadius: 30,
+                borderBottomLeftRadius: 30,
+                borderBottomRightRadius: 30,
+                borderTopRightRadius: 30,
+              }}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 10,
+                paddingHorizontal: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                SAMANTHA
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "#172A3A",
+                  paddingLeft: 35,
+                }}
+              >
+                10 KD
+              </Text>
+            </View>
+            <Text
+              style={{
+                paddingHorizontal: 10,
+                fontWeight: "bold",
+                color: "#fff",
+                paddingTop: 3,
+              }}
+            >
+              Al-Dasma
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Detail")}
+            style={{
+              height: 250,
+              elevation: 2,
+              backgroundColor: "#F0BA00",
+              marginLeft: 20,
+              marginTop: 20,
+              borderRadius: 15,
+              marginBottom: 10,
+              borderTopLeftRadius: 30,
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              borderTopRightRadius: 30,
+              width: 160,
+            }}
+          >
+            <Image
+              source={require("../../assets/images/Pet15.jpg")}
+              style={{
+                width: 160,
+                height: 190,
+                borderTopLeftRadius: 30,
+                borderBottomLeftRadius: 30,
+                borderBottomRightRadius: 30,
+                borderTopRightRadius: 30,
+              }}
+            />
+            <View
+              style={{
+                flexDirection: "row",
+                paddingTop: 10,
+                paddingHorizontal: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                SAMANTHA
+              </Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "#172A3A",
+                  paddingLeft: 35,
+                }}
+              >
+                10 KD
+              </Text>
+            </View>
+            <Text
+              style={{
+                paddingHorizontal: 10,
+                fontWeight: "bold",
+                color: "#fff",
+                paddingTop: 3,
+              }}
+            >
+              Al-Dasma
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
+
+        <View
+          style={{
+            flexDirection: "row",
+            paddingHorizontal: 20,
+            width: "100%",
+            alignItems: "center",
+            marginTop: -80,
+          }}
+        >
+          <View style={{ width: "50%" }}>
             <Text
               style={{
                 fontWeight: "bold",
-                fontSize: 13,
-                color: "#FFF",
+                fontSize: 17,
+                color: "#172A3A",
               }}
             >
-              More
+              Featured
             </Text>
+            <View
+              style={{
+                backgroundColor: "#b1e5d3",
+                width: 115,
+                marginTop: -5,
+              }}
+            ></View>
+          </View>
+          <View style={{ width: "50%", alignItems: "flex-end" }}>
+            <View
+              style={{
+                backgroundColor: "#F0BA00",
+                paddingHorizontal: 20,
+                paddingVertical: 5,
+                borderRadius: 15,
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 13,
+                  color: "#FFF",
+                }}
+              >
+                More
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ marginBottom: -100 }}
-      >
-        <Image
-          source={require("../../assets/images/18.png")}
-          style={{ marginTop: 20, marginHorizontal: 20 }}
-        />
-        <Image
-          source={require("../../assets/images/19.png")}
-          style={{ marginTop: 20, borderRadius: 10 }}
-        />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ marginBottom: -100 }}
+        >
+          <Image
+            source={require("../../assets/images/18.png")}
+            style={{
+              marginTop: 20,
+              marginHorizontal: 20,
+              borderTopLeftRadius: 30,
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              borderTopRightRadius: 30,
+            }}
+          />
+          <Image
+            source={require("../../assets/images/19.png")}
+            style={{
+              marginTop: 20,
+              borderRadius: 10,
+              borderTopLeftRadius: 30,
+              borderBottomLeftRadius: 30,
+              borderBottomRightRadius: 30,
+              borderTopRightRadius: 30,
+            }}
+          />
+        </ScrollView>
       </ScrollView>
-    </ScrollView>
+    </>
   );
 };
 export default ExploreScreen;
