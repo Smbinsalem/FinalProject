@@ -15,13 +15,10 @@ export const PostWrapper = styled.View`
 
 const PostScreen = ({ navigation }) => {
   // const {hosts} = route.params;
-  const owner = ownerStore.owners.find(
-    (user) => user.userId === authStore.user.id
-  );
 
   return (
     <PostWrapper>
-      <PetList ownerId={owner.id} />
+      <PetList ownerId={authStore.user.petOwnerId} />
     </PostWrapper>
   );
 };

@@ -6,6 +6,7 @@ import decode from "jwt-decode";
 
 //storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import petStore from "./petStore";
 
 class AuthStore {
   user = null;
@@ -62,6 +63,7 @@ class AuthStore {
   //sign out
   signout = async () => {
     this.user = null;
+    petStore.pets = [];
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
   };

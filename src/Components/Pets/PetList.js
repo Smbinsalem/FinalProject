@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PetItem from "./PetItem";
 import petStore from "../../../Stores/petStore";
 
@@ -7,6 +7,9 @@ import { List, Content, Text, View } from "native-base";
 
 const PetList = ({ navigation, ownerId }) => {
   // const filteredPets= petStore.pets.filter((ownerId) =>(pets.petOwnerId === ownerId));
+  useEffect(() => {
+    petStore.fetchPets();
+  }, []);
 
   console.log(ownerId);
   console.log(petStore.pets);
