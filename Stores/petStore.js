@@ -27,10 +27,11 @@ class PetStore {
     }
   };
   //after signing up we create a pet-owner profile
-  createPet = async (data) => {
+  createPet = async (data, navigation) => {
     try {
       const response = await instance.post(`/users/petOwners/pets`, data);
       this.pets.push(response.data);
+      // navigation.navigate("Tabs");
     } catch (error) {
       console.error("PetStore -> createPet -> error", error);
     }

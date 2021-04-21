@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 //Mobx
 import hostStore from "../../../Stores/hostStore";
 
-
 //Style
 import styled from "styled-components/native";
 
@@ -14,12 +13,10 @@ import DropDownPicker from "react-native-dropdown-picker";
 //Images
 import Pet1 from "../../../assets/images/Pet8.jpeg";
 
-
-
 const HostSignUp = ({ navigation }) => {
   //  useEffect(() => {
   //   authStore.fetchUsers();
-  // }, []); 
+  // }, []);
   const [host, setHost] = useState({
     bio: "",
     location: "",
@@ -33,7 +30,7 @@ const HostSignUp = ({ navigation }) => {
   };
   // useEffect(() => {
   //   hostStore.fetchHost();
-  // }, []); 
+  // }, []);
   return (
     <BackgroundIMG source={Pet1}>
       <Container>
@@ -43,25 +40,24 @@ const HostSignUp = ({ navigation }) => {
           onChangeText={(location) => setHost({ ...host, location })}
         />
         <DropDownPicker
-        items={[
-          { label: "Dogs", value: "Dogs" },
-          { label: "Cats", value: "Cats" },
-          { label: "Birds", value: "Birds" },
-          { label: "Fish", value: "Fish" },
-          { label: "Reptiles", value: "Reptiles" },
-        
-        ]}
-        placeholder="Type of pets"
-        containerStyle={{ height: 40, width: 320}}
-        onChangeItem={(item) => setHost({ ...host, typeOfPets: item.value })}
-      />
+          items={[
+            { label: "Dogs", value: "Dogs" },
+            { label: "Cats", value: "Cats" },
+            { label: "Birds", value: "Birds" },
+            { label: "Fish", value: "Fish" },
+            { label: "Reptiles", value: "Reptiles" },
+          ]}
+          placeholder="Type of pets"
+          containerStyle={{ height: 40, width: 320 }}
+          onChangeItem={(item) => setHost({ ...host, typeOfPets: item.value })}
+        />
         <AuthTextInput
           placeholder="Biography"
           placeholderTextColor="white"
           onChangeText={(bio) => setHost({ ...host, bio })}
         />
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText>Done</AuthButtonText>
+          <AuthButtonText>Sign Up</AuthButtonText>
         </AuthButton>
       </Container>
     </BackgroundIMG>

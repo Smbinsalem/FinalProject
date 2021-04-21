@@ -13,7 +13,7 @@ const PetOwnerSignUp = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await ownerStore.createOwner(petOwner);
-    if (ownerStore.owners) navigation.navigate("Tabs");
+    if (ownerStore.owners) navigation.navigate("AddPet");
   };
   return (
     <BackgroundIMG source={Pet1}>
@@ -24,12 +24,12 @@ const PetOwnerSignUp = ({ navigation }) => {
           onChangeText={(pet) => setPetOwner({ ...petOwner, pet })}
         /> */}
         <AuthTextInput
-          placeholder="Bio"
+          placeholder="Type Your Bio Here"
           placeholderTextColor="white"
           onChangeText={(bio) => setPetOwner({ ...petOwner, bio })}
         />
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText>Sign Up</AuthButtonText>
+          <AuthButtonText>Next</AuthButtonText>
         </AuthButton>
       </Container>
     </BackgroundIMG>
