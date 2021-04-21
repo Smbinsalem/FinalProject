@@ -13,6 +13,7 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import HostHome from "../Screens/HostScreens/HostHome";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -62,7 +63,7 @@ const HostTabs = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HostHome}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -90,7 +91,7 @@ const HostTabs = () => {
           ),
         }}
       />
-{/* Hosts are not able to explore other hosts */}
+      {/* Hosts are not able to explore other hosts */}
       {/* <Tab.Screen
         name="Explore"
         component={ExploreScreen}
@@ -126,15 +127,14 @@ const HostTabs = () => {
         name="Post"
         component={PostScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={require("../../assets/icons/post.png")}
               resizeMode="contain"
               style={{
                 width: 30,
                 height: 30,
-               tintColor: focused ? "#172A3A" : "#FFF",
-                
+                tintColor: focused ? "#172A3A" : "#FFF",
               }}
             />
           ),
