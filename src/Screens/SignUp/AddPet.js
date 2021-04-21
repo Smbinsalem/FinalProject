@@ -12,6 +12,7 @@ import styled from "styled-components/native";
 
 //Images
 import Pet1 from "../../../assets/images/Pet8.jpeg";
+import { TouchableNativeFeedback } from "react-native";
 
 const AddPet = ({ navigation }) => {
   const [pet, setPet] = useState({
@@ -29,10 +30,13 @@ const AddPet = ({ navigation }) => {
     // allowedSnackPerDays: "",
   });
 
-  const handleSubmit = async () => {
-    await petStore.createPet(pet);
-    if (petStore.pets) navigation.navigate("Tabs");
-  };
+  // NOTE *** the original handle submit
+  // const handleSubmit = async () => {
+  //   await petStore.addPet(pet);
+  //   if (petStore.pets) navigation.navigate("Tabs");
+  // };
+
+  const handleSubmit = () => petStore.addPet(pet, navigation);
 
   return (
     <BackgroundIMG source={Pet1}>

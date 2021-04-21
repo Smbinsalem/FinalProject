@@ -72,8 +72,14 @@ const SignoutButton = () => {
   );
 };
 // hostStore.hosts.image
+
+// const {hosts} = route.params;
+// const owner = ownerStore.owners.find(
+//   (user) => user.userId === authStore.user.id
+// );
+// console.log(owner);
 const ProfileScreen = ({ navigation, route }) => {
-  // const {hosts} = route.params;
+
 
   return (
     <View>
@@ -97,6 +103,10 @@ const ProfileScreen = ({ navigation, route }) => {
         <EditProfileStyled onPress={() => alert("Button Clicked !")}>
           <Text>Edit Profile</Text>
         </EditProfileStyled>
+
+
+        <PetList ownerId={authStore.user.petOwnerId} />
+
       </ProfileWrapper>
     </View>
   );
