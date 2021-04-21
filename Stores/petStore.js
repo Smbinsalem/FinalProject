@@ -10,7 +10,7 @@ class PetStore {
 
   fetchPets = async () => {
     try {
-      const response = await instance.get(`/users/petOwners/pets/`);
+      const response = await instance.get(`/users/petOwners/pets`);
       this.pets = response.data;
       // this.loading = false;
     } catch (error) {
@@ -56,6 +56,6 @@ class PetStore {
   }
 }
 const petStore = new PetStore();
-  petStore.fetchPets();
+petStore.fetchPets();
 
 export default petStore;

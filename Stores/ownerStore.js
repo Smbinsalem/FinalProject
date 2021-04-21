@@ -10,11 +10,13 @@ class OwnerStore {
   owners = [];
   pets = [];
   loading = true;
+  getOwnerById = (userId) => this.owners.find((user) => user.id === userId);
 
   fetchOwners = async () => {
     try {
       const response = await instance.get(`/users/petOwners`);
       this.owners = response.data;
+
       this.loading = false;
     } catch (error) {
       console.error("OwnerStore -> fetchOwners -> error", error);
