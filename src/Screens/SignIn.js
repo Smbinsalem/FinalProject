@@ -47,7 +47,6 @@ const SignIn = ({ navigation }) => {
               placeholderTextColor="white"
               onChangeText={(username) => setUser({ ...user, username })}
             />
-            <Iconstyled name={passwordIcon} type="MaterialCommunityIcons" />
           </FieldView>
           <FieldView>
             <AuthTextInput

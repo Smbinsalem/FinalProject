@@ -48,12 +48,12 @@ class AuthStore {
   signin = async (userData, navigation) => {
     try {
       const res = await instance.post("/users/signin", userData);
-      this.setUser(res.data.token);
-      // if (this.user.petOwner) {
-      navigation.navigate("Tabs");
-      // } else {
-      // navigation.navigate("HostTabs");
-      // }
+      await this.setUser(res.data.token);
+      if (this.user.petOwnerId) {
+        navigation.navigate("Tabs");
+      } else {
+        navigation.navigate("HostTabs");
+      }
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }

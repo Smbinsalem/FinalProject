@@ -8,8 +8,6 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 //Calendar
 import { Calendar } from "react-native-calendars";
-import DatePicker from "react-native-date-picker";
-import DateTimePicker from "@react-native-community/datetimepicker";
 
 //Images
 import Pet1 from "../../assets/images/Pet8.jpeg";
@@ -40,50 +38,31 @@ const SignUp = ({ navigation }) => {
 
   const handleSubmit = () => authStore.signup(user, navigation);
 
-  // Date example
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState("date");
-  const [show, setShow] = useState(false);
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === "ios");
-    setDate(currentDate);
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-    setUser({ ...user, dateOfBirth });
-  };
-
-  const showDatepicker = () => {
-    showMode("date");
-  };
-
-  // const showTimepicker = () => {
-  //   showMode("time");
-  // };
   return (
     <>
       <BackgroundIMG source={Pet1}>
         <ScrollView>
           <AuthContainer>
+            {/* First Name */}
             <AuthTextInput
               placeholder="First Name"
               placeholderTextColor="white"
               onChangeText={(firstName) => setUser({ ...user, firstName })}
             />
+            {/* Last Name */}
             <AuthTextInput
               placeholder="Last Name"
               placeholderTextColor="white"
               onChangeText={(lastName) => setUser({ ...user, lastName })}
             />
+            {/* Email  */}
             <AuthTextInput
               placeholder="Email"
               autoCapitalize="none"
               placeholderTextColor="white"
               onChangeText={(email) => setUser({ ...user, email })}
             />
+
             {/* Manually  adding a date */}
             {/* <AuthTextInput
             placeholder="Date of Birth"
@@ -92,7 +71,7 @@ const SignUp = ({ navigation }) => {
           /> */}
 
             {/* A Whole calender */}
-            {/* <Label>Date Of Birth</Label>
+            <Label>Date Of Birth</Label>
             <Calendar
               minDate={"1921-01-01"}
               // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
@@ -172,24 +151,9 @@ const SignUp = ({ navigation }) => {
                 textMonthFontSize: 16,
                 textDayHeaderFontSize: 16,
               }}
-            /> */}
+            />
 
-            <View>
-              <View>
-                <Button onPress={showDatepicker} title="Show date picker!" />
-              </View>
-
-              {show && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={date}
-                  mode={mode}
-                  is24Hour={true}
-                  display="default"
-                  onChange={onChange}
-                />
-              )}
-            </View>
+            {/* Contact Number */}
             <AuthTextInput
               placeholder="Contact Number"
               placeholderTextColor="white"
@@ -197,13 +161,7 @@ const SignUp = ({ navigation }) => {
                 setUser({ ...user, contactNumber })
               }
             />
-            {/* <AuthTextInput
-            placeholder="Gender"
-            placeholderTextColor="white"
-            onChangeText={(gender) => setUser({ ...user, gender })}
-          /> */}
-
-            {/* Ex */}
+            {/* Gender */}
             <DropDownPicker
               items={[
                 { label: "Female", value: "Female" },
@@ -213,12 +171,15 @@ const SignUp = ({ navigation }) => {
               containerStyle={{ height: 40, width: 320 }}
               onChangeItem={(item) => setUser({ ...user, gender: item.value })}
             />
+            {/*   Username   */}
             <AuthTextInput
               placeholder="Username"
               autoCapitalize="none"
               placeholderTextColor="white"
               onChangeText={(username) => setUser({ ...user, username })}
             />
+
+            {/* Password */}
             <AuthTextInput
               placeholder="Password"
               autoCapitalize="none"
