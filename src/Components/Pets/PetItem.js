@@ -13,17 +13,16 @@ const TextStyled = styled.Text`
   width: 100%;
 `;
 
-const PetItem = ({ route, navigation }) => {
-  const {pet}= route.params;
+const PetItem = ({ pet, navigation }) => {
+  // const {pet}= route.params;
+ 
   return (
     <>
     <ScrollView/>
       <ListItem>
-        <TouchableOpacity onPress={() => navigation.navigate("PetDetail")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <TextStyled>
            Pet: {pet.name} {`\n`}
-            Type: {pet.type}{`\n`}
-            Breed: {pet.breed}{`\n`}
           </TextStyled>
         </TouchableOpacity>
       </ListItem>

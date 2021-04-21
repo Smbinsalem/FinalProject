@@ -68,6 +68,6 @@ class OwnerStore {
   }
 }
 const ownerStore = new OwnerStore();
-// ownerStore.fetchOwners();
+ownerStore.fetchOwners();
 
 export default ownerStore;
