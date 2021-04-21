@@ -10,12 +10,11 @@ import SignUp from "./src/Screens/SignUp";
 import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
 import Host from "./src/Screens/SignUp/HostSignUp";
 import SignUpAs from "./src/Screens/SignUp/SignUpAS";
+import AddPet from "./src/Screens/SignUp/AddPet";
 
 //Tab Screens
 import Tabs from "./src/Navigation/Tabs";
 import HostTabs from "./src/Navigation/HostTabs";
-
-
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -75,6 +74,13 @@ export default function App() {
             headerShown: false,
           }}
         />
+        <Screen
+          name="AddPet"
+          component={AddPet}
+          options={{
+            headerShown: false,
+          }}
+        />
         {/* <Screen
           name="PetDetail"
           component={PetDetail}
@@ -82,7 +88,6 @@ export default function App() {
             headerShown: false,
           }}
         /> */}
-        
       </Navigator>
     </NavigationContainer>
   );
