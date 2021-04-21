@@ -79,7 +79,7 @@ const SignoutButton = () => {
 // );
 // console.log(owner);
 const ProfileScreen = ({ navigation, route }) => {
-  console.log(authStore.user);
+
 
   return (
     <View>
@@ -104,7 +104,9 @@ const ProfileScreen = ({ navigation, route }) => {
           <Text>Edit Profile</Text>
         </EditProfileStyled>
 
+
         <PetList ownerId={authStore.user.petOwnerId} />
+
       </ProfileWrapper>
     </View>
   );

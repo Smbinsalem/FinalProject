@@ -1,6 +1,6 @@
 import { makeObservable, observable, action } from "mobx";
 import instance from "./instance";
-
+import authStore from "./authStore";
 // What we need CRUD
 
 // ***NOTE***
@@ -10,7 +10,8 @@ class OwnerStore {
   owners = [];
   pets = [];
   loading = true;
-  getOwnerById = (userId) => this.owners.find((user) => user.id === userId);
+
+  // getOwnerById = this.owners.find((user) => user.userId === authStore.user.id);
 
   fetchOwners = async () => {
     try {
@@ -62,6 +63,7 @@ class OwnerStore {
     makeObservable(this, {
       owners: observable,
       pets: observable,
+      // getOwnerById: action,
       fetchOwners: action,
       deleteOwner: action,
       createOwner: action,
@@ -71,5 +73,6 @@ class OwnerStore {
 }
 const ownerStore = new OwnerStore();
 ownerStore.fetchOwners();
+// ownerStore.getOwnerById();
 
 export default ownerStore;
