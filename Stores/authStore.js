@@ -31,10 +31,6 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
-
-    // //fetch rooms
-    // roomStore.fetchRooms();
-    // roomStore.fetchExplore();
   };
 
   //sign up
@@ -53,8 +49,11 @@ class AuthStore {
     try {
       const res = await instance.post("/users/signin", userData);
       this.setUser(res.data.token);
-
+      // if (this.user.petOwner) {
       navigation.navigate("Tabs");
+      // } else {
+      // navigation.navigate("HostTabs");
+      // }
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
     }

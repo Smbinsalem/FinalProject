@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const ExploreScreen = ({ navigation }) => {
   return (
-    <View
+    <ScrollView
       style={{
         backgroundColor: "#fff",
         flex: 1,
@@ -44,7 +44,7 @@ const ExploreScreen = ({ navigation }) => {
                 fontWeight: "bold",
               }}
             >
-              Hi Petly
+              allo
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
@@ -455,7 +455,7 @@ const ExploreScreen = ({ navigation }) => {
           style={{ marginTop: 20, borderRadius: 10 }}
         />
       </ScrollView>
-    </View>
+    </ScrollView>
   );
 };
 export default ExploreScreen;
