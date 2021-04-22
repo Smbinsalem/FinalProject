@@ -1,28 +1,21 @@
 import React, { useEffect } from "react";
 import PetItem from "./PetItem";
 import petStore from "../../../Stores/petStore";
-
+import { Spinner } from "native-base";
 import { observer } from "mobx-react";
 import { List, Content, Text, View } from "native-base";
 
 const PetList = ({ navigation, ownerId }) => {
-  // const filteredPets= petStore.pets.filter((ownerId) =>(pets.petOwnerId === ownerId));
-  useEffect(() => {
-    petStore.fetchPets();
-  }, []);
+  //Loading page
 
-  console.log(ownerId);
-  console.log(petStore.pets);
+  // useEffect(() => {
+  //   petStore.fetchPets();
+  // }, []);
+
   const petList = petStore.pets
     .filter((pet) => pet.petOwnerId === +ownerId)
     .map((pet) => <PetItem navigation={navigation} pet={pet} key={pet.id} />);
-  console.log(petList);
 
-  return (
-    <View>
-      {/* <Text>Oscar </Text> */}
-      {petList}
-    </View>
-  );
+  return <View>{petList}</View>;
 };
 export default observer(PetList);
