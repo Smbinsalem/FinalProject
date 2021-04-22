@@ -5,8 +5,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text> Home Screen </Text>
-      <TouchableOpacity onPress={() => alert("Button Clicked !")}>
-    <Text>Click Here</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("HostTabs")}>
+        <Text>Click Here</Text>
       </TouchableOpacity>
     </View>
   );

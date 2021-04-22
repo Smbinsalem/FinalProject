@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // Importing Navigation
-// import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
@@ -14,9 +14,24 @@ import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostHome from "../Screens/HostScreens/HostHome";
+import BookingDetails from "../Components/Booking/BookingDetails";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const InboxStack = createStackNavigator();
+const InboxNavigator = () => {
+  return (
+    <InboxStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Inbox"}
+    >
+      <InboxStack.Screen name="Inbox" component={HostHome} />
+      <InboxStack.Screen name="BookingDetails" component={BookingDetails} />
+    </InboxStack.Navigator>
+  );
+};
 
 const CustomeTabBarButton = ({ children, onPress }) => {
   return (
@@ -62,8 +77,8 @@ const HostTabs = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HostHome}
+        name="Inbox"
+        component={InboxNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -85,7 +100,7 @@ const HostTabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                HOME
+                INBOX
               </Text>
             </View>
           ),

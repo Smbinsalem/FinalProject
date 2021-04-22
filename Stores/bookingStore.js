@@ -11,7 +11,7 @@ class BookingStore {
 
   fetchBookings = async () => {
     try {
-      const response = await instance.get("/users/petHost/bookings");
+      const response = await instance.get("/bookings");
       this.bookings = response.data;
     } catch (error) {
       console.error("BookStore -> fetchBookings -> error", error);

@@ -1,37 +1,37 @@
 import { observer } from "mobx-react";
 import React, { useEffect } from "react";
 import styled from "styled-components/native";
-import { Text } from "react-native";
+import { Text, List, ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import BookingList from "../../Components/Booking/BookingList";
+import BookingItem from "./BookingItem";
 
-const HostHome = ({ navigation, route }) => {
+const BookingList = ({ navigation, booking }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
   const myHostId = authStore.user.petHostId;
-  //   const allOwners = authStore.allUsers.filter(
-  //     (owners) => owners.petOwner !== null
-  //   );
-  //   console.log(allOwners);
-  //////
-  const listBooking = bookingStore.bookings
+
+  const bookingList = bookingStore.bookings
     .filter((host) => host.hostId === myHostId)
     .map((booking) => (
       <>
-        <StatusText>bookingStatus: {booking.bookingStatus}</StatusText>
+        <BookingItem
+          navigation={navigation}
+          booking={booking}
+          key={booking.id}
+        />
       </>
     ));
 
   return (
-    <>
-      <BookingList navigation={navigation} />
-    </>
+    <ScrollView>
+      <HomeWrapper>{bookingList}</HomeWrapper>
+    </ScrollView>
   );
 };
 
-export default observer(HostHome);
+export default observer(BookingList);
 
 //Styling
 
@@ -39,7 +39,6 @@ const HomeWrapper = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  align-self: center;
 `;
 
 const StatusText = styled.Text`
