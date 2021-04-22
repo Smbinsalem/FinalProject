@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ListItem } from "native-base";
 import { observer } from "mobx-react";
-import { TouchableOpacity,ScrollView } from "react-native";
+import { TouchableOpacity, ScrollView } from "react-native";
 
 const TextStyled = styled.Text`
   color: black;
@@ -15,14 +15,17 @@ const TextStyled = styled.Text`
 
 const PetItem = ({ pet, navigation }) => {
   // const {pet}= route.params;
- 
+
   return (
     <>
-    <ScrollView/>
+      <ScrollView />
       <ListItem>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity
+          // onPress={() => navigation.navigate("PetDetail", { pet: pet })}
+          onPress={() => alert("go to pet detail")}
+        >
           <TextStyled>
-           Pet: {pet.name} {`\n`}
+            Pet: {pet.name} {`\n`}
           </TextStyled>
         </TouchableOpacity>
       </ListItem>
