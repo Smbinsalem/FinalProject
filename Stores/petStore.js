@@ -59,6 +59,7 @@ class PetStore {
       console.error("PetStore -> updatePet -> error", error);
     }
   };
+}
 
 const petStore = new PetStore();
 petStore.fetchPets();
