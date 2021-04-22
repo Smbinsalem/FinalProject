@@ -10,6 +10,7 @@ import petStore from "./petStore";
 
 class AuthStore {
   user = null;
+  allusers = [];
   loading = true;
   constructor() {
     makeAutoObservable(this);
@@ -21,6 +22,17 @@ class AuthStore {
     try {
       const response = await instance.get("/users");
       this.user = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // All Users
+  fetchAllUsers = async () => {
+    try {
+      const response = await instance.get("/users");
+      this.allusers = response.data;
       this.loading = false;
     } catch (error) {
       console.error(error);
