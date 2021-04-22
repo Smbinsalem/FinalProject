@@ -126,15 +126,14 @@ const Tabs = () => {
         name="Post"
         component={PostScreen}
         options={{
-          tabBarIcon: ({focused}) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={require("../../assets/icons/post.png")}
               resizeMode="contain"
               style={{
                 width: 30,
                 height: 30,
-               tintColor: focused ? "#172A3A" : "#FFF",
-                
+                tintColor: focused ? "#172A3A" : "#FFF",
               }}
             />
           ),
@@ -176,6 +175,7 @@ const Tabs = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
+          headerTransparent: true,
           tabBarIcon: ({ focused }) => (
             <View
               style={{
