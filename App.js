@@ -11,6 +11,7 @@ import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
 import Host from "./src/Screens/SignUp/HostSignUp";
 import SignUpAs from "./src/Screens/SignUp/SignUpAS";
 import AddPet from "./src/Screens/SignUp/AddPet";
+import PetDetail from "./src/Components/Pets/PetDetail";
 
 //Tab Screens
 import Tabs from "./src/Navigation/Tabs";
@@ -81,13 +82,13 @@ export default function App() {
             headerShown: false,
           }}
         />
-        {/* <Screen
+        <Screen
           name="PetDetail"
           component={PetDetail}
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
       </Navigator>
     </NavigationContainer>
   );

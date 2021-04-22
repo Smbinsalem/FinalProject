@@ -37,7 +37,17 @@ class PetStore {
       this.pets.push(response.data);
       navigation.navigate("Tabs");
     } catch (error) {
-      console.error("PetStore -> createPet -> error", error);
+      console.error("PetStore -> addPet -> error", error);
+    }
+  };
+
+  addNewPet = async (data, navigation) => {
+    try {
+      const response = await instance.post(`/users/petOwners/pets`, data);
+      this.pets.push(response.data);
+      // navigation.navigate("Post");
+    } catch (error) {
+      console.error("PetStore -> addNewPet -> error", error);
     }
   };
 
@@ -49,7 +59,7 @@ class PetStore {
       console.error("PetStore -> updatePet -> error", error);
     }
   };
-}
+
 const petStore = new PetStore();
 petStore.fetchPets();
 
