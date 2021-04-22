@@ -144,14 +144,19 @@ const SignUp = ({ navigation }) => {
             /> */}
 
             <DatePicker
-              style={{ width: 310, color: "white" }}
-              date={"2016-05-01"}
+              style={{
+                width: 340,
+                margin: "auto",
+                // paddingRight: 40,
+              }}
+              date={user.dateOfBirth}
               mode="date"
               placeholder="select date"
               format="YYYY-MM-DD"
               // minDate="2016-05-01"
-              // maxDate="2016-06-01"
+              maxDate="2003-06-01"
               confirmBtnText="Confirm"
+              showIcon={false}
               cancelBtnText="Cancel"
               customStyles={{
                 dateIcon: {
@@ -162,6 +167,7 @@ const SignUp = ({ navigation }) => {
                 },
                 dateInput: {
                   marginLeft: 36,
+                  color: "red",
                 },
                 // ... You can check the source to find the other keys.
               }}
@@ -254,7 +260,7 @@ export const AuthContainer = styled.View`
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(225, 225, 255, 0.65);
+  background-color: rgba(225, 225, 255, 0.3);
 `;
 
 export const AuthTitle = styled.Text`

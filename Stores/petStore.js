@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, makeAutoObservable, observable, action } from "mobx";
 import instance from "./instance";
 
 // ***NOTE***
@@ -8,11 +8,15 @@ class PetStore {
   pets = [];
   loading = true;
 
+  constructor() {
+    makeAutoObservable(this);
+  }
+
   fetchPets = async () => {
     try {
       const response = await instance.get(`/users/petOwners/pets`);
       this.pets = response.data;
-      // this.loading = false;
+      this.loading = false;
     } catch (error) {
       console.error("PetStore -> fetchPets -> error", error);
     }
@@ -45,16 +49,6 @@ class PetStore {
       console.error("PetStore -> updatePet -> error", error);
     }
   };
-
-  constructor() {
-    makeObservable(this, {
-      pets: observable,
-      fetchPets: action,
-      deletePet: action,
-      addPet: action,
-      updatePet: action,
-    });
-  }
 }
 const petStore = new PetStore();
 petStore.fetchPets();
