@@ -1,23 +1,28 @@
 import React, { useEffect } from "react";
-import HostItem from "./HetItem";
+import HostItem from "./HostItem";
 import hostStore from "../../../Stores/hostStore";
+import authStore from "../../../Stores/authStore";
 
 import { observer } from "mobx-react";
-import { List, Content, Text, View } from "native-base";
+import { List, Content, Text, ScrollView, View } from "native-base";
 
-const HostList = ({ navigation, ownerId }) => {
-  //   useEffect(() => {
-  //     hostsStore.fetchPets();
-  //   }, []);
-
-  const hostList = hostStore.hosts.map((host) => (
-    <HostItem navigation={navigation} host={host} key={host.id} />
-  ));
+const HostList = ({ navigation }) => {
+  useEffect(() => {
+    authStore.fetchAllUsers();
+  }, []);
+  console.log(authStore.allusers);
+  const hostList = authStore.allusers
+    .filter((user) => user.petHost)
+    .map((user) => (
+      <HostItem navigation={navigation} user={user} key={user.id} />
+    ));
 
   return (
     <View>
+      {/* <ScrollView> */}
       {/* <Text>Oscar </Text> */}
-      {hostList}
+      <View>{hostList}</View>
+      {/* </ScrollView> */}
     </View>
   );
 };

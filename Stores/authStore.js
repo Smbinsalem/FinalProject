@@ -10,6 +10,7 @@ import petStore from "./petStore";
 
 class AuthStore {
   user = null;
+  allusers = [];
   loading = true;
   constructor() {
     makeAutoObservable(this);
@@ -27,6 +28,17 @@ class AuthStore {
     }
   };
 
+  // All Users
+  fetchAllUsers = async () => {
+    try {
+      const response = await instance.get("/users");
+      this.allusers = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   //set user
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
@@ -35,11 +47,15 @@ class AuthStore {
   };
 
   //sign up
-  signup = async (userData, navigation) => {
+  signup = async (userData, navigation, checked) => {
     try {
       const res = await instance.post("/users/signup", userData);
       this.setUser(res.data.token);
-      navigation.navigate("SignUpAs");
+      if (checked === "PetOwner") {
+        navigation.navigate("PetOwner");
+      } else if (checked === "Host") {
+        navigation.navigate("Host");
+      }
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
     }
