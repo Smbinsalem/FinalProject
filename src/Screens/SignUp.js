@@ -1,19 +1,19 @@
 import React from "react";
-import { View, ScrollView, Button } from "react-native";
+import { View, ScrollView, Button, Text } from "react-native";
 import authStore from "../../Stores/authStore";
 import { useState } from "react";
 import { Icon, Label } from "native-base";
-import styled from "styled-components/native";
+import styled, { withTheme } from "styled-components/native";
 import DropDownPicker from "react-native-dropdown-picker";
-
+import { RadioButton } from "react-native-paper";
 //Calendar
 import { Calendar } from "react-native-calendars";
-
+import DatePicker from "react-native-datepicker";
 //Images
-import Pet1 from "../../assets/images/Pet8.jpeg";
+import Pet1 from "../../assets/images/Pet7.jpeg";
 
 const theme = {
-  Maincolor: "#9381ff", // redish main font color
+  Maincolor: "#f0ba00", // redish main font color
   backgroundColor: "#f5fffa", // white main background color
   black: "black",
   blackish: "#484848",
@@ -24,7 +24,7 @@ const theme = {
 
 const SignUp = ({ navigation }) => {
   // if (authStore.user) navigation.replace("Home");
-
+  const [checked, setChecked] = React.useState(null);
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -36,7 +36,7 @@ const SignUp = ({ navigation }) => {
     password: "",
   });
 
-  const handleSubmit = () => authStore.signup(user, navigation);
+  const handleSubmit = () => authStore.signup(user, navigation, checked);
 
   return (
     <>
@@ -71,18 +71,17 @@ const SignUp = ({ navigation }) => {
           /> */}
 
             {/* A Whole calender */}
-            <Label>Date Of Birth</Label>
-            <Calendar
+            <TextStyle>Date Of Birth</TextStyle>
+            {/* <Calendar
+              current={"2003-12-31"}
               minDate={"1921-01-01"}
-              // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-              maxDate={"2021-12-31"}
-              // Handler which gets executed on day press. Default = undefined
+              maxDate={"2003-12-31"}
               onDayPress={(value) => {
                 setUser({
                   ...user,
                   dateOfBirth: value.dateString, //***it was value but i added .dateString cuz of BE datatype issue*** BY SAlWA
-                }),
-                  console.log("selected day", value);
+                });
+                // console.log("selected day", value);
               }}
               markedDates={{
                 [user.dateOfBirth]: {
@@ -91,24 +90,17 @@ const SignUp = ({ navigation }) => {
                   selectedDotColor: "orange",
                 },
               }}
-              // Handler which gets executed on day long press. Default = undefined
-              onDayLongPress={(day) => {
-                console.log("selected long press day", day);
-              }}
               // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
               monthFormat={"yyyy-MM-dd"}
-              // Handler which gets executed when visible month changes in calendar. Default = undefined
-              onMonthChange={(month) => {
-                console.log("month changed", month);
-              }}
               // Do not show days of other months in month page. Default = false
               hideExtraDays={true}
               // day from another month that is visible in calendar page. Default = false
-              disableMonthChange={true}
+
+              disableMonthChange={false}
               // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
               firstDay={1}
               // Hide day names. Default = false
-              hideDayNames={false}
+              hideDayNames={true}
               // Handler which gets executed when press arrow icon left. It receive a callback can go back month
               onPressArrowLeft={(subtractMonth) => subtractMonth()}
               // Handler which gets executed when press arrow icon right. It receive a callback can go next month
@@ -119,9 +111,10 @@ const SignUp = ({ navigation }) => {
               enableSwipeMonths={true}
               // Specify style for calendar container element. Default = {}
               style={{
-                borderWidth: 1,
+                borderWidth: 2,
                 borderColor: "gray",
-                height: 300,
+                height: 310,
+                width: 310,
               }}
               // Specify theme properties to override specific styles for calendar parts. Default = {}
               theme={{
@@ -141,9 +134,6 @@ const SignUp = ({ navigation }) => {
                 disabledArrowColor: "#d9e1e8",
                 monthTextColor: theme.blackish,
                 indicatorColor: theme.blackish,
-                // textDayFontFamily: "HelveticaNeue-Medium",
-                // textMonthFontFamily: "HelveticaNeue-Medium",
-                // textDayHeaderFontFamily: "HelveticaNeue-Medium",
                 textDayFontWeight: "300",
                 textMonthFontWeight: "bold",
                 textDayHeaderFontWeight: "300",
@@ -151,6 +141,31 @@ const SignUp = ({ navigation }) => {
                 textMonthFontSize: 16,
                 textDayHeaderFontSize: 16,
               }}
+            /> */}
+
+            <DatePicker
+              style={{ width: 310, color: "white" }}
+              date={"2016-05-01"}
+              mode="date"
+              placeholder="select date"
+              format="YYYY-MM-DD"
+              // minDate="2016-05-01"
+              // maxDate="2016-06-01"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: "absolute",
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0,
+                },
+                dateInput: {
+                  marginLeft: 36,
+                },
+                // ... You can check the source to find the other keys.
+              }}
+              onDateChange={(date) => setUser({ ...user, dateOfBirth: date })}
             />
 
             {/* Contact Number */}
@@ -167,6 +182,7 @@ const SignUp = ({ navigation }) => {
                 { label: "Female", value: "Female" },
                 { label: "Male", value: "Male" },
               ]}
+              backgroundColor="rgba(23, 42, 58, 0.6)"
               placeholder="Gender"
               containerStyle={{ height: 40, width: 320 }}
               onChangeItem={(item) => setUser({ ...user, gender: item.value })}
@@ -187,7 +203,26 @@ const SignUp = ({ navigation }) => {
               secureTextEntry={true}
               onChangeText={(password) => setUser({ ...user, password })}
             />
+            <TextStyle>Become:</TextStyle>
+            <FieldView>
+              <TextStyle>HOST</TextStyle>
+              <RadioView>
+                <RadioButton
+                  value="Host"
+                  status={checked === "Host" ? "checked" : "unchecked"}
+                  onPress={() => setChecked("Host")}
+                />
+              </RadioView>
 
+              <TextStyle>Owner</TextStyle>
+              <RadioView>
+                <RadioButton
+                  value="PetOwner"
+                  status={checked === "PetOwner" ? "checked" : "unchecked"}
+                  onPress={() => setChecked("PetOwner")}
+                />
+              </RadioView>
+            </FieldView>
             <AuthButton onPress={handleSubmit}>
               <AuthButtonText>Next</AuthButtonText>
             </AuthButton>
@@ -212,13 +247,14 @@ export const BackgroundIMG = styled.ImageBackground`
 `;
 export const AuthContainer = styled.View`
   flex: 1;
-  padding-top: 27%;
+  padding-top: 30%;
+  padding-bottom: 20%;
   align-self: stretch;
   justify-content: center;
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(225, 225, 255, 0.65);
 `;
 
 export const AuthTitle = styled.Text`
@@ -243,7 +279,7 @@ export const AuthButton = styled.TouchableOpacity`
   align-items: center;
   padding: 20px;
   background-color: #f0ba00;
-  margin-top: 30px;
+  margin-top: 40px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -263,4 +299,27 @@ export const AuthOther = styled.Text`
 
 export const Iconstyled = styled(Icon)`
   color: #f0ba00;
+`;
+export const FieldView = styled.View`
+  flex-direction: row;
+  /* color: white; */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+`;
+export const RadioView = styled.View`
+  background-color: rgba(23, 42, 58, 0.6);
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 20px;
+  padding: 7px;
+`;
+export const TextStyle = styled.Text`
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  align-self: auto;
+  /* font-style: bold; */
 `;
