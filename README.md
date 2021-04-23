@@ -8,6 +8,18 @@
 - Salem Alhajri
 - Athbi Hameidawi
 
+### Note
+
+When you first clone this repo, add an `env.js` file to the root directory.
+
+The variables include the following:
+
+```js
+export default {
+  SERVER: "YOUR IP ADDRESS:PORT",
+};
+```
+
 # Overview of the project
 
 ## 𝕿𝖍𝖊 final 𝕻𝖗𝖔𝖏𝖊𝖈𝖙's main technology
