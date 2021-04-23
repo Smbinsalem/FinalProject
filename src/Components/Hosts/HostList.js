@@ -3,20 +3,22 @@ import HostItem from "./HostItem";
 import hostStore from "../../../Stores/hostStore";
 import authStore from "../../../Stores/authStore";
 
-import { observer } from "mobx-react";
+import { observer, Spinner } from "mobx-react";
 import { List, Content, Text, ScrollView, View } from "native-base";
 
 const HostList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchAllUsers();
   }, []);
-  console.log(authStore.allusers);
-  const hostList = authStore.allusers
+
+  console.log(authStore.allUsers);
+  const hostList = authStore.allUsers
     .filter((user) => user.petHost)
     .map((user) => (
       <HostItem navigation={navigation} user={user} key={user.id} />
     ));
-
+  // if (authStore.loading) return <Spinner />;
+  // if (hostStore.loading) return <Spinner />;
   return (
     <View>
       {/* <ScrollView> */}

@@ -1,30 +1,22 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+
 //styles
 import styled from "styled-components/native";
+import { ScrollView } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Modal } from "react-native-paper";
+
 //stores
 import authStore from "../../Stores/authStore";
 //navigation
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
 //images
-import Pet1 from "../../assets/images/Pet8.jpeg";
 import BurgerOptions from "../../assets/images/1.png";
-import hostStore from "../../Stores/hostStore";
-import ownerStore from "../../Stores/ownerStore";
 
 //component
-import PetList from "../Components/Pets/PetList";
-import { ScrollView } from "react-native-gesture-handler";
-import { LinearGradient } from "expo-linear-gradient";
-
+import EditProfile from "../Components/User/EditUser";
 //Profile
 export const ProfileWrapper = styled.View`
   margin-top: 23%;
@@ -83,17 +75,27 @@ export const EditProfileStyled = styled.TouchableOpacity`
   width: 90%;
 `;
 
-const SignoutButton = () => {
+// Menu Function
+const MenuButton = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
     authStore.signout();
     navigation.navigate("SplashPage");
   };
+
   return (
-    <SignoutButtonStyled name="logout" type="AntDesign" onPress={handlePress} />
+    <>
+      <MenuButtonStyled onPress={handlePress}>
+        <Text>Switch Account</Text>
+      </MenuButtonStyled>
+      <MenuButtonStyled onPress={handlePress}>
+        <SignoutTextStyled>Sign Out</SignoutTextStyled>
+      </MenuButtonStyled>
+    </>
   );
 };
+
 // hostStore.hosts.image
 
 // const {hosts} = route.params;
@@ -101,7 +103,34 @@ const SignoutButton = () => {
 //   (user) => user.userId === authStore.user.id
 // );
 // console.log(owner);
+
+//**************  MAIN FUNCTION ****************
+
 const ProfileScreen = ({ navigation, route }) => {
+  const [visible, setVisible] = React.useState(false);
+  const [_visible, _setVisible] = React.useState(false);
+
+  //Update modal
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  //Burger Menu
+  const _showModal = () => _setVisible(true);
+  const _hideModal = () => _setVisible(false);
+  const containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "87%",
+    width: "77%",
+    padding: 10,
+    margin: 60,
+  };
+  const _containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "37%",
+    width: "77%",
+    padding: 20,
+    margin: 60,
+  };
+
   return (
     <View>
       <View
@@ -114,28 +143,23 @@ const ProfileScreen = ({ navigation, route }) => {
         }}
       >
         <StyledView>
-          <SignoutButton />
+          <TouchableOpacity onPress={_showModal}>
+            <MenutICONStyled name="menu" type="Feather" />
+          </TouchableOpacity>
         </StyledView>
-        <Image
-          source={BurgerOptions}
-          style={{
-            marginTop: "10%",
-            height: 20,
-            width: 20,
-          }}
-        />
+
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "15%",
+            marginTop: "18%",
             width: "100%",
           }}
         >
-          <View style={{ marginTop: "10%", width: "50%" }}>
+          <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
-                top: -40,
+                top: -70,
                 fontSize: 28,
                 color: "#FFF",
                 fontWeight: "bold",
@@ -170,26 +194,8 @@ const ProfileScreen = ({ navigation, route }) => {
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20,
         }}
-      >
-        {/* <View
-          style={{
-            backgroundColor: "#FFF",
-            paddingVertical: 8,
-            paddingHorizontal: 20,
-            marginHorizontal: 20,
-            borderRadius: 15,
-            marginTop: 25,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            source={require("../../assets/icons/find.png")}
-            style={{ height: 20, width: 20 }}
-          />
-        </View> */}
-      </LinearGradient>
-
+      ></LinearGradient>
+      {/* PROFILE DETAILS */}
       <ScrollView>
         <FieldWrapper>
           <LabelStyle>Full name:</LabelStyle>
@@ -202,13 +208,39 @@ const ProfileScreen = ({ navigation, route }) => {
           <LabelStyle>Date of Birth:</LabelStyle>
           <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
           <LabelStyle>Email:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.email}</ProfileInfoStyled>
-          <EditProfileStyled onPress={() => alert("Button Clicked !")}>
+          <ProfileInfoStyled>
+            {" "}
+            {authStore.user.email} {`\n`}
+          </ProfileInfoStyled>
+          {/* EDIT BUTTON */}
+          <EditProfileStyled onPress={showModal}>
             <Text>Edit Profile</Text>
           </EditProfileStyled>
         </FieldWrapper>
         {/* <PetList ownerId={authStore.user.petOwnerId} /> */}
       </ScrollView>
+
+      {/* EDIT MODAL */}
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={containerStyle}
+      >
+        <EditProfile />
+      </Modal>
+      {/* BURGER MENU */}
+      <Modal
+        visible={_visible}
+        onDismiss={_hideModal}
+        contentContainerStyle={_containerStyle}
+        // modalAnimation={
+        //   new SlideAnimation({
+        //     slideFrom: "bottom",
+        //   })
+        // }
+      >
+        <MenuButton />
+      </Modal>
     </View>
   );
 };
@@ -224,7 +256,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignoutButtonStyled = styled(Icon)`
+const MenuButtonStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10%;
+  width: 90%;
+  color: red;
+`;
+const MenutICONStyled = styled(Icon)`
+  color: white;
+`;
+const SignoutTextStyled = styled.Text`
   color: red;
 `;
 

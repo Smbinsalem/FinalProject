@@ -10,10 +10,9 @@ import petStore from "./petStore";
 
 class AuthStore {
   user = null;
-
-  allUsers = null;
-
+  allUsers = [];
   loading = true;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -34,7 +33,7 @@ class AuthStore {
   fetchAllUsers = async () => {
     try {
       const response = await instance.get("/users");
-      this.allusers = response.data;
+      this.allUsers = response.data;
       this.loading = false;
     } catch (error) {
       console.error(error);
@@ -84,6 +83,20 @@ class AuthStore {
     petStore.pets = [];
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
+  };
+
+  //update
+  updateUser = async (updatedUser) => {
+    try {
+      // const formData = new FormData();
+      // for (const key in updateUser) formData.append(key, updateUser[key]);
+      await instance.put("/users", updatedUser);
+      const TheUser = this.user;
+      for (const key in TheUser) TheUser[key] = updatedUser[key];
+      this.user = this.TheUser;
+    } catch (error) {
+      console.log("AuthStore -> updateUser -> error", error);
+    }
   };
 
   //check if token exist

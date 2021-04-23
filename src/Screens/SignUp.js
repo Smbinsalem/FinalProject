@@ -3,11 +3,10 @@ import { View, ScrollView, Button, Text } from "react-native";
 import authStore from "../../Stores/authStore";
 import { useState } from "react";
 import { Icon, Label } from "native-base";
-import styled, { withTheme } from "styled-components/native";
+import styled from "styled-components/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { RadioButton } from "react-native-paper";
 //Calendar
-import { Calendar } from "react-native-calendars";
 import DatePicker from "react-native-datepicker";
 //Images
 import Pet1 from "../../assets/images/Pet7.jpeg";
@@ -62,87 +61,7 @@ const SignUp = ({ navigation }) => {
               placeholderTextColor="white"
               onChangeText={(email) => setUser({ ...user, email })}
             />
-
-            {/* Manually  adding a date */}
-            {/* <AuthTextInput
-            placeholder="Date of Birth"
-            placeholderTextColor="white"
-            onChangeText={(dateOfBirth) => setUser({ ...user, dateOfBirth })}
-          /> */}
-
-            {/* A Whole calender */}
             <TextStyle>Date Of Birth</TextStyle>
-            {/* <Calendar
-              current={"2003-12-31"}
-              minDate={"1921-01-01"}
-              maxDate={"2003-12-31"}
-              onDayPress={(value) => {
-                setUser({
-                  ...user,
-                  dateOfBirth: value.dateString, //***it was value but i added .dateString cuz of BE datatype issue*** BY SAlWA
-                });
-                // console.log("selected day", value);
-              }}
-              markedDates={{
-                [user.dateOfBirth]: {
-                  selected: true,
-                  disableTouchEvent: true,
-                  selectedDotColor: "orange",
-                },
-              }}
-              // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-              monthFormat={"yyyy-MM-dd"}
-              // Do not show days of other months in month page. Default = false
-              hideExtraDays={true}
-              // day from another month that is visible in calendar page. Default = false
-
-              disableMonthChange={false}
-              // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-              firstDay={1}
-              // Hide day names. Default = false
-              hideDayNames={true}
-              // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-              onPressArrowLeft={(subtractMonth) => subtractMonth()}
-              // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-              onPressArrowRight={(addMonth) => addMonth()}
-              // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
-              disableAllTouchEventsForDisabledDays={true}
-              // Enable the option to swipe between months. Default = false
-              enableSwipeMonths={true}
-              // Specify style for calendar container element. Default = {}
-              style={{
-                borderWidth: 2,
-                borderColor: "gray",
-                height: 310,
-                width: 310,
-              }}
-              // Specify theme properties to override specific styles for calendar parts. Default = {}
-              theme={{
-                selectedColor: theme.Maincolor,
-                backgroundColor: "#ffffff",
-                calendarBackground: "#ffffff",
-                textSectionTitleColor: theme.Maincolor,
-                textSectionTitleDisabledColor: "#d9e1e8",
-                selectedDayBackgroundColor: theme.Maincolor,
-                selectedDayTextColor: "#ffffff",
-                todayTextColor: theme.Maincolor,
-                dayTextColor: "#2d4150",
-                textDisabledColor: "#d9e1e8",
-                dotColor: theme.Maincolor,
-                selectedDotColor: theme.Maincolor,
-                arrowColor: theme.Maincolor,
-                disabledArrowColor: "#d9e1e8",
-                monthTextColor: theme.blackish,
-                indicatorColor: theme.blackish,
-                textDayFontWeight: "300",
-                textMonthFontWeight: "bold",
-                textDayHeaderFontWeight: "300",
-                textDayFontSize: 16,
-                textMonthFontSize: 16,
-                textDayHeaderFontSize: 16,
-              }}
-            /> */}
-
             <DatePicker
               style={{
                 width: 340,
@@ -169,11 +88,9 @@ const SignUp = ({ navigation }) => {
                   marginLeft: 36,
                   color: "red",
                 },
-                // ... You can check the source to find the other keys.
               }}
               onDateChange={(date) => setUser({ ...user, dateOfBirth: date })}
             />
-
             {/* Contact Number */}
             <AuthTextInput
               placeholder="Contact Number"
@@ -182,6 +99,7 @@ const SignUp = ({ navigation }) => {
                 setUser({ ...user, contactNumber })
               }
             />
+
             {/* Gender */}
             <DropDownPicker
               items={[
