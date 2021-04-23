@@ -15,6 +15,7 @@ import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostHome from "../Screens/HostScreens/HostHome";
 import BookingDetails from "../Components/Booking/BookingDetails";
+import PetDetail from "../Components/Pets/PetDetail";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,6 +30,7 @@ const InboxNavigator = () => {
     >
       <InboxStack.Screen name="Inbox" component={HostHome} />
       <InboxStack.Screen name="BookingDetails" component={BookingDetails} />
+      <InboxStack.Screen name="PetDetails" component={PetDetail} />
     </InboxStack.Navigator>
   );
 };

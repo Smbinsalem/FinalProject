@@ -1,7 +1,9 @@
 import axios from "axios";
+import env from "../env";
 
 const instance = axios.create({
-  baseURL: "http://192.168.8.117:8000",
+ baseURL: env.SERVER,
+
 });
 
 //Taiba HOTSPOT: 172.20.10.2:8000
