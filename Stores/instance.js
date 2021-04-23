@@ -1,7 +1,8 @@
 import axios from "axios";
+import env from "../env";
 
 const instance = axios.create({
-  baseURL: "http://192.168.8.100:8001",
+  baseURL: env.SERVER,
 });
 
 //Taiba: 192.168.8.117:8000

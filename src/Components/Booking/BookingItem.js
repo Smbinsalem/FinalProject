@@ -7,6 +7,7 @@ import petStore from "../../../Stores/petStore";
 import { Spinner } from "native-base";
 import { Touchable, TouchableOpacity, Image } from "react-native";
 import ownerStore from "../../../Stores/ownerStore";
+import { completeImgPath } from "../../../util";
 
 const BookingItem = ({ booking, navigation }) => {
   useEffect(() => {
@@ -26,7 +27,7 @@ const BookingItem = ({ booking, navigation }) => {
   const petOwner = ownerStore.owners.find(
     (owner) => owner.id === booking.petOwnerId
   );
-
+  console.log(completeImgPath(petOwner.image));
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
   return (
     <>
@@ -40,7 +41,8 @@ const BookingItem = ({ booking, navigation }) => {
             })
           }
         >
-          <ProfileImage source={{ uri: petOwner.image }} />
+          <ProfileImage source={{ uri: completeImgPath(petOwner.image) }} />
+          <StatusText>My Bios {petOwner.bio}</StatusText>
           <StatusText>
             You recieved a request from {requester.firstName}
           </StatusText>
