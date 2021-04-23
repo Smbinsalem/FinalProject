@@ -86,14 +86,35 @@ const Onboarding = ({ navigation }) => {
                   justifyContent: "center",
                 }}
               >
-                {/* <Image
-                  source={item.img1}
-                  resizeMode="contain"
+                <View
                   style={{
-                    width: "90%",
-                    height: "20%",
+                    position: "absolute",
+                    bottom: "10%",
+                    left: 40,
+                    right: 40,
                   }}
-                /> */}
+                >
+                  <Text
+                    style={{
+                      ...FONTS.h1,
+                      color: COLORS.gray,
+                      textAlign: "center",
+                    }}
+                  >
+                    {item.title}
+                  </Text>
+
+                  <Text
+                    style={{
+                      ...FONTS.body3,
+                      textAlign: "center",
+                      marginTop: SIZES.base,
+                      color: COLORS.gray,
+                    }}
+                  >
+                    {item.description}
+                  </Text>
+                </View>
                 <Image
                   source={item.img}
                   resizeMode="contain"
@@ -102,35 +123,6 @@ const Onboarding = ({ navigation }) => {
                     height: "40%",
                   }}
                 />
-              </View>
-              <View
-                style={{
-                  position: "absolute",
-                  bottom: "10%",
-                  left: 40,
-                  right: 40,
-                }}
-              >
-                <Text
-                  style={{
-                    ...FONTS.h1,
-                    color: COLORS.gray,
-                    textAlign: "center",
-                  }}
-                >
-                  {item.title}
-                </Text>
-
-                <Text
-                  style={{
-                    ...FONTS.body3,
-                    textAlign: "center",
-                    marginTop: SIZES.base,
-                    color: COLORS.gray,
-                  }}
-                >
-                  {item.description}
-                </Text>
               </View>
             </View>
           ))}
@@ -151,7 +143,7 @@ const Onboarding = ({ navigation }) => {
               borderTopRightRadius: 0,
               backgroundColor: COLORS.yellow,
             }}
-            onPress={() => navigation.navigate("SplashPage")}
+            onPress={() => navigation.navigate("SignIn")}
           >
             {/* Button */}
             <Text style={{ ...FONTS.h1, color: COLORS.white }}>

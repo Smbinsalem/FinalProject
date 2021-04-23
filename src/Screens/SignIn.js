@@ -113,8 +113,9 @@ export const AuthTextInput = styled.TextInput`
   width: 85%;
   margin-bottom: 30px;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 2%;
+  border-color: #f0ba00;
+  border-width: 1px;
 `;
 
 export const AuthButton = styled.TouchableOpacity`

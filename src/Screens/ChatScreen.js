@@ -6,7 +6,7 @@ const ChatScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text> Chat Screen </Text>
       <TouchableOpacity onPress={() => alert("Button Clicked !")}>
-    <Text>Click Here</Text>
+        <Text>Click Here</Text>
       </TouchableOpacity>
     </View>
   );

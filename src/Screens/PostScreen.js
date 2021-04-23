@@ -1,13 +1,13 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import PetList from "../Components/Pets/PetList";
 import authStore from "../../Stores/authStore";
-import ownerStore from "../../Stores/ownerStore";
+
 //Styling
 import styled from "styled-components/native";
 import AddNewPet from "../Components/Pets/AddNewPet";
 
-import { Modal, Portal, Text, Button, Provider } from "react-native-paper";
+import { Modal, Portal, Provider } from "react-native-paper";
 
 const PostScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
@@ -20,8 +20,8 @@ const PostScreen = ({ navigation }) => {
     margin: 60,
     paddingTop: 50,
     paddingBottom: 50,
-    paddingRight: 50,
-    paddingLeft: 50,
+    paddingRight: 60,
+    paddingLeft: 60,
   };
 
   return (
@@ -51,15 +51,6 @@ const PostScreen = ({ navigation }) => {
 
 export default PostScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-});
-
 export const PostWrapper = styled.View`
   margin-top: 23%;
   margin-bottom: 20px;
@@ -78,14 +69,14 @@ export const AuthButton = styled.TouchableOpacity`
   padding-bottom: 15px;
   background-color: #f0ba00;
   margin-top: 30px;
-  /* border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px; */
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  border-top-right-radius: 13px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 19px;
 `;
