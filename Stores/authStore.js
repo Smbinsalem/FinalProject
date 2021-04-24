@@ -11,7 +11,7 @@ import petStore from "./petStore";
 class AuthStore {
   user = null;
 
-  allUsers = null;
+  allUsers = [];
 
   loading = true;
   constructor() {

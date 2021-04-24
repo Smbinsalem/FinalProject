@@ -7,6 +7,7 @@ import petStore from "../../../Stores/petStore";
 //Style
 import styled from "styled-components/native";
 import { Alert } from "react-native";
+import { observer } from "mobx-react";
 
 // //Native content
 // import DropDownPicker from "react-native-dropdown-picker";
@@ -20,6 +21,9 @@ const AddNewPet = ({ navigation }) => {
     type: "",
     breed: "",
     dateOfBirth: "",
+    vaccinated: "",
+    allergies: "",
+    personality: "",
   });
 
   const handleSubmit = () => petStore.addNewPet(pet);
@@ -51,8 +55,23 @@ const AddNewPet = ({ navigation }) => {
         placeholderTextColor="white"
         onChangeText={(dateOfBirth) => setPet({ ...pet, dateOfBirth })}
       />
-      {/* <AuthButton onPress={handleSubmit}> */}
-      <AuthButton onPress={() => alert("go to post screen")}>
+      <AuthTextInput
+        placeholder="Vaccinated?"
+        placeholderTextColor="white"
+        onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
+      />
+      <AuthTextInput
+        placeholder="Allergies"
+        placeholderTextColor="white"
+        onChangeText={(allergies) => setPet({ ...pet, allergies })}
+      />
+      <AuthTextInput
+        placeholder="Personality?"
+        placeholderTextColor="white"
+        onChangeText={(personality) => setPet({ ...pet, personality })}
+      />
+      <AuthButton onPress={handleSubmit}>
+        {/* <AuthButton onPress={() => alert("go to post screen")}> */}
         <AuthButtonText>Add</AuthButtonText>
       </AuthButton>
     </>
@@ -85,4 +104,4 @@ export const AuthTextInput = styled.TextInput`
   border-bottom-width: 1px;
 `;
 
-export default AddNewPet;
+export default observer(AddNewPet);

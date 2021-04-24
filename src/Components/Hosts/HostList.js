@@ -10,8 +10,8 @@ const HostList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchAllUsers();
   }, []);
-  console.log(authStore.allusers);
-  const hostList = authStore.allusers
+  console.log(authStore.allUsers);
+  const hostList = authStore.allUsers
     .filter((user) => user.petHost)
     .map((user) => (
       <HostItem navigation={navigation} user={user} key={user.id} />

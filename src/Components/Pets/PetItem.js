@@ -4,9 +4,8 @@ import { ListItem } from "native-base";
 import { observer } from "mobx-react";
 import { TouchableOpacity, ScrollView } from "react-native";
 
-import petStore from "../../../Stores/petStore";
-import authStore from "../../../Stores/authStore";
-
+// import petStore from "../../../Stores/petStore";
+// import authStore from "../../../Stores/authStore";
 
 const TextStyled = styled.Text`
   color: black;
@@ -17,19 +16,20 @@ const TextStyled = styled.Text`
   width: 100%;
 `;
 
-const PetItem = ({ pet, navigation }) => {
-  // const {pet}= route.params;
+const PetItem = ({ navigation, pet }) => {
+  // const { pet } = route.params;
+  const mypet = pet;
 
-  if (authStore.loading) return <Spinner />;
-  if (petStore.loading) return <Spinner />;
+  // if (authStore.loading) return <Spinner />;
+  // if (petStore.loading) return <Spinner />;
 
   return (
     <>
       <ScrollView />
       <ListItem>
         <TouchableOpacity
-          // onPress={() => navigation.navigate("PetDetail", { pet: pet })}
-          onPress={() => alert("go to pet detail")}
+          onPress={() => navigation.navigate("PetDetails", { pet: mypet })}
+          // onPress={() => alert("go to pet detail")}
         >
           <TextStyled>
             Pet: {pet.name} {`\n`}

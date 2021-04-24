@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // Importing Navigation
-// import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
@@ -13,9 +13,24 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import PetDetails from "../Components/Pets/PetDetail";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const PetStack = createStackNavigator();
+const PetNavigator = () => {
+  return (
+    <PetStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Pets"}
+    >
+      <PetStack.Screen name="Pets" component={PostScreen} />
+      <PetStack.Screen name="PetDetails" component={PetDetails} />
+    </PetStack.Navigator>
+  );
+};
 
 const CustomeTabBarButton = ({ children, onPress }) => {
   return (
@@ -123,8 +138,8 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="Post"
-        component={PostScreen}
+        name="Pets"
+        component={PetNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
