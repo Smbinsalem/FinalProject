@@ -1,9 +1,13 @@
 import React from "react";
-import { View, Text, Image, ScrollView, ImageBackground } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, Image, StyleSheet } from "react-native";
+import {
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import HostList from "../Components/Hosts/HostList";
-
+import { observer } from "mobx-react";
 const ExploreScreen = ({ navigation }) => {
   return (
     <>
@@ -105,104 +109,104 @@ const ExploreScreen = ({ navigation }) => {
           flex: 1,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            paddingHorizontal: 20,
-            width: "100%",
-            alignItems: "center",
-          }}
-        >
-          <View style={{ width: "50%" }}>
+        <View style={{ width: "100%" }}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 17,
+              color: "#172A3A",
+            }}
+          >
+            Recommended
+          </Text>
+        </View>
+
+        <View style={{ width: "100%", alignItems: "flex-end" }}>
+          <View
+            style={{
+              backgroundColor: "#F0BA00",
+              top: -20,
+              paddingHorizontal: 20,
+              paddingVertical: 5,
+              borderRadius: 15,
+            }}
+          >
             <Text
               style={{
                 fontWeight: "bold",
-                fontSize: 17,
-                color: "#172A3A",
+                fontSize: 13,
+                color: "#FFF",
               }}
             >
-              Recommended
+              More
             </Text>
           </View>
-          <View style={{ width: "50%", alignItems: "flex-end" }}>
-            <View
-              style={{
-                backgroundColor: "#F0BA00",
-                paddingHorizontal: 20,
-                paddingVertical: 5,
-                borderRadius: 15,
-              }}
-            >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 13,
-                  color: "#FFF",
-                }}
-              >
-                More
-              </Text>
-            </View>
-          </View>
         </View>
-
-        <ScrollView>
+        <ScrollView
+          horizontal
+          style={styles.proContainer}
+          showsHorizontalScrollIndicator={false}
+        >
           <HostList />
         </ScrollView>
 
-        <View
-          style={{
-            flexDirection: "row",
-            paddingHorizontal: 20,
-            width: "100%",
-            alignItems: "center",
-            marginTop: -80,
-          }}
-        >
-          <View style={{ width: "50%" }}>
+        <View style={{ width: "100%" }}>
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 17,
+              color: "#172A3A",
+            }}
+          >
+            Featured
+          </Text>
+        </View>
+        <View style={{ width: "100%", alignItems: "flex-end" }}>
+          <View
+            style={{
+              backgroundColor: "#F0BA00",
+              top: -20,
+              paddingHorizontal: 20,
+              paddingVertical: 5,
+              borderRadius: 15,
+            }}
+          >
             <Text
               style={{
                 fontWeight: "bold",
-                fontSize: 17,
-                color: "#172A3A",
+                fontSize: 13,
+                color: "#FFF",
               }}
             >
-              Featured
+              More
             </Text>
-            <View
-              style={{
-                backgroundColor: "#b1e5d3",
-                width: 115,
-                marginTop: -5,
-              }}
-            ></View>
-          </View>
-          <View style={{ width: "50%", alignItems: "flex-end" }}>
-            <View
-              style={{
-                backgroundColor: "#F0BA00",
-                paddingHorizontal: 20,
-                paddingVertical: 5,
-                borderRadius: 15,
-              }}
-            >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 13,
-                  color: "#FFF",
-                }}
-              >
-                More
-              </Text>
-            </View>
           </View>
         </View>
+        <ScrollView
+          horizontal
+          style={styles.proContainer}
+          showsHorizontalScrollIndicator={false}
+        >
+          <HostList />
+        </ScrollView>
       </ScrollView>
     </>
   );
 };
-export default ExploreScreen;
+export default observer(ExploreScreen);
+
+const styles = StyleSheet.create({
+  proContainer: {
+    marginLeft: "auto",
+    alignSelf: "auto",
+  },
+});
+
+// flexDirection: "row",
+// paddingHorizontal: 20,
+// width: "50%",
+// height: "50%",
+// alignItems: "center",
 
 // import React from "react";
 // import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
