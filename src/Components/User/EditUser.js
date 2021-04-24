@@ -3,12 +3,17 @@ import React from "react";
 import { useState } from "react";
 import authStore from "../../../Stores/authStore";
 import { observer } from "mobx-react";
+import { completeImgPath } from "../../../util";
+import { Spinner } from "native-base";
 
 //Style
 import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
+import ownerStore from "../../../Stores/ownerStore";
 
 const EditProfile = () => {
+  if (ownerStore.loading) return <Spinner />;
+
   const [user, setUser] = useState({
     firstName: authStore.user.firstName,
     lastName: authStore.user.lastName,
@@ -16,12 +21,18 @@ const EditProfile = () => {
     username: authStore.user.username,
     email: authStore.user.email,
   });
+  const [owner, setOwner] = useState({
+    image: completeImgPath(owner.image),
+    bio: ownerStore.bio,
+  });
 
   const handleSubmit = () => authStore.updateUser(user);
 
   return (
     <>
       <ScrollView>
+        {/* Image */}
+
         {/*   Username   */}
         <AuthTextInput
           onChangeText={(username) => setUser({ ...user, username })}

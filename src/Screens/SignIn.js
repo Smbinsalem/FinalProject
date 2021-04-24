@@ -6,11 +6,14 @@ import authStore from "../../Stores/authStore";
 import { observer } from "mobx-react";
 
 //Styling
-import { View, ScrollView } from "react-native";
+import { Image } from "react-native";
 import styled from "styled-components/native";
 import { Icon } from "native-base";
+
 //Images
-import Pet1 from "../../assets/images/Pet8.jpeg";
+import Pet1 from "../../assets/images/Sky2.jpeg";
+import Pet2 from "../../assets/images/Logo10.png";
+import Pet5 from "../../assets/images/Logo12.png";
 
 const SignIn = ({ navigation }) => {
   // if (authStore.user) navigation.replace("Home");
@@ -40,6 +43,25 @@ const SignIn = ({ navigation }) => {
     <>
       <BackgroundIMG source={Pet1}>
         <AuthContainer>
+          <Image
+            source={Pet2}
+            style={{
+              top: -20,
+              right: 10,
+              height: 200,
+              width: 300,
+            }}
+          />
+          <Image
+            source={Pet5}
+            style={{
+              top: -20,
+              right: 10,
+              height: 100,
+              width: 150,
+            }}
+          />
+
           <FieldView>
             <AuthTextInput
               placeholder="Username"
@@ -96,7 +118,7 @@ export const AuthContainer = styled.View`
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #172a3a;
 `;
 
 export const AuthTitle = styled.Text`
@@ -109,34 +131,38 @@ export const AuthTitle = styled.Text`
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
-  width: 85%;
+  width: 90%;
   margin-bottom: 30px;
   color: white;
-  padding: 2%;
+  padding: 3%;
   border-color: #f0ba00;
   border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
-  background-color: #f0ba00;
   margin-top: 30px;
   align-self: stretch;
   align-items: center;
   padding: 20px;
   background-color: #f0ba00;
   margin-top: 30px;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButtonText = styled.Text`
-  color: #fcfdff;
+  color: #ffff;
   font-weight: bold;
   font-size: 18px;
 `;
