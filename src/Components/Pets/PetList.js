@@ -14,7 +14,7 @@ const PetList = ({ navigation, ownerId }) => {
   // }, []);
 
   const petList = petStore.pets
-    .filter((pet) => pet.petOwnerId === +ownerId)
+    .filter((mypet) => mypet.petOwnerId === +ownerId)
     .map((pet) => <PetItem navigation={navigation} pet={pet} key={pet.id} />);
 
   return (

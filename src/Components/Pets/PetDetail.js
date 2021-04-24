@@ -4,44 +4,70 @@ import styled from "styled-components";
 import { completeImgPath } from "../../../util";
 import { ListItem } from "native-base";
 import petStore from "../../../Stores/petStore";
+import { observer } from "mobx-react";
+import styled from "styled-components";
+import { ScrollView } from "react-native-gesture-handler";
 
-const PetDetail = ({ route }) => {
-  // const pet = petStore.pets[0];
-  const { pet } = route.params;
+
+// ********** MAIN FUNCTION *********
+const PetDetail = ({ navigation, route }) => {
+  const pet = petStore.pets[0];
+  // const { pet } = route.params;
+
   return (
-    <HomeWrapper>
-      <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
-      <StatusText>{pet.name}</StatusText>
-      <StatusText>{pet.type}</StatusText>
-      <StatusText>{pet.breed}</StatusText>
-      <StatusText>{pet.dateOfBirth}</StatusText>
-      <StatusText>{pet.vaccinated}</StatusText>
-      <StatusText>{pet.allergies}</StatusText>
-      <StatusText>{pet.personality}</StatusText>
-      <StatusText>{pet.walkingHours}</StatusText>
-      <StatusText>{pet.medication}</StatusText>
-      <StatusText>{pet.mealTime}</StatusText>
-      <StatusText>{pet.allowedSnackPerDays}</StatusText>
-    </HomeWrapper>
+    <>
+      <ScrollView>
+        <FieldWrapper>
+          <LabelStyle>Name: </LabelStyle>
+          <InfoStyled>{pet.name}</InfoStyled>
+          <LabelStyle>Type: </LabelStyle>
+          <InfoStyled>{pet.type}</InfoStyled>
+          <LabelStyle>Breed: </LabelStyle>
+          <InfoStyled>{pet.breed}</InfoStyled>
+          <LabelStyle>Date of Birth: </LabelStyle>
+          <InfoStyled>{pet.dateOfBirth}</InfoStyled>
+          <LabelStyle>Vaccinated: </LabelStyle>
+          <InfoStyled> {pet.vaccinated}</InfoStyled>
+          <LabelStyle>Allergies: </LabelStyle>
+          <InfoStyled>{pet.allergies}</InfoStyled>
+          <LabelStyle>Image: </LabelStyle>
+          <InfoStyled>{pet.image}</InfoStyled>
+          <LabelStyle>Walking Hours:</LabelStyle>
+          <InfoStyled>{pet.walkingHours}</InfoStyled>
+          <LabelStyle>Medication:</LabelStyle>
+          <InfoStyled> {pet.medication}</InfoStyled>
+          <LabelStyle>Meal Time:</LabelStyle>
+          <InfoStyled> {pet.mealTime}</InfoStyled>
+          <LabelStyle>Personality:</LabelStyle>
+          <InfoStyled> {pet.personality}</InfoStyled>
+          <LabelStyle>Allowed Snacks Per Day:</LabelStyle>
+          <InfoStyled> {pet.allowedSnackPerDays}</InfoStyled>
+        </FieldWrapper>
+      </ScrollView>
+    </>
   );
 };
 
-export default PetDetail;
-//Styling
-const HomeWrapper = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+export default observer(PetDetail);
+
+// ********** STYLE **********
+const InfoStyled = styled.Text`
+  color: black;
+  font-size: 15px;
+  /* margin-top: 7%; */
+  padding: 1%;
 `;
 
-const StatusText = styled.Text`
-  color: red;
+const LabelStyle = styled.Text`
+  color: gray;
+  font-size: 16px;
+  margin-top: 7%;
+  /* padding: 1%; */
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
 `;
-export const ProfileImage = styled.Image`
-  width: 125px;
-  height: 125px;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 100px;
+
+const FieldWrapper = styled.View`
+  background-color: rgba(23, 42, 58, 0);
+  padding: 3%;
 `;
