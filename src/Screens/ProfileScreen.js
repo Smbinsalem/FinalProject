@@ -26,7 +26,7 @@ const MenuButton = () => {
 
   const handlePress = () => {
     authStore.signout();
-    navigation.navigate("SplashPage");
+    navigation.navigate("SignIn");
   };
 
   return (
