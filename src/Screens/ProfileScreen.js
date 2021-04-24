@@ -6,74 +6,19 @@ import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Modal } from "react-native-paper";
+import { Spinner } from "native-base";
 
 //stores
 import authStore from "../../Stores/authStore";
+import ownerStore from "../../Stores/ownerStore";
 //navigation
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
 //images
-import BurgerOptions from "../../assets/images/1.png";
+import { completeImgPath } from "../../util";
 
 //component
 import EditProfile from "../Components/User/EditUser";
-//Profile
-export const ProfileWrapper = styled.View`
-  margin-top: 23%;
-  /* margin-bottom: 20px; */
-  background-color: rgba(23, 42, 58, 1);
-  padding: 1%;
-`;
-export const FieldWrapper = styled.View`
-  background-color: rgba(23, 42, 58, 0);
-  padding: 1%;
-`;
-
-export const ProfileImage = styled.Image`
-  width: 175px;
-  height: 175px;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 100px;
-`;
-
-export const ProfileUsernameStyled = styled.Text`
-  color: #f0ba00;
-
-  font-weight: bold;
-  font-size: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10px;
-`;
-export const ProfileInfoStyled = styled.Text`
-  color: black;
-  font-size: 20px;
-  /* margin-top: 7%; */
-  padding: 1%;
-`;
-export const FullNameWrapper = styled.View`
-  flex-direction: row;
-  margin-top: 1%;
-`;
-export const LabelStyle = styled.Text`
-  color: gray;
-  font-size: 20px;
-  margin-top: 7%;
-  padding: 1%;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
-`;
-export const EditProfileStyled = styled.TouchableOpacity`
-  align-self: stretch;
-  align-items: center;
-  padding: 10px;
-  background-color: #f0ba00;
-  margin-right: auto;
-  margin-left: auto;
-  width: 90%;
-`;
 
 // Menu Function
 const MenuButton = () => {
@@ -96,26 +41,15 @@ const MenuButton = () => {
   );
 };
 
-// hostStore.hosts.image
-
-// const {hosts} = route.params;
-// const owner = ownerStore.owners.find(
-//   (user) => user.userId === authStore.user.id
-// );
-// console.log(owner);
-
 //**************  MAIN FUNCTION ****************
 
 const ProfileScreen = ({ navigation, route }) => {
-  const [visible, setVisible] = React.useState(false);
+  //************ SPINNER ************
+  if (ownerStore.loading) return <Spinner />;
+  //************ EDIT MODAL ************
   const [_visible, _setVisible] = React.useState(false);
-
-  //Update modal
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  //Burger Menu
-  const _showModal = () => _setVisible(true);
-  const _hideModal = () => _setVisible(false);
   const containerStyle = {
     backgroundColor: "#2b4f60",
     height: "87%",
@@ -123,6 +57,10 @@ const ProfileScreen = ({ navigation, route }) => {
     padding: 10,
     margin: 60,
   };
+  //************ MENU MODAL ************
+  const [visible, setVisible] = React.useState(false);
+  const _showModal = () => _setVisible(true);
+  const _hideModal = () => _setVisible(false);
   const _containerStyle = {
     backgroundColor: "#2b4f60",
     height: "37%",
@@ -130,6 +68,14 @@ const ProfileScreen = ({ navigation, route }) => {
     padding: 20,
     margin: 60,
   };
+  //************ OWNER IMAGE ************
+
+  const owner = ownerStore.owners.find(
+    (user) => user.userId === authStore.user.id
+  );
+  console.log(owner);
+
+  //************ RETURN ************
 
   return (
     <View>
@@ -169,8 +115,8 @@ const ProfileScreen = ({ navigation, route }) => {
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
-            <Image
-              source={require("../../assets/images/Pet6.png")}
+            {/* <Image
+              source={{ uri: completeImgPath(owner.image) }}
               style={{
                 top: -10,
                 height: 60,
@@ -180,7 +126,7 @@ const ProfileScreen = ({ navigation, route }) => {
                 borderBottomRightRadius: 20,
                 borderTopRightRadius: 20,
               }}
-            />
+            /> */}
           </View>
         </View>
       </View>
@@ -233,11 +179,6 @@ const ProfileScreen = ({ navigation, route }) => {
         visible={_visible}
         onDismiss={_hideModal}
         contentContainerStyle={_containerStyle}
-        // modalAnimation={
-        //   new SlideAnimation({
-        //     slideFrom: "bottom",
-        //   })
-        // }
       >
         <MenuButton />
       </Modal>
@@ -255,6 +196,67 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
 });
+
+//************ PROFILE STYLING ************
+export const ProfileWrapper = styled.View`
+  margin-top: 23%;
+  /* margin-bottom: 20px; */
+  background-color: rgba(23, 42, 58, 1);
+  padding: 1%;
+`;
+export const FieldWrapper = styled.View`
+  background-color: rgba(23, 42, 58, 0);
+  padding: 1%;
+`;
+
+export const ProfileImage = styled.Image`
+  width: 175px;
+  height: 175px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 100px;
+`;
+
+export const ProfileUsernameStyled = styled.Text`
+  color: #f0ba00;
+
+  font-weight: bold;
+  font-size: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+`;
+export const ProfileInfoStyled = styled.Text`
+  color: black;
+  font-size: 20px;
+  /* margin-top: 7%; */
+  padding: 1%;
+`;
+
+export const FullNameWrapper = styled.View`
+  flex-direction: row;
+  margin-top: 1%;
+`;
+export const LabelStyle = styled.Text`
+  color: gray;
+  font-size: 20px;
+  margin-top: 7%;
+  padding: 1%;
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
+`;
+export const EditProfileStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+`;
+
+//************ MENU STYLING ************
 
 const MenuButtonStyled = styled.TouchableOpacity`
   align-self: stretch;
@@ -276,6 +278,6 @@ const SignoutTextStyled = styled.Text`
 
 const StyledView = styled.View`
   position: absolute;
-  right: 20;
+  left: 20;
   top: 60;
 `;
