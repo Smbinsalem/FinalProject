@@ -9,7 +9,7 @@ import { TouchableOpacity } from "react-native";
 import ownerStore from "../../../Stores/ownerStore";
 import { completeImgPath } from "../../../util";
 
-const BookingItem = ({ booking, navigation }) => {
+const ClientItem = ({ booking, navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
@@ -34,7 +34,7 @@ const BookingItem = ({ booking, navigation }) => {
         <HomeWrapper>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("BookingDetails", {
+              navigation.navigate("ClientDetails", {
                 booking: booking,
                 requester: requester,
                 bookPet: bookPet,
@@ -43,18 +43,16 @@ const BookingItem = ({ booking, navigation }) => {
           >
             <ProfileImage source={{ uri: completeImgPath(petOwner.image) }} />
           </TouchableOpacity>
-
           <StatusText>
-            You recieved a request from {requester.firstName}
+            Client Name: {requester.firstName} {requester.lastName}
           </StatusText>
-          <StatusText>to take care of {bookPet.name}</StatusText>
-          <NoteText>click anywhere for more details</NoteText>
+          <NoteText>Pet Name: {bookPet.name}</NoteText>
         </HomeWrapper>
       </ListItem>
     </>
   );
 };
-export default observer(BookingItem);
+export default observer(ClientItem);
 
 //Styling
 const HomeWrapper = styled.View`

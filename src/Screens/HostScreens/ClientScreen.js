@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import BookingList from "../../Components/Booking/BookingList";
+import ClientList from "../../Components/Client/ClientList";
 
-const HostHome = ({ navigation, route }) => {
+const ClientScreen = ({ navigation, route }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
@@ -18,12 +18,12 @@ const HostHome = ({ navigation, route }) => {
 
   return (
     <>
-      <BookingList navigation={navigation} />
+      <ClientList navigation={navigation} />
     </>
   );
 };
 
-export default observer(HostHome);
+export default observer(ClientScreen);
 
 //Styling
 

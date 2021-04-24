@@ -1,24 +1,24 @@
 import { observer } from "mobx-react";
 import React, { useEffect } from "react";
-import styled from "styled-components";
-import { ScrollView } from "react-native";
+import styled from "styled-components/native";
+import { Text, List, ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import BookingItem from "./BookingItem";
-import { View, Text } from "native-base";
+import ClientItem from "./ClientItem";
 
-const BookingList = ({ navigation }) => {
+const ClientList = ({ navigation, booking }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+
   const myHostId = authStore.user.petHostId;
 
   const bookingList = bookingStore.bookings
     .filter((host) => host.hostId === myHostId)
-    .filter((status) => status.bookingStatus === "pending")
+    .filter((status) => status.bookingStatus === "approved")
     .map((booking) => (
       <>
-        <BookingItem
+        <ClientItem
           navigation={navigation}
           booking={booking}
           key={booking.id}
@@ -29,14 +29,14 @@ const BookingList = ({ navigation }) => {
   return (
     <ScrollView>
       <HomeWrapper>
-        <Text>Requests</Text>
+        <Text>My Clients</Text>
       </HomeWrapper>
       <HomeWrapper>{bookingList}</HomeWrapper>
     </ScrollView>
   );
 };
 
-export default observer(BookingList);
+export default observer(ClientList);
 
 //Styling
 
@@ -44,4 +44,8 @@ const HomeWrapper = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+
+const StatusText = styled.Text`
+  color: red;
 `;

@@ -1,31 +1,203 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+
 //styles
 import styled from "styled-components/native";
+import { ScrollView } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Modal } from "react-native-paper";
+import { Spinner } from "native-base";
+
 //stores
 import authStore from "../../Stores/authStore";
+import ownerStore from "../../Stores/ownerStore";
 //navigation
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
 //images
-import Pet1 from "../../assets/images/Pet8.jpeg";
-import BurgerOptions from "../../assets/images/1.png";
-import hostStore from "../../Stores/hostStore";
-import ownerStore from "../../Stores/ownerStore";
+import { completeImgPath } from "../../util";
 
 //component
-import PetList from "../Components/Pets/PetList";
-import { ScrollView } from "react-native-gesture-handler";
-import { LinearGradient } from "expo-linear-gradient";
+import EditProfile from "../Components/User/EditUser";
 
-//Profile
+// Menu Function
+const MenuButton = () => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    authStore.signout();
+    navigation.navigate("SplashPage");
+  };
+
+  return (
+    <>
+      <MenuButtonStyled onPress={handlePress}>
+        <Text>Switch Account</Text>
+      </MenuButtonStyled>
+      <MenuButtonStyled onPress={handlePress}>
+        <SignoutTextStyled>Sign Out</SignoutTextStyled>
+      </MenuButtonStyled>
+    </>
+  );
+};
+
+//**************  MAIN FUNCTION ****************
+
+const ProfileScreen = ({ navigation, route }) => {
+  //************ SPINNER ************
+  if (ownerStore.loading) return <Spinner />;
+  //************ EDIT MODAL ************
+  const [_visible, _setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "87%",
+    width: "77%",
+    padding: 10,
+    margin: 60,
+  };
+  //************ MENU MODAL ************
+  const [visible, setVisible] = React.useState(false);
+  const _showModal = () => _setVisible(true);
+  const _hideModal = () => _setVisible(false);
+  const _containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "37%",
+    width: "77%",
+    padding: 20,
+    margin: 60,
+  };
+  //************ OWNER IMAGE ************
+
+  const owner = ownerStore.owners.find(
+    (user) => user.userId === authStore.user.id
+  );
+  console.log(owner);
+
+  //************ RETURN ************
+
+  return (
+    <View>
+      <View
+        style={{
+          backgroundColor: "#172A3A",
+          height: "30%",
+          // borderBottomLeftRadius: 30,
+          // borderBottomRightRadius: 30,
+          paddingHorizontal: 20,
+        }}
+      >
+        <StyledView>
+          <TouchableOpacity onPress={_showModal}>
+            <MenutICONStyled name="menu" type="Feather" />
+          </TouchableOpacity>
+        </StyledView>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginTop: "18%",
+            width: "100%",
+          }}
+        >
+          <View style={{ marginTop: "30%", width: "50%" }}>
+            <Text
+              style={{
+                top: -70,
+                fontSize: 28,
+                color: "#FFF",
+                fontWeight: "bold",
+              }}
+            >
+              Hi {authStore.user.username}
+            </Text>
+          </View>
+          <View style={{ width: "50%", alignItems: "flex-end" }}>
+            {/* <Image
+              source={{ uri: completeImgPath(owner.image) }}
+              style={{
+                top: -10,
+                height: 60,
+                width: 60,
+                borderTopLeftRadius: 20,
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+                borderTopRightRadius: 20,
+              }}
+            /> */}
+          </View>
+        </View>
+      </View>
+      <LinearGradient
+        colors={["rgba(23, 42, 58,0.8)", "transparent"]}
+        style={{
+          left: 0,
+          right: 0,
+          height: 100,
+          marginTop: -50,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
+        }}
+      ></LinearGradient>
+      {/* PROFILE DETAILS */}
+      <ScrollView>
+        <FieldWrapper>
+          <LabelStyle>Full name:</LabelStyle>
+          <FullNameWrapper>
+            <ProfileInfoStyled>{authStore.user.firstName}</ProfileInfoStyled>
+            <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
+          </FullNameWrapper>
+          <LabelStyle>Phone number:</LabelStyle>
+          <ProfileInfoStyled> {authStore.user.contactNumber}</ProfileInfoStyled>
+          <LabelStyle>Date of Birth:</LabelStyle>
+          <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
+          <LabelStyle>Email:</LabelStyle>
+          <ProfileInfoStyled>
+            {" "}
+            {authStore.user.email} {`\n`}
+          </ProfileInfoStyled>
+          {/* EDIT BUTTON */}
+          <EditProfileStyled onPress={showModal}>
+            <Text>Edit Profile</Text>
+          </EditProfileStyled>
+        </FieldWrapper>
+        {/* <PetList ownerId={authStore.user.petOwnerId} /> */}
+      </ScrollView>
+
+      {/* EDIT MODAL */}
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={containerStyle}
+      >
+        <EditProfile />
+      </Modal>
+      {/* BURGER MENU */}
+      <Modal
+        visible={_visible}
+        onDismiss={_hideModal}
+        contentContainerStyle={_containerStyle}
+      >
+        <MenuButton />
+      </Modal>
+    </View>
+  );
+};
+
+export default ProfileScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
+});
+
+//************ PROFILE STYLING ************
 export const ProfileWrapper = styled.View`
   margin-top: 23%;
   /* margin-bottom: 20px; */
@@ -61,6 +233,7 @@ export const ProfileInfoStyled = styled.Text`
   /* margin-top: 7%; */
   padding: 1%;
 `;
+
 export const FullNameWrapper = styled.View`
   flex-direction: row;
   margin-top: 1%;
@@ -83,153 +256,28 @@ export const EditProfileStyled = styled.TouchableOpacity`
   width: 90%;
 `;
 
-const SignoutButton = () => {
-  const navigation = useNavigation();
+//************ MENU STYLING ************
 
-  const handlePress = () => {
-    authStore.signout();
-    navigation.navigate("SplashPage");
-  };
-  return (
-    <SignoutButtonStyled name="logout" type="AntDesign" onPress={handlePress} />
-  );
-};
-// hostStore.hosts.image
-
-// const {hosts} = route.params;
-// const owner = ownerStore.owners.find(
-//   (user) => user.userId === authStore.user.id
-// );
-// console.log(owner);
-const ProfileScreen = ({ navigation, route }) => {
-  return (
-    <View>
-      <View
-        style={{
-          backgroundColor: "#172A3A",
-          height: "30%",
-          // borderBottomLeftRadius: 30,
-          // borderBottomRightRadius: 30,
-          paddingHorizontal: 20,
-        }}
-      >
-        <StyledView>
-          <SignoutButton />
-        </StyledView>
-        <Image
-          source={BurgerOptions}
-          style={{
-            marginTop: "10%",
-            height: 20,
-            width: 20,
-          }}
-        />
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: "15%",
-            width: "100%",
-          }}
-        >
-          <View style={{ marginTop: "10%", width: "50%" }}>
-            <Text
-              style={{
-                top: -40,
-                fontSize: 28,
-                color: "#FFF",
-                fontWeight: "bold",
-              }}
-            >
-              Hi {authStore.user.username}
-            </Text>
-          </View>
-          <View style={{ width: "50%", alignItems: "flex-end" }}>
-            <Image
-              source={require("../../assets/images/Pet6.png")}
-              style={{
-                top: -10,
-                height: 60,
-                width: 60,
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                borderTopRightRadius: 20,
-              }}
-            />
-          </View>
-        </View>
-      </View>
-      <LinearGradient
-        colors={["rgba(23, 42, 58,0.8)", "transparent"]}
-        style={{
-          left: 0,
-          right: 0,
-          height: 100,
-          marginTop: -50,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
-        }}
-      >
-        {/* <View
-          style={{
-            backgroundColor: "#FFF",
-            paddingVertical: 8,
-            paddingHorizontal: 20,
-            marginHorizontal: 20,
-            borderRadius: 15,
-            marginTop: 25,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            source={require("../../assets/icons/find.png")}
-            style={{ height: 20, width: 20 }}
-          />
-        </View> */}
-      </LinearGradient>
-
-      <ScrollView>
-        <FieldWrapper>
-          <LabelStyle>Full name:</LabelStyle>
-          <FullNameWrapper>
-            <ProfileInfoStyled>{authStore.user.firstName}</ProfileInfoStyled>
-            <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
-          </FullNameWrapper>
-          <LabelStyle>Phone number:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.contactNumber}</ProfileInfoStyled>
-          <LabelStyle>Date of Birth:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
-          <LabelStyle>Email:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.email}</ProfileInfoStyled>
-          <EditProfileStyled onPress={() => alert("Button Clicked !")}>
-            <Text>Edit Profile</Text>
-          </EditProfileStyled>
-        </FieldWrapper>
-        {/* <PetList ownerId={authStore.user.petOwnerId} /> */}
-      </ScrollView>
-    </View>
-  );
-};
-
-export default ProfileScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-});
-
-const SignoutButtonStyled = styled(Icon)`
+const MenuButtonStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10%;
+  width: 90%;
+  color: red;
+`;
+const MenutICONStyled = styled(Icon)`
+  color: white;
+`;
+const SignoutTextStyled = styled.Text`
   color: red;
 `;
 
 const StyledView = styled.View`
   position: absolute;
-  right: 20;
+  left: 20;
   top: 60;
 `;

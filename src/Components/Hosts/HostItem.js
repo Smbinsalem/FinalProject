@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ListItem } from "native-base";
 import { observer } from "mobx-react";
-import { TouchableOpacity, ScrollView, View, Text, Image } from "react-native";
+import { TouchableOpacity, View, Text, Image } from "react-native";
 
 const TextStyled = styled.Text`
   color: black;

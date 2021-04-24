@@ -13,6 +13,7 @@ class BookingStore {
     try {
       const response = await instance.get("/bookings");
       this.bookings = response.data;
+      this.loading = false;
     } catch (error) {
       console.error("BookStore -> fetchBookings -> error", error);
     }
@@ -28,13 +29,30 @@ class BookingStore {
   };
 
   // Update Host Booking
-  updateHostBooking = async (updateBook) => {
+  // updateHostBooking = async (updateBook) => {
+  //   try {
+  //     // const formData = new FormData();
+  //     // for (const key in updateBook) formData.append(key, updateBook[key]);
+  //     await instance.put(`/users/bookings`, updateBook);
+  //     const book = this.books.find((book) => book.id === updateBook.id);
+  //     for (const key in book) book[key] = updateBook[key];
+  //   } catch (error) {
+  //     console.error("BookStore -> updateHostBooking -> error", error);
+  //   }
+  // };
+  updateHostBooking = async (updateBook, navigation) => {
     try {
-      const formData = new FormData();
-      for (const key in updateBook) formData.append(key, updateBook[key]);
-      await instance.put(`/users/petHost/bookings`, formData);
-      const book = this.books.find((book) => book.id === updateBook.id);
+      // const formData = new FormData();
+      // for (const key in updateBook) formData.append(key, updateBook[key]);
+      await instance.put(`/users/petHosts/bookings`, updateBook);
+      const book = this.bookings.find((book) => book.id === updateBook.id);
       for (const key in book) book[key] = updateBook[key];
+      // if (updateBook.bookingstatus === "Approved") {
+      //   navigation.navigate("")
+      // }
+      navigation.navigate(
+        updateBook.bookingstatus === "Approved" ? "ClientScreen" : "Inbox"
+      );
     } catch (error) {
       console.error("BookStore -> updateHostBooking -> error", error);
     }

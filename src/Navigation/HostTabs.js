@@ -15,9 +15,16 @@ import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostHome from "../Screens/HostScreens/HostHome";
 import BookingDetails from "../Components/Booking/BookingDetails";
+import PetDetail from "../Components/Pets/PetDetail";
+
+//Client Import Screen
+import ClientScreen from "../Screens/HostScreens/ClientScreen";
+import ClientDetails from "../Components/Client/ClientDetails";
+import ClientContact from "../Components/Client/ClientContact";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+// Inbox Tab Stack
 const InboxStack = createStackNavigator();
 const InboxNavigator = () => {
   return (
@@ -29,7 +36,26 @@ const InboxNavigator = () => {
     >
       <InboxStack.Screen name="Inbox" component={HostHome} />
       <InboxStack.Screen name="BookingDetails" component={BookingDetails} />
+      <InboxStack.Screen name="PetDetails" component={PetDetail} />
+      <InboxStack.Screen name="Client" component={ClientScreen} />
     </InboxStack.Navigator>
+  );
+};
+
+// Clients Tab Stack
+const ClientStack = createStackNavigator();
+const ClientNavigator = () => {
+  return (
+    <ClientStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Client"}
+    >
+      <ClientStack.Screen name="Client" component={ClientScreen} />
+      <ClientStack.Screen name="ClientDetails" component={ClientDetails} />
+      <ClientStack.Screen name="ClientContact" component={ClientContact} />
+    </ClientStack.Navigator>
   );
 };
 
@@ -139,8 +165,8 @@ const HostTabs = () => {
       /> */}
 
       <Tab.Screen
-        name="Post"
-        component={PostScreen}
+        name="Clients"
+        component={ClientNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
