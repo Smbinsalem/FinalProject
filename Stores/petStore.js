@@ -57,7 +57,6 @@ class PetStore {
       await instance.put(`/users/petOwners/pets`, updatedPet);
       const oldPet = this.pets.find((pet) => pet.id === updatedPet.id);
       for (const key in oldPet) oldPet[key] = updatedPet[key];
-      // console.log(this.pets);
       // navigation.goBack();
     } catch (error) {
       console.error("PetStore -> updatePet -> error", error);

@@ -1,12 +1,12 @@
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import styled from "styled-components";
-import { RadioButton } from "react-native-paper";
 import { completeImgPath } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
 import { Spinner } from "native-base";
 import CancelBooking from "./CancelBooking";
+import { Modal } from "react-native-paper";
 
 const OwnerInboxDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
@@ -14,6 +14,17 @@ const OwnerInboxDetails = ({ route, navigation }) => {
   const { owner } = route.params;
   const { pet } = route.params;
   const { host } = route.params;
+
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "87%",
+    width: "77%",
+    padding: 10,
+    margin: 60,
+  };
 
   return (
     <HomeWrapper>
@@ -35,9 +46,20 @@ const OwnerInboxDetails = ({ route, navigation }) => {
         From: {booking.dateFrom} to: {booking.dateTo}
       </StatusText>
       <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
-      <TouchableOpacity>
-        <StatusText>Cancel Booking?</StatusText>
-      </TouchableOpacity>
+      <EditPetStyled onPress={showModal}>
+        <Text>Cancel Booking?</Text>
+      </EditPetStyled>
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={containerStyle}
+      >
+        <CancelBooking
+          hideModal={hideModal}
+          pet={pet}
+          navigation={navigation}
+        />
+      </Modal>
     </HomeWrapper>
   );
 };
@@ -114,4 +136,14 @@ export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
   font-size: 18px;
+`;
+
+const EditPetStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 50px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
 `;

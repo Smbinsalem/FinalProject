@@ -16,8 +16,6 @@ import { observer } from "mobx-react";
 // import Pet1 from "../../../assets/images/Pet8.jpeg";
 
 const EditPet = ({ navigation, newpet, hideModal }) => {
-  console.log(newpet);
-
   const [pet, setPet] = useState({
     // name: "",
     // type: "",

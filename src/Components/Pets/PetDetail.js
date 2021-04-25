@@ -8,7 +8,6 @@ import { Modal } from "react-native-paper";
 
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
-  console.log(route);
   // const pet = petStore.pets[0];
   const { petId } = route.params;
   const pet = petStore.pets.find((pet) => pet.id === petId);

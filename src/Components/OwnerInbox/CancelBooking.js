@@ -1,4 +1,5 @@
 import React from "react";
+import LoadingScreen from "./LoadingScreen";
 
 import { useState } from "react";
 import { observer } from "mobx-react";
@@ -9,14 +10,14 @@ import styled from "styled-components";
 import { ScrollView } from "react-native-gesture-handler";
 import bookingStore from "../../../Stores/bookingStore";
 
-const CancelBooking = ({ pet }) => {
+const CancelBooking = ({ pet, hideModal, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
 
-  const [booking, setbooking] = useState({
-    petName: pet.name,
-  });
-
-  const handleSubmit = () => bookingStore.deleteOwnerBooking(booking, pet.id);
+  const handleSubmit = () => {
+    bookingStore.deleteOwnerBooking(pet.name, pet.id, navigation);
+    hideModal();
+    return <LoadingScreen navigation={navigation} />;
+  };
 
   return (
     <>

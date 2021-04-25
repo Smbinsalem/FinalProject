@@ -10,6 +10,7 @@ import { Spinner, Text } from "native-base";
 const OwnerInboxList = ({ navigation }) => {
   authStore.fetchAllUsers();
   if (authStore.loading) return <Spinner />;
+  if (bookingStore.loading) return <Spinner />;
 
   const ownerInboxList = bookingStore.bookings
     .filter((owner) => owner.petOwnerId === authStore.user.petOwnerId)
