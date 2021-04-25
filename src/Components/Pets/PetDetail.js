@@ -1,7 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
-import { completeImgPath } from "../../../util";
-import { ListItem } from "native-base";
 import petStore from "../../../Stores/petStore";
 import { observer } from "mobx-react";
 import styled from "styled-components";

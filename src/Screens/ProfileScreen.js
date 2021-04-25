@@ -115,7 +115,7 @@ const ProfileScreen = ({ navigation, route }) => {
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
-            {/* <Image
+            <Image
               source={{ uri: completeImgPath(owner.image) }}
               style={{
                 top: -10,
@@ -126,7 +126,7 @@ const ProfileScreen = ({ navigation, route }) => {
                 borderBottomRightRadius: 20,
                 borderTopRightRadius: 20,
               }}
-            /> */}
+            />
           </View>
         </View>
       </View>
@@ -172,6 +172,7 @@ const ProfileScreen = ({ navigation, route }) => {
         onDismiss={hideModal}
         contentContainerStyle={containerStyle}
       >
+        {/* <EditOwner/> */}
         <EditProfile />
       </Modal>
       {/* BURGER MENU */}
