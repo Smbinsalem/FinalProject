@@ -13,14 +13,35 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import HostDetails from "../Components/Hosts/HostDetails";
 import PetDetails from "../Components/Pets/PetDetail";
 // Owner Inbox Screens
 import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
 
-// const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const Stacks = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Explore"}
+    >
+      <Stack.Screen name="Explore" component={ExploreScreen} />
+      <Stack.Screen
+        name="HostDetails"
+        component={HostDetails}
+        style={{ headerShown: true, headerTransparent: true }}
+      />
+      {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
+      <Stacks.Screen name="Client" component={ClientScreen} /> */}
+    </Stack.Navigator>
+  );
+};
 
 const PetStack = createStackNavigator();
 
@@ -133,7 +154,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Explore"
-        component={ExploreScreen}
+        component={Stacks}
         options={{
           tabBarIcon: ({ focused }) => (
             <View

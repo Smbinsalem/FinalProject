@@ -147,7 +147,7 @@ const ExploreScreen = ({ navigation }) => {
           style={styles.proContainer}
           showsHorizontalScrollIndicator={false}
         >
-          <HostList />
+          <HostList navigation={navigation} />
         </ScrollView>
 
         <View style={{ width: "100%" }}>
@@ -187,7 +187,7 @@ const ExploreScreen = ({ navigation }) => {
           style={styles.proContainer}
           showsHorizontalScrollIndicator={false}
         >
-          <HostList />
+          <HostList navigation={navigation} />
         </ScrollView>
       </ScrollView>
     </>
