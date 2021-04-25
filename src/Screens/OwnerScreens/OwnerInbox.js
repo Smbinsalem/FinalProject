@@ -3,22 +3,14 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import BookingList from "../../Components/Booking/BookingList";
+import OwnerInboxList from "../../Components/OwnerInbox/OwnerInboxList";
 import { Spinner } from "native-base";
 
-const HostHome = ({ navigation, route }) => {
-  if (bookingStore.loading) return <Spinner />;
-
-  const myHostId = authStore.user.petHostId;
-
-  return (
-    <>
-      <BookingList navigation={navigation} />
-    </>
-  );
+const OwnerInbox = ({ navigation }) => {
+  return <OwnerInboxList navigation={navigation} />;
 };
 
-export default observer(HostHome);
+export default observer(OwnerInbox);
 
 //Styling
 

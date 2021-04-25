@@ -27,7 +27,7 @@ const PostScreen = ({ navigation }) => {
   return (
     <>
       <PostWrapper>
-        <PetList ownerId={authStore.user.petOwnerId} />
+        <PetList navigation={navigation} ownerId={authStore.user.petOwnerId} />
       </PostWrapper>
       <Provider>
         <Portal>
@@ -36,7 +36,7 @@ const PostScreen = ({ navigation }) => {
             onDismiss={hideModal}
             contentContainerStyle={containerStyle}
           >
-            <AddNewPet />
+            <AddNewPet hideModal={hideModal} />
           </Modal>
         </Portal>
         <AuthButton onPress={showModal}>

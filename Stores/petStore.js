@@ -5,7 +5,7 @@ import instance from "./instance";
 // all routes fixed!
 
 class PetStore {
-  pets = null;
+  pets = [];
   loading = true;
 
   constructor() {
@@ -45,16 +45,19 @@ class PetStore {
     try {
       const response = await instance.post(`/users/petOwners/pets`, data);
       this.pets.push(response.data);
-      // navigation.navigate("Post");
+      // navigation.navigate("Chat");
+      // navigation.goBack();
     } catch (error) {
       console.error("PetStore -> addNewPet -> error", error);
     }
   };
 
-  updatePet = async (petId) => {
+  updatePet = async (updatedPet) => {
     try {
-      await instance.put(`/users/petOwners/pets`);
-      this.pets = this.pets.filter((pets) => pets.id !== petId);
+      await instance.put(`/users/petOwners/pets`, updatedPet);
+      const oldPet = this.pets.find((pet) => pet.id === updatedPet.id);
+      for (const key in oldPet) oldPet[key] = updatedPet[key];
+      // navigation.goBack();
     } catch (error) {
       console.error("PetStore -> updatePet -> error", error);
     }

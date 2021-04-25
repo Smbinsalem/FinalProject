@@ -6,16 +6,7 @@ import authStore from "../../../Stores/authStore";
 import ClientList from "../../Components/Client/ClientList";
 
 const ClientScreen = ({ navigation, route }) => {
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
   const myHostId = authStore.user.petHostId;
-  //   const allOwners = authStore.allUsers.filter(
-  //     (owners) => owners.petOwner !== null
-  //   );
-  //   console.log(allOwners);
-  //////
-
   return (
     <>
       <ClientList navigation={navigation} />

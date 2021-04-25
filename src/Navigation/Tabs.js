@@ -14,6 +14,11 @@ import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostDetails from "../Components/Hosts/HostDetails";
+import PetDetails from "../Components/Pets/PetDetail";
+// Owner Inbox Screens
+import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
+import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -35,6 +40,41 @@ const Stacks = () => {
       {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
       <Stacks.Screen name="Client" component={ClientScreen} /> */}
     </Stack.Navigator>
+  );
+};
+
+const PetStack = createStackNavigator();
+
+const PetNavigator = () => {
+  return (
+    <PetStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Pets"}
+    >
+      <PetStack.Screen name="Pets" component={PostScreen} />
+      <PetStack.Screen name="PetDetails" component={PetDetails} />
+    </PetStack.Navigator>
+  );
+};
+
+const OwnerInboxStack = createStackNavigator();
+const OwnerInboxNavigator = () => {
+  return (
+    <OwnerInboxStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Inbox"}
+    >
+      <OwnerInboxStack.Screen name="Inbox" component={OwnerInbox} />
+      <OwnerInboxStack.Screen name="PetDetails" component={PetDetails} />
+      <OwnerInboxStack.Screen
+        name="OwnerInboxDetails"
+        component={OwnerInboxDetails}
+      />
+    </OwnerInboxStack.Navigator>
   );
 };
 
@@ -82,8 +122,8 @@ const Tabs = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Inbox"
+        component={OwnerInboxNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -105,7 +145,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                HOME
+                INBOX
               </Text>
             </View>
           ),
@@ -144,8 +184,8 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="Post"
-        component={PostScreen}
+        name="Pets"
+        component={PetNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

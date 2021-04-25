@@ -10,7 +10,7 @@ import petStore from "./petStore";
 
 class AuthStore {
   user = null;
-  allUsers = [];
+  allUsers = null;
   loading = true;
 
   constructor() {
@@ -79,8 +79,7 @@ class AuthStore {
 
   //sign out
   signout = async () => {
-    this.user = null;
-    petStore.pets = [];
+    this.user = [];
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
   };
@@ -114,6 +113,6 @@ class AuthStore {
 }
 
 const authStore = new AuthStore();
-authStore.checkForToken();
+// authStore.checkForToken();
 
 export default authStore;

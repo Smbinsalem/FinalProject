@@ -24,9 +24,10 @@ import EditProfile from "../Components/User/EditUser";
 const MenuButton = () => {
   const navigation = useNavigation();
 
-  const handlePress = () => {
+  const handlePress = (event) => {
     authStore.signout();
-    navigation.navigate("SplashPage");
+    event.preventDefault();
+    navigation.replace("SignIn");
   };
 
   return (
@@ -47,7 +48,7 @@ const ProfileScreen = ({ navigation, route }) => {
   //************ SPINNER ************
   if (ownerStore.loading) return <Spinner />;
   //************ EDIT MODAL ************
-  const [_visible, _setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {
@@ -58,7 +59,7 @@ const ProfileScreen = ({ navigation, route }) => {
     margin: 60,
   };
   //************ MENU MODAL ************
-  const [visible, setVisible] = React.useState(false);
+  const [_visible, _setVisible] = React.useState(false);
   const _showModal = () => _setVisible(true);
   const _hideModal = () => _setVisible(false);
   const _containerStyle = {
@@ -73,7 +74,6 @@ const ProfileScreen = ({ navigation, route }) => {
   const owner = ownerStore.owners.find(
     (user) => user.userId === authStore.user.id
   );
-  console.log(owner);
 
   //************ RETURN ************
 
@@ -115,7 +115,7 @@ const ProfileScreen = ({ navigation, route }) => {
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
-            {/* <Image
+            <Image
               source={{ uri: completeImgPath(owner.image) }}
               style={{
                 top: -10,
@@ -126,7 +126,7 @@ const ProfileScreen = ({ navigation, route }) => {
                 borderBottomRightRadius: 20,
                 borderTopRightRadius: 20,
               }}
-            /> */}
+            />
           </View>
         </View>
       </View>
@@ -172,6 +172,7 @@ const ProfileScreen = ({ navigation, route }) => {
         onDismiss={hideModal}
         contentContainerStyle={containerStyle}
       >
+        {/* <EditOwner/> */}
         <EditProfile />
       </Modal>
       {/* BURGER MENU */}

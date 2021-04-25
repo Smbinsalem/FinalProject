@@ -13,6 +13,7 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import HostProfilePage from "../Screens/HostProfilePage";
 import HostHome from "../Screens/HostScreens/HostHome";
 import BookingDetails from "../Components/Booking/BookingDetails";
 import PetDetail from "../Components/Pets/PetDetail";
@@ -115,7 +116,7 @@ const HostTabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/home.png")}
+                source={require("../../assets/icons/Inbox.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,
@@ -133,61 +134,11 @@ const HostTabs = () => {
         }}
       />
       {/* Hosts are not able to explore other hosts */}
-      {/* <Tab.Screen
-        name="Explore"
-        component={ExploreScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              <Image
-                source={require("../../assets/icons/explore.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#F0BA00" : "#748c94",
-                }}
-              />
-              <Text
-                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
-              >
-                Explore
-              </Text>
-            </View>
-          ),
-        }}
-      /> */}
-
       <Tab.Screen
         name="Clients"
         component={ClientNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Image
-              source={require("../../assets/icons/post.png")}
-              resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30,
-                tintColor: focused ? "#172A3A" : "#FFF",
-              }}
-            />
-          ),
-          tabBarButton: (props) => <CustomeTabBarButton {...props} />,
-        }}
-      />
-
-      {/* <Tab.Screen
-        name="Chat"
-        component={ChatScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
             <View
               style={{
                 alignItems: "center",
@@ -196,7 +147,7 @@ const HostTabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/chat.png")}
+                source={require("../../assets/icons/Booking.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,
@@ -207,15 +158,16 @@ const HostTabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                CHAT
+                RESERVATIONS
               </Text>
             </View>
           ),
         }}
-      /> */}
+      />
+
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="HostProfile"
+        component={HostProfilePage}
         options={{
           tabBarIcon: ({ focused }) => (
             <View

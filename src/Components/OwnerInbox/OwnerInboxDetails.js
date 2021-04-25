@@ -1,73 +1,70 @@
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import styled from "styled-components";
-import { RadioButton } from "react-native-paper";
 import { completeImgPath } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
 import { Spinner } from "native-base";
+import CancelBooking from "./CancelBooking";
+import { Modal } from "react-native-paper";
 
-const BookingDetails = ({ route, navigation }) => {
+const OwnerInboxDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
   const { booking } = route.params;
-  const { requester } = route.params;
-  const { bookPet } = route.params;
-  const [checked, setChecked] = React.useState(null);
-  const [status, setStatus] = useState({
-    bookingStatus: booking.bookingStatus,
-    petName: bookPet.name,
-    ownerUser: requester.username,
-  });
-  useEffect(() => setStatus({ ...status, bookingStatus: checked }), [checked]);
-  const handleSubmit = () => {
-    bookingStore.updateHostBooking(status, navigation);
+  const { owner } = route.params;
+  const { pet } = route.params;
+  const { host } = route.params;
+
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+  const containerStyle = {
+    backgroundColor: "#2b4f60",
+    height: "87%",
+    width: "77%",
+    padding: 10,
+    margin: 60,
   };
+
   return (
     <HomeWrapper>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("PetDetails", {
-            pet: bookPet,
+            pet: pet,
           })
         }
       >
-        <ProfileImage source={{ uri: completeImgPath(bookPet.image) }} />
-        <StatusText>Pet Name: {bookPet.name} </StatusText>
+        <StatusText>Booking Details </StatusText>
+        <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+        <StatusText>Pet Name: {pet.name} </StatusText>
       </TouchableOpacity>
       <StatusText>
-        Client Name: {requester.firstName} {requester.lastName}
+        Host Name: {host.firstName} {host.lastName}
       </StatusText>
       <StatusText>
         From: {booking.dateFrom} to: {booking.dateTo}
       </StatusText>
-      <TextStyle>Become:</TextStyle>
-      <FieldView>
-        <TextStyle>Accept</TextStyle>
-        <RadioView>
-          <RadioButton
-            value="Accept"
-            status={checked === "approved" ? "checked" : "unchecked"}
-            onPress={() => setChecked("approved")}
-          />
-        </RadioView>
-
-        <TextStyle>Decline</TextStyle>
-        <RadioView>
-          <RadioButton
-            value="Decline"
-            status={checked === "decline" ? "checked" : "unchecked"}
-            onPress={() => setChecked("decline")}
-          />
-        </RadioView>
-      </FieldView>
-      <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Next</AuthButtonText>
-      </AuthButton>
+      <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
+      <EditPetStyled onPress={showModal}>
+        <Text>Cancel Booking?</Text>
+      </EditPetStyled>
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={containerStyle}
+      >
+        <CancelBooking
+          hideModal={hideModal}
+          pet={pet}
+          navigation={navigation}
+        />
+      </Modal>
     </HomeWrapper>
   );
 };
 
-export default observer(BookingDetails);
+export default observer(OwnerInboxDetails);
 
 //Styling
 const HomeWrapper = styled.View`
@@ -139,4 +136,14 @@ export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
   font-size: 18px;
+`;
+
+const EditPetStyled = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 50px;
+  background-color: #f0ba00;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
 `;
