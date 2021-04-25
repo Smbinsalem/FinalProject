@@ -28,7 +28,7 @@ const ClientDetails = ({ route, navigation }) => {
         The booking from {booking.dateFrom} to {booking.dateTo}
       </StatusText>
       <ChoiceView>
-        <ChoiceText>Contact Client </ChoiceText>
+        <ChoiceText>Contact Client {requester.contactNumber}</ChoiceText>
       </ChoiceView>
     </HomeWrapper>
   );

@@ -73,7 +73,6 @@ const ProfileScreen = ({ navigation, route }) => {
   const owner = ownerStore.owners.find(
     (user) => user.userId === authStore.user.id
   );
-  console.log(owner);
 
   //************ RETURN ************
 

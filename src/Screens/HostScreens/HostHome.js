@@ -4,17 +4,16 @@ import styled from "styled-components";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
 import BookingList from "../../Components/Booking/BookingList";
+import { Spinner } from "native-base";
 
 const HostHome = ({ navigation, route }) => {
+  if (bookingStore.loading) return <Spinner />;
+
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+
   const myHostId = authStore.user.petHostId;
-  //   const allOwners = authStore.allUsers.filter(
-  //     (owners) => owners.petOwner !== null
-  //   );
-  //   console.log(allOwners);
-  //////
 
   return (
     <>

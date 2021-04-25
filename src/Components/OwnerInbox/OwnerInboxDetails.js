@@ -7,67 +7,38 @@ import { completeImgPath } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
 import { Spinner } from "native-base";
 
-const BookingDetails = ({ route, navigation }) => {
+const OwnerInboxDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
   const { booking } = route.params;
-  const { requester } = route.params;
-  const { bookPet } = route.params;
-  const [checked, setChecked] = React.useState(null);
-  const [status, setStatus] = useState({
-    bookingStatus: booking.bookingStatus,
-    petName: bookPet.name,
-    ownerUser: requester.username,
-  });
-  useEffect(() => setStatus({ ...status, bookingStatus: checked }), [checked]);
-  const handleSubmit = () => {
-    bookingStore.updateHostBooking(status, navigation);
-  };
+  const { owner } = route.params;
+  const { pet } = route.params;
+  const { host } = route.params;
+
   return (
     <HomeWrapper>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("PetDetails", {
-            pet: bookPet,
+            pet: pet,
           })
         }
       >
-        <ProfileImage source={{ uri: completeImgPath(bookPet.image) }} />
-        <StatusText>Pet Name: {bookPet.name} </StatusText>
+        <StatusText>Booking Details </StatusText>
+        <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+        <StatusText>Pet Name: {pet.name} </StatusText>
       </TouchableOpacity>
       <StatusText>
-        Client Name: {requester.firstName} {requester.lastName}
+        Host Name: {host.firstName} {host.lastName}
       </StatusText>
       <StatusText>
         From: {booking.dateFrom} to: {booking.dateTo}
       </StatusText>
-      <TextStyle>Become:</TextStyle>
-      <FieldView>
-        <TextStyle>Accept</TextStyle>
-        <RadioView>
-          <RadioButton
-            value="Accept"
-            status={checked === "approved" ? "checked" : "unchecked"}
-            onPress={() => setChecked("approved")}
-          />
-        </RadioView>
-
-        <TextStyle>Decline</TextStyle>
-        <RadioView>
-          <RadioButton
-            value="Decline"
-            status={checked === "decline" ? "checked" : "unchecked"}
-            onPress={() => setChecked("decline")}
-          />
-        </RadioView>
-      </FieldView>
-      <AuthButton onPress={handleSubmit}>
-        <AuthButtonText>Next</AuthButtonText>
-      </AuthButton>
+      <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
     </HomeWrapper>
   );
 };
 
-export default observer(BookingDetails);
+export default observer(OwnerInboxDetails);
 
 //Styling
 const HomeWrapper = styled.View`

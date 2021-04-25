@@ -102,10 +102,7 @@ const SignUp = ({ navigation }) => {
                 marginBottom: 20,
                 width: 120,
                 fontSize: "100px",
-                borderTopLeftRadius: "10px",
-                borderBottomLeftRadius: "10px",
-                borderBottomRightRadius: "10px",
-                borderTopRightRadius: "10px",
+                borderRadius: 10,
               },
             }}
             onDateChange={(date) => setUser({ ...user, dateOfBirth: date })}
