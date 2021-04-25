@@ -4,7 +4,13 @@ import { ListItem } from "native-base";
 import { Image, View, Text } from "react-native";
 import { observer, Spinner } from "mobx-react";
 import { TouchableOpacity, ScrollView } from "react-native";
+
+
+// import petStore from "../../../Stores/petStore";
+// import authStore from "../../../Stores/authStore";
+
 import pet6 from "../../../assets/images/Pet6.png";
+
 
 const TextStyled = styled.Text`
   font-size: 17px;
@@ -24,8 +30,9 @@ const SubTextStyled = styled.Text`
   color: white;
 `;
 
-const PetItem = ({ pet, navigation }) => {
-  // const {pet}= route.params;
+const PetItem = ({ navigation, pet }) => {
+  // const { pet } = route.params;
+  const mypet = pet;
 
   // if (authStore.loading) return <Spinner />;
   // if (petStore.loading) return <Spinner />;
@@ -35,8 +42,8 @@ const PetItem = ({ pet, navigation }) => {
       <ScrollView />
       <ListItem>
         <TouchableOpacity
-          // onPress={() => navigation.navigate("PetDetail", { pet: pet })}
-          onPress={() => alert("go to pet detail")}
+          onPress={() => navigation.navigate("PetDetails", { pet: mypet })}
+          // onPress={() => alert("go to pet detail")}
           style={{
             height: 100,
             elevation: 2,
@@ -51,6 +58,7 @@ const PetItem = ({ pet, navigation }) => {
             borderTopRightRadius: 30,
             width: "99%",
           }}
+
         >
           <View style={{ width: "92%", alignItems: "flex-end" }}>
             <Image

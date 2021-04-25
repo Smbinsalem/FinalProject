@@ -18,8 +18,23 @@ import PetDetails from "../Components/Pets/PetDetail";
 import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
+
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const PetStack = createStackNavigator();
+const PetNavigator = () => {
+  return (
+    <PetStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Pets"}
+    >
+      <PetStack.Screen name="Pets" component={PostScreen} />
+      <PetStack.Screen name="PetDetails" component={PetDetails} />
+    </PetStack.Navigator>
+  );
+};
 
 const OwnerInboxStack = createStackNavigator();
 const OwnerInboxNavigator = () => {
@@ -146,8 +161,8 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="Post"
-        component={PostScreen}
+        name="Pets"
+        component={PetNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
