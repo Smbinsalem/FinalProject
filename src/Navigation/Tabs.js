@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // Importing Navigation
-// import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
@@ -13,9 +13,30 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import HostDetails from "../Components/Hosts/HostDetails";
 
-// const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const Stacks = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Explore"}
+    >
+      <Stack.Screen name="Explore" component={ExploreScreen} />
+      <Stack.Screen
+        name="HostDetails"
+        component={HostDetails}
+        style={{ headerShown: true, headerTransparent: true }}
+      />
+      {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
+      <Stacks.Screen name="Client" component={ClientScreen} /> */}
+    </Stack.Navigator>
+  );
+};
 
 const CustomeTabBarButton = ({ children, onPress }) => {
   return (
@@ -93,7 +114,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Explore"
-        component={ExploreScreen}
+        component={Stacks}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
