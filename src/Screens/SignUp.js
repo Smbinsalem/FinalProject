@@ -126,9 +126,6 @@ const SignUp = ({ navigation }) => {
             placeholder="Gender"
             containerStyle={{ height: 40, width: 320 }}
             onChangeItem={(item) => setUser({ ...user, gender: item.value })}
-            dropDownStyle={{
-              backgroundColor: "rgba(240, 186, 0, 1)",
-            }}
           />
           {/*   Username   */}
           <AuthTextInput
