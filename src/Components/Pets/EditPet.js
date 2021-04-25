@@ -15,67 +15,84 @@ import { observer } from "mobx-react";
 //Images
 // import Pet1 from "../../../assets/images/Pet8.jpeg";
 
-const AddNewPet = ({ navigation, hideModal }) => {
+const EditPet = ({ navigation, newpet, hideModal }) => {
+  console.log(newpet);
+
   const [pet, setPet] = useState({
-    name: "",
-    type: "",
-    breed: "",
-    dateOfBirth: "",
-    vaccinated: "",
-    allergies: "",
-    personality: "",
+    // name: "",
+    // type: "",
+    // breed: "",
+    // dateOfBirth: "",
+    // vaccinated: "",
+    oldPet: newpet.name,
+    allergies: newpet.allergies,
+    personality: newpet.personality,
+    image: newpet.image,
+    walkingHours: newpet.walkingHours,
+    medication: newpet.medication,
+    mealTime: newpet.mealTime,
+    allowedSnackPerDays: newpet.allowedSnackPerDays,
   });
 
   const handleSubmit = () => {
-    petStore.addNewPet(pet);
+    petStore.updatePet(pet);
     hideModal();
   };
-
   // const handleSubmit = async () => {
   //   await petStore.addNewPet(pet);
   //   if (petStore.pets) navigation.navigate("Post");
   // };
+  console.log(pet);
 
   return (
     <>
       <AuthTextInput
-        placeholder="Pet Name"
-        placeholderTextColor="white"
-        onChangeText={(name) => setPet({ ...pet, name })}
-      />
-      <AuthTextInput
-        placeholder="Type"
-        placeholderTextColor="white"
-        onChangeText={(type) => setPet({ ...pet, type })}
-      />
-      <AuthTextInput
-        placeholder="Breed"
-        placeholderTextColor="white"
-        onChangeText={(breed) => setPet({ ...pet, breed })}
-      />
-      <AuthTextInput
-        placeholder="Date of Birth"
-        placeholderTextColor="white"
-        onChangeText={(dateOfBirth) => setPet({ ...pet, dateOfBirth })}
-      />
-      <AuthTextInput
-        placeholder="Vaccinated?"
-        placeholderTextColor="white"
-        onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
-      />
-      <AuthTextInput
+        value={pet.allergies}
         placeholder="Allergies"
         placeholderTextColor="white"
         onChangeText={(allergies) => setPet({ ...pet, allergies })}
       />
       <AuthTextInput
+        value={pet.personality}
         placeholder="Personality?"
         placeholderTextColor="white"
         onChangeText={(personality) => setPet({ ...pet, personality })}
       />
+      <AuthTextInput
+        value={pet.image}
+        placeholder="Image"
+        placeholderTextColor="white"
+        onChangeText={(image) => setPet({ ...pet, image })}
+      />
+      <AuthTextInput
+        value={pet.walkingHours}
+        placeholder="Walking Hours"
+        placeholderTextColor="white"
+        onChangeText={(walkingHours) => setPet({ ...pet, walkingHours })}
+      />
+      <AuthTextInput
+        value={pet.medication}
+        placeholder="Medication"
+        placeholderTextColor="white"
+        onChangeText={(medication) => setPet({ ...pet, medication })}
+      />
+      <AuthTextInput
+        value={pet.mealTime}
+        placeholder="Meal Time"
+        placeholderTextColor="white"
+        onChangeText={(mealTime) => setPet({ ...pet, mealTime })}
+      />
+      <AuthTextInput
+        value={pet.allowedSnackPerDays}
+        placeholder="Allowed Snack Per Day"
+        placeholderTextColor="white"
+        onChangeText={(allowedSnackPerDays) =>
+          setPet({ ...pet, allowedSnackPerDays })
+        }
+      />
       <AuthButton onPress={handleSubmit}>
         {/* <AuthButton onPress={() => alert("go to post screen")}> */}
-        <AuthButtonText>Add</AuthButtonText>
+        <AuthButtonText>Submit Changes</AuthButtonText>
       </AuthButton>
     </>
   );
@@ -107,4 +124,4 @@ export const AuthTextInput = styled.TextInput`
   border-bottom-width: 1px;
 `;
 
-export default observer(AddNewPet);
+export default observer(EditPet);

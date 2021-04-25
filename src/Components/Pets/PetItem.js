@@ -5,12 +5,10 @@ import { Image, View, Text } from "react-native";
 import { observer, Spinner } from "mobx-react";
 import { TouchableOpacity, ScrollView } from "react-native";
 
-
 // import petStore from "../../../Stores/petStore";
 // import authStore from "../../../Stores/authStore";
 
 import pet6 from "../../../assets/images/Pet6.png";
-
 
 const TextStyled = styled.Text`
   font-size: 17px;
@@ -42,7 +40,7 @@ const PetItem = ({ navigation, pet }) => {
       <ScrollView />
       <ListItem>
         <TouchableOpacity
-          onPress={() => navigation.navigate("PetDetails", { pet: mypet })}
+          onPress={() => navigation.navigate("PetDetails", { petId: mypet.id })}
           // onPress={() => alert("go to pet detail")}
           style={{
             height: 100,
@@ -58,7 +56,6 @@ const PetItem = ({ navigation, pet }) => {
             borderTopRightRadius: 30,
             width: "99%",
           }}
-
         >
           <View style={{ width: "92%", alignItems: "flex-end" }}>
             <Image

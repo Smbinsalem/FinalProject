@@ -47,7 +47,7 @@ const ProfileScreen = ({ navigation, route }) => {
   //************ SPINNER ************
   if (ownerStore.loading) return <Spinner />;
   //************ EDIT MODAL ************
-  const [_visible, _setVisible] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
   const containerStyle = {
@@ -58,7 +58,7 @@ const ProfileScreen = ({ navigation, route }) => {
     margin: 60,
   };
   //************ MENU MODAL ************
-  const [visible, setVisible] = React.useState(false);
+  const [_visible, _setVisible] = React.useState(false);
   const _showModal = () => _setVisible(true);
   const _hideModal = () => _setVisible(false);
   const _containerStyle = {

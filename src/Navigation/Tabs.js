@@ -17,7 +17,9 @@ import PetDetails from "../Components/Pets/PetDetail";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
 const PetStack = createStackNavigator();
+
 const PetNavigator = () => {
   return (
     <PetStack.Navigator
