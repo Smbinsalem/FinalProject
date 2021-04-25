@@ -19,22 +19,21 @@ const { COLORS, FONTS, SIZES } = theme;
 
 const onBoardings = [
   {
-    title: "Let's Travelling",
-    description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+    title: "Are you Traveling?",
+    description: "your pets scared of shelters ? not reliable? too expensive?",
     img: onboarding1,
     img1: onboarding1a,
   },
   {
-    title: "Navigation",
+    title: "Is your pet bored",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lonely? waiting for the petsitter to visit every now and then?",
     img: onboarding2,
   },
   {
-    title: "Destination",
+    title: "We got you",
     description:
-      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "At petly you have the opportunity to join our community and solve that problem with convenient prices and geranteed safety",
     img: onboarding1a,
   },
 ];
@@ -97,7 +96,7 @@ const Onboarding = ({ navigation }) => {
                   <Text
                     style={{
                       ...FONTS.h1,
-                      color: COLORS.gray,
+                      color: COLORS.white,
                       textAlign: "center",
                     }}
                   >
@@ -109,7 +108,7 @@ const Onboarding = ({ navigation }) => {
                       ...FONTS.body3,
                       textAlign: "center",
                       marginTop: SIZES.base,
-                      color: COLORS.gray,
+                      color: COLORS.white,
                     }}
                   >
                     {item.description}
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.navy,
   },
   imageAndTextContainer: {
     width: SIZES.width,
