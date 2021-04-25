@@ -32,25 +32,29 @@ const HostSignUp = ({ navigation }) => {
   //   hostStore.fetchHost();
   // }, []);
   return (
-    <BackgroundIMG source={Pet1}>
+    <>
       <Container>
         <AuthTextInput
           placeholder="Location"
           placeholderTextColor="white"
           onChangeText={(location) => setHost({ ...host, location })}
         />
-        <DropDownPicker
-          items={[
-            { label: "Dogs", value: "Dogs" },
-            { label: "Cats", value: "Cats" },
-            { label: "Birds", value: "Birds" },
-            { label: "Fish", value: "Fish" },
-            { label: "Reptiles", value: "Reptiles" },
-          ]}
-          placeholder="Type of pets"
-          containerStyle={{ height: 40, width: 320 }}
-          onChangeItem={(item) => setHost({ ...host, typeOfPets: item.value })}
-        />
+        <DropDownView>
+          <DropDownPicker
+            items={[
+              { label: "Dogs", value: "Dogs" },
+              { label: "Cats", value: "Cats" },
+              { label: "Birds", value: "Birds" },
+              { label: "Fish", value: "Fish" },
+              { label: "Reptiles", value: "Reptiles" },
+            ]}
+            placeholder="Type of pets"
+            containerStyle={{ height: 40, width: 295 }}
+            onChangeItem={(item) =>
+              setHost({ ...host, typeOfPets: item.value })
+            }
+          />
+        </DropDownView>
         <AuthTextInput
           placeholder="Biography"
           placeholderTextColor="white"
@@ -60,23 +64,24 @@ const HostSignUp = ({ navigation }) => {
           <AuthButtonText>Sign Up</AuthButtonText>
         </AuthButton>
       </Container>
-    </BackgroundIMG>
+    </>
   );
 };
-
-export const BackgroundIMG = styled.ImageBackground`
-  flex: 1;
-  height: 90%;
-  width: 100%;
-  justify-content: center;
-`;
 
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
+  margin-top: 30px;
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -88,20 +93,31 @@ export const AuthButtonText = styled.Text`
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
+  width: 95%;
   margin-bottom: 30px;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 3%;
+  border-color: #f0ba00;
+  border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const Container = styled.View`
-  flex: 2;
+  flex: 4;
   align-self: stretch;
   justify-content: center;
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #172a3a;
+`;
+export const DropDownView = styled.View`
+  right: 9.5;
+  padding-bottom: 10%;
 `;
 export default HostSignUp;

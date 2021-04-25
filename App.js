@@ -41,25 +41,25 @@ export default function App() {
           name="SignIn"
           component={SignIn}
           options={{
-            headerBackTitle: true,
-            headerTintColor: "white",
-            headerTitle: "",
-            headerTransparent: true,
+            headerShown: false,
           }}
         />
         <Screen
           name="SignUp"
           component={SignUp}
           options={{
-            headerBackTitle: true,
-            headerTintColor: "white",
-            headerTitle: "",
-            headerTransparent: true,
+            headerShown: false,
           }}
         />
         <Screen name="SignUpAs" component={SignUpAs} />
         <Screen name="PetOwner" component={PetOwner} />
-        <Screen name="Host" component={Host} />
+        <Screen
+          name="Host"
+          component={Host}
+          options={{
+            headerShown: false,
+          }}
+        />
 
         <Screen
           name="Tabs"

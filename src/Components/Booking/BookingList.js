@@ -27,12 +27,11 @@ const BookingList = ({ navigation }) => {
     ));
 
   return (
-    <ScrollView>
-      <HomeWrapper>
-        <Text>Requests</Text>
-      </HomeWrapper>
-      <HomeWrapper>{bookingList}</HomeWrapper>
-    </ScrollView>
+    <>
+      <ScrollView>
+        <HomeWrapper>{bookingList}</HomeWrapper>
+      </ScrollView>
+    </>
   );
 };
 
@@ -42,6 +41,7 @@ export default observer(BookingList);
 
 const HomeWrapper = styled.View`
   flex: 1;
+  padding: 3.5%;
   justify-content: center;
   align-items: center;
 `;

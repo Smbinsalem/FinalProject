@@ -5,7 +5,7 @@ import styled from "styled-components";
 import authStore from "../../../Stores/authStore";
 import petStore from "../../../Stores/petStore";
 import { Spinner } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Image, View, ScrollView } from "react-native";
 import ownerStore from "../../../Stores/ownerStore";
 import { completeImgPath } from "../../../util";
 
@@ -13,6 +13,7 @@ const BookingItem = ({ booking, navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+
   if (authStore.loading) return <Spinner />;
   if (petStore.loading) return <Spinner />;
   if (ownerStore.loading) return <Spinner />;
@@ -30,53 +31,70 @@ const BookingItem = ({ booking, navigation }) => {
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
   return (
     <>
-      <ListItem>
-        <HomeWrapper>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("BookingDetails", {
-                booking: booking,
-                requester: requester,
-                bookPet: bookPet,
-              })
-            }
-          >
-            <ProfileImage source={{ uri: completeImgPath(petOwner.image) }} />
-          </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("BookingDetails", {
+            booking: booking,
+            requester: requester,
+            bookPet: bookPet,
+          })
+        }
+        style={{
+          height: 100,
+          elevation: 2,
+          backgroundColor: "rgba(23, 42, 58, 1)",
+          marginLeft: 3,
+          borderRadius: 15,
+          marginBottom: 20,
+          borderRadius: 30,
+          width: "99%",
+        }}
+      >
+        <View style={{ width: "92%", alignItems: "flex-end" }}>
+          <Image
+            source={{ uri: completeImgPath(petOwner.image) }}
+            style={{
+              top: 15,
+              height: 60,
+              width: 60,
+              borderRadius: 20,
+            }}
+          />
+        </View>
 
-          <StatusText>
-            You recieved a request from {requester.firstName}
-          </StatusText>
-          <StatusText>to take care of {bookPet.name}</StatusText>
-          <NoteText>click anywhere for more details</NoteText>
-        </HomeWrapper>
-      </ListItem>
+        <TextStyled>
+          You recieved a request from {requester.firstName} {`\n`}
+        </TextStyled>
+        <SubTextStyled>
+          to take care of {bookPet.name} {`\n`}
+        </SubTextStyled>
+        <SubTextStyled> {`\n`}</SubTextStyled>
+      </TouchableOpacity>
     </>
   );
 };
 export default observer(BookingItem);
 
 //Styling
-const HomeWrapper = styled.View`
-  justify-content: center;
-  align-items: center;
+
+const TextStyled = styled.Text`
+  font-size: 15px;
+  padding: 1%;
+  margin-top: -10%;
+  margin-left: 1%;
+  margin-bottom: 5%;
+  align-self: center;
+  font-weight: bold;
+  width: 100%;
+  color: white;
 `;
 
-const StatusText = styled.Text`
-  color: blue;
+const SubTextStyled = styled.Text`
+  font-size: 12px;
+  margin-top: -10%;
+  margin-left: 3%;
+  font-weight: normal !important;
   align-self: center;
-`;
-
-const NoteText = styled.Text`
-  font-size: 10px;
-  color: grey;
-  align-self: center;
-`;
-export const ProfileImage = styled.Image`
-  width: 100px;
-  height: 100px;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 100px;
+  width: 100%;
+  color: white;
 `;

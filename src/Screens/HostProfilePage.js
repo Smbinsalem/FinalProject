@@ -25,9 +25,10 @@ import EditHost from "../Components/User/EditHost";
 const MenuButton = () => {
   const navigation = useNavigation();
 
-  const handlePress = () => {
+  const handlePress = (event) => {
     authStore.signout();
-    navigation.navigate("SignIn");
+    event.preventDefault();
+    navigation.replace("onBoarding");
   };
 
   return (
@@ -111,6 +112,17 @@ const HostProfileScreen = ({ navigation, route }) => {
               }}
             >
               Hi {authStore.user.username}
+            </Text>
+            <Text
+              style={{
+                top: -70,
+                paddingTop: 1,
+                fontSize: 18,
+                color: "#FFF",
+                // fontWeight: "bold",
+              }}
+            >
+              {host.bio}
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>

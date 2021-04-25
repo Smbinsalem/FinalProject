@@ -53,9 +53,9 @@ class AuthStore {
       const res = await instance.post("/users/signup", userData);
       this.setUser(res.data.token);
       if (checked === "PetOwner") {
-        navigation.navigate("PetOwner");
+        navigation.replace("PetOwner");
       } else if (checked === "Host") {
-        navigation.navigate("Host");
+        navigation.replace("Host");
       }
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
@@ -68,9 +68,9 @@ class AuthStore {
       const res = await instance.post("/users/signin", userData);
       await this.setUser(res.data.token);
       if (this.user.petOwnerId) {
-        navigation.navigate("Tabs");
+        navigation.replace("Tabs");
       } else {
-        navigation.navigate("HostTabs");
+        navigation.replace("HostTabs");
       }
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);
@@ -79,9 +79,13 @@ class AuthStore {
 
   //sign out
   signout = async () => {
-    this.user = [];
-    delete instance.defaults.headers.common.Authorization;
-    await AsyncStorage.removeItem("myToken");
+    try {
+      this.user = [];
+      delete instance.defaults.headers.common.Authorization;
+      await AsyncStorage.removeItem("myToken");
+    } catch (error) {
+      console.log("AuthStore -> Signout -> error", error);
+    }
   };
 
   //update

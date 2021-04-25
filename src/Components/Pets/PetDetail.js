@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ScrollView } from "react-native-gesture-handler";
 import EditPet from "./EditPet";
 import { Modal } from "react-native-paper";
+import { Text } from "react-native";
 
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
