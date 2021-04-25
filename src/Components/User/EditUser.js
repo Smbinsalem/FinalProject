@@ -6,6 +6,9 @@ import { observer } from "mobx-react";
 import { completeImgPath } from "../../../util";
 import { Spinner } from "native-base";
 
+//Component
+import EditHost from "./EditHost";
+
 //Style
 import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -21,10 +24,10 @@ const EditProfile = () => {
     username: authStore.user.username,
     email: authStore.user.email,
   });
-  const [owner, setOwner] = useState({
-    image: completeImgPath(owner.image),
-    bio: ownerStore.bio,
-  });
+  // const [owner, setOwner] = useState({
+  //   image: completeImgPath(owner.image),
+  //   bio: ownerStore.bio,
+  // });
 
   const handleSubmit = () => authStore.updateUser(user);
 
@@ -32,7 +35,7 @@ const EditProfile = () => {
     <>
       <ScrollView>
         {/* Image */}
-
+        <EditHost />
         {/*   Username   */}
         <AuthTextInput
           onChangeText={(username) => setUser({ ...user, username })}

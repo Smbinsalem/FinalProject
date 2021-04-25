@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeAutoObservable, makeObservable, observable, action } from "mobx";
 import instance from "./instance";
 
 // What we need CRUD
@@ -9,7 +9,9 @@ import instance from "./instance";
 class HostStore {
   hosts = [];
   loading = true;
-
+  constructor() {
+    makeAutoObservable(this);
+  }
   fetchHosts = async () => {
     try {
       const response = await instance.get(`/users/petHosts`);
@@ -55,15 +57,15 @@ class HostStore {
     }
   };
 
-  constructor() {
-    makeObservable(this, {
-      hosts: observable,
-      fetchHosts: action,
-      deleteHost: action,
-      createHost: action,
-      updateHost: action,
-    });
-  }
+  // constructor() {
+  //   makeObservable(this, {
+  //     hosts: observable,
+  //     fetchHosts: action,
+  //     deleteHost: action,
+  //     createHost: action,
+  //     updateHost: action,
+  //   });
+  // }
 }
 const hostStore = new HostStore();
 hostStore.fetchHosts();
