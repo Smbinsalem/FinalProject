@@ -10,7 +10,7 @@ import petStore from "./petStore";
 
 class AuthStore {
   user = null;
-  allUsers = [];
+  allUsers = null;
   loading = true;
 
   constructor() {

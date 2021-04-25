@@ -66,6 +66,6 @@ class HostStore {
   }
 }
 const hostStore = new HostStore();
-//   hostStore.fetchHosts();
+hostStore.fetchHosts();
 
 export default hostStore;

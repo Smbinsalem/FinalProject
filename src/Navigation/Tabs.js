@@ -4,7 +4,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // Importing Navigation
-// import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
@@ -13,9 +13,32 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import PetDetails from "../Components/Pets/PetDetail";
+// Owner Inbox Screens
+import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
+import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const OwnerInboxStack = createStackNavigator();
+const OwnerInboxNavigator = () => {
+  return (
+    <OwnerInboxStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Inbox"}
+    >
+      <OwnerInboxStack.Screen name="Inbox" component={OwnerInbox} />
+      <OwnerInboxStack.Screen name="PetDetails" component={PetDetails} />
+      <OwnerInboxStack.Screen
+        name="OwnerInboxDetails"
+        component={OwnerInboxDetails}
+      />
+    </OwnerInboxStack.Navigator>
+  );
+};
 
 const CustomeTabBarButton = ({ children, onPress }) => {
   return (
@@ -61,8 +84,8 @@ const Tabs = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Inbox"
+        component={OwnerInboxNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -84,7 +107,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                HOME
+                INBOX
               </Text>
             </View>
           ),

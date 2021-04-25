@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import HostItem from "./HostItem";
+import styled from "styled-components";
 import hostStore from "../../../Stores/hostStore";
 import authStore from "../../../Stores/authStore";
 
@@ -16,20 +17,17 @@ const HostList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchAllUsers();
   }, []);
-
-  console.log(authStore.allUsers);
   const hostList = authStore.allUsers
     .filter((user) => user.petHost)
     .map((user) => (
       <HostItem navigation={navigation} user={user} key={user.id} />
     ));
-  // if (authStore.loading) return <Spinner />;
-  // if (hostStore.loading) return <Spinner />;
+
   return (
-    <>
+    <StyledView>
       <ActivityIndicator size="large" color="#f0ba00" />
       <Animated.View style={styles.card}>{hostList}</Animated.View>
-    </>
+    </StyledView>
   );
 };
 export default observer(HostList);
@@ -45,3 +43,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
+
+const StyledView = styled.View`
+  flex-direction: row-reverse;
+`;

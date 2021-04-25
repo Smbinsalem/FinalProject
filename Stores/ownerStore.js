@@ -8,7 +8,6 @@ import authStore from "./authStore";
 
 class OwnerStore {
   owners = [];
-  pets = [];
   loading = true;
 
   // getOwnerById = this.owners.find((user) => user.userId === authStore.user.id);
@@ -17,7 +16,6 @@ class OwnerStore {
     try {
       const response = await instance.get(`/users/petOwners`);
       this.owners = response.data;
-
       this.loading = false;
     } catch (error) {
       console.error("OwnerStore -> fetchOwners -> error", error);
@@ -62,7 +60,6 @@ class OwnerStore {
   constructor() {
     makeObservable(this, {
       owners: observable,
-      pets: observable,
       // getOwnerById: action,
       fetchOwners: action,
       deleteOwner: action,
