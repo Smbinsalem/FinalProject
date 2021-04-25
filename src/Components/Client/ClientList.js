@@ -5,11 +5,10 @@ import { Text, List, ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
 import ClientItem from "./ClientItem";
+import { Spinner } from "native-base";
 
 const ClientList = ({ navigation, booking }) => {
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
+  if (authStore.loading) return <Spinner />;
 
   const myHostId = authStore.user.petHostId;
 

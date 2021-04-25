@@ -6,9 +6,6 @@ import authStore from "../../../Stores/authStore";
 import ClientList from "../../Components/Client/ClientList";
 
 const ClientScreen = ({ navigation, route }) => {
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
   const myHostId = authStore.user.petHostId;
   return (
     <>

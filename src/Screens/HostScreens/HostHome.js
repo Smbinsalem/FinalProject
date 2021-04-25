@@ -9,10 +9,6 @@ import { Spinner } from "native-base";
 const HostHome = ({ navigation, route }) => {
   if (bookingStore.loading) return <Spinner />;
 
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
-
   const myHostId = authStore.user.petHostId;
 
   return (
