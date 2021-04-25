@@ -30,7 +30,6 @@ const OwnerInboxItem = ({ booking, navigation }) => {
     const petOwnerId = owner.petOwner.id || 0;
     if (petOwnerId === booking.petOwnerId) {
       counter++;
-      console.log(counter);
       return petOwnerId;
     }
   });
@@ -48,7 +47,6 @@ const OwnerInboxItem = ({ booking, navigation }) => {
   // for Pet Host profile img
   const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
 
-  console.log(petStore.pets);
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
 
   return (

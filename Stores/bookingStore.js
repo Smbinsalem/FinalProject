@@ -18,6 +18,17 @@ class BookingStore {
       console.error("BookStore -> fetchBookings -> error", error);
     }
   };
+
+  fetchRecentBookings = async () => {
+    try {
+      this.loading = true;
+      const response = await instance.get("/bookings");
+      this.bookings = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error("BookStore -> fetchBookings -> error", error);
+    }
+  };
   //
   createBooking = async (data) => {
     const response = await instance.post("/users/petOwner/bookings", data);
@@ -44,14 +55,18 @@ class BookingStore {
   };
 
   // Delete Booking from Owner Side
-  deleteOwnerBooking = async (booking, petid) => {
+  deleteOwnerBooking = async (petName, petid) => {
     try {
-      await instance.delete(`/users/petOwner/bookings`, booking);
+      await instance.delete("/users/petOwners/bookings/", {
+        data: {
+          petName: petName,
+        },
+      });
       this.bookings = this.bookings.filter(
         (booking) => booking.petId !== +petid
       );
     } catch (error) {
-      console.error("HostStore -> deleteOwnerBooking -> error", error);
+      console.error("BookingStore -> deleteOwnerBooking -> error", error);
     }
   };
 }

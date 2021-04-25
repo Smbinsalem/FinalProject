@@ -18,7 +18,6 @@ const EditHost = () => {
     location: hostStore.hosts.location,
     bio: hostStore.hosts.bio ? hostStore.hosts.bio : "Bio",
   });
-  console.log(hostStore.hosts.location);
   const handleSubmit = () => hostStore.updateHost(host);
 
   return (
