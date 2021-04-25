@@ -21,7 +21,9 @@ import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
 const PetStack = createStackNavigator();
+
 const PetNavigator = () => {
   return (
     <PetStack.Navigator
