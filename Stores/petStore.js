@@ -5,7 +5,7 @@ import instance from "./instance";
 // all routes fixed!
 
 class PetStore {
-  pets = null;
+  pets = [];
   loading = true;
 
   constructor() {

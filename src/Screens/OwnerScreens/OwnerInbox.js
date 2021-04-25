@@ -7,17 +7,7 @@ import OwnerInboxList from "../../Components/OwnerInbox/OwnerInboxList";
 import { Spinner } from "native-base";
 
 const OwnerInbox = ({ navigation }) => {
-  if (bookingStore.loading) return <Spinner />;
-
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
-
-  return (
-    <>
-      <OwnerInboxList navigation={navigation} />
-    </>
-  );
+  return <OwnerInboxList navigation={navigation} />;
 };
 
 export default observer(OwnerInbox);

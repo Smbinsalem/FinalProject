@@ -6,6 +6,7 @@ import { RadioButton } from "react-native-paper";
 import { completeImgPath } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
 import { Spinner } from "native-base";
+import CancelBooking from "./CancelBooking";
 
 const OwnerInboxDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
@@ -34,6 +35,9 @@ const OwnerInboxDetails = ({ route, navigation }) => {
         From: {booking.dateFrom} to: {booking.dateTo}
       </StatusText>
       <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
+      <TouchableOpacity>
+        <StatusText>Cancel Booking?</StatusText>
+      </TouchableOpacity>
     </HomeWrapper>
   );
 };

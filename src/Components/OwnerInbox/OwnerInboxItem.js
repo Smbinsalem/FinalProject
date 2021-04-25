@@ -14,21 +14,26 @@ import { TouchableOpacity } from "react-native";
 import { completeImgPath } from "../../../util";
 
 const OwnerInboxItem = ({ booking, navigation }) => {
+  let counter = 0;
+  useEffect(() => {
+    authStore.fetchUsers();
+  }, [counter]);
+
   if (authStore.loading) return <Spinner />;
-  if (petStore.loading) return <Spinner />;
+  // if (authStore.loading) return <Spinner />;
+  // if (petStore.loading) return <Spinner />;
   // if (ownerStore.loading) return <Spinner />;
-  if (hostStore.loading) return <Spinner />;
+  // if (hostStore.loading) return <Spinner />;
 
   //Getting Pet Owner Details
   const requester = authStore.allUsers.find((owner) => {
     const petOwnerId = owner.petOwner.id || 0;
     if (petOwnerId === booking.petOwnerId) {
+      counter++;
+      console.log(counter);
       return petOwnerId;
     }
   });
-  useEffect(() => {
-    authStore.fetchUsers();
-  }, []);
 
   // Getting Host Details
   const petHostId = hostStore.hosts.find((user) => user.id === booking.hostId);
@@ -42,7 +47,10 @@ const OwnerInboxItem = ({ booking, navigation }) => {
 
   // for Pet Host profile img
   const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
+
+  console.log(petStore.pets);
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
+
   return (
     <>
       <ListItem>

@@ -24,9 +24,10 @@ import EditProfile from "../Components/User/EditUser";
 const MenuButton = () => {
   const navigation = useNavigation();
 
-  const handlePress = () => {
+  const handlePress = (event) => {
     authStore.signout();
-    navigation.navigate("SignIn");
+    event.preventDefault();
+    navigation.replace("SignIn");
   };
 
   return (
