@@ -85,7 +85,6 @@ class AuthStore {
     try {
       // const formData = new FormData();
       // for (const key in updateUser) formData.append(key, updateUser[key]);
-
       const res = await instance.put("/users", updatedUser);
       this.user = res.data;
     } catch (error) {

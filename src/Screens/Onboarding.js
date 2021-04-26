@@ -145,7 +145,9 @@ const Onboarding = ({ navigation }) => {
             onPress={() => navigation.replace("SignIn")}
           >
             {/* Button */}
-            <Text style={{ ...FONTS.h1, color: COLORS.white }}>
+            <Text
+              style={{ ...FONTS.h1, color: COLORS.white, fontWeight: "bold" }}
+            >
               {completed ? "Let's Go" : "Skip"}
             </Text>
           </TouchableOpacity>

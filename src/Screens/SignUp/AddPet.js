@@ -8,11 +8,10 @@ import petStore from "../../../Stores/petStore";
 import styled from "styled-components/native";
 
 // //Native content
-// import DropDownPicker from "react-native-dropdown-picker";
 
 //Images
-import Pet1 from "../../../assets/images/Pet8.jpeg";
-import { TouchableNativeFeedback } from "react-native";
+import OwnerPet from "../../../assets/images/OwnerPet.png";
+import { Image } from "react-native";
 
 const AddPet = ({ navigation }) => {
   const [pet, setPet] = useState({
@@ -41,6 +40,15 @@ const AddPet = ({ navigation }) => {
   return (
     <>
       <Container>
+        <Image
+          source={OwnerPet}
+          style={{
+            top: -20,
+            right: 0,
+            height: 90,
+            width: 120,
+          }}
+        />
         <AuthTextInput
           placeholder="Pet Name *"
           placeholderTextColor="white"
@@ -122,8 +130,16 @@ export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
+  right: 5;
+  margin-top: 30px;
+  align-self: stretch;
+  align-items: center;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -135,11 +151,18 @@ export const AuthButtonText = styled.Text`
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
+  width: 95%;
   margin-bottom: 30px;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 3%;
+  border-color: #f0ba00;
+  border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const Container = styled.View`
@@ -149,6 +172,6 @@ export const Container = styled.View`
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #172a3a;
 `;
 export default AddPet;

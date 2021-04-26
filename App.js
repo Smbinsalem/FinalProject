@@ -11,6 +11,7 @@ import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
 import Host from "./src/Screens/SignUp/HostSignUp";
 import SignUpAs from "./src/Screens/SignUp/SignUpAS";
 import AddPet from "./src/Screens/SignUp/AddPet";
+import ImagePicker from "./src/Components/ImagePicker/ImagePicker";
 // import PetDetail from "./src/Components/Pets/PetDetail";
 
 //Tab Screens
@@ -23,6 +24,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Navigator>
+        <Screen
+          name="ImagePicker"
+          component={ImagePicker}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Screen
           name="onBoarding"
           component={onBoarding}
@@ -51,8 +59,23 @@ export default function App() {
             headerShown: false,
           }}
         />
-        <Screen name="SignUpAs" component={SignUpAs} />
-        <Screen name="PetOwner" component={PetOwner} />
+        <Screen
+          name="SignUpAs"
+          component={SignUpAs}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Screen
+          name="PetOwner"
+          component={PetOwner}
+          options={{
+            headerTransparent: true,
+            headerBackTitle: " ",
+            headerTintColor: "white",
+            headerTitle: "",
+          }}
+        />
         <Screen
           name="Host"
           component={Host}
@@ -82,13 +105,6 @@ export default function App() {
             headerShown: false,
           }}
         />
-        {/* <Screen
-          name="PetDetail"
-          component={PetDetail}
-          options={{
-            headerShown: false,
-          }}
-        /> */}
       </Navigator>
     </NavigationContainer>
   );

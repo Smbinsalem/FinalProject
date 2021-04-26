@@ -3,7 +3,8 @@ import { Text } from "react-native";
 import ownerStore from "../../../Stores/ownerStore";
 import { useState } from "react";
 import styled from "styled-components/native";
-
+import PetOwner from "../../../assets/images/PetOwner.png";
+import { Image } from "react-native";
 //Images
 const PetOwnerSignUp = ({ navigation }) => {
   const [petOwner, setPetOwner] = useState({
@@ -17,11 +18,15 @@ const PetOwnerSignUp = ({ navigation }) => {
   return (
     <>
       <Container>
-        {/* <AuthTextInput
-          placeholder="Add Pet"
-          placeholderTextColor="white"
-          onChangeText={(pet) => setPetOwner({ ...petOwner, pet })}
-        /> */}
+        <Image
+          source={PetOwner}
+          style={{
+            top: -20,
+            right: 0,
+            height: 120,
+            width: 300,
+          }}
+        />
         <AuthTextInput
           placeholder="Type Your Bio Here"
           placeholderTextColor="white"
@@ -46,8 +51,16 @@ export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
+  right: 5;
+  margin-top: 30px;
+  align-self: stretch;
+  align-items: center;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -59,11 +72,18 @@ export const AuthButtonText = styled.Text`
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
+  width: 95%;
   margin-bottom: 30px;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 3%;
+  border-color: #f0ba00;
+  border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const Container = styled.View`
@@ -73,6 +93,6 @@ export const Container = styled.View`
   align-items: center;
   padding-right: 60px;
   padding-left: 60px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #172a3a;
 `;
 export default PetOwnerSignUp;

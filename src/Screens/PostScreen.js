@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import PetList from "../Components/Pets/PetList";
 import authStore from "../../Stores/authStore";
 
@@ -26,9 +25,6 @@ const PostScreen = ({ navigation }) => {
 
   return (
     <>
-      <PostWrapper>
-        <PetList navigation={navigation} ownerId={authStore.user.petOwnerId} />
-      </PostWrapper>
       <Provider>
         <Portal>
           <Modal
@@ -39,11 +35,16 @@ const PostScreen = ({ navigation }) => {
             <AddNewPet hideModal={hideModal} />
           </Modal>
         </Portal>
-        <AuthButton onPress={showModal}>
-          <AuthButtonText style={{ color: "white" }}>
-            Add New Pet
-          </AuthButtonText>
-        </AuthButton>
+
+        <PostWrapper>
+          <AuthButton onPress={showModal}>
+            <AuthButtonText style={{ color: "white" }}>+</AuthButtonText>
+          </AuthButton>
+          <PetList
+            navigation={navigation}
+            ownerId={authStore.user.petOwnerId}
+          />
+        </PostWrapper>
       </Provider>
     </>
   );
@@ -79,4 +80,8 @@ export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
   font-size: 19px;
+`;
+
+export const ViewWrapper = styled.View`
+  padding-bottom: 1%;
 `;
