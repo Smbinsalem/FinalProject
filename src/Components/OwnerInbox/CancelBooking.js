@@ -16,7 +16,6 @@ const CancelBooking = ({ pet, hideModal, navigation }) => {
   const handleSubmit = () => {
     bookingStore.deleteOwnerBooking(pet.name, pet.id, navigation);
     hideModal();
-    return <LoadingScreen navigation={navigation} />;
   };
 
   return (

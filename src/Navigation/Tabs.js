@@ -13,14 +13,36 @@ import ExploreScreen from "../Screens/ExploreScreen";
 import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
+import HostDetails from "../Components/Hosts/HostDetails";
 import PetDetails from "../Components/Pets/PetDetail";
-// Owner Inbox Screens
+// Owner Screens
 import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
+import OwnerChat from "../Screens/OwnerScreens/OwnerChat";
+import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
 
-
-// const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const Stacks = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Explore"}
+    >
+      <Stack.Screen name="Explore" component={ExploreScreen} />
+      <Stack.Screen
+        name="HostDetails"
+        component={HostDetails}
+        style={{ headerShown: true, headerTransparent: true }}
+      />
+      {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
+      <Stacks.Screen name="Client" component={ClientScreen} /> */}
+    </Stack.Navigator>
+  );
+};
 
 const PetStack = createStackNavigator();
 
@@ -54,6 +76,25 @@ const OwnerInboxNavigator = () => {
         component={OwnerInboxDetails}
       />
     </OwnerInboxStack.Navigator>
+  );
+};
+
+const OwnerChatStack = createStackNavigator();
+const OwnerChatNavigator = () => {
+  return (
+    <OwnerChatStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={"Chat"}
+    >
+      <OwnerChatStack.Screen name="Chat" component={OwnerChat} />
+      <OwnerChatStack.Screen name="PetDetails" component={PetDetails} />
+      <OwnerChatStack.Screen
+        name="OwnerChatDetails"
+        component={OwnerChatDetails}
+      />
+    </OwnerChatStack.Navigator>
   );
 };
 
@@ -133,7 +174,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Explore"
-        component={ExploreScreen}
+        component={Stacks}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -183,7 +224,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Chat"
-        component={ChatScreen}
+        component={OwnerChatNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View

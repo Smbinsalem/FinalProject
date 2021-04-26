@@ -33,7 +33,7 @@ const onBoardings = [
   {
     title: "We got you",
     description:
-      "At petly you have the opportunity to join our community and solve that problem with convenient prices and geranteed safety",
+      "At petly you have the opportunity to leave your pet in safe hands",
     img: onboarding1a,
   },
 ];
@@ -142,7 +142,7 @@ const Onboarding = ({ navigation }) => {
               borderTopRightRadius: 0,
               backgroundColor: COLORS.yellow,
             }}
-            onPress={() => navigation.navigate("SignIn")}
+            onPress={() => navigation.replace("SignIn")}
           >
             {/* Button */}
             <Text style={{ ...FONTS.h1, color: COLORS.white }}>

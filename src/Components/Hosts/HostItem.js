@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ListItem } from "native-base";
+
 import { observer } from "mobx-react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 
@@ -16,7 +16,7 @@ const TextStyled = styled.Text`
 const HostItem = ({ user, navigation }) => {
   return (
     <TouchableOpacity
-      // onPress={() => navigation.navigate("Detail")}
+      onPress={() => navigation.navigate("HostDetails")}
       style={{
         height: 250,
         elevation: 2,
@@ -53,31 +53,12 @@ const HostItem = ({ user, navigation }) => {
         <Text
           style={{
             fontWeight: "bold",
+            color: "#ffff",
           }}
         >
-          {user.firstName}
-          {user.lastName}
-        </Text>
-        <Text
-          style={{
-            fontWeight: "bold",
-            color: "#172A3A",
-            paddingLeft: 35,
-          }}
-        >
-          10 KD
+          {user.firstName} {user.lastName}
         </Text>
       </View>
-      <Text
-        style={{
-          paddingHorizontal: 10,
-          fontWeight: "bold",
-          color: "#fff",
-          paddingTop: 3,
-        }}
-      >
-        Al-Dasma
-      </Text>
     </TouchableOpacity>
   );
 };

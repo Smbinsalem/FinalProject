@@ -106,7 +106,6 @@ const EditPetStyled = styled.TouchableOpacity`
   margin-left: auto;
   width: 90%;
 `;
-
 export const ProfileImage = styled.Image`
   width: 125px;
   height: 125px;

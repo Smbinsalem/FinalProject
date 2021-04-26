@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
 import { RadioButton } from "react-native-paper";
 import { completeImgPath } from "../../../util";
@@ -23,23 +23,37 @@ const BookingDetails = ({ route, navigation }) => {
     bookingStore.updateHostBooking(status, navigation);
   };
   return (
-    <HomeWrapper>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("PetDetails", {
-            pet: bookPet,
-          })
-        }
+    <>
+      <View
+        style={{
+          paddingBottom: 105,
+          backgroundColor: "#fff",
+        }}
       >
-        <ProfileImage source={{ uri: completeImgPath(bookPet.image) }} />
-        <StatusText>Pet Name: {bookPet.name} </StatusText>
-      </TouchableOpacity>
-      <StatusText>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("PetDetails", {
+              petId: bookPet.id,
+            })
+          }
+        >
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "#fff",
+            }}
+          >
+            <ProfileImage source={{ uri: completeImgPath(bookPet.image) }} />
+          </View>
+        </TouchableOpacity>
+      </View>
+      <TextStyle>
+        <TextStyle>Pet Name: {bookPet.name} </TextStyle>
         Client Name: {requester.firstName} {requester.lastName}
-      </StatusText>
-      <StatusText>
+      </TextStyle>
+      <TextStyle>
         From: {booking.dateFrom} to: {booking.dateTo}
-      </StatusText>
+      </TextStyle>
       <TextStyle>Become:</TextStyle>
       <FieldView>
         <TextStyle>Accept</TextStyle>
@@ -63,7 +77,7 @@ const BookingDetails = ({ route, navigation }) => {
       <AuthButton onPress={handleSubmit}>
         <AuthButtonText>Next</AuthButtonText>
       </AuthButton>
-    </HomeWrapper>
+    </>
   );
 };
 
@@ -76,22 +90,7 @@ const HomeWrapper = styled.View`
   align-items: center;
   background-color: black;
 `;
-const ChoiceView = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
 
-const StatusText = styled.Text`
-  color: red;
-`;
-
-const ChoiceText = styled.Text`
-  color: blue;
-  background-color: yellow;
-  margin: 10px;
-  padding: 5px;
-`;
 export const ProfileImage = styled.Image`
   width: 125px;
   height: 125px;
