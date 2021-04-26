@@ -11,27 +11,19 @@ const BookingList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
-  const myHostId = authStore.user.petHostId;
+  const myHostId = authStore.user?.petHostId;
 
   const bookingList = bookingStore.bookings
     .filter((host) => host.hostId === myHostId)
     .filter((status) => status.bookingStatus === "pending")
     .map((booking) => (
-      <>
-        <BookingItem
-          navigation={navigation}
-          booking={booking}
-          key={booking.id}
-        />
-      </>
+      <BookingItem navigation={navigation} booking={booking} key={booking.id} />
     ));
 
   return (
-    <>
-      <ScrollView>
-        <HomeWrapper>{bookingList}</HomeWrapper>
-      </ScrollView>
-    </>
+    <ScrollView>
+      <HomeWrapper>{bookingList}</HomeWrapper>
+    </ScrollView>
   );
 };
 

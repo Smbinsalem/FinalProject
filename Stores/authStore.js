@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { runInAction, makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 //Decode
@@ -19,21 +19,13 @@ class AuthStore {
   getUserById = (userId) => this.user.find((user) => user.id === userId);
 
   fetchUsers = async () => {
+    if (!this.user) return;
     try {
       const response = await instance.get("/users");
-      this.allUsers = response.data;
-      this.loading = false;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // All Users
-  fetchAllUsers = async () => {
-    try {
-      const response = await instance.get("/users");
-      this.allUsers = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.allUsers = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error(error);
     }
@@ -44,6 +36,7 @@ class AuthStore {
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    this.fetchUsers();
   };
 
   //sign up

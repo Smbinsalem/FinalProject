@@ -8,7 +8,7 @@ import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const ClientScreen = ({ navigation, route }) => {
-  const myHostId = authStore.user.petHostId;
+  const myHostId = authStore.user?.petHostId;
   return (
     <>
       <View

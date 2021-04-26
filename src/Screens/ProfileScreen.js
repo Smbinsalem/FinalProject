@@ -289,6 +289,6 @@ const SignoutTextStyled = styled.Text`
 
 const StyledView = styled.View`
   position: absolute;
-  left: 20;
-  top: 60;
+  left: 20px;
+  top: 60px;
 `;

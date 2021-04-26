@@ -10,19 +10,13 @@ import { Spinner } from "native-base";
 const ClientList = ({ navigation, booking }) => {
   if (authStore.loading) return <Spinner />;
 
-  const myHostId = authStore.user.petHostId;
+  const myHostId = authStore.user?.petHostId;
 
   const bookingList = bookingStore.bookings
     .filter((host) => host.hostId === myHostId)
     .filter((status) => status.bookingStatus === "approved")
     .map((booking) => (
-      <>
-        <ClientItem
-          navigation={navigation}
-          booking={booking}
-          key={booking.id}
-        />
-      </>
+      <ClientItem navigation={navigation} booking={booking} key={booking.id} />
     ));
 
   return (
