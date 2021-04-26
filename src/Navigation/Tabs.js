@@ -19,7 +19,6 @@ import PetDetails from "../Components/Pets/PetDetail";
 import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -82,7 +81,6 @@ const CustomeTabBarButton = ({ children, onPress }) => {
   return (
     <TouchableOpacity
       style={{
-        top: -25,
         justifyContent: "center",
         alignItems: "center",
         ...styles.shadow,
@@ -91,9 +89,9 @@ const CustomeTabBarButton = ({ children, onPress }) => {
     >
       <View
         style={{
-          width: 70,
-          height: 100,
-          borderRadius: 35,
+          width: 110,
+          height: 110,
+          borderRadius: 60,
           backgroundColor: "#F0BA00",
         }}
       >
@@ -192,8 +190,8 @@ const Tabs = () => {
               source={require("../../assets/icons/post.png")}
               resizeMode="contain"
               style={{
-                width: 30,
-                height: 30,
+                width: 40,
+                height: 40,
                 tintColor: focused ? "#172A3A" : "#FFF",
               }}
             />
