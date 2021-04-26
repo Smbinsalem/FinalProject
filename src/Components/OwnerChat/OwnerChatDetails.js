@@ -41,10 +41,26 @@ const OwnerChatDetails = ({ route, navigation }) => {
       <StatusText>
         From: {booking.dateFrom} to: {booking.dateTo}
       </StatusText>
-      <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
-      <EditPetStyled onPress={() => callNumber(host.contactNumber)}>
-        <Text>Call {host.firstName}</Text>
-      </EditPetStyled>
+
+      <ChoiceView>
+        <CallStyled onPress={() => callNumber(host.contactNumber)}>
+          <Text>Call {host.firstName}</Text>
+        </CallStyled>
+        <CallStyled
+          onPress={() =>
+            navigation.navigate("HostProfileDetails", {
+              host: host,
+            })
+          }
+        >
+          <Text>{host.firstName}'s Profile</Text>
+        </CallStyled>
+      </ChoiceView>
+      <ChoiceView>
+        <ReviewButton onPress={() => alert("Go To Host Profile")}>
+          <Text>Add Review</Text>
+        </ReviewButton>
+      </ChoiceView>
     </HomeWrapper>
   );
 };
@@ -123,12 +139,24 @@ export const AuthButtonText = styled.Text`
   font-size: 18px;
 `;
 
-const EditPetStyled = styled.TouchableOpacity`
+const CallStyled = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
   background-color: #f0ba00;
-  margin-right: auto;
-  margin-left: auto;
-  width: 90%;
+  margin-right: 3%;
+  margin-top: 8;
+  width: 33%;
+  border-radius: 10px;
+`;
+
+const ReviewButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0ba00;
+  margin-right: 12;
+  margin-top: 8;
+  width: 67%;
+  border-radius: 10px;
 `;

@@ -20,6 +20,7 @@ import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 import OwnerChat from "../Screens/OwnerScreens/OwnerChat";
 import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
+import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -89,6 +90,10 @@ const OwnerChatNavigator = () => {
       initialRouteName={"Chat"}
     >
       <OwnerChatStack.Screen name="Chat" component={OwnerChat} />
+      <OwnerChatStack.Screen
+        name="HostProfileDetails"
+        component={HostProfileDetails}
+      />
       <OwnerChatStack.Screen name="PetDetails" component={PetDetails} />
       <OwnerChatStack.Screen
         name="OwnerChatDetails"
