@@ -15,7 +15,7 @@ import {
 
 const HostList = ({ navigation }) => {
   useEffect(() => {
-    authStore.fetchAllUsers();
+    authStore.fetchUsers();
   }, []);
   const hostList = authStore.allUsers
     .filter((user) => user.petHost)
@@ -33,7 +33,7 @@ const HostList = ({ navigation }) => {
 export default observer(HostList);
 const styles = StyleSheet.create({
   card: {
-    marginLeft: 400,
+    // marginLeft: 400,
     width: 400,
     flexDirection: "row",
   },

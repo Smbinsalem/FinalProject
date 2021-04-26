@@ -8,7 +8,7 @@ import OwnerInboxItem from "./OwnerInboxItem";
 import { Spinner, Text } from "native-base";
 
 const OwnerInboxList = ({ navigation }) => {
-  authStore.fetchAllUsers();
+  authStore.fetchUsers();
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 

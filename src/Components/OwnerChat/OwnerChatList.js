@@ -8,12 +8,12 @@ import OwnerChatItem from "./OwnerChatItem";
 import { Spinner, Text } from "native-base";
 
 const OwnerChatList = ({ navigation }) => {
-  authStore.fetchAllUsers();
+  authStore.fetchUsers();
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 
   const ownerChatList = bookingStore.bookings
-    .filter((owner) => owner.petOwnerId === authStore.user.petOwnerId)
+    .filter((owner) => owner.petOwnerId === authStore.user?.petOwnerId)
     .filter((status) => status.bookingStatus === "approved")
     .map((booking) => (
       <OwnerChatItem

@@ -1,3 +1,4 @@
+import { Spinner } from "native-base";
 import React from "react";
 import {
   Animated,
@@ -8,6 +9,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import authStore from "../../Stores/authStore";
 
 // constants
 import { images, theme } from "../constants";
@@ -39,7 +41,6 @@ const onBoardings = [
 
 const Onboarding = ({ navigation }) => {
   const [completed, setCompleted] = React.useState(false);
-
   const scrollX = new Animated.Value(0);
 
   React.useEffect(() => {
