@@ -19,7 +19,7 @@ const PetDetail = ({ navigation, route }) => {
   const hideModal = () => setVisible(false);
   const containerStyle = {
     backgroundColor: "#2b4f60",
-    height: "87%",
+    height: "100%",
     width: "77%",
     padding: 10,
     margin: 60,
@@ -61,6 +61,7 @@ const PetDetail = ({ navigation, route }) => {
         </FieldWrapper>
 
         {/* EDIT MODAL */}
+
         <Modal
           visible={visible}
           onDismiss={hideModal}
