@@ -6,11 +6,13 @@ import hostStore from "../../../Stores/hostStore";
 
 //Style
 import styled from "styled-components/native";
+import { Image } from "react-native";
 
 //Native content
 import DropDownPicker from "react-native-dropdown-picker";
 
 //Images
+import HostLogo from "../../../assets/images/HostLogo.png";
 
 const HostSignUp = ({ navigation }) => {
   //  useEffect(() => {
@@ -33,6 +35,15 @@ const HostSignUp = ({ navigation }) => {
   return (
     <>
       <Container>
+        <Image
+          source={HostLogo}
+          style={{
+            top: -20,
+            right: -20,
+            height: 120,
+            width: 300,
+          }}
+        />
         <AuthTextInput
           placeholder="Location"
           placeholderTextColor="white"

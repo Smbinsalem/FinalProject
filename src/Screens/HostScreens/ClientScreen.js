@@ -8,14 +8,14 @@ import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const ClientScreen = ({ navigation, route }) => {
-  const myHostId = authStore.user.petHostId;
+  const myHostId = authStore.user?.petHostId;
   return (
     <>
       <View
         style={{
           backgroundColor: "#172A3A",
           height: "20%",
-          // paddingTop: "%",
+          paddingTop: 10,
           paddingHorizontal: 20,
         }}
       >

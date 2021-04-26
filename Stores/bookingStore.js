@@ -48,6 +48,7 @@ class BookingStore {
         (book) => book.id === updateBook.id
       );
       for (const key in book) book[key] = updateBook[key];
+
       navigation.navigate(
         updateBook.bookingstatus === "Approved" ? "ClientScreen" : "Inbox"
       );
