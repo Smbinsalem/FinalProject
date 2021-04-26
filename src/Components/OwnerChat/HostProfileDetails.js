@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import SwiperComponent from "../../constants/Swiper";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import hostStore from "../../../Stores/hostStore";
 
-const HostDetails = ({ navigation, route }) => {
+const HostProfileDetails = ({ navigation, route }) => {
+  const { host } = route.params;
+  const hostProfile = hostStore.hosts.find((user) => (user.userId = host.id));
+  hostStore.averageReview(hostProfile.id);
   return (
     <View
       style={{
@@ -35,7 +39,25 @@ const HostDetails = ({ navigation, route }) => {
                 color: "#172A3A",
               }}
             >
-              FullName
+              Average Rating: {hostStore.average}
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: -80,
+              marginHorizontal: 20,
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 28,
+                color: "#172A3A",
+              }}
+            >
+              {host.firstName} {host.lastName}
             </Text>
           </View>
 
@@ -48,7 +70,7 @@ const HostDetails = ({ navigation, route }) => {
               fontSize: 20,
             }}
           >
-            Host's Bio
+            {hostProfile.bio}
           </Text>
           <Text
             style={{
@@ -59,7 +81,7 @@ const HostDetails = ({ navigation, route }) => {
               fontSize: 20,
             }}
           >
-            UserName
+            {host.username}
           </Text>
           <View
             style={{
@@ -68,7 +90,7 @@ const HostDetails = ({ navigation, route }) => {
               width: "100%",
             }}
           >
-            <View
+            {/* <View
               style={{
                 width: "30%",
 
@@ -88,9 +110,9 @@ const HostDetails = ({ navigation, route }) => {
                   fontSize: 17,
                 }}
               >
-                Buy Now
+                Meow
               </Text>
-            </View>
+            </View> */}
 
             <View
               style={{
@@ -98,7 +120,8 @@ const HostDetails = ({ navigation, route }) => {
 
                 backgroundColor: "#f0ba00",
                 height: 50,
-                marginTop: 20,
+                marginBottom: 100,
+                marginLeft: 350,
                 borderRadius: 25,
                 alignItems: "center",
                 justifyContent: "center",
@@ -112,7 +135,7 @@ const HostDetails = ({ navigation, route }) => {
                   fontSize: 17,
                 }}
               >
-                Description
+                Reviews
               </Text>
             </View>
           </View>
@@ -121,4 +144,4 @@ const HostDetails = ({ navigation, route }) => {
     </View>
   );
 };
-export default HostDetails;
+export default HostProfileDetails;
