@@ -11,7 +11,6 @@ import styled from "styled-components/native";
 import DropDownPicker from "react-native-dropdown-picker";
 
 //Images
-import Pet1 from "../../../assets/images/Pet8.jpeg";
 
 const HostSignUp = ({ navigation }) => {
   //  useEffect(() => {

@@ -13,7 +13,7 @@ import { TouchableOpacity } from "react-native";
 
 import { completeImgPath } from "../../../util";
 
-const OwnerInboxItem = ({ booking, navigation }) => {
+const OwnerChatItem = ({ booking, navigation }) => {
   let counter = 0;
   useEffect(() => {
     authStore.fetchUsers();
@@ -46,6 +46,7 @@ const OwnerInboxItem = ({ booking, navigation }) => {
 
   // for Pet Host profile img
   const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
+
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
 
   return (
@@ -54,7 +55,7 @@ const OwnerInboxItem = ({ booking, navigation }) => {
         <HomeWrapper>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate("OwnerInboxDetails", {
+              navigation.navigate("OwnerChatDetails", {
                 booking: booking,
                 owner: requester,
                 pet: bookPet,
@@ -65,15 +66,14 @@ const OwnerInboxItem = ({ booking, navigation }) => {
             <ProfileImage source={{ uri: completeImgPath(petHost.image) }} />
           </TouchableOpacity>
 
-          <StatusText>You made a request to </StatusText>
-          <StatusText>to take care of {bookPet.name}</StatusText>
-          <NoteText>Waiting for reply {hostDetails.username} </NoteText>
+          <StatusText>{hostDetails.firstName} </StatusText>
+          <StatusText>is taking care of {bookPet.name}</StatusText>
         </HomeWrapper>
       </ListItem>
     </>
   );
 };
-export default observer(OwnerInboxItem);
+export default observer(OwnerChatItem);
 
 //Styling
 const HomeWrapper = styled.View`

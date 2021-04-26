@@ -11,7 +11,6 @@ import styled from "styled-components/native";
 import { Icon } from "native-base";
 
 //Images
-import Pet1 from "../../assets/images/Sky2.jpeg";
 import Pet2 from "../../assets/images/Logo10.png";
 import Pet5 from "../../assets/images/Logo12.png";
 
@@ -41,57 +40,55 @@ const SignIn = ({ navigation }) => {
 
   return (
     <>
-      <BackgroundIMG source={Pet1}>
-        <AuthContainer>
-          <Image
-            source={Pet2}
-            style={{
-              top: -20,
-              right: 10,
-              height: 200,
-              width: 300,
-            }}
-          />
-          <Image
-            source={Pet5}
-            style={{
-              top: -20,
-              right: 10,
-              height: 100,
-              width: 150,
-            }}
-          />
+      <AuthContainer>
+        <Image
+          source={Pet2}
+          style={{
+            top: -20,
+            right: 10,
+            height: 200,
+            width: 300,
+          }}
+        />
+        <Image
+          source={Pet5}
+          style={{
+            top: -20,
+            right: 10,
+            height: 100,
+            width: 150,
+          }}
+        />
 
-          <FieldView>
-            <AuthTextInput
-              placeholder="Username"
-              autoCapitalize="none"
-              placeholderTextColor="white"
-              onChangeText={(username) => setUser({ ...user, username })}
-            />
-          </FieldView>
-          <FieldView>
-            <AuthTextInput
-              placeholder="Password"
-              autoCapitalize="none"
-              placeholderTextColor="white"
-              secureTextEntry={passwordVisibilty}
-              onChangeText={(password) => setUser({ ...user, password })}
-            />
-            <Iconstyled
-              name={passwordIcon}
-              type="MaterialCommunityIcons"
-              onPress={handlePassword}
-            />
-          </FieldView>
-          <AuthButton onPress={handleSubmit}>
-            <AuthButtonText>Sign in</AuthButtonText>
-          </AuthButton>
-          <AuthOther onPress={() => navigation.navigate("SignUp")}>
-            Click here to register!
-          </AuthOther>
-        </AuthContainer>
-      </BackgroundIMG>
+        <FieldView>
+          <AuthTextInput
+            placeholder="Username"
+            autoCapitalize="none"
+            placeholderTextColor="white"
+            onChangeText={(username) => setUser({ ...user, username })}
+          />
+        </FieldView>
+        <FieldView>
+          <AuthTextInput
+            placeholder="Password"
+            autoCapitalize="none"
+            placeholderTextColor="white"
+            secureTextEntry={passwordVisibilty}
+            onChangeText={(password) => setUser({ ...user, password })}
+          />
+          <Iconstyled
+            name={passwordIcon}
+            type="MaterialCommunityIcons"
+            onPress={handlePassword}
+          />
+        </FieldView>
+        <AuthButton onPress={handleSubmit}>
+          <AuthButtonText>Sign in</AuthButtonText>
+        </AuthButton>
+        <AuthOther onPress={() => navigation.navigate("SignUp")}>
+          Click here to register!
+        </AuthOther>
+      </AuthContainer>
     </>
   );
 };

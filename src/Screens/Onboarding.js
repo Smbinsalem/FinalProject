@@ -11,8 +11,7 @@ import {
 
 // constants
 import { images, theme } from "../constants";
-import Tabs from "../Navigation/Tabs";
-const { onboarding1, onboarding2, onboarding3, onboarding1a } = images;
+const { onboarding1, onboarding2, onboarding1a } = images;
 
 // theme
 const { COLORS, FONTS, SIZES } = theme;

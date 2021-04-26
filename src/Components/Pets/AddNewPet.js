@@ -39,19 +39,25 @@ const AddNewPet = ({ navigation, hideModal }) => {
   return (
     <>
       <AuthTextInput
-        placeholder="Pet Name"
+        placeholder="Pet Name *"
         placeholderTextColor="white"
         onChangeText={(name) => setPet({ ...pet, name })}
       />
       <AuthTextInput
-        placeholder="Type"
+        placeholder="Type *"
         placeholderTextColor="white"
         onChangeText={(type) => setPet({ ...pet, type })}
       />
       <AuthTextInput
-        placeholder="Breed"
+        placeholder="Breed *"
         placeholderTextColor="white"
         onChangeText={(breed) => setPet({ ...pet, breed })}
+      />
+
+      <AuthTextInput
+        placeholder="Vaccinated? *"
+        placeholderTextColor="white"
+        onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
       />
       <AuthTextInput
         placeholder="Date of Birth"
@@ -59,17 +65,12 @@ const AddNewPet = ({ navigation, hideModal }) => {
         onChangeText={(dateOfBirth) => setPet({ ...pet, dateOfBirth })}
       />
       <AuthTextInput
-        placeholder="Vaccinated?"
-        placeholderTextColor="white"
-        onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
-      />
-      <AuthTextInput
         placeholder="Allergies"
         placeholderTextColor="white"
         onChangeText={(allergies) => setPet({ ...pet, allergies })}
       />
       <AuthTextInput
-        placeholder="Personality?"
+        placeholder="Personality"
         placeholderTextColor="white"
         onChangeText={(personality) => setPet({ ...pet, personality })}
       />

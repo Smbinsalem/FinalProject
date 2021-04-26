@@ -5,7 +5,7 @@ import Pet8 from "../../../assets/images/Pet8.jpeg";
 
 const SignUpAs = ({ navigation }) => {
   return (
-    <BackgroundIMG source={Pet8}>
+    <>
       <Container>
         <AuthButtonText> I'm A... </AuthButtonText>
         <AuthButton onPress={() => navigation.navigate("PetOwner")}>
@@ -15,7 +15,7 @@ const SignUpAs = ({ navigation }) => {
           <AuthButtonText>Host</AuthButtonText>
         </AuthButton>
       </Container>
-    </BackgroundIMG>
+    </>
   );
 };
 

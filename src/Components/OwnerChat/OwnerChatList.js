@@ -4,20 +4,19 @@ import styled from "styled-components";
 import { ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import OwnerInboxItem from "./OwnerInboxItem";
+import OwnerChatItem from "./OwnerChatItem";
 import { Spinner, Text } from "native-base";
 
-const OwnerInboxList = ({ navigation }) => {
+const OwnerChatList = ({ navigation }) => {
   authStore.fetchAllUsers();
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 
-  //New Method
-  const ownerInboxList = bookingStore.bookings
-    .filter((owner) => owner.petOwnerId === authStore.user?.petOwnerId)
-    .filter((status) => status.bookingStatus === "pending")
+  const ownerChatList = bookingStore.bookings
+    .filter((owner) => owner.petOwnerId === authStore.user.petOwnerId)
+    .filter((status) => status.bookingStatus === "approved")
     .map((booking) => (
-      <OwnerInboxItem
+      <OwnerChatItem
         navigation={navigation}
         booking={booking}
         key={booking.id}
@@ -27,14 +26,14 @@ const OwnerInboxList = ({ navigation }) => {
   return (
     <ScrollView>
       <HomeWrapper>
-        <Text>Requests</Text>
+        <Text>Who is taking care of my pet?</Text>
       </HomeWrapper>
-      <HomeWrapper>{ownerInboxList}</HomeWrapper>
+      <HomeWrapper>{ownerChatList}</HomeWrapper>
     </ScrollView>
   );
 };
 
-export default observer(OwnerInboxList);
+export default observer(OwnerChatList);
 
 //Styling
 

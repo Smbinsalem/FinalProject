@@ -9,6 +9,7 @@ import instance from "./instance";
 class HostStore {
   hosts = [];
   loading = true;
+  average = null;
   constructor() {
     makeAutoObservable(this);
   }
@@ -56,16 +57,16 @@ class HostStore {
       console.error("HostStore -> updateHost -> error", error);
     }
   };
-
-  // constructor() {
-  //   makeObservable(this, {
-  //     hosts: observable,
-  //     fetchHosts: action,
-  //     deleteHost: action,
-  //     createHost: action,
-  //     updateHost: action,
-  //   });
-  // }
+  averageReview = async (hostId) => {
+    try {
+      const response = await instance.get("/users/petHosts/averageReviews", {
+        params: { petHostId: hostId },
+      });
+      this.average = response.data;
+    } catch (error) {
+      console.error("HostStore -> AverageReviews -> error", error);
+    }
+  };
 }
 const hostStore = new HostStore();
 hostStore.fetchHosts();
