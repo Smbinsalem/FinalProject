@@ -24,13 +24,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <Navigator>
-        <Screen
+        {/* <Screen
           name="ImagePicker"
           component={ImagePicker}
           options={{
             headerShown: false,
           }}
-        />
+        /> */}
         <Screen
           name="onBoarding"
           component={onBoarding}
