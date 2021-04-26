@@ -39,7 +39,7 @@ const AddPet = ({ navigation }) => {
   const handleSubmit = () => petStore.addPet(pet, navigation);
 
   return (
-    <BackgroundIMG source={Pet1}>
+    <>
       <Container>
         <AuthTextInput
           placeholder="Pet Name"
@@ -107,7 +107,7 @@ const AddPet = ({ navigation }) => {
           <AuthButtonText>Sign Up</AuthButtonText>
         </AuthButton>
       </Container>
-    </BackgroundIMG>
+    </>
   );
 };
 

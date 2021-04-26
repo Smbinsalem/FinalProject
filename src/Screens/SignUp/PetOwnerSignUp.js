@@ -5,7 +5,6 @@ import { useState } from "react";
 import styled from "styled-components/native";
 
 //Images
-import Pet1 from "../../../assets/images/Pet8.jpeg";
 const PetOwnerSignUp = ({ navigation }) => {
   const [petOwner, setPetOwner] = useState({
     bio: "",
@@ -16,7 +15,7 @@ const PetOwnerSignUp = ({ navigation }) => {
     if (ownerStore.owners) navigation.navigate("AddPet");
   };
   return (
-    <BackgroundIMG source={Pet1}>
+    <>
       <Container>
         {/* <AuthTextInput
           placeholder="Add Pet"
@@ -32,7 +31,7 @@ const PetOwnerSignUp = ({ navigation }) => {
           <AuthButtonText>Next</AuthButtonText>
         </AuthButton>
       </Container>
-    </BackgroundIMG>
+    </>
   );
 };
 
