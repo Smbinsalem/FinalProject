@@ -27,9 +27,6 @@ const ClientList = ({ navigation, booking }) => {
 
   return (
     <ScrollView>
-      <HomeWrapper>
-        <Text>My Clients</Text>
-      </HomeWrapper>
       <HomeWrapper>{bookingList}</HomeWrapper>
     </ScrollView>
   );
@@ -38,13 +35,9 @@ const ClientList = ({ navigation, booking }) => {
 export default observer(ClientList);
 
 //Styling
-
 const HomeWrapper = styled.View`
   flex: 1;
+  padding: 3.5%;
   justify-content: center;
   align-items: center;
-`;
-
-const StatusText = styled.Text`
-  color: red;
 `;

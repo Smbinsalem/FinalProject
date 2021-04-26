@@ -27,7 +27,7 @@ const MenuButton = () => {
   const handlePress = (event) => {
     authStore.signout();
     event.preventDefault();
-    navigation.replace("SignIn");
+    navigation.replace("onBoarding");
   };
 
   return (
@@ -112,6 +112,17 @@ const ProfileScreen = ({ navigation, route }) => {
               }}
             >
               Hi {authStore.user.username}
+            </Text>
+            <Text
+              style={{
+                top: -70,
+                paddingTop: 1,
+                fontSize: 18,
+                color: "#FFF",
+                fontWeight: "bold",
+              }}
+            >
+              {owner.bio}
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
