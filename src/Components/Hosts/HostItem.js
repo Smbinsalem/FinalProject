@@ -53,31 +53,12 @@ const HostItem = ({ user, navigation }) => {
         <Text
           style={{
             fontWeight: "bold",
+            color: "#ffff",
           }}
         >
-          {user.firstName}
-          {user.lastName}
-        </Text>
-        <Text
-          style={{
-            fontWeight: "bold",
-            color: "#172A3A",
-            paddingLeft: 35,
-          }}
-        >
-          10 KD
+          {user.firstName} {user.lastName}
         </Text>
       </View>
-      <Text
-        style={{
-          paddingHorizontal: 10,
-          fontWeight: "bold",
-          color: "#fff",
-          paddingTop: 3,
-        }}
-      >
-        Al-Dasma
-      </Text>
     </TouchableOpacity>
   );
 };
