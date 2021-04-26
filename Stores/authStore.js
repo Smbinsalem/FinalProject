@@ -1,12 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 
-//decode
+//Decode
 import decode from "jwt-decode";
 
-//storage
+//Storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import petStore from "./petStore";
 
 class AuthStore {
   user = null;
@@ -80,9 +79,9 @@ class AuthStore {
   //sign out
   signout = async () => {
     try {
-      this.user = [];
       delete instance.defaults.headers.common.Authorization;
       await AsyncStorage.removeItem("myToken");
+      this.user = null;
     } catch (error) {
       console.log("AuthStore -> Signout -> error", error);
     }
@@ -93,10 +92,9 @@ class AuthStore {
     try {
       // const formData = new FormData();
       // for (const key in updateUser) formData.append(key, updateUser[key]);
-      await instance.put("/users", updatedUser);
-      const TheUser = this.user;
-      for (const key in TheUser) TheUser[key] = updatedUser[key];
-      this.user = this.TheUser;
+
+      const res = await instance.put("/users", updatedUser);
+      this.user = res.data;
     } catch (error) {
       console.log("AuthStore -> updateUser -> error", error);
     }
