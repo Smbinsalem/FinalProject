@@ -12,8 +12,9 @@ const OwnerInboxList = ({ navigation }) => {
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 
+  //New Method
   const ownerInboxList = bookingStore.bookings
-    .filter((owner) => owner.petOwnerId === authStore.user.petOwnerId)
+    .filter((owner) => owner.petOwnerId === authStore.user?.petOwnerId)
     .filter((status) => status.bookingStatus === "pending")
     .map((booking) => (
       <OwnerInboxItem

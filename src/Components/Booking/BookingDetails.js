@@ -47,13 +47,67 @@ const BookingDetails = ({ route, navigation }) => {
           </View>
         </TouchableOpacity>
       </View>
-      <TextStyle>
-        <TextStyle>Pet Name: {bookPet.name} </TextStyle>
+      <View
+        style={{
+          flexDirection: "row",
+          marginTop: -80,
+          marginHorizontal: 20,
+          alignItems: "center",
+        }}
+      >
+        <TextStyle
+          style={{
+            fontWeight: "bold",
+            fontSize: 28,
+            color: "#172A3A",
+          }}
+        >
+          Pet Name: {bookPet.name}
+        </TextStyle>
+      </View>
+      <TextStyle
+        style={{
+          paddingHorizontal: 20,
+          fontWeight: "bold",
+          color: "#172A3A",
+          paddingTop: 3,
+          fontSize: 20,
+        }}
+      >
         Client Name: {requester.firstName} {requester.lastName}
       </TextStyle>
-      <TextStyle>
+      <TextStyle
+        style={{
+          paddingHorizontal: 20,
+          fontWeight: "bold",
+          color: "#172A3A",
+
+          fontSize: 20,
+        }}
+      >
         From: {booking.dateFrom} to: {booking.dateTo}
       </TextStyle>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+          width: "100%",
+        }}
+      >
+        <View
+          style={{
+            width: "30%",
+
+            backgroundColor: "#f0ba00",
+            height: 50,
+            marginTop: 20,
+            marginBottom: 30,
+            borderRadius: 25,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        ></View>
+      </View>
       <TextStyle>Become:</TextStyle>
       <FieldView>
         <TextStyle>Accept</TextStyle>

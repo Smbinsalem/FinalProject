@@ -24,10 +24,6 @@ const EditProfile = () => {
     username: authStore.user.username,
     email: authStore.user.email,
   });
-  // const [owner, setOwner] = useState({
-  //   image: completeImgPath(owner.image),
-  //   bio: ownerStore.bio,
-  // });
 
   const handleSubmit = () => authStore.updateUser(user);
 
