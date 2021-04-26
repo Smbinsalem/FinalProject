@@ -43,10 +43,12 @@ class BookingStore {
     try {
       // const formData = new FormData();
       // for (const key in updateBook) formData.append(key, updateBook[key]);
-      const res = await instance.put(`/users/petHosts/bookings`, updateBook);
-      this.bookings = res.data;
-      // const book = this.bookings.find((book) => book.id === updateBook.id);
-      // for (const key in book) book[key] = updateBook[key];
+      await instance.put(`/users/petHosts/bookings`, updateBook);
+      const book = await this.bookings.find(
+        (book) => book.id === updateBook.id
+      );
+      for (const key in book) book[key] = updateBook[key];
+
       navigation.navigate(
         updateBook.bookingstatus === "Approved" ? "ClientScreen" : "Inbox"
       );

@@ -5822,6 +5822,14 @@ react-native-phone-call@^1.0.9:
   resolved "https://registry.yarnpkg.com/react-native-phone-call/-/react-native-phone-call-1.0.9.tgz#4468ec6f95856557fbff9bd69a0db04b54c35e1d"
   integrity sha512-OPWYg8qeWNG/U4bWGMAKcQTH/ifqJnsvUPCH4lOkvWFHbQS3fbH5M8rFhXCzcfS0GVNzHhZX9ZByMM368TFAUQ==
 
+react-native-ratings@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-8.0.3.tgz#680146f5f1e136cdc9e2b40a484a4635a2e5ddff"
+  integrity sha512-4ZZYmgOCQ0LA9mp8u2rrH5wnh0woEcgsGYic5YPI9xqsmm/tcvY2Q9fvYzXstrCzaCRzvkHE20fJUHtnJfRuVA==
+  dependencies:
+    lodash "^4.17.15"
+    prop-types "^15.7.2"
+
 react-native-reanimated@~2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.1.0.tgz"

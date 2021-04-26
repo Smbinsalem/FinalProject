@@ -62,7 +62,7 @@ class HostStore {
       const response = await instance.get("/users/petHosts/averageReviews", {
         params: { petHostId: hostId },
       });
-      this.average = response.data;
+      this.average = await response.data;
     } catch (error) {
       console.error("HostStore -> AverageReviews -> error", error);
     }

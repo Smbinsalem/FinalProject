@@ -127,16 +127,20 @@ const HostProfileDetails = ({ navigation, route }) => {
                 justifyContent: "center",
               }}
             >
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  color: "#fff",
-                  fontWeight: "bold",
-                  fontSize: 17,
-                }}
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Reviews", { host: host })}
               >
-                Reviews
-              </Text>
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: 17,
+                  }}
+                >
+                  Reviews
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
