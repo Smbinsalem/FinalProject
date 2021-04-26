@@ -6,6 +6,7 @@ import { completeImgPath, callNumber } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
 import { Spinner } from "native-base";
 import { Modal } from "react-native-paper";
+import AddReview from "../Review/AddReview";
 
 const OwnerChatDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
@@ -14,6 +15,9 @@ const OwnerChatDetails = ({ route, navigation }) => {
   const { pet } = route.params;
   const { host } = route.params;
 
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
   const containerStyle = {
     backgroundColor: "#2b4f60",
     height: "87%",
@@ -24,17 +28,9 @@ const OwnerChatDetails = ({ route, navigation }) => {
 
   return (
     <HomeWrapper>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("PetDetails", {
-            pet: pet,
-          })
-        }
-      >
-        <StatusText>Booking Details </StatusText>
-        <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
-        <StatusText>Pet Name: {pet.name} </StatusText>
-      </TouchableOpacity>
+      <StatusText>Booking Details </StatusText>
+      <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+      <StatusText>Pet Name: {pet.name} </StatusText>
       <StatusText>
         Host Name: {host.firstName} {host.lastName}
       </StatusText>
@@ -57,10 +53,17 @@ const OwnerChatDetails = ({ route, navigation }) => {
         </CallStyled>
       </ChoiceView>
       <ChoiceView>
-        <ReviewButton onPress={() => alert("Go To Host Profile")}>
+        <ReviewButton onPress={showModal}>
           <Text>Add Review</Text>
         </ReviewButton>
       </ChoiceView>
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={containerStyle}
+      >
+        <AddReview hideModal={hideModal} petHost={host} />
+      </Modal>
     </HomeWrapper>
   );
 };

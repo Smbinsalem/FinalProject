@@ -22,7 +22,7 @@ import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 import OwnerChat from "../Screens/OwnerScreens/OwnerChat";
 import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
 import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
-
+import ReviewList from "../Components/Review/ReviewList";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -101,6 +101,7 @@ const OwnerChatNavigator = () => {
         name="OwnerChatDetails"
         component={OwnerChatDetails}
       />
+      <OwnerChatStack.Screen name="Reviews" component={ReviewList} />
     </OwnerChatStack.Navigator>
   );
 };

@@ -35,6 +35,7 @@
     "react-native-modals": "^0.22.3",
     "react-native-paper": "^4.7.2",
     "react-native-phone-call": "^1.0.9",
+    "react-native-ratings": "^8.0.3",
     "react-native-reanimated": "~2.1.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
