@@ -29,6 +29,7 @@ const PetDetail = ({ navigation, route }) => {
     <>
       <ScrollView>
         <FieldWrapper>
+          <LabelStyle>Image:</LabelStyle>
           <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
           <LabelStyle>Name: </LabelStyle>
           <InfoStyled>{pet.name}</InfoStyled>
