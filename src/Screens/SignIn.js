@@ -11,7 +11,6 @@ import styled from "styled-components/native";
 import { Icon } from "native-base";
 
 //Images
-import Pet1 from "../../assets/images/Sky2.jpeg";
 import Pet2 from "../../assets/images/Logo10.png";
 import Pet5 from "../../assets/images/Logo12.png";
 
