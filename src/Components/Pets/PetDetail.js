@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { ScrollView } from "react-native-gesture-handler";
 import EditPet from "./EditPet";
 import { Modal } from "react-native-paper";
+import { Text } from "react-native";
+import { completeImgPath } from "../../../util";
 
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
@@ -27,8 +29,8 @@ const PetDetail = ({ navigation, route }) => {
     <>
       <ScrollView>
         <FieldWrapper>
-          <LabelStyle>Image: </LabelStyle>
-          <InfoStyled>{pet.image}</InfoStyled>
+          <LabelStyle>Image:</LabelStyle>
+          <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
           <LabelStyle>Name: </LabelStyle>
           <InfoStyled>{pet.name}</InfoStyled>
           <LabelStyle>Type: </LabelStyle>
@@ -103,4 +105,13 @@ const EditPetStyled = styled.TouchableOpacity`
   margin-right: auto;
   margin-left: auto;
   width: 90%;
+`;
+
+export const ProfileImage = styled.Image`
+  width: 125px;
+  height: 125px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 100px;
 `;

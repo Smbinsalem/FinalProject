@@ -46,7 +46,6 @@ const OwnerInboxItem = ({ booking, navigation }) => {
 
   // for Pet Host profile img
   const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
-
   const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
 
   return (

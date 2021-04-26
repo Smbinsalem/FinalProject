@@ -6,7 +6,6 @@ import petStore from "../../../Stores/petStore";
 
 //Style
 import styled from "styled-components/native";
-import { Alert } from "react-native";
 import { observer } from "mobx-react";
 
 // //Native content
@@ -44,46 +43,53 @@ const EditPet = ({ navigation, newpet, hideModal }) => {
 
   return (
     <>
-      <AuthTextInput
-        value={pet.allergies}
-        placeholder="Allergies"
-        placeholderTextColor="white"
-        onChangeText={(allergies) => setPet({ ...pet, allergies })}
-      />
-      <AuthTextInput
-        value={pet.personality}
-        placeholder="Personality?"
-        placeholderTextColor="white"
-        onChangeText={(personality) => setPet({ ...pet, personality })}
-      />
+      <LabelStyle>Image:</LabelStyle>
       <AuthTextInput
         value={pet.image}
-        placeholder="Image"
-        placeholderTextColor="white"
+        placeholder="Change Profile Photo"
+        placeholderTextColor="gray"
         onChangeText={(image) => setPet({ ...pet, image })}
       />
+      <LabelStyle>Allergies:</LabelStyle>
+      <AuthTextInput
+        value={pet.allergies}
+        placeholder="e.g: Dust"
+        placeholderTextColor="gray"
+        onChangeText={(allergies) => setPet({ ...pet, allergies })}
+      />
+      <LabelStyle>Personality:</LabelStyle>
+      <AuthTextInput
+        value={pet.personality}
+        placeholder="e.g: Sleepy"
+        placeholderTextColor="gray"
+        onChangeText={(personality) => setPet({ ...pet, personality })}
+      />
+      <LabelStyle>Walking Hours:</LabelStyle>
       <AuthTextInput
         value={pet.walkingHours}
-        placeholder="Walking Hours"
-        placeholderTextColor="white"
+        placeholder="e.g: Aspirin"
+        placeholderTextColor="gray"
         onChangeText={(walkingHours) => setPet({ ...pet, walkingHours })}
       />
+      <LabelStyle>Medication</LabelStyle>
       <AuthTextInput
         value={pet.medication}
-        placeholder="Medication"
-        placeholderTextColor="white"
+        placeholder="e.g: Aspirin"
+        placeholderTextColor="gray"
         onChangeText={(medication) => setPet({ ...pet, medication })}
       />
+      <LabelStyle>Meal Time</LabelStyle>
       <AuthTextInput
         value={pet.mealTime}
-        placeholder="Meal Time"
-        placeholderTextColor="white"
+        placeholder="e.g: 8am, 12pm, 6pm"
+        placeholderTextColor="gray"
         onChangeText={(mealTime) => setPet({ ...pet, mealTime })}
       />
+      <LabelStyle>Allowed Snacks Per Day</LabelStyle>
       <AuthTextInput
         value={pet.allowedSnackPerDays}
-        placeholder="Allowed Snack Per Day"
-        placeholderTextColor="white"
+        placeholder="e.g: 3"
+        placeholderTextColor="gray"
         onChangeText={(allowedSnackPerDays) =>
           setPet({ ...pet, allowedSnackPerDays })
         }
@@ -122,4 +128,12 @@ export const AuthTextInput = styled.TextInput`
   border-bottom-width: 1px;
 `;
 
+const LabelStyle = styled.Text`
+  color: white;
+  font-size: 16px;
+  margin-top: 7%;
+  /* padding: 1%; */
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
+`;
 export default observer(EditPet);
