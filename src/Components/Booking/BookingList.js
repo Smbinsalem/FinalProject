@@ -11,10 +11,13 @@ const BookingList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+  useEffect(() => {
+    bookingStore.fetchBookings();
+  }, []);
   const myHostId = authStore.user?.petHostId;
 
   const bookingList = bookingStore.bookings
-    .filter((host) => host.hostId === myHostId)
+    .filter((host) => host?.hostId === myHostId)
     .filter((status) => status.bookingStatus === "pending")
     .map((booking) => (
       <BookingItem navigation={navigation} booking={booking} key={booking.id} />

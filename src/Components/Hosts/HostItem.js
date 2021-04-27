@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
+import { completeImgPath } from "../../../util";
 import { observer } from "mobx-react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
+import hostStore from "../../../Stores/hostStore";
 
 const TextStyled = styled.Text`
   color: black;
@@ -14,6 +15,7 @@ const TextStyled = styled.Text`
 `;
 
 const HostItem = ({ user, navigation }) => {
+  const hostProfile = hostStore.hosts.find((host) => host.userId === user.id);
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("HostDetails", { user: user })}
@@ -33,7 +35,11 @@ const HostItem = ({ user, navigation }) => {
       }}
     >
       <Image
-        source={require("../../../assets/images/Pet12.jpg")}
+        source={
+          hostProfile?.image
+            ? { uri: completeImgPath(hostProfile?.image) }
+            : null
+        }
         style={{
           width: 160,
           height: 190,

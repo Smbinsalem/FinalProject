@@ -51,7 +51,6 @@ class HostStore {
 
   updateHost = async (updatedHost) => {
     try {
-      console.log("Updated", updatedHost);
       const formData = new FormData();
       for (const key in updatedHost) formData.append(key, updatedHost[key]);
       // formData.append("photo");
@@ -65,7 +64,7 @@ class HostStore {
   };
   averageReview = async (hostId) => {
     try {
-      const response = await instance.get("/users/petHosts/averageReviews", {
+      const response = await instance.get("/reviews/averageReviews", {
         params: { petHostId: hostId },
       });
       this.average = await response.data;

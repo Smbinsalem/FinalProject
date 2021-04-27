@@ -7,10 +7,12 @@ import EditPet from "./EditPet";
 import { Modal } from "react-native-paper";
 import { Text } from "react-native";
 import { completeImgPath } from "../../../util";
+import authStore from "../../../Stores/authStore";
 
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
   // const pet = petStore.pets[0];
+
   const { petId } = route.params;
   const pet = petStore.pets.find((pet) => pet.id === petId);
 
@@ -55,9 +57,11 @@ const PetDetail = ({ navigation, route }) => {
           <InfoStyled> {pet.allowedSnackPerDays}</InfoStyled>
 
           {/* EDIT BUTTON */}
-          <EditPetStyled onPress={showModal}>
-            <Text>Edit Pet Details</Text>
-          </EditPetStyled>
+          {authStore.user?.petOwnerId === pet.petOwnerId ? (
+            <EditPetStyled onPress={showModal}>
+              <Text>Edit Pet Details</Text>
+            </EditPetStyled>
+          ) : null}
         </FieldWrapper>
 
         {/* EDIT MODAL */}
