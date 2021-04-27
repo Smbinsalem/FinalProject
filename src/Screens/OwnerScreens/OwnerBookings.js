@@ -1,10 +1,10 @@
 import { observer } from "mobx-react";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import OwnerChatList from "../../Components/OwnerChat/OwnerChatList";
+import OwnerBookingsList from "../../Components/OwnerBookings/OwnerBookingsList";
 import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-const OwnerChat = ({ navigation }) => {
+const OwnerBookings = ({ navigation }) => {
   return (
     <>
       <View
@@ -19,7 +19,7 @@ const OwnerChat = ({ navigation }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "10%",
+            // marginTop: "10%",
             width: "100%",
           }}
         >
@@ -49,13 +49,13 @@ const OwnerChat = ({ navigation }) => {
         }}
       ></LinearGradient>
       <PostWrapper>
-        <OwnerChatList navigation={navigation} />
+        <OwnerBookingsList navigation={navigation} />
       </PostWrapper>
     </>
   );
 };
 
-export default observer(OwnerChat);
+export default observer(OwnerBookings);
 
 //Styling
 
