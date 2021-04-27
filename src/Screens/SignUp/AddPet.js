@@ -12,7 +12,11 @@ import styled from "styled-components/native";
 
 //Images
 import Pet1 from "../../../assets/images/Pet8.jpeg";
-import { TouchableNativeFeedback } from "react-native";
+import { RadioButton } from "react-native-paper";
+import { View } from "react-native";
+
+//Calendar
+import DatePicker from "react-native-datepicker";
 
 const AddPet = ({ navigation }) => {
   const [pet, setPet] = useState({
@@ -56,16 +60,49 @@ const AddPet = ({ navigation }) => {
           placeholderTextColor="white"
           onChangeText={(breed) => setPet({ ...pet, breed })}
         />
-        <AuthTextInput
-          placeholder="Vaccinated? *"
-          placeholderTextColor="white"
-          onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
+        <LabelStyle>Vaccinated? *</LabelStyle>
+        <RadioButton.Group
+          onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+          value={pet.vaccinated}
+        >
+          <RadioButton.Item labelColor="red" label="Yes" value="True" />
+          <RadioButton.Item label="No" value="False" />
+        </RadioButton.Group>
+        <DatePicker
+          style={{
+            width: 340,
+            margin: "auto",
+            // paddingRight: 40,
+          }}
+          date={pet.dateOfBirth}
+          mode="date"
+          placeholder="Date of Birth *"
+          format="YYYY-MM-DD"
+          // minDate="2016-05-01"
+          maxDate="2003-06-30"
+          confirmBtnText="Confirm"
+          showIcon={false}
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: "absolute",
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              right: 20,
+              borderColor: "#f0ba00",
+              color: "white",
+              marginLeft: 36,
+              marginBottom: 20,
+              width: 120,
+              fontSize: "100px",
+              borderRadius: 10,
+            },
+          }}
+          onDateChange={(date) => setPet({ ...pet, dateOfBirth: date })}
         />
-        <AuthTextInput
-          placeholder="Date of Birth"
-          placeholderTextColor="white"
-          onChangeText={(dateOfBirth) => setPet({ ...pet, dateOfBirth })}
-        />
+
         <AuthTextInput
           placeholder="Allergies"
           placeholderTextColor="white"
@@ -76,6 +113,7 @@ const AddPet = ({ navigation }) => {
           placeholderTextColor="white"
           onChangeText={(personality) => setPet({ ...pet, personality })}
         />
+
         {/* <AuthTextInput
           placeholder="Image"
           placeholderTextColor="white"
@@ -110,6 +148,15 @@ const AddPet = ({ navigation }) => {
     </>
   );
 };
+
+const LabelStyle = styled.Text`
+  color: white;
+  font-size: 16px;
+  margin-top: 7%;
+  /* padding: 1%; */
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
+`;
 
 export const BackgroundIMG = styled.ImageBackground`
   flex: 1;
@@ -146,7 +193,7 @@ export const Container = styled.View`
   flex: 2;
   align-self: stretch;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   padding-right: 60px;
   padding-left: 60px;
   background-color: rgba(0, 0, 0, 0.5);

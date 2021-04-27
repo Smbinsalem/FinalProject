@@ -29,29 +29,29 @@ const PetDetail = ({ navigation, route }) => {
     <>
       <ScrollView>
         <FieldWrapper>
-          <LabelStyle>Image:</LabelStyle>
+          <LabelStyle>Image</LabelStyle>
           <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
-          <LabelStyle>Name: </LabelStyle>
+          <LabelStyle>Name</LabelStyle>
           <InfoStyled>{pet.name}</InfoStyled>
-          <LabelStyle>Type: </LabelStyle>
+          <LabelStyle>Type</LabelStyle>
           <InfoStyled>{pet.type}</InfoStyled>
-          <LabelStyle>Breed: </LabelStyle>
+          <LabelStyle>Breed</LabelStyle>
           <InfoStyled>{pet.breed}</InfoStyled>
-          <LabelStyle>Vaccinated: </LabelStyle>
+          <LabelStyle>Vaccinated?</LabelStyle>
           <InfoStyled> {pet.vaccinated ? "Yes" : "No"}</InfoStyled>
-          <LabelStyle>Date of Birth: </LabelStyle>
+          <LabelStyle>Date of Birth</LabelStyle>
           <InfoStyled>{pet.dateOfBirth}</InfoStyled>
-          <LabelStyle>Allergies: </LabelStyle>
+          <LabelStyle>Allergies</LabelStyle>
           <InfoStyled>{pet.allergies}</InfoStyled>
-          <LabelStyle>Personality:</LabelStyle>
+          <LabelStyle>Personality</LabelStyle>
           <InfoStyled> {pet.personality}</InfoStyled>
-          <LabelStyle>Walking Hours:</LabelStyle>
+          <LabelStyle>Walking Hours</LabelStyle>
           <InfoStyled>{pet.walkingHours}</InfoStyled>
-          <LabelStyle>Medication:</LabelStyle>
+          <LabelStyle>Medication</LabelStyle>
           <InfoStyled> {pet.medication}</InfoStyled>
-          <LabelStyle>Meal Time:</LabelStyle>
+          <LabelStyle>Meal Time</LabelStyle>
           <InfoStyled> {pet.mealTime}</InfoStyled>
-          <LabelStyle>Allowed Snacks Per Day:</LabelStyle>
+          <LabelStyle>Allowed Snacks Per Day</LabelStyle>
           <InfoStyled> {pet.allowedSnackPerDays}</InfoStyled>
 
           {/* EDIT BUTTON */}

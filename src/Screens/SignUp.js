@@ -81,7 +81,7 @@ const SignUp = ({ navigation }) => {
             }}
             date={user.dateOfBirth}
             mode="date"
-            placeholder="select date"
+            placeholder="Date of Birth *"
             format="YYYY-MM-DD"
             // minDate="2016-05-01"
             maxDate="2003-06-30"
