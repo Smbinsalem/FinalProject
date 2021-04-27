@@ -14,13 +14,9 @@ import styled from "styled-components/native";
 import OwnerPet from "../../../assets/images/OwnerPet.png";
 import Pet1 from "../../../assets/images/Pet8.jpeg";
 import { RadioButton } from "react-native-paper";
-import { View,Image } from "react-native";
+import { View, Image } from "react-native";
 //Calendar
 import DatePicker from "react-native-datepicker";
-
-
-
-
 
 const AddPet = ({ navigation }) => {
   const [pet, setPet] = useState({
@@ -44,7 +40,10 @@ const AddPet = ({ navigation }) => {
   //   if (petStore.pets) navigation.navigate("Tabs");
   // };
 
-  const handleSubmit = () => petStore.addPet(pet, navigation);
+  const handleSubmit = async () => {
+    await petStore.addPet(pet);
+    await navigation.replace("Tabs");
+  };
 
   return (
     <>
@@ -127,33 +126,6 @@ const AddPet = ({ navigation }) => {
           onChangeText={(personality) => setPet({ ...pet, personality })}
         />
 
-        {/* <AuthTextInput
-          placeholder="Image"
-          placeholderTextColor="white"
-          onChangeText={(image) => setPet({ ...pet, image })}
-        />
-        <AuthTextInput
-          placeholder="Walking Hours"
-          placeholderTextColor="white"
-          onChangeText={(walkingHours) => setPet({ ...pet, walkingHours })}
-        />
-        <AuthTextInput
-          placeholder="Medication"
-          placeholderTextColor="white"
-          onChangeText={(medication) => setPet({ ...pet, medication })}
-        />
-        <AuthTextInput
-          placeholder="Meal Time"
-          placeholderTextColor="white"
-          onChangeText={(mealTime) => setPet({ ...pet, mealTime })}
-        />
-        <AuthTextInput
-          placeholder="Allowed Snack Per Day"
-          placeholderTextColor="white"
-          onChangeText={(allowedSnackPerDays) =>
-            setPet({ ...pet, allowedSnackPerDays })
-          }
-        /> */}
         <AuthButton onPress={handleSubmit}>
           <AuthButtonText>Sign Up</AuthButtonText>
         </AuthButton>

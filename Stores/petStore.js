@@ -36,7 +36,6 @@ class PetStore {
       const response = await instance.post(`/users/petOwners/pets`, data);
 
       this.pets.push(response.data);
-      navigation.navigate("Tabs");
     } catch (error) {
       console.error("PetStore -> addPet -> error", error);
     }
