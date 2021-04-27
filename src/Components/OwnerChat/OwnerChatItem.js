@@ -40,9 +40,9 @@ const OwnerChatItem = ({ booking, navigation }) => {
     (hostUser) => hostUser.id === petHostId.userId
   );
   // for Pet Owner profile img
-  const petOwner = ownerStore.owners.find(
-    (owner) => owner.id === booking.petOwnerId
-  );
+  // const petOwner = ownerStore.owners.find(
+  //   (owner) => owner.id === booking.petOwnerId
+  // );
 
   // for Pet Host profile img
   const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
@@ -72,10 +72,20 @@ const OwnerChatItem = ({ booking, navigation }) => {
         }}
       >
         <View style={{ width: "92%", alignItems: "flex-end" }}>
-          <Image source={{ uri: completeImgPath(petHost.image) }} />
+          <Image
+            source={{ uri: completeImgPath(petHost.image) }}
+            style={{
+              top: 15,
+              height: 60,
+              width: 60,
+              borderRadius: 20,
+            }}
+          />
         </View>
 
-        <TextStyled>{hostDetails.firstName} </TextStyled>
+        <TextStyled>
+          {hostDetails.firstName} {`\n`}{" "}
+        </TextStyled>
         <SubTextStyled>is taking care of {bookPet.name}</SubTextStyled>
       </TouchableOpacity>
     </>
@@ -84,21 +94,11 @@ const OwnerChatItem = ({ booking, navigation }) => {
 export default observer(OwnerChatItem);
 
 //Styling
-const HomeWrapper = styled.View`
-  justify-content: center;
-  align-items: center;
-`;
-
-const StatusText = styled.Text`
-  color: blue;
-  align-self: center;
-`;
-
 const TextStyled = styled.Text`
-  font-size: 15px;
-  padding: 1%;
+  font-size: 18px;
+  padding: -10%;
   margin-top: -10%;
-  margin-left: 1%;
+  margin-left: 10%;
   margin-bottom: 5%;
   align-self: center;
   font-weight: bold;
@@ -107,9 +107,9 @@ const TextStyled = styled.Text`
 `;
 
 const SubTextStyled = styled.Text`
-  font-size: 12px;
+  font-size: 14px;
   margin-top: -10%;
-  margin-left: 3%;
+  margin-left: 10%;
   font-weight: normal !important;
   align-self: center;
   width: 100%;

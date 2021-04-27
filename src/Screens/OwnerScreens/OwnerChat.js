@@ -19,20 +19,20 @@ const OwnerChat = ({ navigation }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "10%",
+            marginTop: "5%",
             width: "100%",
           }}
         >
           <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
-                top: -40,
+                top: -30,
                 fontSize: 32,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
             >
-              Inbox
+              Bookings
             </Text>
           </View>
         </View>
@@ -58,7 +58,6 @@ const OwnerChat = ({ navigation }) => {
 export default observer(OwnerChat);
 
 //Styling
-
 export const PostWrapper = styled.View`
   margin-top: -10%;
   margin-bottom: 10px;

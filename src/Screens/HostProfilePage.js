@@ -89,11 +89,11 @@ const HostProfileScreen = ({ navigation, route }) => {
           paddingHorizontal: 20,
         }}
       >
-        <StyledTouchableOpacity onPress={_showModal}>
-          <StyledView>
+        <StyledView>
+          <StyledTouchableOpacity onPress={_showModal}>
             <MenutICONStyled name="menu" type="Feather" />
-          </StyledView>
-        </StyledTouchableOpacity>
+          </StyledTouchableOpacity>
+        </StyledView>
         <View
           style={{
             flexDirection: "row",
