@@ -25,10 +25,9 @@ import EditHost from "../Components/User/EditHost";
 const MenuButton = () => {
   const navigation = useNavigation();
 
-  const handlePress = (event) => {
-    authStore.signout();
-    event.preventDefault();
+  const handlePress = async () => {
     navigation.replace("onBoarding");
+    await authStore.signout();
   };
 
   return (

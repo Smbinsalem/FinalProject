@@ -11,15 +11,13 @@ import { LinearGradient } from "expo-linear-gradient";
 const HostHome = ({ navigation, route }) => {
   if (bookingStore.loading) return <Spinner />;
 
-  const myHostId = authStore.user.petHostId;
-
   return (
     <>
       <View
         style={{
           backgroundColor: "#172A3A",
           height: "20%",
-          paddingTop: "%",
+          // paddingTop: "%",
           paddingHorizontal: 20,
         }}
       >

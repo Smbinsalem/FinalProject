@@ -9,7 +9,7 @@ import petStore from "../../../Stores/petStore";
 import hostStore from "../../../Stores/hostStore";
 
 import { Spinner } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View, Image } from "react-native";
 
 import { completeImgPath } from "../../../util";
 
@@ -50,47 +50,55 @@ const OwnerInboxItem = ({ booking, navigation }) => {
 
   return (
     <>
-      <ListItem>
-        <HomeWrapper>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("OwnerInboxDetails", {
-                booking: booking,
-                owner: requester,
-                pet: bookPet,
-                host: hostDetails,
-              })
-            }
-          >
-            <ProfileImage source={{ uri: completeImgPath(petHost.image) }} />
-          </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("OwnerInboxDetails", {
+            booking: booking,
+            owner: requester,
+            pet: bookPet,
+            host: hostDetails,
+          })
+        }
+        style={{
+          height: 100,
+          elevation: 2,
+          backgroundColor: "rgba(23, 42, 58, 1)",
+          marginLeft: 3,
+          borderRadius: 15,
+          marginBottom: 20,
+          borderRadius: 30,
+          width: "99%",
+        }}
+      >
+        <View style={{ width: "92%", alignItems: "flex-end" }}>
+          <Image
+            source={{ uri: completeImgPath(petHost.image) }}
+            style={{
+              top: 15,
+              height: 60,
+              width: 60,
+              borderRadius: 20,
+            }}
+          />
+        </View>
 
-          <StatusText>You made a request to </StatusText>
-          <StatusText>to take care of {bookPet.name}</StatusText>
-          <NoteText>Waiting for reply {hostDetails.username} </NoteText>
-        </HomeWrapper>
-      </ListItem>
+        <TextStyled>You made a request to {`\n`}</TextStyled>
+        <TextStyled>
+          to take care of {bookPet.name}
+          {`\n`}
+        </TextStyled>
+        <SubTextStyled>
+          Waiting for reply {hostDetails.username}
+          {`\n`}{" "}
+        </SubTextStyled>
+      </TouchableOpacity>
     </>
   );
 };
 export default observer(OwnerInboxItem);
 
 //Styling
-const HomeWrapper = styled.View`
-  justify-content: center;
-  align-items: center;
-`;
 
-const StatusText = styled.Text`
-  color: blue;
-  align-self: center;
-`;
-
-const NoteText = styled.Text`
-  font-size: 10px;
-  color: grey;
-  align-self: center;
-`;
 export const ProfileImage = styled.Image`
   width: 100px;
   height: 100px;
@@ -98,4 +106,26 @@ export const ProfileImage = styled.Image`
   margin-right: auto;
   margin-left: auto;
   border-radius: 100px;
+`;
+
+const TextStyled = styled.Text`
+  font-size: 15px;
+  padding: 1%;
+  margin-top: -10%;
+  margin-left: 1%;
+  margin-bottom: 5%;
+  align-self: center;
+  font-weight: bold;
+  width: 100%;
+  color: white;
+`;
+
+const SubTextStyled = styled.Text`
+  font-size: 12px;
+  margin-top: -10%;
+  margin-left: 3%;
+  font-weight: normal !important;
+  align-self: center;
+  width: 100%;
+  color: white;
 `;

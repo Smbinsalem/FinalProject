@@ -8,7 +8,7 @@ import OwnerInboxItem from "./OwnerInboxItem";
 import { Spinner, Text } from "native-base";
 
 const OwnerInboxList = ({ navigation }) => {
-  authStore.fetchAllUsers();
+  authStore.fetchUsers();
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 
@@ -26,9 +26,6 @@ const OwnerInboxList = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <HomeWrapper>
-        <Text>Requests</Text>
-      </HomeWrapper>
       <HomeWrapper>{ownerInboxList}</HomeWrapper>
     </ScrollView>
   );
@@ -40,6 +37,7 @@ export default observer(OwnerInboxList);
 
 const HomeWrapper = styled.View`
   flex: 1;
+  padding: 3.5%;
   justify-content: center;
   align-items: center;
 `;

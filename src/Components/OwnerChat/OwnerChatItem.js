@@ -9,7 +9,7 @@ import petStore from "../../../Stores/petStore";
 import hostStore from "../../../Stores/hostStore";
 
 import { Spinner } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Image, View } from "react-native";
 
 import { completeImgPath } from "../../../util";
 
@@ -51,25 +51,33 @@ const OwnerChatItem = ({ booking, navigation }) => {
 
   return (
     <>
-      <ListItem>
-        <HomeWrapper>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("OwnerChatDetails", {
-                booking: booking,
-                owner: requester,
-                pet: bookPet,
-                host: hostDetails,
-              })
-            }
-          >
-            <ProfileImage source={{ uri: completeImgPath(petHost.image) }} />
-          </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("OwnerChatDetails", {
+            booking: booking,
+            owner: requester,
+            pet: bookPet,
+            host: hostDetails,
+          })
+        }
+        style={{
+          height: 100,
+          elevation: 2,
+          backgroundColor: "rgba(23, 42, 58, 1)",
+          marginLeft: 3,
+          borderRadius: 15,
+          marginBottom: 20,
+          borderRadius: 30,
+          width: "99%",
+        }}
+      >
+        <View style={{ width: "92%", alignItems: "flex-end" }}>
+          <Image source={{ uri: completeImgPath(petHost.image) }} />
+        </View>
 
-          <StatusText>{hostDetails.firstName} </StatusText>
-          <StatusText>is taking care of {bookPet.name}</StatusText>
-        </HomeWrapper>
-      </ListItem>
+        <TextStyled>{hostDetails.firstName} </TextStyled>
+        <SubTextStyled>is taking care of {bookPet.name}</SubTextStyled>
+      </TouchableOpacity>
     </>
   );
 };
@@ -86,16 +94,24 @@ const StatusText = styled.Text`
   align-self: center;
 `;
 
-const NoteText = styled.Text`
-  font-size: 10px;
-  color: grey;
+const TextStyled = styled.Text`
+  font-size: 15px;
+  padding: 1%;
+  margin-top: -10%;
+  margin-left: 1%;
+  margin-bottom: 5%;
   align-self: center;
+  font-weight: bold;
+  width: 100%;
+  color: white;
 `;
-export const ProfileImage = styled.Image`
-  width: 100px;
-  height: 100px;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 100px;
+
+const SubTextStyled = styled.Text`
+  font-size: 12px;
+  margin-top: -10%;
+  margin-left: 3%;
+  font-weight: normal !important;
+  align-self: center;
+  width: 100%;
+  color: white;
 `;
