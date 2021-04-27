@@ -59,51 +59,17 @@ const AddNewPet = ({ navigation, hideModal }) => {
         placeholderTextColor="white"
         onChangeText={(breed) => setPet({ ...pet, breed })}
       />
-      <LabelStyle>Vaccinated? *</LabelStyle>
-      <RadioButton.Group
-        onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
-        value={pet.vaccinated}
-      >
-        <RadioButton.Item label="Yes" value="True" />
-        <RadioButton.Item label="No" value="False" />
-      </RadioButton.Group>
-
-      {/* Taiba's Radio Button */}
-
-      {/* <LabelStyle>Vaccinated? *</LabelStyle>
-      <FieldView>
-        <TextStyle>Yes</TextStyle>
-        <RadioView>
-          <RadioButton
-            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
-            value={pet.vaccinated}
-            status={checked === "True" ? "checked" : "unchecked"}
-            onPress={() => setChecked("True")}
-          />
-        </RadioView>
-
-        <TextStyle>No</TextStyle>
-        <RadioView>
-          <RadioButton
-            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
-            value={pet.vaccinated}
-            status={checked === "False" ? "checked" : "unchecked"}
-            onPress={() => setChecked("False")}
-          />
-        </RadioView>
-      </FieldView> */}
 
       <DatePicker
         style={{
-          width: 340,
+          width: 240,
           margin: "auto",
-          // paddingRight: 40,
+          right: 25,
         }}
         date={pet.dateOfBirth}
         mode="date"
         placeholder="Date of Birth *"
         format="YYYY-MM-DD"
-        // minDate="2016-05-01"
         maxDate="2003-06-30"
         confirmBtnText="Confirm"
         showIcon={false}
@@ -127,6 +93,24 @@ const AddNewPet = ({ navigation, hideModal }) => {
         }}
         onDateChange={(date) => setPet({ ...pet, dateOfBirth: date })}
       />
+      <LabelStyle>Vaccinated? *</LabelStyle>
+      <RadioButton.Group
+        onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+        value={pet.vaccinated}
+      >
+        <FieldView>
+          <TextStyle>Yes</TextStyle>
+          <RadioView>
+            <RadioButton label="Yes" value="True" />
+          </RadioView>
+        </FieldView>
+        <FieldView>
+          <TextStyle>No</TextStyle>
+          <RadioView>
+            <RadioButton label="No" value="False" />
+          </RadioView>
+        </FieldView>
+      </RadioButton.Group>
       <AuthTextInput
         placeholder="Allergies"
         placeholderTextColor="white"
@@ -150,7 +134,6 @@ export const TextStyle = styled.Text`
   font-weight: bold;
   margin-top: 10px;
   align-self: auto;
-  /* font-style: bold; */
 `;
 export const TextTitleStyle = styled.Text`
   color: #f0ba00;
@@ -162,18 +145,18 @@ export const TextTitleStyle = styled.Text`
 
 export const FieldView = styled.View`
   flex-direction: row;
-  /* color: white; */
-  /* background-color: rgba(255, 255, 255, 0.3); */
+  color: white;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 10px;
   justify-content: space-evenly;
 `;
 export const RadioView = styled.View`
-  background-color: rgba(225, 225, 225, 0.6);
+  background-color: rgba(225, 225, 225, 0.3);
   flex-wrap: wrap;
   flex-direction: row;
-  border-radius: 20px;
-  padding: 7px;
+  border-radius: 50px;
+  padding: 1px;
 `;
 
 const LabelStyle = styled.Text`
@@ -204,11 +187,19 @@ export const AuthButtonText = styled.Text`
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
+  width: 110%;
   margin-bottom: 30px;
+  right: 10;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 3%;
+  border-color: #f0ba00;
+  border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export default observer(AddNewPet);

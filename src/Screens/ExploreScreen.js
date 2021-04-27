@@ -51,34 +51,7 @@ const ExploreScreen = ({ navigation }) => {
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20,
         }}
-      >
-        {/* <View
-          style={{
-            backgroundColor: "#FFF",
-            paddingVertical: 8,
-            paddingHorizontal: 20,
-            marginHorizontal: 20,
-            borderRadius: 15,
-            marginTop: 25,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor="#172A3A"
-            style={{
-              fontWeight: "bold",
-              fontSize: 18,
-              width: 270,
-            }}
-          />
-          <Image
-            source={require("../../assets/icons/find.png")}
-            style={{ height: 20, width: 20 }}
-          />
-        </View> */}
-      </LinearGradient>
+      ></LinearGradient>
 
       <ScrollView
         style={{
@@ -178,34 +151,3 @@ const styles = StyleSheet.create({
     alignSelf: "auto",
   },
 });
-
-// flexDirection: "row",
-// paddingHorizontal: 20,
-// width: "50%",
-// height: "50%",
-// alignItems: "center",
-
-// import React from "react";
-// import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
-
-// const ExploreScreen = ({ navigation }) => {
-//   return (
-//     <View style={styles.container}>
-//       <Text> Explore Screen </Text>
-//       <TouchableOpacity onPress={() => alert("Button Clicked !")}>
-//         <Text>Click Here</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// export default ExploreScreen;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     backgroundColor: "#fff",
-//   },
-// });
