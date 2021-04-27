@@ -7,17 +7,15 @@ import { completeImgPath } from "../../../util";
 
 const ReviewItem = ({ hostReview }) => {
   return (
-    <>
-      <HomeWrapper>
-        <TextStyled>
-          {hostReview.comment} {`\n`}
-        </TextStyled>
+    <HomeWrapper>
+      <TextStyled>
+        {hostReview.comment} {`\n`}
+      </TextStyled>
 
-        <TextStyled>
-          {hostReview.rating} {`\n`}
-        </TextStyled>
-      </HomeWrapper>
-    </>
+      <TextStyled>
+        {hostReview.rating} {`\n`}
+      </TextStyled>
+    </HomeWrapper>
   );
 };
 export default observer(ReviewItem);

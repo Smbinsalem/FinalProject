@@ -103,8 +103,8 @@ const AddNewPet = ({ navigation, hideModal }) => {
           <RadioView>
             <RadioButton label="Yes" value="True" />
           </RadioView>
-        </FieldView>
-        <FieldView>
+          {/* </FieldView>
+        <FieldView> */}
           <TextStyle>No</TextStyle>
           <RadioView>
             <RadioButton label="No" value="False" />
