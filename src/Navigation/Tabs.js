@@ -8,7 +8,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
+import HomeScreen from "../Screens/HomeScreen";
 import ExploreScreen from "../Screens/ExploreScreen";
+import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostDetails from "../Components/Hosts/HostDetails";
@@ -17,9 +19,9 @@ import PetDetails from "../Components/Pets/PetDetail";
 import OwnerInbox from "../Screens/OwnerScreens/OwnerInbox";
 import OwnerInboxDetails from "../Components/OwnerInbox/OwnerInboxDetails";
 
-import OwnerBookings from "../Screens/OwnerScreens/OwnerBookings";
-import OwnerBookingsDetails from "../Components/OwnerBookings/OwnerBookingsDetails";
-import HostProfileDetails from "../Components/OwnerBookings/HostProfileDetails";
+import OwnerChat from "../Screens/OwnerScreens/OwnerChat";
+import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
+import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
 import ReviewList from "../Components/Review/ReviewList";
 import AddBooking from "../Components/Booking/AddBooking";
 
@@ -83,27 +85,27 @@ const OwnerInboxNavigator = () => {
   );
 };
 
-const OwnerBookingsStack = createStackNavigator();
-const OwnerBookingsNavigator = () => {
+const OwnerChatStack = createStackNavigator();
+const OwnerChatNavigator = () => {
   return (
-    <OwnerBookingsStack.Navigator
+    <OwnerChatStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={"Bookings"}
+      initialRouteName={"Chat"}
     >
-      <OwnerBookingsStack.Screen name="Bookings" component={OwnerBookings} />
-      <OwnerBookingsStack.Screen
+      <OwnerChatStack.Screen name="Chat" component={OwnerChat} />
+      <OwnerChatStack.Screen
         name="HostProfileDetails"
         component={HostProfileDetails}
       />
-      <OwnerBookingsStack.Screen name="PetDetails" component={PetDetails} />
-      <OwnerBookingsStack.Screen
+      <OwnerChatStack.Screen name="PetDetails" component={PetDetails} />
+      <OwnerChatStack.Screen
         name="OwnerChatDetails"
-        component={OwnerBookingsDetails}
+        component={OwnerChatDetails}
       />
-      <OwnerBookingsStack.Screen name="Reviews" component={ReviewList} />
-    </OwnerBookingsStack.Navigator>
+      <OwnerChatStack.Screen name="Reviews" component={ReviewList} />
+    </OwnerChatStack.Navigator>
   );
 };
 
@@ -204,7 +206,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                EXPLORE
+                Explore
               </Text>
             </View>
           ),
@@ -232,7 +234,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Chat"
-        component={OwnerBookingsNavigator}
+        component={OwnerChatNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
@@ -243,7 +245,7 @@ const Tabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/Booking.png")}
+                source={require("../../assets/icons/chat.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,
@@ -254,7 +256,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                BOOKINGS
+                CHAT
               </Text>
             </View>
           ),
