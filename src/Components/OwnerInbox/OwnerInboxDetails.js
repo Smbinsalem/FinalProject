@@ -27,25 +27,37 @@ const OwnerInboxDetails = ({ route, navigation }) => {
   };
 
   return (
-    <HomeWrapper>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("PetDetails", {
-            pet: pet,
-          })
-        }
-      >
-        <StatusText>Booking Details </StatusText>
-        <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+    <ViewWrapper>
+      <ImageWrapper>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("PetDetails", {
+              pet: pet,
+            })
+          }
+        >
+          <StatusText>Booking Details </StatusText>
+          <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+        </TouchableOpacity>
+      </ImageWrapper>
+      <ContentWrapper>
         <StatusText>Pet Name: {pet.name} </StatusText>
-      </TouchableOpacity>
-      <StatusText>
-        Host Name: {host.firstName} {host.lastName}
-      </StatusText>
-      <StatusText>
-        From: {booking.dateFrom} to: {booking.dateTo}
-      </StatusText>
-      <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
+        <TextStyle
+          style={{
+            color: "#172A3A",
+          }}
+        >
+          <StatusText>
+            Host Name: {host.firstName} {host.lastName}
+          </StatusText>
+        </TextStyle>
+        <FieldView>
+          <StatusText>
+            From: {booking.dateFrom} to: {booking.dateTo}
+          </StatusText>
+          <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
+        </FieldView>
+      </ContentWrapper>
       <EditPetStyled onPress={showModal}>
         <Text>Cancel Booking?</Text>
       </EditPetStyled>
@@ -60,35 +72,35 @@ const OwnerInboxDetails = ({ route, navigation }) => {
           navigation={navigation}
         />
       </Modal>
-    </HomeWrapper>
+    </ViewWrapper>
   );
 };
 
 export default observer(OwnerInboxDetails);
 
 //Styling
-const HomeWrapper = styled.View`
+
+export const ViewWrapper = styled.View`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+  margin-bottom: 300;
 `;
-const ChoiceView = styled.View`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+const ImageWrapper = styled.View`
+  flex: 0.5;
+  padding-top: 10%;
+  background-color: rgba(23, 42, 58, 1);
+`;
+const ContentWrapper = styled.View`
+  flex: 0.4;
 `;
 
 const StatusText = styled.Text`
-  color: red;
+  color: #172a3a;
+  font-weight: bold;
+  margin-top: 10px;
+  align-self: auto;
+  /* font-style: bold; */
 `;
 
-const ChoiceText = styled.Text`
-  color: blue;
-  background-color: yellow;
-  margin: 10px;
-  padding: 5px;
-`;
 export const ProfileImage = styled.Image`
   width: 125px;
   height: 125px;
@@ -98,7 +110,7 @@ export const ProfileImage = styled.Image`
   border-radius: 100px;
 `;
 export const TextStyle = styled.Text`
-  color: white;
+  color: #172a3a;
   font-weight: bold;
   margin-top: 10px;
   align-self: auto;
@@ -106,9 +118,6 @@ export const TextStyle = styled.Text`
 `;
 export const FieldView = styled.View`
   flex-direction: row;
-  /* color: white; */
-  /* background-color: rgba(255, 255, 255, 0.3); */
-
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
@@ -121,15 +130,12 @@ export const RadioView = styled.View`
   padding: 7px;
 `;
 export const AuthButton = styled.TouchableOpacity`
-  align-self: stretch;
   align-items: center;
   padding: 20px;
+  margin: 12px;
   background-color: #f0ba00;
-  margin-top: 40px;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  margin-top: 45px;
+  border-radius: 30px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -139,11 +145,10 @@ export const AuthButtonText = styled.Text`
 `;
 
 const EditPetStyled = styled.TouchableOpacity`
-  align-self: stretch;
   align-items: center;
-  padding: 50px;
+  padding: 20px;
+  margin: 12px;
   background-color: #f0ba00;
-  margin-right: auto;
-  margin-left: auto;
-  width: 90%;
+  margin-top: 45px;
+  border-radius: 30px;
 `;
