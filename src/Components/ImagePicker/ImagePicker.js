@@ -1,45 +1,56 @@
-//Image picker
-import React, { useState, useEffect } from "react";
-import { Button, Image, View, Platform } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+// //Image picker
+// import React, { useState, useEffect } from "react";
+// import { Button, Image, View, Platform } from "react-native";
+// import * as ImagePicker from "expo-image-picker";
 
-export default function ImagePickerExample() {
-  const [image, setImage] = useState(null);
+// export default function ImagePickerExample() {
+//   const [image, setImage] = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      if (Platform.OS !== "web") {
-        const {
-          status,
-        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!");
-        }
-      }
-    })();
-  }, []);
+//   useEffect(() => {
+//     (async () => {
+//       if (Platform.OS !== "web") {
+//         const {
+//           status,
+//         } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+//         if (status !== "granted") {
+//           alert("Sorry, we need camera roll permissions to make this work!");
+//         }
+//       }
+//     })();
+//   }, []);
 
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+//   const pickImage = async () => {
+//     // { uri: localUri, name: filename, type }
+//     let result = await ImagePicker.launchImageLibraryAsync({
+//       mediaTypes: ImagePicker.MediaTypeOptions.All,
+//       allowsEditing: true,
+//       aspect: [4, 3],
+//       quality: 1,
+//     });
 
-    console.log(result);
+//     console.log(result);
 
-    if (!result.cancelled) {
-      setImage(result.uri);
-    }
-  };
+//     if (!result.cancelled) {
+//       setImage(result.uri);
+//       // ImagePicker saves the taken photo to disk and returns a local URI to it
+//       let localUri = result.uri;
+//       let filename = localUri.split("/").pop();
 
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
-      {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-      )}
-    </View>
-  );
-}
+//       // Infer the type of the image
+//       let match = /\.(\w+)$/.exec(filename);
+//       let type = match ? `image/${match[1]}` : `image`;
+//     }
+//   };
+
+//   return (
+//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+//       <Button title="Pick an image from camera roll" onPress={pickImage} />
+//       {image && (
+//         <Image
+//           source={{ uri: image }}
+//           style={{ flex: 1, width: 200, height: 200 }}
+//         />
+//       )}
+//     </View>
+//   );
+// }

@@ -71,7 +71,7 @@ const ProfileScreen = ({ navigation, route }) => {
   //************ OWNER IMAGE ************
 
   const owner = ownerStore.owners.find(
-    (user) => user.userId === authStore.user.id
+    (user) => user.userId === authStore.user?.id
   );
 
   //************ RETURN ************
@@ -110,7 +110,7 @@ const ProfileScreen = ({ navigation, route }) => {
                 fontWeight: "bold",
               }}
             >
-              Hi {authStore.user.username}
+              Hi {authStore.user?.username}
             </Text>
             <Text
               style={{
@@ -156,17 +156,20 @@ const ProfileScreen = ({ navigation, route }) => {
         <FieldWrapper>
           <LabelStyle>Full name:</LabelStyle>
           <FullNameWrapper>
-            <ProfileInfoStyled>{authStore.user.firstName}</ProfileInfoStyled>
-            <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
+            <ProfileInfoStyled>{authStore.user?.firstName}</ProfileInfoStyled>
+            <ProfileInfoStyled> {authStore.user?.lastName}</ProfileInfoStyled>
           </FullNameWrapper>
           <LabelStyle>Phone number:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.contactNumber}</ProfileInfoStyled>
+          <ProfileInfoStyled>
+            {" "}
+            {authStore.user?.contactNumber}
+          </ProfileInfoStyled>
           <LabelStyle>Date of Birth:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
+          <ProfileInfoStyled> {authStore.user?.dateOfBirth}</ProfileInfoStyled>
           <LabelStyle>Email:</LabelStyle>
           <ProfileInfoStyled>
             {" "}
-            {authStore.user.email} {`\n`}
+            {authStore.user?.email} {`\n`}
           </ProfileInfoStyled>
           {/* EDIT BUTTON */}
           <EditProfileStyled onPress={showModal}>

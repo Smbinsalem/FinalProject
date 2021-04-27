@@ -11,7 +11,7 @@ import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
 import Host from "./src/Screens/SignUp/HostSignUp";
 import SignUpAs from "./src/Screens/SignUp/SignUpAS";
 import AddPet from "./src/Screens/SignUp/AddPet";
-import ImagePicker from "./src/Components/ImagePicker/ImagePicker";
+// import ImagePicker from "./src/Components/ImagePicker/ImagePicker";
 // import PetDetail from "./src/Components/Pets/PetDetail";
 
 //Tab Screens

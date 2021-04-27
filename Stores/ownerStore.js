@@ -10,7 +10,6 @@ class OwnerStore {
   owners = [];
   loading = true;
 
-  // getOwnerById = this.owners.find((user) => user.userId === authStore.user.id);
   constructor() {
     makeAutoObservable(this);
   }
