@@ -97,7 +97,7 @@ const ProfileScreen = ({ navigation, route }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "18%",
+            // marginTop: "18%",
             width: "100%",
           }}
         >

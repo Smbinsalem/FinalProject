@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { Image } from "react-native";
 import styled from "styled-components/native";
 import { Icon } from "native-base";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 //Images
 import Pet2 from "../../assets/images/Logo10.png";
@@ -67,6 +68,12 @@ const SignIn = ({ navigation }) => {
             placeholderTextColor="white"
             onChangeText={(username) => setUser({ ...user, username })}
           />
+          <FontAwesome5
+            name="user-circle"
+            size={24}
+            color="#f0ba00"
+            style={{ marginTop: 5 }}
+          />
         </FieldView>
         <FieldView>
           <AuthTextInput
@@ -76,10 +83,12 @@ const SignIn = ({ navigation }) => {
             secureTextEntry={passwordVisibilty}
             onChangeText={(password) => setUser({ ...user, password })}
           />
+
           <Iconstyled
             name={passwordIcon}
             type="MaterialCommunityIcons"
             onPress={handlePassword}
+            style={{ marginTop: 5 }}
           />
         </FieldView>
         <AuthButton onPress={handleSubmit}>

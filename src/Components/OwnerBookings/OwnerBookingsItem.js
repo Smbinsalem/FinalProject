@@ -13,7 +13,7 @@ import { TouchableOpacity, Image, View } from "react-native";
 
 import { completeImgPath } from "../../../util";
 
-const OwnerChatItem = ({ booking, navigation }) => {
+const OwnerBookingsItem = ({ booking, navigation }) => {
   let counter = 0;
   useEffect(() => {
     authStore.fetchUsers();
@@ -53,7 +53,7 @@ const OwnerChatItem = ({ booking, navigation }) => {
     <>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("OwnerChatDetails", {
+          navigation.navigate("OwnerBookingsDetails", {
             booking: booking,
             owner: requester,
             pet: bookPet,
@@ -81,7 +81,7 @@ const OwnerChatItem = ({ booking, navigation }) => {
     </>
   );
 };
-export default observer(OwnerChatItem);
+export default observer(OwnerBookingsItem);
 
 //Styling
 const HomeWrapper = styled.View`

@@ -8,7 +8,7 @@ import { Spinner } from "native-base";
 import { Modal } from "react-native-paper";
 import AddReview from "../Review/AddReview";
 
-const OwnerChatDetails = ({ route, navigation }) => {
+const OwnerBookingsDetails = ({ route, navigation }) => {
   if (bookingStore.loading) return <Spinner />;
   const { booking } = route.params;
   const { owner } = route.params;
@@ -68,7 +68,7 @@ const OwnerChatDetails = ({ route, navigation }) => {
   );
 };
 
-export default observer(OwnerChatDetails);
+export default observer(OwnerBookingsDetails);
 
 //Styling
 const HomeWrapper = styled.View`
