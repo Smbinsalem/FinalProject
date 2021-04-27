@@ -16,7 +16,7 @@ const TextStyled = styled.Text`
 const HostItem = ({ user, navigation }) => {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("HostDetails")}
+      onPress={() => navigation.navigate("HostDetails", { user: user })}
       style={{
         height: 250,
         elevation: 2,

@@ -23,27 +23,30 @@ import OwnerChat from "../Screens/OwnerScreens/OwnerChat";
 import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
 import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
 import ReviewList from "../Components/Review/ReviewList";
+import AddBooking from "../Components/Booking/AddBooking";
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const ExploreStack = createStackNavigator();
 
-const Stacks = () => {
+const ExploreNavigator = () => {
   return (
-    <Stack.Navigator
+    <ExploreStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
       initialRouteName={"Explore"}
     >
-      <Stack.Screen name="Explore" component={ExploreScreen} />
-      <Stack.Screen
+      <ExploreStack.Screen name="Explore" component={ExploreScreen} />
+      <ExploreStack.Screen
         name="HostDetails"
         component={HostDetails}
         style={{ headerShown: true, headerTransparent: true }}
       />
+      <ExploreStack.Screen name="ReviewList" component={ReviewList} />
+      <ExploreStack.Screen name="AddBooking" component={AddBooking} />
       {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
       <Stacks.Screen name="Client" component={ClientScreen} /> */}
-    </Stack.Navigator>
+    </ExploreStack.Navigator>
   );
 };
 
@@ -181,7 +184,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Explore"
-        component={Stacks}
+        component={ExploreNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
