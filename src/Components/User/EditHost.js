@@ -11,7 +11,7 @@ import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
 
-const EditHost = () => {
+const EditHost = ({ hideModal }) => {
   if (hostStore.loading) return <Spinner />;
 
   const [host, setHost] = useState({
@@ -21,7 +21,10 @@ const EditHost = () => {
   });
 
   //IMAGE PICKER
-  const handleSubmit = () => hostStore.updateHost(host);
+  const handleSubmit = () => {
+    hostStore.updateHost(host);
+    hideModal();
+  };
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -63,38 +66,44 @@ const EditHost = () => {
   return (
     <>
       <ScrollView>
-        {/* Image */}
-        <Button title="Change profile image" onPress={pickImage} />
-        {image && (
-          <Image
-            source={{ uri: image }}
-            style={{ flex: 1, width: 200, height: 200 }}
+        <Body>
+          {/* Image */}
+          <Button title="Change profile image" onPress={pickImage} />
+          {image && (
+            <Image
+              source={{ uri: image }}
+              style={{ flex: 1, width: 200, height: 200 }}
+            />
+          )}
+          {/*   Location   */}
+          <AuthTextInput
+            value={host.location}
+            //   placeholder={host.location}
+            autoCapitalize="none"
+            placeholderTextColor="white"
+            onChangeText={(location) => setHost({ ...host, location })}
           />
-        )}
-        {/*   Location   */}
-        <AuthTextInput
-          value={host.location}
-          //   placeholder={host.location}
-          autoCapitalize="none"
-          placeholderTextColor="white"
-          onChangeText={(location) => setHost({ ...host, location })}
-        />
-        {/* Bio */}
-        <AuthTextInput
-          value={host.bio}
-          //   placeholder={host.bio}
-          placeholderTextColor="white"
-          onChangeText={(bio) => setHost({ ...host, bio })}
-        />
+          {/* Bio */}
+          <AuthTextInput
+            value={host.bio}
+            //   placeholder={host.bio}
+            placeholderTextColor="white"
+            onChangeText={(bio) => setHost({ ...host, bio })}
+          />
 
-        <AuthButton onPress={handleSubmit}>
-          <AuthButtonText>Update</AuthButtonText>
-        </AuthButton>
+          <AuthButton onPress={handleSubmit}>
+            <AuthButtonText>Update</AuthButtonText>
+          </AuthButton>
+        </Body>
       </ScrollView>
     </>
   );
 };
 
+const Body = styled.View`
+  padding-top: 45px;
+  margin: auto;
+`;
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;

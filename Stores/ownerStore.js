@@ -49,15 +49,29 @@ class OwnerStore {
   // *** Note ***
   // Update Owner Route was: /users/petOwners/${petOwnerId} // *** removed petOwnerId  ***
 
-  updateOwner = async (petOwnerId) => {
+  // updateOwner = async (petOwnerId) => {
+  //   try {
+  //     await instance.put(`/users/petOwners`);
+  //     this.owners = this.owners.filter((owner) => owner.id !== petOwnerId);
+  //   } catch (error) {
+  //     console.error("OwnerStore -> updateOwner -> error", error);
+  //   }
+  // };
+
+  updateOwner = async (updatedOwner) => {
     try {
-      await instance.put(`/users/petOwners`);
-      this.owners = this.owners.filter((owner) => owner.id !== petOwnerId);
+      console.log("Updated", updatedOwner);
+      const formData = new FormData();
+      for (const key in updatedOwner) formData.append(key, updatedOwner[key]);
+      // formData.append("photo");
+      const response = await instance.put(`/users/petOwners`, formData);
+      this.owners = this.owners.map((owner) =>
+        owner.id === response.data.id ? response.data : owner
+      );
     } catch (error) {
       console.error("OwnerStore -> updateOwner -> error", error);
     }
   };
-
   // constructor() {
   //   makeObservable(this, {
   //     owners: observable,

@@ -20,8 +20,21 @@ import { completeImgPath } from "../../util";
 //component
 import EditProfile from "../Components/User/EditUser";
 
+//Component
+import EditOwner from "../Components/User/EditOwner";
+
 // Menu Function
 const MenuButton = () => {
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+
+  const SettingStyle = {
+    backgroundColor: "#2b4f60",
+    height: 380,
+    margin: "auto",
+  };
+
   const navigation = useNavigation();
 
   const handlePress = async () => {
@@ -31,12 +44,24 @@ const MenuButton = () => {
 
   return (
     <>
+      <MenuButtonStyled onPress={showModal}>
+        <Text>Settings</Text>
+      </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <Text>Switch Account</Text>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <SignoutTextStyled>Sign Out</SignoutTextStyled>
       </MenuButtonStyled>
+
+      {/* EDIT MODAL */}
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={SettingStyle}
+      >
+        <EditOwner hideModal={hideModal} />
+      </Modal>
     </>
   );
 };
