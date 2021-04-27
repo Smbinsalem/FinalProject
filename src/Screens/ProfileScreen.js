@@ -29,6 +29,10 @@ const MenuButton = () => {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
+  const petowner = ownerStore.owners.find(
+    (user) => user.userId === authStore.user?.id
+  );
+
   const SettingStyle = {
     backgroundColor: "#2b4f60",
     height: 380,
@@ -60,7 +64,7 @@ const MenuButton = () => {
         onDismiss={hideModal}
         contentContainerStyle={SettingStyle}
       >
-        <EditOwner hideModal={hideModal} />
+        <EditOwner hideModal={hideModal} petowner={petowner} />
       </Modal>
     </>
   );
