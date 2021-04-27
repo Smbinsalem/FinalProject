@@ -8,6 +8,7 @@ import AddBooking from "../Booking/AddBooking";
 import authStore from "../../../Stores/authStore";
 import ownerStore from "../../../Stores/ownerStore";
 import petStore from "../../../Stores/petStore";
+import reviewStore from "../../../Stores/reviewStore";
 
 const HostDetails = ({ navigation, route }) => {
   const { user } = route.params;
@@ -15,7 +16,8 @@ const HostDetails = ({ navigation, route }) => {
   const pets = petStore.pets.filter(
     (pet) => pet.petOwnerId === authStore.user.petOwnerId
   );
-  hostStore.averageReview();
+  const hostRevs = reviewStore.reviews.find((review) => review.hostId);
+  if (hostRevs) hostStore.averageReview();
 
   return (
     <View
