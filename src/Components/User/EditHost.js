@@ -11,13 +11,13 @@ import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
 
-const EditHost = ({ hideModal }) => {
+const EditHost = ({ hideModal, pethost }) => {
   if (hostStore.loading) return <Spinner />;
 
   const [host, setHost] = useState({
     // image: completeImgPath(host.image),
-    location: hostStore.hosts.location ? hostStore.hosts.location : "Location",
-    bio: hostStore.hosts.bio ? hostStore.hosts.bio : "Bio",
+    location: pethost.location ? pethost.location : "Location",
+    bio: pethost.bio ? pethost.bio : "Bio",
   });
 
   //IMAGE PICKER

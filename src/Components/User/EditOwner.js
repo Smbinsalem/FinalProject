@@ -11,12 +11,12 @@ import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
 import ownerStore from "../../../Stores/ownerStore";
 
-const EditOwner = ({ hideModal }) => {
+const EditOwner = ({ hideModal, petowner }) => {
   if (ownerStore.loading) return <Spinner />;
 
   const [owner, setOwner] = useState({
     // image: completeImgPath(host.image),
-    bio: ownerStore.owners.bio ? ownerStore.owners.bio : "Bio",
+    bio: petowner.bio ? petowner.bio : "Bio",
   });
 
   //IMAGE PICKER
