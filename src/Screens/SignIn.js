@@ -170,5 +170,6 @@ export const AuthOther = styled.Text`
 `;
 
 export const Iconstyled = styled(Icon)`
+  margin-top: 5;
   color: #f0ba00;
 `;
