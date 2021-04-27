@@ -13,7 +13,7 @@ const ChatScreen = ({ navigation }) => {
 };
 
 export default ChatScreen;
-
+//Style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
