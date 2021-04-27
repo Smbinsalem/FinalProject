@@ -17,6 +17,7 @@ const PetDetail = ({ navigation, route }) => {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+
   const containerStyle = {
     backgroundColor: "#2b4f60",
     height: "100%",

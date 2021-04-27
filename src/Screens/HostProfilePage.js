@@ -20,9 +20,20 @@ import { completeImgPath } from "../../util";
 //component
 import EditProfile from "../Components/User/EditUser";
 import EditHost from "../Components/User/EditHost";
+import { autorun } from "mobx";
 
 // Menu Function
 const MenuButton = () => {
+  const [visible, setVisible] = React.useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
+
+  const SettingStyle = {
+    backgroundColor: "#2b4f60",
+    height: 380,
+    margin: "auto",
+  };
+
   const navigation = useNavigation();
 
   const handlePress = async () => {
@@ -32,12 +43,24 @@ const MenuButton = () => {
 
   return (
     <>
+      <MenuButtonStyled onPress={showModal}>
+        <Text>Settings</Text>
+      </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <Text>Switch Account</Text>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <SignoutTextStyled>Sign Out</SignoutTextStyled>
       </MenuButtonStyled>
+
+      {/* EDIT MODAL */}
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        contentContainerStyle={SettingStyle}
+      >
+        <EditHost hideModal={hideModal} />
+      </Modal>
     </>
   );
 };
@@ -70,7 +93,7 @@ const HostProfileScreen = ({ navigation, route }) => {
     padding: 20,
     margin: 60,
   };
-  //************ OWNER IMAGE ************
+  //************ HOST IMAGE ************
 
   const host = hostStore.hosts.find(
     (user) => user.userId === authStore.user?.id
@@ -123,6 +146,17 @@ const HostProfileScreen = ({ navigation, route }) => {
               }}
             >
               {host.bio}
+            </Text>
+            <Text
+              style={{
+                top: -70,
+                paddingTop: 1,
+                fontSize: 18,
+                color: "#FFF",
+                // fontWeight: "bold",
+              }}
+            >
+              {host.location}
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
