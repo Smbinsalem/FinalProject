@@ -10,7 +10,7 @@ import { AirbnbRating } from "react-native-ratings";
 import { StyleSheet, View } from "react-native";
 import Constants from "expo-constants";
 import pawRating from "../../../assets/icons/post.png";
-
+//******
 const AddReview = ({ petHost, hideModal }) => {
   const [review, setReview] = useState({
     comment: "",
