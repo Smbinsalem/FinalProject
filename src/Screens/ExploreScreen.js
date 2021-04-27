@@ -14,53 +14,30 @@ const ExploreScreen = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "25%",
-          borderBottomLeftRadius: 30,
-          borderBottomRightRadius: 30,
+          height: "20%",
+          paddingTop: -15,
           paddingHorizontal: 20,
         }}
       >
-        <Image
-          source={require("../../assets/images/1.png")}
-          style={{
-            height: 10,
-            width: 20,
-            marginTop: 50,
-          }}
-        />
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 25,
+            marginTop: "35%",
             width: "100%",
           }}
         >
           <View style={{ width: "50%" }}>
             <Text
               style={{
-                top: -20,
-                fontSize: 28,
+                top: -40,
+                fontSize: 32,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
             >
               Hi Petly
             </Text>
-          </View>
-          <View style={{ width: "50%", alignItems: "flex-end" }}>
-            <Image
-              source={require("../../assets/images/Pet6.png")}
-              style={{
-                top: -20,
-                height: 60,
-                width: 60,
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                borderTopRightRadius: 20,
-              }}
-            />
           </View>
         </View>
       </View>
@@ -75,7 +52,7 @@ const ExploreScreen = ({ navigation }) => {
           borderBottomRightRadius: 20,
         }}
       >
-        <View
+        {/* <View
           style={{
             backgroundColor: "#FFF",
             paddingVertical: 8,
@@ -100,7 +77,7 @@ const ExploreScreen = ({ navigation }) => {
             source={require("../../assets/icons/find.png")}
             style={{ height: 20, width: 20 }}
           />
-        </View>
+        </View> */}
       </LinearGradient>
 
       <ScrollView

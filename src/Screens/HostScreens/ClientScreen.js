@@ -15,7 +15,7 @@ const ClientScreen = ({ navigation, route }) => {
         style={{
           backgroundColor: "#172A3A",
           height: "20%",
-          paddingTop: 10,
+          paddingTop: -15,
           paddingHorizontal: 20,
         }}
       >
@@ -63,7 +63,7 @@ export default observer(ClientScreen);
 
 //Styling
 export const PostWrapper = styled.View`
-  margin-top: -10%;
+  margin-top: -11%;
   margin-bottom: 10px;
   font-size: 25px;
   padding: -1%;

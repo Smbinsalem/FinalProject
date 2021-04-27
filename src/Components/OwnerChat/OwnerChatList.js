@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
@@ -25,9 +25,6 @@ const OwnerChatList = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <HomeWrapper>
-        <Text>Who is taking care of my pet?</Text>
-      </HomeWrapper>
       <HomeWrapper>{ownerChatList}</HomeWrapper>
     </ScrollView>
   );
@@ -39,6 +36,7 @@ export default observer(OwnerChatList);
 
 const HomeWrapper = styled.View`
   flex: 1;
+  padding: 3.5%;
   justify-content: center;
   align-items: center;
 `;

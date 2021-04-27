@@ -70,10 +70,11 @@ class PetStore {
 
   updatePet = async (updatedPet) => {
     try {
-      const res = await instance.put(`/users/petOwners/pets`, updatedPet);
-      this.pets = res.data;
-      // const oldPet = this.pets.find((pet) => pet.id === updatedPet.id);
-      // for (const key in oldPet) oldPet[key] = updatedPet[key];
+      const response = await instance.put(`/users/petOwners/pets`, updatedPet);
+      this.pets = this.pets.map((pet) =>
+        pet.id === response.data.id ? response.data : pet
+      );
+
       // navigation.goBack();
     } catch (error) {
       console.error("PetStore -> updatePet -> error", error);
