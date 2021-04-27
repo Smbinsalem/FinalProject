@@ -19,8 +19,11 @@ const BookingDetails = ({ route, navigation }) => {
     ownerUser: requester.username,
   });
   useEffect(() => setStatus({ ...status, bookingStatus: checked }), [checked]);
-  const handleSubmit = () => {
-    bookingStore.updateHostBooking(status, navigation);
+  const handleSubmit = async () => {
+    await bookingStore.updateHostBooking(status, navigation);
+    await navigation.replace(
+      status.booking === "approved" ? "ClientScreen" : "Inbox"
+    );
   };
   return (
     <>

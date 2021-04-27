@@ -41,24 +41,22 @@ class BookingStore {
 
   updateHostBooking = async (updateBook, navigation) => {
     try {
-      // const formData = new FormData();
-      // for (const key in updateBook) formData.append(key, updateBook[key]);
       await instance.put(`/users/petHosts/bookings`, updateBook);
-      const book = await this.bookings.find(
+      const newbook = await this.bookings.find(
         (book) => book.id === updateBook.id
       );
-      for (const key in book) book[key] = updateBook[key];
+      for (const key in newbook) newbook[key] = updateBook[key];
 
-      navigation.navigate(
-        updateBook.bookingstatus === "Approved" ? "ClientScreen" : "Inbox"
-      );
+      this.bookings
+        .filter((booking) => booking.id !== updateBook.id)
+        .push(newbook);
     } catch (error) {
       console.error("BookStore -> updateHostBooking -> error", error);
     }
   };
 
   // Delete Booking from Owner Side
-  deleteOwnerBooking = async (petName, petid) => {
+  deleteOwnerBooking = async (petName, petid, navigation) => {
     try {
       await instance.delete("/users/petOwners/bookings/", {
         data: {
@@ -68,6 +66,7 @@ class BookingStore {
       this.bookings = this.bookings.filter(
         (booking) => booking.petId !== +petid
       );
+      navigation.replace("Inbox");
     } catch (error) {
       console.error("BookingStore -> deleteOwnerBooking -> error", error);
     }

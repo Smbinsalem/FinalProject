@@ -45,7 +45,6 @@ class PetStore {
   addNewPet = async (data, navigation) => {
     try {
       const response = await instance.post(`/users/petOwners/pets`, data);
-      console.log(response.data);
       this.pets.push(response.data);
       // navigation.navigate("Chat");
       // navigation.goBack();

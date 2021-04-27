@@ -19,7 +19,6 @@ const AddReview = ({ petHost, hideModal }) => {
   });
 
   const handleSubmit = async () => {
-    console.log(review);
     await reviewStore.addReview(review);
     hideModal();
   };

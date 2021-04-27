@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import SwiperComponent from "../../constants/Swiper";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
@@ -9,6 +9,8 @@ import authStore from "../../../Stores/authStore";
 import ownerStore from "../../../Stores/ownerStore";
 import petStore from "../../../Stores/petStore";
 import reviewStore from "../../../Stores/reviewStore";
+import { AirbnbRating } from "react-native-ratings";
+import Constants from "expo-constants";
 
 const HostDetails = ({ navigation, route }) => {
   const { user } = route.params;
@@ -17,7 +19,7 @@ const HostDetails = ({ navigation, route }) => {
     (pet) => pet.petOwnerId === authStore.user.petOwnerId
   );
   const hostRevs = reviewStore.reviews.find((review) => review.hostId);
-  if (hostRevs) hostStore.averageReview();
+  hostStore.averageReview(hostProfile.id);
 
   return (
     <View
@@ -63,7 +65,7 @@ const HostDetails = ({ navigation, route }) => {
               fontSize: 20,
             }}
           >
-            {hostProfile.bio}
+            {hostProfile?.bio}
           </Text>
           <Text
             style={{
@@ -74,8 +76,15 @@ const HostDetails = ({ navigation, route }) => {
               fontSize: 20,
             }}
           >
-            average rating: {hostStore.average}
+            average rating: {hostStore?.average}
           </Text>
+          {/* <View style={styles.container}>
+          <AirbnbRating
+            count={hostStore?.average}
+            size={30}
+            // reviews={["Awful", "OK", "Good", "Very Good", "Exceptional"]}
+          />
+          </View> */}
           <View
             style={{
               flexDirection: "row",
@@ -132,6 +141,14 @@ const HostDetails = ({ navigation, route }) => {
                   navigation.navigate("ReviewList", { host: user })
                 }
               >
+                <AirbnbRating
+                  count={hostStore?.average}
+                  size={15}
+                  // reviews={["Awful", "OK", "Good", "Very Good", "Exceptional"]}
+                  selectedColor={"#fff"}
+                  reviewColor={"#fff"}
+                  isDisabled={true}
+                />
                 <Text
                   style={{
                     fontWeight: "bold",
@@ -151,3 +168,13 @@ const HostDetails = ({ navigation, route }) => {
   );
 };
 export default HostDetails;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 20,
+    backgroundColor: "white",
+  },
+});

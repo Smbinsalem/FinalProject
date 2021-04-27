@@ -67,7 +67,7 @@ const ExploreScreen = ({ navigation }) => {
               color: "#172A3A",
             }}
           >
-            Recommended
+            Top Hosts
           </Text>
         </View>
 
