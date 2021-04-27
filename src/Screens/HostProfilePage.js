@@ -1,5 +1,5 @@
 import React from "react";
-
+import { observer } from "mobx-react";
 //styles
 import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -47,6 +47,7 @@ const MenuButton = () => {
 const HostProfileScreen = ({ navigation, route }) => {
   //************ SPINNER ************
   if (hostStore.loading) return <Spinner />;
+
   //************ EDIT MODAL ************
   const [_visible, _setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
@@ -72,7 +73,7 @@ const HostProfileScreen = ({ navigation, route }) => {
   //************ OWNER IMAGE ************
 
   const host = hostStore.hosts.find(
-    (user) => user.userId === authStore.user.id
+    (user) => user.userId === authStore.user?.id
   );
 
   //************ RETURN ************
@@ -196,7 +197,7 @@ const HostProfileScreen = ({ navigation, route }) => {
   );
 };
 
-export default HostProfileScreen;
+export default observer(HostProfileScreen);
 
 const styles = StyleSheet.create({
   container: {

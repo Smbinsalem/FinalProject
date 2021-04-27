@@ -1,10 +1,11 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { completeImgPath } from "../../../util";
 import { Spinner } from "native-base";
-
+import { Button, Image, View, Platform } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 //Style
 import styled from "styled-components/native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -15,23 +16,68 @@ const EditHost = () => {
 
   const [host, setHost] = useState({
     // image: completeImgPath(host.image),
-    location: hostStore.hosts.location,
+    location: hostStore.hosts.location ? hostStore.hosts.location : "Location",
     bio: hostStore.hosts.bio ? hostStore.hosts.bio : "Bio",
   });
+
+  //IMAGE PICKER
   const handleSubmit = () => hostStore.updateHost(host);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const {
+          status,
+        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+      // ImagePicker saves the taken photo to disk and returns a local URI to it
+      let localUri = result.uri;
+      let filename = localUri.split("/").pop();
+
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      setHost({ ...host, image: { uri: localUri, name: filename, type } });
+    }
+  };
 
   return (
     <>
       <ScrollView>
         {/* Image */}
-
+        <Button title="Change profile image" onPress={pickImage} />
+        {image && (
+          <Image
+            source={{ uri: image }}
+            style={{ flex: 1, width: 200, height: 200 }}
+          />
+        )}
         {/*   Location   */}
         <AuthTextInput
-          onChangeText={(location) => setHost({ ...host, location })}
           value={host.location}
           //   placeholder={host.location}
           autoCapitalize="none"
           placeholderTextColor="white"
+          onChangeText={(location) => setHost({ ...host, location })}
         />
         {/* Bio */}
         <AuthTextInput

@@ -49,10 +49,16 @@ class HostStore {
   // *** Note ***
   // Update Host Route was: /users/petHosts/${petHostId} // *** removed petHostId  ***
 
-  updateHost = async (petHostId) => {
+  updateHost = async (updatedHost) => {
     try {
-      await instance.put(`/users/petHosts`);
-      this.hosts = this.hosts.filter((host) => host.id !== petHostId);
+      console.log("Updated", updatedHost);
+      const formData = new FormData();
+      for (const key in updatedHost) formData.append(key, updatedHost[key]);
+      // formData.append("photo");
+      const response = await instance.put(`/users/petHosts`, formData);
+      this.hosts = this.hosts.map((host) =>
+        host.id === response.data.id ? response.data : host
+      );
     } catch (error) {
       console.error("HostStore -> updateHost -> error", error);
     }

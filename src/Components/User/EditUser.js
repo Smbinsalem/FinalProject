@@ -18,11 +18,11 @@ const EditProfile = () => {
   if (ownerStore.loading) return <Spinner />;
 
   const [user, setUser] = useState({
-    firstName: authStore.user.firstName,
-    lastName: authStore.user.lastName,
-    contactNumber: authStore.user.contactNumber,
-    username: authStore.user.username,
-    email: authStore.user.email,
+    firstName: authStore.user?.firstName,
+    lastName: authStore.user?.lastName,
+    contactNumber: authStore.user?.contactNumber,
+    username: authStore.user?.username,
+    email: authStore.user?.email,
   });
 
   const handleSubmit = () => authStore.updateUser(user);
