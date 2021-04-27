@@ -70,7 +70,7 @@ const AddNewPet = ({ navigation, hideModal }) => {
         mode="date"
         placeholder="Date of Birth *"
         format="YYYY-MM-DD"
-        maxDate="2003-06-30"
+        maxDate="2021-04-27"
         confirmBtnText="Confirm"
         showIcon={false}
         cancelBtnText="Cancel"

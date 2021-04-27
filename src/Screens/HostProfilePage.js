@@ -156,7 +156,7 @@ const HostProfileScreen = ({ navigation, route }) => {
                 // fontWeight: "bold",
               }}
             >
-              {host.location}
+              {host?.location}
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
@@ -168,10 +168,7 @@ const HostProfileScreen = ({ navigation, route }) => {
                 top: -10,
                 height: 60,
                 width: 60,
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                borderTopRightRadius: 20,
+                borderRadius: 100,
               }}
             />
           </View>

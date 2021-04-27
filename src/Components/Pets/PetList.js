@@ -9,9 +9,9 @@ import { ScrollView } from "react-native-gesture-handler";
 const PetList = ({ navigation, ownerId }) => {
   //Loading page
 
-  // useEffect(() => {
-  //   petStore.fetchPets();
-  // }, []);
+  useEffect(() => {
+    petStore.fetchPets();
+  }, []);
 
   const petList = petStore.pets
     .filter((mypet) => mypet.petOwnerId === +ownerId)
