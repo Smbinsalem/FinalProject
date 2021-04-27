@@ -26,7 +26,8 @@ const AddBooking = ({ navigation, route }) => {
 
   const handleSubmit = async () => {
     await bookingStore.createBooking(booking);
-    hideModal();
+    alert("Booking Confirmed! Waiting for host reply");
+    navigation.replace("Explore");
   };
 
   return (

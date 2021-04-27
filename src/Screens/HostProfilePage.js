@@ -89,11 +89,11 @@ const HostProfileScreen = ({ navigation, route }) => {
           paddingHorizontal: 20,
         }}
       >
-        <StyledTouchableOpacity onPress={_showModal}>
-          <StyledView>
+        <StyledView>
+          <StyledTouchableOpacity onPress={_showModal}>
             <MenutICONStyled name="menu" type="Feather" />
-          </StyledView>
-        </StyledTouchableOpacity>
+          </StyledTouchableOpacity>
+        </StyledView>
         <View
           style={{
             flexDirection: "row",
@@ -111,7 +111,7 @@ const HostProfileScreen = ({ navigation, route }) => {
                 fontWeight: "bold",
               }}
             >
-              Hi {authStore.user.username}
+              Hi {authStore.user?.username}
             </Text>
             <Text
               style={{
@@ -122,12 +122,14 @@ const HostProfileScreen = ({ navigation, route }) => {
                 // fontWeight: "bold",
               }}
             >
-              {host.bio}
+              {host?.bio}
             </Text>
           </View>
           <View style={{ width: "50%", alignItems: "flex-end" }}>
             <Image
-              source={{ uri: completeImgPath(host.image) }}
+              source={
+                host?.image ? { uri: completeImgPath(host?.image) } : null
+              }
               style={{
                 top: -10,
                 height: 60,
@@ -157,17 +159,20 @@ const HostProfileScreen = ({ navigation, route }) => {
         <FieldWrapper>
           <LabelStyle>Full name:</LabelStyle>
           <FullNameWrapper>
-            <ProfileInfoStyled>{authStore.user.firstName}</ProfileInfoStyled>
-            <ProfileInfoStyled> {authStore.user.lastName}</ProfileInfoStyled>
+            <ProfileInfoStyled>{authStore.user?.firstName}</ProfileInfoStyled>
+            <ProfileInfoStyled> {authStore.user?.lastName}</ProfileInfoStyled>
           </FullNameWrapper>
           <LabelStyle>Phone number:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.contactNumber}</ProfileInfoStyled>
+          <ProfileInfoStyled>
+            {" "}
+            {authStore.user?.contactNumber}
+          </ProfileInfoStyled>
           <LabelStyle>Date of Birth:</LabelStyle>
-          <ProfileInfoStyled> {authStore.user.dateOfBirth}</ProfileInfoStyled>
+          <ProfileInfoStyled> {authStore.user?.dateOfBirth}</ProfileInfoStyled>
           <LabelStyle>Email:</LabelStyle>
           <ProfileInfoStyled>
             {" "}
-            {authStore.user.email} {`\n`}
+            {authStore.user?.email} {`\n`}
           </ProfileInfoStyled>
           {/* EDIT BUTTON */}
           <EditProfileStyled onPress={showModal}>
@@ -294,4 +299,9 @@ const StyledView = styled.View`
 `;
 const StyledTouchableOpacity = styled.TouchableOpacity`
   padding: 1.5%;
+`;
+const BurgerView = styled.View`
+  position: absolute;
+  left: 20px;
+  top: 60px;
 `;
