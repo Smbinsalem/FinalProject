@@ -4,19 +4,19 @@ import styled from "styled-components";
 import { ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
-import OwnerBookingsItem from "./OwnerBookingsItem";
+import OwnerChatItem from "./OwnerChatItem";
 import { Spinner, Text } from "native-base";
 
-const OwnerBookingsList = ({ navigation }) => {
+const OwnerChatList = ({ navigation }) => {
   authStore.fetchUsers();
   if (authStore.loading) return <Spinner />;
   if (bookingStore.loading) return <Spinner />;
 
-  const ownerBookingsList = bookingStore.bookings
+  const ownerChatList = bookingStore.bookings
     .filter((owner) => owner.petOwnerId === authStore.user?.petOwnerId)
     .filter((status) => status.bookingStatus === "approved")
     .map((booking) => (
-      <OwnerBookingsItem
+      <OwnerChatItem
         navigation={navigation}
         booking={booking}
         key={booking.id}
@@ -28,12 +28,12 @@ const OwnerBookingsList = ({ navigation }) => {
       <HomeWrapper>
         <Text>Who is taking care of my pet?</Text>
       </HomeWrapper>
-      <HomeWrapper>{ownerBookingsList}</HomeWrapper>
+      <HomeWrapper>{ownerChatList}</HomeWrapper>
     </ScrollView>
   );
 };
 
-export default observer(OwnerBookingsList);
+export default observer(OwnerChatList);
 
 //Styling
 
