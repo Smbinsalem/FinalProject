@@ -9,6 +9,7 @@ import { View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Modal, Portal, Provider } from "react-native-paper";
+import { ScrollView } from "react-native-gesture-handler";
 
 const PostScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
@@ -38,11 +39,26 @@ const PostScreen = ({ navigation }) => {
         <View
           style={{
             flexDirection: "row",
-            alignItems: "center",
+            alignItems: "space-between",
             marginTop: "5%",
             width: "100%",
           }}
         >
+          <Text
+            style={{
+              top: -20,
+              fontSize: 32,
+              color: "#FFF",
+              fontWeight: "bold",
+            }}
+          >
+            My Pets
+          </Text>
+          <ViewWrapper>
+            <AuthButton onPress={showModal}>
+              <AuthButtonText style={{ color: "white" }}>+</AuthButtonText>
+            </AuthButton>
+          </ViewWrapper>
           <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
@@ -51,11 +67,7 @@ const PostScreen = ({ navigation }) => {
                 color: "#FFF",
                 fontWeight: "bold",
               }}
-            >
-              <AuthButton onPress={showModal}>
-                <AuthButtonText style={{ color: "white" }}>+</AuthButtonText>
-              </AuthButton>
-            </Text>
+            ></Text>
           </View>
         </View>
       </View>
@@ -80,7 +92,14 @@ const PostScreen = ({ navigation }) => {
             <AddNewPet hideModal={hideModal} />
           </Modal>
         </Portal>
-        <PetList navigation={navigation} ownerId={authStore.user.petOwnerId} />
+        <ScrollWrapper>
+          <ScrollView>
+            <PetList
+              navigation={navigation}
+              ownerId={authStore.user.petOwnerId}
+            />
+          </ScrollView>
+        </ScrollWrapper>
       </Provider>
     </>
   );
@@ -97,24 +116,26 @@ export const PostWrapper = styled.View`
 
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
-  margin: auto;
+  margin: 1px;
   align-items: center;
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px;
+  /* padding-bottom: 15px; */
   background-color: #f0ba00;
-  margin-top: 30px;
-  border-radius: 10px;
+  margin-top: 90px;
+  border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 25px;
 `;
 
 export const ViewWrapper = styled.View`
   padding-bottom: 1%;
+  margin: auto;
+  left: 200px;
+`;
+export const ScrollWrapper = styled.View`
+  padding-bottom: 20%;
 `;

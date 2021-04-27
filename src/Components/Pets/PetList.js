@@ -18,9 +18,11 @@ const PetList = ({ navigation, ownerId }) => {
     .map((pet) => <PetItem navigation={navigation} pet={pet} key={pet.id} />);
 
   return (
-    <ScrollView>
+    <>
+      {/* <ScrollView> */}
       <View>{petList}</View>
-    </ScrollView>
+      {/* </ScrollView> */}
+    </>
   );
 };
 export default observer(PetList);
