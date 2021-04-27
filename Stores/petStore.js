@@ -54,6 +54,20 @@ class PetStore {
     }
   };
 
+  //*** The New Update **
+
+  // updatePet = async (updatedPet) => {
+  //   try {
+  //     const res = await instance.put(`/users/petOwners/pets`, updatedPet);
+  //     this.pets = res.data;
+  //     // navigation.goBack();
+  //   } catch (error) {
+  //     console.error("PetStore -> updatePet -> error", error);
+  //   }
+  // };
+
+  //*** The Old Update **
+
   updatePet = async (updatedPet) => {
     try {
       const res = await instance.put(`/users/petOwners/pets`, updatedPet);

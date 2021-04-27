@@ -8,6 +8,10 @@ import petStore from "../../../Stores/petStore";
 import styled from "styled-components/native";
 import { Alert } from "react-native";
 import { observer } from "mobx-react";
+import { RadioButton } from "react-native-paper";
+
+//Calendar
+import DatePicker from "react-native-datepicker";
 
 // //Native content
 // import DropDownPicker from "react-native-dropdown-picker";
@@ -25,6 +29,8 @@ const AddNewPet = ({ navigation, hideModal }) => {
     allergies: "",
     personality: "",
   });
+
+  const [checked, setChecked] = React.useState(null);
 
   const handleSubmit = () => {
     petStore.addNewPet(pet);
@@ -53,16 +59,73 @@ const AddNewPet = ({ navigation, hideModal }) => {
         placeholderTextColor="white"
         onChangeText={(breed) => setPet({ ...pet, breed })}
       />
+      <LabelStyle>Vaccinated? *</LabelStyle>
+      <RadioButton.Group
+        onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+        value={pet.vaccinated}
+      >
+        <RadioButton.Item label="Yes" value="True" />
+        <RadioButton.Item label="No" value="False" />
+      </RadioButton.Group>
 
-      <AuthTextInput
-        placeholder="Vaccinated? *"
-        placeholderTextColor="white"
-        onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
-      />
-      <AuthTextInput
-        placeholder="Date of Birth"
-        placeholderTextColor="white"
-        onChangeText={(dateOfBirth) => setPet({ ...pet, dateOfBirth })}
+      {/* Taiba's Radio Button */}
+
+      {/* <LabelStyle>Vaccinated? *</LabelStyle>
+      <FieldView>
+        <TextStyle>Yes</TextStyle>
+        <RadioView>
+          <RadioButton
+            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+            value={pet.vaccinated}
+            status={checked === "True" ? "checked" : "unchecked"}
+            onPress={() => setChecked("True")}
+          />
+        </RadioView>
+
+        <TextStyle>No</TextStyle>
+        <RadioView>
+          <RadioButton
+            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+            value={pet.vaccinated}
+            status={checked === "False" ? "checked" : "unchecked"}
+            onPress={() => setChecked("False")}
+          />
+        </RadioView>
+      </FieldView> */}
+
+      <DatePicker
+        style={{
+          width: 340,
+          margin: "auto",
+          // paddingRight: 40,
+        }}
+        date={pet.dateOfBirth}
+        mode="date"
+        placeholder="Date of Birth *"
+        format="YYYY-MM-DD"
+        // minDate="2016-05-01"
+        maxDate="2003-06-30"
+        confirmBtnText="Confirm"
+        showIcon={false}
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: "absolute",
+            top: 4,
+            marginLeft: 0,
+          },
+          dateInput: {
+            right: 20,
+            borderColor: "#f0ba00",
+            color: "white",
+            marginLeft: 36,
+            marginBottom: 20,
+            width: 120,
+            fontSize: "100px",
+            borderRadius: 10,
+          },
+        }}
+        onDateChange={(date) => setPet({ ...pet, dateOfBirth: date })}
       />
       <AuthTextInput
         placeholder="Allergies"
@@ -74,13 +137,53 @@ const AddNewPet = ({ navigation, hideModal }) => {
         placeholderTextColor="white"
         onChangeText={(personality) => setPet({ ...pet, personality })}
       />
+
       <AuthButton onPress={handleSubmit}>
-        {/* <AuthButton onPress={() => alert("go to post screen")}> */}
         <AuthButtonText>Add</AuthButtonText>
       </AuthButton>
     </>
   );
 };
+
+export const TextStyle = styled.Text`
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  align-self: auto;
+  /* font-style: bold; */
+`;
+export const TextTitleStyle = styled.Text`
+  color: #f0ba00;
+  font-weight: bold;
+  margin: 10px;
+  text-align: left;
+  font-size: 20px;
+`;
+
+export const FieldView = styled.View`
+  flex-direction: row;
+  /* color: white; */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+`;
+export const RadioView = styled.View`
+  background-color: rgba(225, 225, 225, 0.6);
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 20px;
+  padding: 7px;
+`;
+
+const LabelStyle = styled.Text`
+  color: white;
+  font-size: 16px;
+  margin-top: 7%;
+  /* padding: 1%; */
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
+`;
 
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;

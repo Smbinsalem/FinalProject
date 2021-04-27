@@ -40,9 +40,9 @@ export const AuthButton = styled.TouchableOpacity`
   background-color: #f0ba00;
   margin-top: 30px;
   border-top-left-radius: 30px;
-  border-Bottom-Left-Radius: 30px;
-  border-Bottom-Right-Radius: 30px;
-  border-Top-Right-Radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
 `;
 
 export const AuthButtonText = styled.Text`
