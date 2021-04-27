@@ -11,7 +11,7 @@ const OwnerInbox = ({ navigation }) => {
         style={{
           backgroundColor: "#172A3A",
           height: "20%",
-          paddingTop: "%",
+          // paddingTop: "%",
           paddingHorizontal: 20,
         }}
       >

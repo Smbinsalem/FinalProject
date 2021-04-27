@@ -31,7 +31,7 @@ class BookingStore {
   };
   //
   createBooking = async (data) => {
-    const response = await instance.post("/users/petOwner/bookings", data);
+    const response = await instance.post("/users/petOwners/bookings", data);
     this.bookings.push(response.data);
     try {
     } catch (error) {
