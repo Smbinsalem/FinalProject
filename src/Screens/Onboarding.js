@@ -148,7 +148,7 @@ const Onboarding = ({ navigation }) => {
             <Text
               style={{ ...FONTS.h1, color: COLORS.white, fontWeight: "bold" }}
             >
-              {completed ? "Let's Go" : "Skip"}
+              {completed ? "Let's Go" : "skip"}
             </Text>
           </TouchableOpacity>
         </View>

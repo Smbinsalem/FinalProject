@@ -29,7 +29,6 @@ const ReviewList = ({ navigation, route }) => {
         style={{
           backgroundColor: "#172A3A",
           height: "20%",
-          // paddingTop: "%",
           paddingHorizontal: 20,
         }}
       >
