@@ -100,7 +100,7 @@ export default observer(ClientDetails);
 //Styling
 const ChoiceView = styled.View`
   align-items: center;
-  padding: 15px;
+  padding: 8px;
   margin: 30px;
   top: -100;
   background-color: #f0ba00;
@@ -142,12 +142,12 @@ export const TextStyle = styled.Text`
 
 export const AuthButton = styled.TouchableOpacity`
   align-items: center;
-  padding: 20px;
+  padding: 115px;
   margin: 12px;
   top: 100;
   background-color: #f0ba00;
   margin-top: -4px;
-  border-radius: 30px;
+  border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`

@@ -145,17 +145,13 @@ export const AuthTextInput = styled.TextInput`
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   margin-top: 30px;
   align-self: stretch;
   align-items: center;
-  padding: 20px;
   background-color: #f0ba00;
   margin-top: 30px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`

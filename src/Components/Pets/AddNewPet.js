@@ -174,12 +174,14 @@ export const AuthButton = styled.TouchableOpacity`
   padding: 20px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   text-align: center;
   align-self: stretch;
+  font-weight:bold;
   align-items: center;
   font-size: 18px;
 `;

@@ -46,7 +46,7 @@ const OwnerChatDetails = ({ route, navigation }) => {
         <ChoiceView>
           <CallStyled onPress={() => callNumber(host.contactNumber)}>
             <AuthButtonText style={{ margin: 5 }}>
-              Call {host.firstName}
+              Call {host.number}
             </AuthButtonText>
           </CallStyled>
           <CallStyled
@@ -72,6 +72,7 @@ const OwnerChatDetails = ({ route, navigation }) => {
           visible={visible}
           onDismiss={hideModal}
           contentContainerStyle={containerStyle}
+          style={{ marginBottom: 180, margin: "auto" }}
         >
           <AddReview hideModal={hideModal} petHost={host} />
         </Modal>
@@ -156,10 +157,7 @@ export const AuthButton = styled.TouchableOpacity`
   padding: 20px;
   background-color: #f0ba00;
   margin-top: 40px;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -176,20 +174,20 @@ const CallStyled = styled.TouchableOpacity`
   margin-right: 3%;
   margin-top: 8;
   width: 33%;
-  border-radius: 10px;
+  border-radius: 100px;
 `;
 
 const ReviewButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 11px;
+  padding: 15px;
   background-color: #f0ba00;
   padding-left: 121px;
   padding-right: 121px;
   right: 5;
   margin-top: 8;
   width: 68.9%;
-  border-radius: 10px;
+  border-radius: 100px;
 `;
 export const LabelStyle = styled.Text`
   color: gray;

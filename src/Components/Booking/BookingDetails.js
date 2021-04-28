@@ -176,7 +176,7 @@ export const AuthButton = styled.TouchableOpacity`
   top: -100;
   background-color: #f0ba00;
   margin-top: -4px;
-  border-radius: 30px;
+  border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`

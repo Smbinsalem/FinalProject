@@ -49,10 +49,10 @@ const MenuButton = () => {
   return (
     <>
       <MenuButtonStyled onPress={showModal}>
-        <Text>Settings</Text>
+        <MenuTextStyled>Settings</MenuTextStyled>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
-        <Text>Switch Account</Text>
+        <MenuTextStyled>Switch Account</MenuTextStyled>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <SignoutTextStyled>Sign Out</SignoutTextStyled>
@@ -201,9 +201,9 @@ const ProfileScreen = ({ navigation, route }) => {
             {authStore.user?.email} {`\n`}
           </ProfileInfoStyled>
           {/* EDIT BUTTON */}
-          <EditProfileStyled onPress={showModal}>
-            <Text>Edit Profile</Text>
-          </EditProfileStyled>
+          <AuthButton onPress={showModal}>
+            <AuthButtonText>Edit Profile</AuthButtonText>
+          </AuthButton>
         </FieldWrapper>
         {/* <PetList ownerId={authStore.user.petOwnerId} /> */}
       </ScrollView>
@@ -250,6 +250,25 @@ export const ProfileWrapper = styled.View`
 export const FieldWrapper = styled.View`
   background-color: rgba(23, 42, 58, 0);
   padding: 1%;
+`;
+export const AuthButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
+   width:375px;
+  left:18px;
+  background-color: #f0ba00;
+  border-radius: 100px;
+`;
+
+export const AuthButtonText = styled.Text`
+  color: #fcfdff;
+  text-align: center;
+  font-weight:bold;
+
+  align-self: stretch;
+  align-items: center;
+  font-size: 18px;
 `;
 
 export const ProfileImage = styled.Image`
@@ -303,19 +322,24 @@ export const EditProfileStyled = styled.TouchableOpacity`
 const MenuButtonStyled = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   background-color: #f0ba00;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10%;
   width: 90%;
-  color: red;
+  border-radius:100px;
+ 
 `;
 const MenutICONStyled = styled(Icon)`
   color: white;
 `;
 const SignoutTextStyled = styled.Text`
   color: red;
+`;
+const MenuTextStyled = styled.Text`
+font-weight:bold;
+  color: white;
 `;
 
 const StyledView = styled.View`
