@@ -12,13 +12,19 @@ import authStore from "../../../Stores/authStore";
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
   // const pet = petStore.pets[0];
+  //comment2
 
   const { petId } = route.params;
-  const pet = petStore.pets.find((pet) => pet.id === petId);
+  const pet = petStore.pets?.find((pet) => pet.id === petId);
 
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+
+  const handleDelete = () => {
+    petStore.deletePet(pet.name);
+    navigation.replace("Pets");
+  };
 
   const containerStyle = {
     backgroundColor: "#2b4f60",
@@ -35,37 +41,44 @@ const PetDetail = ({ navigation, route }) => {
       <ScrollView>
         <ImageWrapper>
           <ProfileImage
-            source={pet.image ? { uri: completeImgPath(pet.image) } : null}
+            source={pet?.image ? { uri: completeImgPath(pet?.image) } : null}
           />
         </ImageWrapper>
         <FieldWrapper>
           <LabelStyle>Name</LabelStyle>
-          <InfoStyled>{pet.name}</InfoStyled>
+          <InfoStyled>{pet?.name}</InfoStyled>
           <LabelStyle>Type</LabelStyle>
-          <InfoStyled>{pet.type}</InfoStyled>
+          <InfoStyled>{pet?.type}</InfoStyled>
           <LabelStyle>Breed</LabelStyle>
-          <InfoStyled>{pet.breed}</InfoStyled>
+          <InfoStyled>{pet?.breed}</InfoStyled>
           <LabelStyle>Vaccinated?</LabelStyle>
-          <InfoStyled> {pet.vaccinated ? "Yes" : "No"}</InfoStyled>
+          <InfoStyled> {pet?.vaccinated ? "Yes" : "No"}</InfoStyled>
           <LabelStyle>Date of Birth</LabelStyle>
-          <InfoStyled>{pet.dateOfBirth}</InfoStyled>
+          <InfoStyled>{pet?.dateOfBirth}</InfoStyled>
           <LabelStyle>Allergies</LabelStyle>
-          <InfoStyled>{pet.allergies}</InfoStyled>
+          <InfoStyled>{pet?.allergies}</InfoStyled>
           <LabelStyle>Personality</LabelStyle>
-          <InfoStyled> {pet.personality}</InfoStyled>
+          <InfoStyled> {pet?.personality}</InfoStyled>
           <LabelStyle>Walking Hours</LabelStyle>
-          <InfoStyled>{pet.walkingHours}</InfoStyled>
+          <InfoStyled>{pet?.walkingHours}</InfoStyled>
           <LabelStyle>Medication</LabelStyle>
-          <InfoStyled> {pet.medication}</InfoStyled>
+          <InfoStyled> {pet?.medication}</InfoStyled>
           <LabelStyle>Meal Time</LabelStyle>
-          <InfoStyled> {pet.mealTime}</InfoStyled>
+          <InfoStyled> {pet?.mealTime}</InfoStyled>
           <LabelStyle>Allowed Snacks Per Day</LabelStyle>
-          <InfoStyled> {pet.allowedSnackPerDays}</InfoStyled>
+          <InfoStyled> {pet?.allowedSnackPerDays}</InfoStyled>
 
           {/* EDIT BUTTON */}
-          {authStore.user?.petOwnerId === pet.petOwnerId ? (
+          {authStore.user?.petOwnerId === pet?.petOwnerId ? (
             <AuthButton onPress={showModal}>
               <AuthButtonText>Edit Pet Details</AuthButtonText>
+            </AuthButton>
+          ) : null}
+
+          {/* DELETE BUTTON */}
+          {authStore.user?.petOwnerId === pet?.petOwnerId ? (
+            <AuthButton onPress={handleDelete}>
+              <AuthButtonText>Delete Pet</AuthButtonText>
             </AuthButton>
           ) : null}
         </FieldWrapper>
@@ -139,14 +152,13 @@ export const AuthButton = styled.TouchableOpacity`
   padding: 20px;
   background-color: #f0ba00;
   margin-top: 20px;
-  border-radius:100px;
-
+  border-radius: 100px;
 `;
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   text-align: center;
   align-self: stretch;
-  font-weight:bold;
+  font-weight: bold;
   align-items: center;
   font-size: 18px;
 `;
