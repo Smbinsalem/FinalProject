@@ -110,7 +110,10 @@ const ProfileScreen = ({ navigation, route }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "15%",
+          height: "30%",
+          // borderBottomLeftRadius: 30,
+          // borderBottomRightRadius: 30,
+          paddingHorizontal: 20,
         }}
       >
         <StyledView>
@@ -123,31 +126,44 @@ const ProfileScreen = ({ navigation, route }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
+            marginTop: "18%",
             width: "100%",
           }}
         >
-          <View style={{ marginLeft: "40%", width: "30%" }}>
+          <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
-                marginTop: 20,
-                fontSize: 30,
-                top: -30,
-                color: "#fff",
+                top: -70,
+                fontSize: 28,
+                color: "#FFF",
                 fontWeight: "bold",
               }}
             >
               Hi {authStore.user?.username}
             </Text>
+            <Text
+              style={{
+                top: -70,
+                paddingTop: 1,
+                fontSize: 18,
+                color: "#FFF",
+                fontWeight: "bold",
+              }}
+            >
+              {owner.bio}
+            </Text>
           </View>
-          <View style={{ marginTop: "30%", width: "50%" }}>
+          <View style={{ width: "50%", alignItems: "flex-end" }}>
             <Image
               source={{ uri: completeImgPath(owner.image) }}
               style={{
-                top: -85,
+                top: -10,
                 height: 60,
                 width: 60,
-                marginLeft: 60,
-                borderRadius: 30,
+                borderTopLeftRadius: 20,
+                borderBottomLeftRadius: 20,
+                borderBottomRightRadius: 20,
+                borderTopRightRadius: 20,
               }}
             />
           </View>
@@ -156,26 +172,32 @@ const ProfileScreen = ({ navigation, route }) => {
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          height: 40,
+          left: 0,
+          right: 0,
+          height: 100,
+          marginTop: -50,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
       {/* PROFILE DETAILS */}
       <ScrollView>
         <FieldWrapper>
-          <LabelStyle>Biography:</LabelStyle>
-          <ProfileInfoStyled>{owner.bio}</ProfileInfoStyled>
-
           <LabelStyle>Full name:</LabelStyle>
           <FullNameWrapper>
             <ProfileInfoStyled>{authStore.user?.firstName}</ProfileInfoStyled>
             <ProfileInfoStyled> {authStore.user?.lastName}</ProfileInfoStyled>
           </FullNameWrapper>
           <LabelStyle>Phone number:</LabelStyle>
-          <ProfileInfoStyled>{authStore.user?.contactNumber}</ProfileInfoStyled>
+          <ProfileInfoStyled>
+            {" "}
+            {authStore.user?.contactNumber}
+          </ProfileInfoStyled>
           <LabelStyle>Date of Birth:</LabelStyle>
           <ProfileInfoStyled> {authStore.user?.dateOfBirth}</ProfileInfoStyled>
           <LabelStyle>Email:</LabelStyle>
           <ProfileInfoStyled>
+            {" "}
             {authStore.user?.email} {`\n`}
           </ProfileInfoStyled>
           {/* EDIT BUTTON */}
@@ -209,6 +231,15 @@ const ProfileScreen = ({ navigation, route }) => {
 
 export default ProfileScreen;
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+  },
+});
+
 //************ PROFILE STYLING ************
 export const ProfileWrapper = styled.View`
   margin-top: 23%;
@@ -232,7 +263,6 @@ export const ProfileImage = styled.Image`
 
 export const ProfileUsernameStyled = styled.Text`
   color: #f0ba00;
-
   font-weight: bold;
   font-size: 30px;
   margin-right: auto;
