@@ -1,6 +1,7 @@
 import React from "react";
 import PetList from "../Components/Pets/PetList";
 import authStore from "../../Stores/authStore";
+import { observer } from "mobx-react";
 
 //Styling
 import styled from "styled-components/native";
@@ -31,7 +32,7 @@ const PostScreen = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "10%",
+          height: "12%",
 
           // paddingTop: "%",
         }}
@@ -50,6 +51,19 @@ const PostScreen = ({ navigation }) => {
               marginLeft: 165,
             }}
           >
+            <ViewWrapper>
+              <AuthButton onPress={showModal}>
+                <Image
+                  source={require("../../assets/icons/pos.png")}
+                  resizeMode="contain"
+                  style={{
+                    width: 20,
+                    height: 20,
+                    tintColor: "#fff",
+                  }}
+                />
+              </AuthButton>
+            </ViewWrapper>
             <Text
               style={{
                 top: -40,
@@ -95,29 +109,16 @@ const PostScreen = ({ navigation }) => {
           <ScrollView>
             <PetList
               navigation={navigation}
-              ownerId={authStore.user.petOwnerId}
+              ownerId={authStore.user?.petOwnerId}
             />
           </ScrollView>
         </ScrollWrapper>
-        <ViewWrapper>
-          <AuthButton onPress={showModal}>
-            <Image
-              source={require("../../assets/icons/pos.png")}
-              resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30,
-                tintColor: "#fff",
-              }}
-            />
-          </AuthButton>
-        </ViewWrapper>
       </Provider>
     </>
   );
 };
 
-export default PostScreen;
+export default observer(PostScreen);
 
 export const PostWrapper = styled.View`
   margin-top: 23%;
@@ -129,9 +130,9 @@ export const PostWrapper = styled.View`
 export const AuthButton = styled.TouchableOpacity`
   align-self: center;
   align-items: center;
-  padding: 15px;
-  width: 60px;
-  height: 60px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
   background-color: #f0ba00;
   border-radius: 100px;
 `;
@@ -143,6 +144,8 @@ export const AuthButtonText = styled.Text`
 `;
 
 export const ViewWrapper = styled.View`
+  left: 100;
+  top: -10;
   border-radius: 50px;
 `;
 export const ScrollWrapper = styled.View`

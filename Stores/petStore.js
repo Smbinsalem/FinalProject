@@ -54,10 +54,10 @@ class PetStore {
 
   updatePet = async (updatedPet) => {
     try {
-      console.log("Updated", updatedPet);
-      const formData = new FormData();
-      for (const key in updatedPet) formData.append(key, updatedPet[key]);
-      const response = await instance.put(`/users/petOwners/pets`, formData);
+      // console.log("Updated", updatedPet);
+      // const formData = new FormData();
+      // for (const key in updatedPet) formData.append(key, updatedPet[key]);
+      const response = await instance.put(`/users/petOwners/pets`, updatedPet);
       this.pets = this.pets.map((pet) =>
         pet.id === response.data.id ? response.data : pet
       );

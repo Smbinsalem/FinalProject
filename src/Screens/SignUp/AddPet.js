@@ -42,7 +42,7 @@ const AddPet = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await petStore.addPet(pet);
-    await navigation.replace("Tabs");
+    await navigation.replace("SignIn");
   };
 
   return (

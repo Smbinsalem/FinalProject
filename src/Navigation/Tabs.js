@@ -24,6 +24,7 @@ import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
 import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
 import ReviewList from "../Components/Review/ReviewList";
 import AddBooking from "../Components/Booking/AddBooking";
+//images
 
 const Tab = createBottomTabNavigator();
 const ExploreStack = createStackNavigator();
@@ -140,47 +141,18 @@ const Tabs = () => {
         showLabel: false,
         style: {
           position: "absolute",
-          bottom: 20,
+          bottom: 25,
           left: 10,
           right: 10,
 
           backgroundColor: "#172A3A",
           borderRadius: 10,
+          paddingTop: 20,
           height: 80,
           ...styles.shadow,
         },
       }}
     >
-      <Tab.Screen
-        name="Inbox"
-        component={OwnerInboxNavigator}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Image
-                source={require("../../assets/icons/home.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#F0BA00" : "#748c94",
-                }}
-              />
-              <Text
-                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
-              >
-                INBOX
-              </Text>
-            </View>
-          ),
-        }}
-      />
-
       <Tab.Screen
         name="Explore"
         component={ExploreNavigator}
@@ -204,13 +176,41 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                Explore
+                EXPLORE
               </Text>
             </View>
           ),
         }}
       />
-
+      <Tab.Screen
+        name="Inbox"
+        component={OwnerInboxNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                source={require("../../assets/icons/Inbox.png")}
+                resizeMode="contain"
+                style={{
+                  width: 25,
+                  height: 25,
+                  tintColor: focused ? "#F0BA00" : "#748c94",
+                }}
+              />
+              <Text
+                style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
+              >
+                INBOX
+              </Text>
+            </View>
+          ),
+        }}
+      />
       <Tab.Screen
         name="Pets"
         component={PetNavigator}
@@ -242,7 +242,7 @@ const Tabs = () => {
               }}
             >
               <Image
-                source={require("../../assets/icons/chat.png")}
+                source={require("../../assets/icons/Booking.png")}
                 resizeMode="contain"
                 style={{
                   width: 25,
@@ -253,7 +253,7 @@ const Tabs = () => {
               <Text
                 style={{ color: focused ? "#F0BA00" : "#748c94", fontSize: 12 }}
               >
-                CHAT
+                BOOKINGS
               </Text>
             </View>
           ),

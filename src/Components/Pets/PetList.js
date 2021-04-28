@@ -5,13 +5,13 @@ import { Spinner } from "native-base";
 import { observer } from "mobx-react";
 import { View } from "native-base";
 import { ScrollView } from "react-native-gesture-handler";
-
+import authStore from "../../../Stores/authStore";
 const PetList = ({ navigation, ownerId }) => {
   //Loading page
 
   useEffect(() => {
     petStore.fetchPets();
-  }, []);
+  }, [authStore.user]);
 
   const petList = petStore.pets
     .filter((mypet) => mypet.petOwnerId === +ownerId)

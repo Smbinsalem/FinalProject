@@ -49,9 +49,9 @@ const OwnerInboxDetails = ({ route, navigation }) => {
           {host.firstName} {host.lastName}
         </StatusText>
         <LabelStyle> From </LabelStyle>
-        <StatusText>
-          {booking.dateFrom} To {booking.dateTo}
-        </StatusText>
+        <StatusText>{booking.dateFrom}</StatusText>
+        <LabelStyle> To </LabelStyle>
+        <StatusText>{booking.dateTo}</StatusText>
         <LabelStyle>Booking status</LabelStyle>
         <StatusText>{booking.bookingStatus}</StatusText>
         <FieldView>
@@ -79,10 +79,6 @@ export default observer(OwnerInboxDetails);
 
 //Styling
 
-export const ViewWrapper = styled.View`
-  flex: 1;
-  margin-bottom: 300;
-`;
 const ImageWrapper = styled.View`
   flex: 0.5;
   padding-top: 10%;

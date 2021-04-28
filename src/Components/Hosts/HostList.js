@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import HostItem from "./HostItem";
 import styled from "styled-components";
+import { Spinner } from "native-base";
 import hostStore from "../../../Stores/hostStore";
 import authStore from "../../../Stores/authStore";
 
-import { observer, Spinner } from "mobx-react";
+import { observer } from "mobx-react";
 import {
   View,
   StyleSheet,
@@ -17,6 +18,7 @@ const HostList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+  if (!authStore.allUsers) return <Spinner />;
   const hostList = authStore.allUsers
     .filter((user) => user.petHost)
     .map((user) => (
