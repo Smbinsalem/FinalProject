@@ -14,29 +14,34 @@ const ExploreScreen = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
-          paddingTop: -15,
-          paddingHorizontal: 20,
+          height: "10%",
+
+          // paddingTop: "%",
         }}
       >
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "35%",
-            width: "100%",
           }}
         >
-          <View style={{ width: "50%" }}>
+          <View
+            style={{
+              marginTop: "20%",
+              width: "50%",
+              justifyContent: "center",
+              marginLeft: 170,
+            }}
+          >
             <Text
               style={{
                 top: -40,
-                fontSize: 32,
+                fontSize: 24,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
             >
-              Hi Petly
+              Explore
             </Text>
           </View>
         </View>
@@ -44,12 +49,8 @@ const ExploreScreen = ({ navigation }) => {
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
-          height: 100,
-          marginTop: -50,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
+          height: 50,
+          marginTop: -10,
         }}
       ></LinearGradient>
 

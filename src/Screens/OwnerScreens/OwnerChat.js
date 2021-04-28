@@ -10,42 +10,36 @@ const OwnerChat = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
-          // paddingTop: 10,
-          paddingHorizontal: 20,
+
+          height: "10%",
         }}
       >
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: "5%",
-            width: "100%",
+            marginTop: "20%",
+            width: "50%",
+            justifyContent: "center",
+            marginLeft: 165,
           }}
         >
-          <View style={{ marginTop: "30%", width: "50%" }}>
-            <Text
-              style={{
-                top: -30,
-                fontSize: 32,
-                color: "#FFF",
-                fontWeight: "bold",
-              }}
-            >
-              Bookings
-            </Text>
-          </View>
+          <Text
+            style={{
+              top: -40,
+              fontSize: 24,
+              color: "#FFF",
+              fontWeight: "bold",
+            }}
+          >
+            Bookings
+          </Text>
         </View>
       </View>
+
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
           height: 100,
           marginTop: -10,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
       <PostWrapper>

@@ -5,7 +5,7 @@ import authStore from "../../Stores/authStore";
 //Styling
 import styled from "styled-components/native";
 import AddNewPet from "../Components/Pets/AddNewPet";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Modal, Portal, Provider } from "react-native-paper";
@@ -31,55 +31,54 @@ const PostScreen = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
-          // paddingTop: 10,
-          paddingHorizontal: 20,
+          height: "10%",
+
+          // paddingTop: "%",
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            alignItems: "space-between",
-            marginTop: "5%",
-            width: "100%",
+            alignItems: "center",
           }}
         >
+          <View
+            style={{
+              marginTop: "20%",
+              width: "50%",
+              justifyContent: "center",
+              marginLeft: 165,
+            }}
+          >
+            <Text
+              style={{
+                top: -40,
+                fontSize: 24,
+                color: "#FFF",
+                fontWeight: "bold",
+              }}
+            >
+              My Pets
+            </Text>
+          </View>
+        </View>
+
+        <View style={{ marginTop: "30%", width: "50%" }}>
           <Text
             style={{
-              top: -20,
               fontSize: 32,
               color: "#FFF",
               fontWeight: "bold",
             }}
-          >
-            My Pets
-          </Text>
-          <ViewWrapper>
-            <AuthButton onPress={showModal}>
-              <AuthButtonText style={{ color: "white" }}>+</AuthButtonText>
-            </AuthButton>
-          </ViewWrapper>
-          <View style={{ marginTop: "30%", width: "50%" }}>
-            <Text
-              style={{
-                top: -30,
-                fontSize: 32,
-                color: "#FFF",
-                fontWeight: "bold",
-              }}
-            ></Text>
-          </View>
+          ></Text>
         </View>
       </View>
+
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
           height: 100,
           marginTop: -10,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
       <Provider>
@@ -100,6 +99,19 @@ const PostScreen = ({ navigation }) => {
             />
           </ScrollView>
         </ScrollWrapper>
+        <ViewWrapper>
+          <AuthButton onPress={showModal}>
+            <Image
+              source={require("../../assets/icons/pos.png")}
+              resizeMode="contain"
+              style={{
+                width: 30,
+                height: 30,
+                tintColor: "#fff",
+              }}
+            />
+          </AuthButton>
+        </ViewWrapper>
       </Provider>
     </>
   );
@@ -115,26 +127,23 @@ export const PostWrapper = styled.View`
 `;
 
 export const AuthButton = styled.TouchableOpacity`
-  align-self: stretch;
-  margin: 1px;
+  align-self: center;
   align-items: center;
   padding: 15px;
-  /* padding-bottom: 15px; */
+  width: 60px;
+  height: 60px;
   background-color: #f0ba00;
-  margin-top: 90px;
   border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 50px;
 `;
 
 export const ViewWrapper = styled.View`
-  padding-bottom: 1%;
-  margin: auto;
-  left: 200px;
+  border-radius: 50px;
 `;
 export const ScrollWrapper = styled.View`
   padding-bottom: 20%;

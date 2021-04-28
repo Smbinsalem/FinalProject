@@ -10,24 +10,29 @@ const OwnerInbox = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
+          height: "10%",
+
           // paddingTop: "%",
-          paddingHorizontal: 20,
         }}
       >
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "10%",
-            width: "100%",
           }}
         >
-          <View style={{ marginTop: "30%", width: "50%" }}>
+          <View
+            style={{
+              marginTop: "20%",
+              width: "50%",
+              justifyContent: "center",
+              marginLeft: 180,
+            }}
+          >
             <Text
               style={{
                 top: -40,
-                fontSize: 32,
+                fontSize: 24,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
@@ -40,12 +45,8 @@ const OwnerInbox = ({ navigation }) => {
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
           height: 100,
           marginTop: -10,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
       <PostWrapper>
