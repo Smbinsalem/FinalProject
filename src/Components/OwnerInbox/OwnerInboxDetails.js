@@ -40,27 +40,26 @@ const OwnerInboxDetails = ({ route, navigation }) => {
           <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
         </TouchableOpacity>
       </ImageWrapper>
+
       <ContentWrapper>
-        <StatusText>Pet Name: {pet.name} </StatusText>
-        <TextStyle
-          style={{
-            color: "#172A3A",
-          }}
-        >
-          <StatusText>
-            Host Name: {host.firstName} {host.lastName}
-          </StatusText>
-        </TextStyle>
+        <LabelStyle>Pet Name</LabelStyle>
+        <StatusText>{pet.name} </StatusText>
+        <LabelStyle>Host Name </LabelStyle>
+        <StatusText>
+          {host.firstName} {host.lastName}
+        </StatusText>
+        <LabelStyle> From </LabelStyle>
+        <StatusText>
+          {booking.dateFrom} To {booking.dateTo}
+        </StatusText>
+        <LabelStyle>Booking status</LabelStyle>
+        <StatusText>{booking.bookingStatus}</StatusText>
         <FieldView>
-          <StatusText>
-            From: {booking.dateFrom} to: {booking.dateTo}
-          </StatusText>
-          <TextStyle>Booking status is {booking.bookingStatus}</TextStyle>
+          <EditPetStyled onPress={showModal}>
+            <Text>Cancel Booking?</Text>
+          </EditPetStyled>
         </FieldView>
       </ContentWrapper>
-      <EditPetStyled onPress={showModal}>
-        <Text>Cancel Booking?</Text>
-      </EditPetStyled>
       <Modal
         visible={visible}
         onDismiss={hideModal}
@@ -90,13 +89,16 @@ const ImageWrapper = styled.View`
   background-color: rgba(23, 42, 58, 1);
 `;
 const ContentWrapper = styled.View`
-  flex: 0.4;
+  flex: 1;
+  padding: 10%;
 `;
 
 const StatusText = styled.Text`
   color: #172a3a;
+  font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
+  padding-left: 2%;
   align-self: auto;
   /* font-style: bold; */
 `;
@@ -109,26 +111,14 @@ export const ProfileImage = styled.Image`
   margin-left: auto;
   border-radius: 100px;
 `;
-export const TextStyle = styled.Text`
-  color: #172a3a;
-  font-weight: bold;
-  margin-top: 10px;
-  align-self: auto;
-  /* font-style: bold; */
-`;
+
 export const FieldView = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
 `;
-export const RadioView = styled.View`
-  background-color: rgba(23, 42, 58, 0.6);
-  flex-wrap: wrap;
-  flex-direction: row;
-  border-radius: 20px;
-  padding: 7px;
-`;
+
 export const AuthButton = styled.TouchableOpacity`
   align-items: center;
   padding: 20px;
@@ -151,4 +141,12 @@ const EditPetStyled = styled.TouchableOpacity`
   background-color: #f0ba00;
   margin-top: 45px;
   border-radius: 30px;
+`;
+export const LabelStyle = styled.Text`
+  color: gray;
+  font-size: 20px;
+  margin-top: 7%;
+  padding: 1%;
+  border-bottom-color: #f0ba00;
+  border-bottom-width: 1px;
 `;
