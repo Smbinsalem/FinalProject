@@ -29,10 +29,10 @@ const EditPet = ({ navigation, newpet, hideModal }) => {
 
   const [pet, setPet] = useState({
     oldPet: newpet.name,
-    name: newpet.name,
-    type: newpet.type,
-    breed: newpet.breed,
-    dateOfBirth: newpet.dateOfBirth,
+    name: newpet.name ? newpet.name : "",
+    type: newpet.type ? newpet.type : "",
+    breed: newpet.breed ? newpet.breed : "",
+    dateOfBirth: newpet.dateOfBirth ? newpet.dateOfBirth : "",
     // vaccinated: newpet.vaccinated,
     vaccinated: Boolean,
     allergies: newpet.allergies ? newpet.allergies : "",
