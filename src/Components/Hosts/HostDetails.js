@@ -16,7 +16,7 @@ const HostDetails = ({ navigation, route }) => {
   const { user } = route.params;
   const hostProfile = hostStore.hosts.find((host) => host.userId === user.id);
   const pets = petStore.pets.filter(
-    (pet) => pet.petOwnerId === authStore.user.petOwnerId
+    (pet) => pet.petOwnerId === authStore.user?.petOwnerId
   );
   const hostRevs = reviewStore.reviews.find((review) => review.hostId);
   hostStore.averageReview(hostProfile.id);

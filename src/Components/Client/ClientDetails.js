@@ -102,8 +102,9 @@ const ChoiceView = styled.View`
   align-items: center;
   padding: 15px;
   margin: 30px;
+  top: -100;
   background-color: #f0ba00;
-  margin-top: 45px;
+  /* margin-top: -35px; */
   border-radius: 30px;
 `;
 const ChoiceText = styled.Text`
@@ -119,15 +120,16 @@ const ImageWrapper = styled.View`
   background-color: rgba(23, 42, 58, 1);
 `;
 const ContentWrapper = styled.View`
-  /* flex: 0.4; */
-  /* padding-top: 10%; */
-  /* background-color: rgba(23, 42, 58, 1); */
+  flex: 1;
+  padding: 10%;
 `;
 
 export const ProfileImage = styled.Image`
-  width: 160px;
-  height: 160px;
-  margin: auto;
+  width: 125px;
+  height: 125px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 100px;
 `;
 export const TextStyle = styled.Text`
@@ -142,8 +144,9 @@ export const AuthButton = styled.TouchableOpacity`
   align-items: center;
   padding: 20px;
   margin: 12px;
+  top: 100;
   background-color: #f0ba00;
-  margin-top: 45px;
+  margin-top: -4px;
   border-radius: 30px;
 `;
 
@@ -153,6 +156,6 @@ export const AuthButtonText = styled.Text`
   font-size: 18px;
 `;
 export const ViewWrapper = styled.View`
-  flex: 1;
+  flex: 0.9;
   /* margin-top: 20%; */
 `;

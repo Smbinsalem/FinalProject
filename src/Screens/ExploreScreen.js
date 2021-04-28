@@ -14,7 +14,7 @@ const ExploreScreen = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "10%",
+          height: "12%",
 
           // paddingTop: "%",
         }}
