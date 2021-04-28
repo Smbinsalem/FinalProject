@@ -25,7 +25,7 @@ const SwiperComponent = () => {
     >
       <View style={styles.slide}>
         <Image
-          source={require("../../assets/images/Pet13.jpg")}
+          source={require("../../assets/images/Room2.jpeg")}
           resizeMode="contain"
           style={{
             marginBottom: 60,
@@ -40,7 +40,7 @@ const SwiperComponent = () => {
 
       <View style={styles.slide}>
         <Image
-          source={require("../../assets/images/Pet14.jpg")}
+          source={require("../../assets/images/Room1.jpeg")}
           resizeMode="contain"
           style={{
             marginBottom: 60,
@@ -54,7 +54,7 @@ const SwiperComponent = () => {
       </View>
       <View style={styles.slide}>
         <Image
-          source={require("../../assets/images/Pet15.jpg")}
+          source={require("../../assets/images/Room3.jpeg")}
           resizeMode="contain"
           style={{
             marginBottom: 60,

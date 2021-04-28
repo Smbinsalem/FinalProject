@@ -27,7 +27,6 @@ const HostList = ({ navigation }) => {
 
   return (
     <StyledView>
-      <ActivityIndicator size="large" color="#f0ba00" />
       <Animated.View style={styles.card}>{hostList}</Animated.View>
     </StyledView>
   );
