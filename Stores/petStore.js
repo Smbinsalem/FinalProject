@@ -22,14 +22,19 @@ class PetStore {
     }
   };
 
-  deletePet = async (petId) => {
+  deletePet = async (petName) => {
     try {
-      await instance.delete(`/users/petOwners/pets`);
-      this.pets = this.pets.filter((pet) => pet.id !== petId);
+      await instance.delete("/users/petOwners/pets", {
+        data: {
+          petName: petName,
+        },
+      });
+      this.pets = this.pets.filter((pet) => pet.name !== petName);
     } catch (error) {
       console.error("PetStore -> deletePet -> error", error);
     }
   };
+
   //after signing up we create a pet-owner profile
   addPet = async (data, navigation) => {
     try {
