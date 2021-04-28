@@ -102,7 +102,7 @@ const StatusText = styled.Text`
   align-self: auto;
   /* font-style: bold; */
 `;
-
+//not
 export const ProfileImage = styled.Image`
   width: 125px;
   height: 125px;
