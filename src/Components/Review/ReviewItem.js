@@ -2,18 +2,25 @@ import React, { useEffect } from "react";
 import { ListItem } from "native-base";
 import { observer } from "mobx-react";
 import styled from "styled-components";
-import { TouchableOpacity, Image, View, ScrollView } from "react-native";
-import { completeImgPath } from "../../../util";
+import { AirbnbRating } from "react-native-ratings";
+import { StyleSheet, View } from "react-native";
+import Constants from "expo-constants";
 
 const ReviewItem = ({ hostReview }) => {
   return (
     <HomeWrapper>
       <TextStyled>
-        {hostReview.comment} {`\n`}
+        <AirbnbRating
+          count={hostReview?.rating}
+          showRating={false}
+          size={20}
+          selectedColor={"#f0ba00"}
+          reviewColor={"#fff"}
+          isDisabled={true}
+        />
       </TextStyled>
-
       <TextStyled>
-        {hostReview.rating} {`\n`}
+        {hostReview.comment} {`\n`}
       </TextStyled>
     </HomeWrapper>
   );
@@ -24,13 +31,22 @@ export default observer(ReviewItem);
 
 const HomeWrapper = styled.View`
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
+  height: 120;
+  background-color: #172a3a;
+  padding: 5%;
+  padding-top: 15%;
+  margin: 2%;
+  border-top-left-radius: 30;
+  border-bottom-left-radius: 30;
+  border-bottom-right-radius: 30;
+  border-top-right-radius: 30;
+  width: 390;
+  justify-content: flex-start;
+  align-items: flex-end;
 `;
 const TextStyled = styled.Text`
   font-size: 15px;
-  padding: 1%;
+  padding: 2%;
   margin-top: -10%;
   margin-left: 1%;
   margin-bottom: 5%;
