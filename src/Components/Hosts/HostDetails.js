@@ -14,7 +14,7 @@ import Constants from "expo-constants";
 
 const HostDetails = ({ navigation, route }) => {
   const { user } = route.params;
-  const hostProfile = hostStore.hosts.find((host) => host.userId === user.id);
+  const hostProfile = hostStore.hosts?.find((host) => host.userId === user.id);
   const pets = petStore.pets.filter(
     (pet) => pet.petOwnerId === authStore.user?.petOwnerId
   );

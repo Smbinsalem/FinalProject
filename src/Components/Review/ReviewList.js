@@ -12,7 +12,7 @@ import { LinearGradient } from "expo-linear-gradient";
 const ReviewList = ({ navigation, route }) => {
   if (reviewStore.loading) return <Spinner />;
   const { host } = route.params;
-  const hostProfile = hostStore.hosts.find((user) => user.userId === host.id);
+  const hostProfile = hostStore.hosts?.find((user) => user.userId === host.id);
 
   //New Method
   const reviewList = reviewStore.reviews
