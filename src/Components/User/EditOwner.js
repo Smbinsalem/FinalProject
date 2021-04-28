@@ -106,12 +106,13 @@ const Body = styled.View`
 `;
 
 export const AuthButton = styled.TouchableOpacity`
-  align-self: stretch;
   align-items: center;
-  padding: 20px;
+  width:200px;
+  padding: 10px;
   margin: 30px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`

@@ -48,10 +48,10 @@ const MenuButton = () => {
   return (
     <>
       <MenuButtonStyled onPress={showModal}>
-        <Text>Settings</Text>
+        <MenuTextStyled>Settings</MenuTextStyled>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
-        <Text>Switch Account</Text>
+        <MenuTextStyled>Switch Account</MenuTextStyled>
       </MenuButtonStyled>
       <MenuButtonStyled onPress={handlePress}>
         <SignoutTextStyled>Sign Out</SignoutTextStyled>
@@ -183,8 +183,8 @@ const HostProfileScreen = ({ navigation, route }) => {
         style={{
           left: 0,
           right: 0,
-          height: 100,
-          marginTop: -50,
+          height: 90,
+          marginTop: -30,
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20,
         }}
@@ -210,9 +210,9 @@ const HostProfileScreen = ({ navigation, route }) => {
             {authStore.user?.email} {`\n`}
           </ProfileInfoStyled>
           {/* EDIT BUTTON */}
-          <EditProfileStyled onPress={showModal}>
-            <Text>Edit Profile</Text>
-          </EditProfileStyled>
+          <AuthButton onPress={showModal}>
+            <AuthButtonText>Edit Profile</AuthButtonText>
+          </AuthButton>
         </FieldWrapper>
         {/* <PetList ownerId={authStore.user.petOwnerId} /> */}
       </ScrollView>
@@ -259,6 +259,25 @@ export const FieldWrapper = styled.View`
   background-color: rgba(23, 42, 58, 0);
   padding: 1%;
 `;
+export const AuthButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
+  width:375px;
+  left:18px;
+  background-color: #f0ba00;
+  border-radius: 100px;
+`;
+
+export const AuthButtonText = styled.Text`
+  color: #fcfdff;
+  text-align: center;
+  font-weight:bold;
+
+  align-self: stretch;
+  align-items: center;
+  font-size: 18px;
+`;
 
 export const ProfileImage = styled.Image`
   width: 175px;
@@ -271,7 +290,6 @@ export const ProfileImage = styled.Image`
 
 export const ProfileUsernameStyled = styled.Text`
   color: #f0ba00;
-
   font-weight: bold;
   font-size: 30px;
   margin-right: auto;
@@ -312,13 +330,13 @@ export const EditProfileStyled = styled.TouchableOpacity`
 const MenuButtonStyled = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   background-color: #f0ba00;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10%;
   width: 90%;
-  color: red;
+  border-radius:100px;
 `;
 const MenutICONStyled = styled(Icon)`
   color: white;
@@ -326,7 +344,10 @@ const MenutICONStyled = styled(Icon)`
 const SignoutTextStyled = styled.Text`
   color: red;
 `;
-
+const MenuTextStyled = styled.Text`
+font-weight:bold;
+  color: white;
+`;
 const StyledView = styled.View`
   position: absolute;
   padding: 1%;

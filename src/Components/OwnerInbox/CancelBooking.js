@@ -26,7 +26,7 @@ const CancelBooking = ({ pet, hideModal, navigation }) => {
         </AuthButtonText>
 
         <AuthButton onPress={handleSubmit}>
-          <AuthButtonText>Cancel Booking!</AuthButtonText>
+          <AuthButtonText style={{color:"red"}}>Cancel Booking!</AuthButtonText>
         </AuthButton>
       </ScrollView>
     </>
@@ -43,12 +43,14 @@ export const AuthButton = styled.TouchableOpacity`
   margin: 30px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   text-align: center;
   align-self: stretch;
+  font-weight:bold;
   align-items: center;
   font-size: 18px;
 `;

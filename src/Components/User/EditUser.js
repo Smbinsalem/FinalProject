@@ -78,6 +78,7 @@ export const AuthButton = styled.TouchableOpacity`
   margin: 30px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-radius:100px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -95,6 +96,7 @@ export const AuthTextInput = styled.TextInput`
   margin-bottom: 30px;
   margin: 20px;
   color: white;
+  
   border-bottom-color: #f0ba00;
   border-bottom-width: 1px;
 `;

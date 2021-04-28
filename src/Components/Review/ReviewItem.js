@@ -15,7 +15,8 @@ const ReviewItem = ({ hostReview }) => {
           showRating={false}
           size={20}
           selectedColor={"#f0ba00"}
-          reviewColor={"#fff"}
+          unSelectedColor={"#f0ba00"}
+          reviewColor={"red"}
           isDisabled={true}
         />
       </TextStyled>

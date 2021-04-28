@@ -65,7 +65,7 @@ const PetDetail = ({ navigation, route }) => {
           {/* EDIT BUTTON */}
           {authStore.user?.petOwnerId === pet.petOwnerId ? (
             <AuthButton onPress={showModal}>
-              <Text>Edit Pet Details</Text>
+              <AuthButtonText>Edit Pet Details</AuthButtonText>
             </AuthButton>
           ) : null}
         </FieldWrapper>
@@ -139,8 +139,14 @@ export const AuthButton = styled.TouchableOpacity`
   padding: 20px;
   background-color: #f0ba00;
   margin-top: 20px;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius:100px;
+
+`;
+export const AuthButtonText = styled.Text`
+  color: #fcfdff;
+  text-align: center;
+  align-self: stretch;
+  font-weight:bold;
+  align-items: center;
+  font-size: 18px;
 `;

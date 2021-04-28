@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text,View } from "react-native";
 import styled from "styled-components";
 import { completeImgPath } from "../../../util";
 import bookingStore from "../../../Stores/bookingStore";
@@ -27,6 +27,7 @@ const OwnerInboxDetails = ({ route, navigation }) => {
   };
 
   return (
+    <View style={{flex:1}}>
     <ViewWrapper>
       <ImageWrapper>
         <TouchableOpacity
@@ -56,14 +57,17 @@ const OwnerInboxDetails = ({ route, navigation }) => {
         <StatusText>{booking.bookingStatus}</StatusText>
         <FieldView>
           <EditPetStyled onPress={showModal}>
-            <Text>Cancel Booking?</Text>
+            <AuthButtonText>Cancel Booking</AuthButtonText>
           </EditPetStyled>
         </FieldView>
       </ContentWrapper>
-      <Modal
+     
+    </ViewWrapper>
+    <Modal
         visible={visible}
         onDismiss={hideModal}
         contentContainerStyle={containerStyle}
+        style={{height:200, top:300}}
       >
         <CancelBooking
           hideModal={hideModal}
@@ -71,7 +75,7 @@ const OwnerInboxDetails = ({ route, navigation }) => {
           navigation={navigation}
         />
       </Modal>
-    </ViewWrapper>
+    </View>
   );
 };
 
@@ -106,6 +110,10 @@ export const ProfileImage = styled.Image`
   margin-left: auto;
   border-radius: 100px;
 `;
+export const ViewWrapper = styled.View`
+  flex: 1;
+  margin-bottom: 300;
+`;
 
 export const FieldView = styled.View`
   flex-direction: row;
@@ -120,7 +128,7 @@ export const AuthButton = styled.TouchableOpacity`
   margin: 12px;
   background-color: #f0ba00;
   margin-top: 45px;
-  border-radius: 30px;
+  border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`
