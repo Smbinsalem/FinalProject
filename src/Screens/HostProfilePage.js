@@ -34,7 +34,7 @@ const MenuButton = () => {
 
   const SettingStyle = {
     backgroundColor: "#2b4f60",
-    height: 380,
+    height: 480,
     margin: "auto",
   };
 

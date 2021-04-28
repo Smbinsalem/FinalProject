@@ -22,18 +22,21 @@ const PetDetail = ({ navigation, route }) => {
 
   const containerStyle = {
     backgroundColor: "#2b4f60",
-    height: "100%",
-    width: "77%",
-    padding: 10,
-    margin: 60,
+    padding: 20,
+    margin: "auto",
+    marginBottom: "50%",
+    marginTop: "100%",
+    marginLeft: "5%",
+    marginRight: "5%",
   };
 
   return (
     <>
       <ScrollView>
-
         <ImageWrapper>
-          <ProfileImage  source={pet.image ? { uri: completeImgPath(pet.image) } : null}/>
+          <ProfileImage
+            source={pet.image ? { uri: completeImgPath(pet.image) } : null}
+          />
         </ImageWrapper>
         <FieldWrapper>
           <LabelStyle>Name</LabelStyle>
@@ -65,7 +68,6 @@ const PetDetail = ({ navigation, route }) => {
               <Text>Edit Pet Details</Text>
             </AuthButton>
           ) : null}
-
         </FieldWrapper>
 
         {/* EDIT MODAL */}

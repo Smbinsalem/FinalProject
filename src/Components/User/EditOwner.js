@@ -67,13 +67,23 @@ const EditOwner = ({ hideModal, petowner }) => {
       <ScrollView>
         <Body>
           {/* Image */}
-          <Button title="Change profile image" onPress={pickImage} />
           {image && (
             <Image
               source={{ uri: image }}
-              style={{ flex: 1, width: 200, height: 200 }}
+              style={{
+                flex: 1,
+                width: 100,
+                height: 100,
+                marginLeft: "auto",
+                marginRight: "auto",
+                margin: "auto",
+                borderRadius: "100%",
+                marginBottom: 10,
+              }}
             />
           )}
+          <Button title="Change Profile Image" onPress={pickImage} />
+
           {/* Bio */}
           <AuthTextInput
             value={owner.bio}

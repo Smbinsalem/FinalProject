@@ -14,6 +14,7 @@ import { Spinner } from "native-base";
 //Image
 import { Button, Image, View, Platform } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { completeImgPath } from "../../../util";
 
 //Calendar
 import DatePicker from "react-native-datepicker";
@@ -93,168 +94,202 @@ const EditPet = ({ navigation, newpet, hideModal }) => {
   return (
     <>
       <ScrollView>
-        <Button title="Change profile image" onPress={pickImage} />
-        {image && (
-          <Image
-            source={{ uri: image }}
-            style={{ flex: 1, width: 200, height: 200 }}
-          />
-        )}
-        <LabelStyle>Name</LabelStyle>
-        <AuthTextInput
-          value={pet.name ? pet.name : ""}
-          placeholderTextColor="white"
-          onChangeText={(name) => setPet({ ...pet, name })}
-        />
-        <LabelStyle>Type</LabelStyle>
-        <AuthTextInput
-          value={pet.type}
-          placeholderTextColor="white"
-          onChangeText={(type) => setPet({ ...pet, type })}
-        />
-        <LabelStyle>Breed</LabelStyle>
-        <AuthTextInput
-          value={pet.breed}
-          placeholderTextColor="white"
-          onChangeText={(breed) => setPet({ ...pet, breed })}
-        />
-
-        {/* <RadioView>
-            <RadioButton
-              value="PetOwner"
-              status={checked === "PetOwner" ? "checked" : "unchecked"}
-              onPress={() => setChecked("PetOwner")}
+        <AuthContainer>
+          {image && (
+            <Image
+              source={{ uri: image }}
+              style={{
+                flex: 1,
+                width: 150,
+                height: 150,
+                marginLeft: "auto",
+                marginRight: "auto",
+                margin: "auto",
+                borderRadius: "100%",
+                marginBottom: 10,
+                marginTop: 10,
+              }}
             />
-          </RadioView> */}
-        {/* </FieldView> */}
-        {/* <AuthTextInput
-          value={pet.vaccinated ? "Yes" : "No"}
-          placeholderTextColor="white"
-          onChangeText={(vaccinated) => setPet({ ...pet, vaccinated })}
-        /> */}
-        <LabelStyle>Vaccinated?</LabelStyle>
+          )}
+          <Button title="Change Profile Image" onPress={pickImage} />
+          <LabelStyle>Name</LabelStyle>
+          <AuthTextInput
+            value={pet.name ? pet.name : ""}
+            placeholderTextColor="white"
+            onChangeText={(name) => setPet({ ...pet, name })}
+          />
+          <LabelStyle>Type</LabelStyle>
+          <AuthTextInput
+            value={pet.type}
+            placeholderTextColor="white"
+            onChangeText={(type) => setPet({ ...pet, type })}
+          />
+          <LabelStyle>Breed</LabelStyle>
+          <AuthTextInput
+            value={pet.breed}
+            placeholderTextColor="white"
+            onChangeText={(breed) => setPet({ ...pet, breed })}
+          />
+          <LabelStyle>Vaccinated?</LabelStyle>
+          <RadioButton.Group
+            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+            value={pet.vaccinated}
+          >
+            <FieldView>
+              <TextStyle>Yes</TextStyle>
+              <RadioView>
+                <RadioButton label="Yes" value="True" />
+              </RadioView>
+              <TextStyle>No</TextStyle>
+              <RadioView>
+                <RadioButton label="No" value="False" />
+              </RadioView>
+            </FieldView>
+          </RadioButton.Group>
+          {/* <RadioButton.Group
+            onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
+            value={pet.vaccinated}
+          >
+            <RadioButton.Item label="Yes" value="True" />
+            <RadioButton.Item label="No" value="False" />
+          </RadioButton.Group> */}
+          <LabelStyle>Date of Birth</LabelStyle>
+          <DatePicker
+            style={{
+              width: 340,
+              margin: "auto",
+              // paddingRight: 40,
+            }}
+            date={pet.dateOfBirth}
+            mode="date"
+            placeholder="Date of Birth"
+            format="YYYY-MM-DD"
+            // minDate="2016-05-01"
+            maxDate="2003-06-30"
+            confirmBtnText="Confirm"
+            showIcon={false}
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                top: 4,
+                marginLeft: 0,
+              },
+              dateInput: {
+                // right: 20,
+                borderColor: "#f0ba00",
+                // backgroundColor: "#f0ba00",
+                color: "white",
+                // marginLeft: 36,
+                // marginBottom: 20,
+                width: "100%",
+                fontSize: "100px",
+                borderRadius: 10,
+              },
+            }}
+            onDateChange={(date) => setPet({ ...pet, dateOfBirth: date })}
+          />
 
-        <RadioButton.Group
-          onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
-          value={pet.vaccinated}
-        >
-          <RadioButton.Item label="Yes" value="True" />
-          <RadioButton.Item label="No" value="False" />
-        </RadioButton.Group>
+          <LabelStyle>Allergies</LabelStyle>
+          <AuthTextInput
+            value={pet.allergies}
+            placeholder="e.g: Dust"
+            placeholderTextColor="gray"
+            onChangeText={(allergies) => setPet({ ...pet, allergies })}
+          />
+          <LabelStyle>Personality</LabelStyle>
+          <AuthTextInput
+            value={pet.personality}
+            placeholder="e.g: Sleepy"
+            placeholderTextColor="gray"
+            onChangeText={(personality) => setPet({ ...pet, personality })}
+          />
+          <LabelStyle>Walking Hours</LabelStyle>
+          <AuthTextInput
+            value={pet.walkingHours}
+            placeholder="e.g: Aspirin"
+            placeholderTextColor="gray"
+            onChangeText={(walkingHours) => setPet({ ...pet, walkingHours })}
+          />
+          <LabelStyle>Medication</LabelStyle>
+          <AuthTextInput
+            value={pet.medication}
+            placeholder="e.g: Aspirin"
+            placeholderTextColor="gray"
+            onChangeText={(medication) => setPet({ ...pet, medication })}
+          />
+          <LabelStyle>Meal Time</LabelStyle>
+          <AuthTextInput
+            value={pet.mealTime}
+            placeholder="e.g: 8am, 12pm, 6pm"
+            placeholderTextColor="gray"
+            onChangeText={(mealTime) => setPet({ ...pet, mealTime })}
+          />
+          <LabelStyle>Allowed Snacks Per Day</LabelStyle>
+          <AuthTextInput
+            value={pet.allowedSnackPerDays}
+            placeholder="e.g: 3"
+            placeholderTextColor="gray"
+            onChangeText={(allowedSnackPerDays) =>
+              setPet({ ...pet, allowedSnackPerDays })
+            }
+          />
 
-        <DatePicker
-          style={{
-            width: 340,
-            margin: "auto",
-            // paddingRight: 40,
-          }}
-          date={pet.dateOfBirth}
-          mode="date"
-          placeholder="Date of Birth"
-          format="YYYY-MM-DD"
-          // minDate="2016-05-01"
-          maxDate="2003-06-30"
-          confirmBtnText="Confirm"
-          showIcon={false}
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateIcon: {
-              position: "absolute",
-              top: 4,
-              marginLeft: 0,
-            },
-            dateInput: {
-              right: 20,
-              borderColor: "#f0ba00",
-              color: "white",
-              marginLeft: 36,
-              marginBottom: 20,
-              width: 120,
-              fontSize: "100px",
-              borderRadius: 10,
-            },
-          }}
-          onDateChange={(date) => setPet({ ...pet, dateOfBirth: date })}
-        />
-
-        <LabelStyle>Allergies</LabelStyle>
-        <AuthTextInput
-          value={pet.allergies}
-          placeholder="e.g: Dust"
-          placeholderTextColor="gray"
-          onChangeText={(allergies) => setPet({ ...pet, allergies })}
-        />
-        <LabelStyle>Personality</LabelStyle>
-        <AuthTextInput
-          value={pet.personality}
-          placeholder="e.g: Sleepy"
-          placeholderTextColor="gray"
-          onChangeText={(personality) => setPet({ ...pet, personality })}
-        />
-        <LabelStyle>Walking Hours</LabelStyle>
-        <AuthTextInput
-          value={pet.walkingHours}
-          placeholder="e.g: Aspirin"
-          placeholderTextColor="gray"
-          onChangeText={(walkingHours) => setPet({ ...pet, walkingHours })}
-        />
-        <LabelStyle>Medication</LabelStyle>
-        <AuthTextInput
-          value={pet.medication}
-          placeholder="e.g: Aspirin"
-          placeholderTextColor="gray"
-          onChangeText={(medication) => setPet({ ...pet, medication })}
-        />
-        <LabelStyle>Meal Time</LabelStyle>
-        <AuthTextInput
-          value={pet.mealTime}
-          placeholder="e.g: 8am, 12pm, 6pm"
-          placeholderTextColor="gray"
-          onChangeText={(mealTime) => setPet({ ...pet, mealTime })}
-        />
-        <LabelStyle>Allowed Snacks Per Day</LabelStyle>
-        <AuthTextInput
-          value={pet.allowedSnackPerDays}
-          placeholder="e.g: 3"
-          placeholderTextColor="gray"
-          onChangeText={(allowedSnackPerDays) =>
-            setPet({ ...pet, allowedSnackPerDays })
-          }
-        />
-
-        <AuthButton onPress={handleSubmit}>
-          {/* <AuthButton onPress={() => alert("go to post screen")}> */}
-          <AuthButtonText>Submit Changes</AuthButtonText>
-        </AuthButton>
+          <AuthButton onPress={handleSubmit}>
+            {/* <AuthButton onPress={() => alert("go to post screen")}> */}
+            <AuthButtonText>Submit Changes</AuthButtonText>
+          </AuthButton>
+        </AuthContainer>
       </ScrollView>
     </>
   );
 };
 
+export const AuthContainer = styled.View`
+  flex: 4;
+  align-self: stretch;
+  /* justify-content: center; */
+  /* align-items: center; */
+
+  /* background-color: #172a3a; */
+`;
+
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
-  padding: 40px;
+  margin-top: 30px;
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
   background-color: #f0ba00;
   margin-top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
-  text-align: center;
-  align-self: stretch;
-  align-items: center;
+  font-weight: bold;
   font-size: 18px;
 `;
 
 export const AuthTextInput = styled.TextInput`
   align-self: stretch;
   text-align: left;
+  font-size: 17px;
   height: 40px;
-  margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 10px;
   color: white;
-  border-bottom-color: #f0ba00;
-  border-bottom-width: 1px;
+  padding: 3%;
+  border-color: #f0ba00;
+  border-width: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const LabelStyle = styled.Text`
@@ -264,5 +299,28 @@ const LabelStyle = styled.Text`
   /* padding: 1%; */
   border-bottom-color: #f0ba00;
   border-bottom-width: 1px;
+`;
+
+export const FieldView = styled.View`
+  flex-direction: row;
+  color: white;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+`;
+export const RadioView = styled.View`
+  background-color: rgba(225, 225, 225, 0.3);
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 50px;
+  padding: 1px;
+`;
+
+export const TextStyle = styled.Text`
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  align-self: auto;
 `;
 export default observer(EditPet);
