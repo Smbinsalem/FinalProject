@@ -8,6 +8,9 @@ import { TouchableOpacity, ScrollView } from "react-native";
 // import petStore from "../../../Stores/petStore";
 // import authStore from "../../../Stores/authStore";
 
+//images
+import { completeImgPath } from "../../../util";
+
 import pet6 from "../../../assets/images/Pet6.png";
 
 const TextStyled = styled.Text`
@@ -59,7 +62,7 @@ const PetItem = ({ navigation, pet }) => {
         >
           <View style={{ width: "92%", alignItems: "flex-end" }}>
             <Image
-              source={pet6}
+              source={{ uri: completeImgPath(pet.image) }}
               style={{
                 top: 10,
                 height: 60,

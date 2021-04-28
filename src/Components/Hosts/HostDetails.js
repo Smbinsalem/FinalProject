@@ -40,6 +40,7 @@ const HostDetails = ({ navigation, route }) => {
           <View
             style={{
               flexDirection: "row",
+
               marginTop: -80,
               marginHorizontal: 20,
               alignItems: "center",
@@ -55,36 +56,21 @@ const HostDetails = ({ navigation, route }) => {
               {user.firstName} {user.lastName}
             </Text>
           </View>
-
           <Text
             style={{
               paddingHorizontal: 20,
               fontWeight: "bold",
               color: "#172A3A",
-              paddingTop: 3,
-              fontSize: 20,
+              left: 18,
             }}
           >
-            {hostProfile?.bio}
+            <AirbnbRating
+              count={hostStore?.average}
+              showRating={false}
+              size={30}
+            />
           </Text>
-          <Text
-            style={{
-              paddingHorizontal: 20,
-              fontWeight: "bold",
-              color: "#172A3A",
 
-              fontSize: 20,
-            }}
-          >
-            average rating: {hostStore?.average}
-          </Text>
-          {/* <View style={styles.container}>
-          <AirbnbRating
-            count={hostStore?.average}
-            size={30}
-            // reviews={["Awful", "OK", "Good", "Very Good", "Exceptional"]}
-          />
-          </View> */}
           <View
             style={{
               flexDirection: "row",
@@ -141,14 +127,6 @@ const HostDetails = ({ navigation, route }) => {
                   navigation.navigate("ReviewList", { host: user })
                 }
               >
-                <AirbnbRating
-                  count={hostStore?.average}
-                  size={15}
-                  // reviews={["Awful", "OK", "Good", "Very Good", "Exceptional"]}
-                  selectedColor={"#fff"}
-                  reviewColor={"#fff"}
-                  isDisabled={true}
-                />
                 <Text
                   style={{
                     fontWeight: "bold",
@@ -169,12 +147,12 @@ const HostDetails = ({ navigation, route }) => {
 };
 export default HostDetails;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: 20,
-    backgroundColor: "white",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     marginHorizontal: 20,
+//     backgroundColor: "white",
+//   },
+// });

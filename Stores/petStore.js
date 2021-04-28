@@ -52,23 +52,12 @@ class PetStore {
     }
   };
 
-  //*** The New Update **
-
-  // updatePet = async (updatedPet) => {
-  //   try {
-  //     const res = await instance.put(`/users/petOwners/pets`, updatedPet);
-  //     this.pets = res.data;
-  //     // navigation.goBack();
-  //   } catch (error) {
-  //     console.error("PetStore -> updatePet -> error", error);
-  //   }
-  // };
-
-  //*** The Old Update **
-
   updatePet = async (updatedPet) => {
     try {
-      const response = await instance.put(`/users/petOwners/pets`, updatedPet);
+      console.log("Updated", updatedPet);
+      const formData = new FormData();
+      for (const key in updatedPet) formData.append(key, updatedPet[key]);
+      const response = await instance.put(`/users/petOwners/pets`, formData);
       this.pets = this.pets.map((pet) =>
         pet.id === response.data.id ? response.data : pet
       );

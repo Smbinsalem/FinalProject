@@ -1,9 +1,7 @@
 import { observer } from "mobx-react";
-import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ScrollView } from "react-native";
 import reviewStore from "../../../Stores/reviewStore";
-import authStore from "../../../Stores/authStore";
 import { Spinner } from "native-base";
 import ReviewItem from "../Review/ReviewItem";
 import hostStore from "../../../Stores/hostStore";
@@ -68,9 +66,11 @@ const ReviewList = ({ navigation, route }) => {
           borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
-      <ScrollView>
-        <HomeWrapper>{reviewList}</HomeWrapper>
-      </ScrollView>
+      <HomeWrapper>
+        <ScrollView>
+          <HomeWrapper>{reviewList}</HomeWrapper>
+        </ScrollView>
+      </HomeWrapper>
     </>
   );
 };
@@ -82,4 +82,5 @@ const HomeWrapper = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding-bottom: 100px;
 `;
