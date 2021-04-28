@@ -53,15 +53,30 @@ const SignUp = ({ navigation }) => {
               width: 200,
             }}
           />
+          {/*   Username   */}
+          <AuthTextInput
+            placeholder="Username*"
+            autoCapitalize="none"
+            placeholderTextColor="white"
+            onChangeText={(username) => setUser({ ...user, username })}
+          />
+          {/* Password */}
+          <AuthTextInput
+            placeholder="Password*"
+            autoCapitalize="none"
+            placeholderTextColor="white"
+            secureTextEntry={true}
+            onChangeText={(password) => setUser({ ...user, password })}
+          />
           {/* First Name */}
           <AuthTextInput
-            placeholder="First Name"
+            placeholder="First Name*"
             placeholderTextColor="white"
             onChangeText={(firstName) => setUser({ ...user, firstName })}
           />
           {/* Last Name */}
           <AuthTextInput
-            placeholder="Last Name"
+            placeholder="Last Name*"
             placeholderTextColor="white"
             onChangeText={(lastName) => setUser({ ...user, lastName })}
           />
@@ -71,6 +86,14 @@ const SignUp = ({ navigation }) => {
             autoCapitalize="none"
             placeholderTextColor="white"
             onChangeText={(email) => setUser({ ...user, email })}
+          />
+          {/* Contact Number */}
+          <AuthTextInput
+            placeholder="Contact Number"
+            placeholderTextColor="white"
+            onChangeText={(contactNumber) =>
+              setUser({ ...user, contactNumber })
+            }
           />
 
           <DatePicker
@@ -100,20 +123,13 @@ const SignUp = ({ navigation }) => {
                 color: "white",
                 marginLeft: 36,
                 marginBottom: 20,
-                width: 120,
+                marginTop: 30,
+                width: 140,
                 fontSize: "100px",
                 borderRadius: 10,
               },
             }}
             onDateChange={(date) => setUser({ ...user, dateOfBirth: date })}
-          />
-          {/* Contact Number */}
-          <AuthTextInput
-            placeholder="Contact Number"
-            placeholderTextColor="white"
-            onChangeText={(contactNumber) =>
-              setUser({ ...user, contactNumber })
-            }
           />
 
           {/* Gender */}
@@ -124,28 +140,13 @@ const SignUp = ({ navigation }) => {
             ]}
             backgroundColor="rgba(23, 42, 58, 0.6)"
             placeholder="Gender"
-            containerStyle={{ height: 40, width: 320 }}
+            containerStyle={{ height: 40, width: 320, margin: 20 }}
             onChangeItem={(item) => setUser({ ...user, gender: item.value })}
           />
-          {/*   Username   */}
-          <AuthTextInput
-            placeholder="Username"
-            autoCapitalize="none"
-            placeholderTextColor="white"
-            onChangeText={(username) => setUser({ ...user, username })}
-          />
 
-          {/* Password */}
-          <AuthTextInput
-            placeholder="Password"
-            autoCapitalize="none"
-            placeholderTextColor="white"
-            secureTextEntry={true}
-            onChangeText={(password) => setUser({ ...user, password })}
-          />
-          <TextTitleStyle>What do you want to be?</TextTitleStyle>
+          <TextTitleStyle>I want to be a</TextTitleStyle>
           <FieldView>
-            <TextStyle>HOST</TextStyle>
+            <TextStyle>Pet Host</TextStyle>
             <RadioView>
               <RadioButton
                 value="Host"
@@ -154,7 +155,7 @@ const SignUp = ({ navigation }) => {
               />
             </RadioView>
 
-            <TextStyle>Owner</TextStyle>
+            <TextStyle>Pet Owner</TextStyle>
             <RadioView>
               <RadioButton
                 value="PetOwner"
@@ -209,7 +210,7 @@ export const AuthTextInput = styled.TextInput`
   text-align: left;
   height: 40px;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: white;
   padding: 3%;
   border-color: #f0ba00;
@@ -225,7 +226,7 @@ export const AuthButton = styled.TouchableOpacity`
   align-items: center;
   padding: 20px;
   background-color: #f0ba00;
-  margin-top: 40px;
+  margin-top: 20px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -259,7 +260,7 @@ export const RadioView = styled.View`
   background-color: rgba(225, 225, 225, 0.6);
   flex-wrap: wrap;
   flex-direction: row;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 7px;
 `;
 export const TextStyle = styled.Text`
@@ -275,4 +276,5 @@ export const TextTitleStyle = styled.Text`
   margin: 10px;
   text-align: left;
   font-size: 20px;
+  right: 95;
 `;

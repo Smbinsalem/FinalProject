@@ -31,9 +31,10 @@ const PetDetail = ({ navigation, route }) => {
   return (
     <>
       <ScrollView>
-        <FieldWrapper>
-          <LabelStyle>Image</LabelStyle>
+        <ImageWrapper>
           <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+        </ImageWrapper>
+        <FieldWrapper>
           <LabelStyle>Name</LabelStyle>
           <InfoStyled>{pet.name}</InfoStyled>
           <LabelStyle>Type</LabelStyle>
@@ -59,9 +60,9 @@ const PetDetail = ({ navigation, route }) => {
 
           {/* EDIT BUTTON */}
           {authStore.user?.petOwnerId === pet.petOwnerId ? (
-            <EditPetStyled onPress={showModal}>
+            <AuthButton onPress={showModal}>
               <Text>Edit Pet Details</Text>
-            </EditPetStyled>
+            </AuthButton>
           ) : null}
         </FieldWrapper>
 
@@ -99,8 +100,10 @@ const LabelStyle = styled.Text`
 `;
 
 const FieldWrapper = styled.View`
+  flex: 0.5;
   background-color: rgba(23, 42, 58, 0);
   padding: 3%;
+  padding-bottom: 35%;
 `;
 
 const EditPetStyled = styled.TouchableOpacity`
@@ -110,13 +113,30 @@ const EditPetStyled = styled.TouchableOpacity`
   background-color: #f0ba00;
   margin-right: auto;
   margin-left: auto;
+  margin: 30px;
   width: 90%;
 `;
 export const ProfileImage = styled.Image`
   width: 125px;
   height: 125px;
-  margin-top: 10px;
+  margin-top: auto;
   margin-right: auto;
   margin-left: auto;
   border-radius: 100px;
+`;
+const ImageWrapper = styled.View`
+  flex: 1;
+  padding-top: 10%;
+  background-color: rgba(23, 42, 58, 1);
+`;
+export const AuthButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0ba00;
+  margin-top: 20px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
 `;
