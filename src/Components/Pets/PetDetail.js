@@ -33,7 +33,18 @@ const PetDetail = ({ navigation, route }) => {
       <ScrollView>
         <FieldWrapper>
           <LabelStyle>Image</LabelStyle>
-          <ProfileImage source={{ uri: completeImgPath(pet.image) }} />
+          <ProfileImage
+            source={pet.image ? { uri: completeImgPath(pet.image) } : null}
+            style={{
+              top: -10,
+              height: 60,
+              width: 60,
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+              borderTopRightRadius: 20,
+            }}
+          />
           <LabelStyle>Name</LabelStyle>
           <InfoStyled>{pet.name}</InfoStyled>
           <LabelStyle>Type</LabelStyle>
@@ -62,7 +73,9 @@ const PetDetail = ({ navigation, route }) => {
             <EditPetStyled onPress={showModal}>
               <Text>Edit Pet Details</Text>
             </EditPetStyled>
-          ) : null}
+          ) : (
+            "null"
+          )}
         </FieldWrapper>
 
         {/* EDIT MODAL */}

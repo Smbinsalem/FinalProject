@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //Mobx
 import petStore from "../../../Stores/petStore";
 
@@ -9,6 +9,11 @@ import styled from "styled-components/native";
 import { observer } from "mobx-react";
 import { ScrollView } from "react-native-gesture-handler";
 import { RadioButton } from "react-native-paper";
+import { Spinner } from "native-base";
+
+//Image
+import { Button, Image, View, Platform } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 //Calendar
 import DatePicker from "react-native-datepicker";
@@ -20,45 +25,84 @@ import DatePicker from "react-native-datepicker";
 // import Pet1 from "../../../assets/images/Pet8.jpeg";
 
 const EditPet = ({ navigation, newpet, hideModal }) => {
+  if (petStore.loading) return <Spinner />;
+
   const [pet, setPet] = useState({
+    oldPet: newpet.name,
     name: newpet.name,
     type: newpet.type,
     breed: newpet.breed,
     dateOfBirth: newpet.dateOfBirth,
     // vaccinated: newpet.vaccinated,
     vaccinated: Boolean,
-    oldPet: newpet.name,
-    allergies: newpet.allergies,
-    personality: newpet.personality,
-    image: newpet.image,
-    walkingHours: newpet.walkingHours,
-    medication: newpet.medication,
-    mealTime: newpet.mealTime,
-    allowedSnackPerDays: newpet.allowedSnackPerDays,
+    allergies: newpet.allergies ? newpet.allergies : "",
+    personality: newpet.personality ? newpet.personality : "",
+    // image: newpet.image,
+    walkingHours: newpet.walkingHours ? newpet.walkingHours : "",
+    medication: newpet.medication ? newpet.medication : "",
+    mealTime: newpet.mealTime ? newpet.mealTime : "",
+    allowedSnackPerDays: newpet.allowedSnackPerDays
+      ? newpet.allowedSnackPerDays
+      : "",
   });
 
   const handleSubmit = () => {
     petStore.updatePet(pet);
     hideModal();
   };
-  // const handleSubmit = async () => {
-  //   await petStore.addNewPet(pet);
-  //   if (petStore.pets) navigation.navigate("Post");
-  // };
+
+  //Image Picker
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const {
+          status,
+        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+      // ImagePicker saves the taken photo to disk and returns a local URI to it
+      let localUri = result.uri;
+      let filename = localUri.split("/").pop();
+
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      setPet({ ...pet, image: { uri: localUri, name: filename, type } });
+    }
+  };
 
   return (
     <>
       <ScrollView>
-        <LabelStyle>Image</LabelStyle>
-        <AuthTextInput
-          value={pet.image}
-          placeholder="Change Profile Photo"
-          placeholderTextColor="gray"
-          onChangeText={(image) => setPet({ ...pet, image })}
-        />
+        <Button title="Change profile image" onPress={pickImage} />
+        {image && (
+          <Image
+            source={{ uri: image }}
+            style={{ flex: 1, width: 200, height: 200 }}
+          />
+        )}
         <LabelStyle>Name</LabelStyle>
         <AuthTextInput
-          value={pet.name}
+          value={pet.name ? pet.name : ""}
           placeholderTextColor="white"
           onChangeText={(name) => setPet({ ...pet, name })}
         />
