@@ -6,7 +6,7 @@ import hostStore from "../../../Stores/hostStore";
 
 const HostProfileDetails = ({ navigation, route }) => {
   const { host } = route.params;
-  const hostProfile = hostStore.hosts.find((user) => (user.userId = host.id));
+  const hostProfile = hostStore.hosts?.find((user) => (user.userId = host.id));
   hostStore.averageReview(hostProfile.id);
   return (
     <View
