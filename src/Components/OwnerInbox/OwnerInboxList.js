@@ -37,7 +37,7 @@ export default observer(OwnerInboxList);
 
 const HomeWrapper = styled.View`
   flex: 1;
-  padding: 3.5%;
+  padding: 1%;
   justify-content: center;
   align-items: center;
 `;

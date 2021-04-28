@@ -121,9 +121,9 @@ const CustomeTabBarButton = ({ children, onPress }) => {
     >
       <View
         style={{
-          width: 110,
-          height: 110,
-          borderRadius: 60,
+          width: 100,
+          height: 100,
+          borderRadius: 50,
           backgroundColor: "#F0BA00",
         }}
       >
@@ -140,12 +140,12 @@ const Tabs = () => {
         showLabel: false,
         style: {
           position: "absolute",
-          bottom: 25,
-          left: 20,
-          right: 20,
-          elevation: 0,
+          bottom: 20,
+          left: 10,
+          right: 10,
+
           backgroundColor: "#172A3A",
-          borderRadius: 15,
+          borderRadius: 10,
           height: 80,
           ...styles.shadow,
         },
@@ -160,7 +160,6 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: 10,
               }}
             >
               <Image
@@ -191,7 +190,6 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: 10,
               }}
             >
               <Image
@@ -241,7 +239,6 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: 10,
               }}
             >
               <Image
@@ -272,7 +269,6 @@ const Tabs = () => {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                top: 10,
               }}
             >
               <Image

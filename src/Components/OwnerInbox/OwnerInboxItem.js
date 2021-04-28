@@ -61,12 +61,9 @@ const OwnerInboxItem = ({ booking, navigation }) => {
         }
         style={{
           height: 100,
-          elevation: 2,
           backgroundColor: "rgba(23, 42, 58, 1)",
-          marginLeft: 3,
-          borderRadius: 15,
           marginBottom: 20,
-          borderRadius: 30,
+          borderRadius: 15,
           width: "99%",
         }}
       >
@@ -77,7 +74,7 @@ const OwnerInboxItem = ({ booking, navigation }) => {
               top: 15,
               height: 60,
               width: 60,
-              borderRadius: 20,
+              borderRadius: 30,
             }}
           />
         </View>
@@ -89,7 +86,7 @@ const OwnerInboxItem = ({ booking, navigation }) => {
         </TextStyled>
         <SubTextStyled>
           Waiting for reply {hostDetails.username}
-          {`\n`}{" "}
+          {`\n`}
         </SubTextStyled>
       </TouchableOpacity>
     </>
@@ -112,7 +109,7 @@ const TextStyled = styled.Text`
   font-size: 15px;
   padding: 1%;
   margin-top: -10%;
-  margin-left: 1%;
+  margin-left: 50px;
   margin-bottom: 5%;
   align-self: center;
   font-weight: bold;
@@ -122,10 +119,11 @@ const TextStyled = styled.Text`
 
 const SubTextStyled = styled.Text`
   font-size: 12px;
+  padding: 1%;
   margin-top: -10%;
-  margin-left: 3%;
-  font-weight: normal !important;
+  margin-left: 60px;
+  font-weight: normal;
   align-self: center;
   width: 100%;
-  color: white;
+  color: #f0ba00;
 `;

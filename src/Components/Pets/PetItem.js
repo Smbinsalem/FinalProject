@@ -10,11 +10,56 @@ import { TouchableOpacity, ScrollView } from "react-native";
 
 import pet6 from "../../../assets/images/Pet6.png";
 
+const PetItem = ({ navigation, pet }) => {
+  // const { pet } = route.params;
+  const mypet = pet;
+
+  // if (authStore.loading) return <Spinner />;
+  // if (petStore.loading) return <Spinner />;
+
+  return (
+    <ScrollView>
+      <ListItem>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PetDetails", { petId: mypet.id })}
+          style={{
+            height: 100,
+            backgroundColor: "rgba(23, 42, 58, 1)",
+            borderRadius: 15,
+            marginBottom: 5,
+            borderRadius: 15,
+            width: "100%",
+          }}
+        >
+          <View style={{ width: "92%", alignItems: "flex-end" }}>
+            <Image
+              source={pet6}
+              style={{
+                top: 20,
+                height: 60,
+                width: 60,
+                borderRadius: 30,
+              }}
+            />
+          </View>
+          <TextStyled>
+            {pet.name} {`\n`}
+            <SubTextStyled> {pet.type}</SubTextStyled>
+          </TextStyled>
+        </TouchableOpacity>
+      </ListItem>
+    </ScrollView>
+  );
+};
+
+export default observer(PetItem);
+
+// Styling
+
 const TextStyled = styled.Text`
   font-size: 17px;
   margin-top: -10%;
-  margin-left: 3%;
-  margin-bottom: 3%;
+  margin-left: 20px;
   font-weight: bold;
   width: 100%;
   color: white;
@@ -27,58 +72,3 @@ const SubTextStyled = styled.Text`
   width: 100%;
   color: white;
 `;
-
-const PetItem = ({ navigation, pet }) => {
-  // const { pet } = route.params;
-  const mypet = pet;
-
-  // if (authStore.loading) return <Spinner />;
-  // if (petStore.loading) return <Spinner />;
-
-  return (
-    <>
-      <ScrollView />
-      <ListItem>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("PetDetails", { petId: mypet.id })}
-          // onPress={() => alert("go to pet detail")}
-          style={{
-            height: 100,
-            elevation: 2,
-            backgroundColor: "rgba(23, 42, 58, 1)",
-            marginLeft: 9,
-            marginTop: 20,
-            borderRadius: 15,
-            marginBottom: 10,
-            borderTopLeftRadius: 30,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            borderTopRightRadius: 30,
-            width: "99%",
-          }}
-        >
-          <View style={{ width: "92%", alignItems: "flex-end" }}>
-            <Image
-              source={pet6}
-              style={{
-                top: 10,
-                height: 60,
-                width: 60,
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderBottomRightRadius: 20,
-                borderTopRightRadius: 20,
-              }}
-            />
-          </View>
-          <TextStyled>
-            {pet.name} {`\n`}
-            <SubTextStyled> {pet.type}</SubTextStyled>
-          </TextStyled>
-        </TouchableOpacity>
-      </ListItem>
-    </>
-  );
-};
-
-export default observer(PetItem);
