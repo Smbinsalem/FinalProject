@@ -68,7 +68,6 @@ const BookingDetails = ({ route, navigation }) => {
             {requester.firstName} {requester.lastName}
           </TextStyle>
           <TextStyle>
-            {" "}
             <TextStyle
               style={{
                 fontWeight: "bold",
@@ -76,11 +75,10 @@ const BookingDetails = ({ route, navigation }) => {
               }}
             >
               From: {`\n`}
-            </TextStyle>{" "}
+            </TextStyle>
             {booking.dateFrom}
           </TextStyle>
           <TextStyle>
-            {" "}
             <TextStyle
               style={{
                 fontWeight: "bold",
@@ -88,7 +86,7 @@ const BookingDetails = ({ route, navigation }) => {
               }}
             >
               To: {`\n`}
-            </TextStyle>{" "}
+            </TextStyle>
             {booking.dateTo}
           </TextStyle>
           <View>
@@ -160,6 +158,7 @@ export const FieldView = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+
   justify-content: space-evenly;
 `;
 export const RadioView = styled.View`

@@ -1,4 +1,3 @@
-import { Spinner } from "native-base";
 import React from "react";
 import {
   Animated,
@@ -9,7 +8,6 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import authStore from "../../Stores/authStore";
 
 // constants
 import { images, theme } from "../constants";
@@ -148,7 +146,7 @@ const Onboarding = ({ navigation }) => {
             <Text
               style={{ ...FONTS.h1, color: COLORS.white, fontWeight: "bold" }}
             >
-              {completed ? "Let's Go" : "skip"}
+              {completed ? "Let's Go" : "Skip"}
             </Text>
           </TouchableOpacity>
         </View>

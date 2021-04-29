@@ -93,11 +93,12 @@ const HostTabs = () => {
         style: {
           position: "absolute",
           bottom: 25,
-          left: 20,
-          right: 20,
-          elevation: 0,
+          left: 10,
+          right: 10,
+
           backgroundColor: "#172A3A",
-          borderRadius: 15,
+          borderRadius: 10,
+          paddingTop: 20,
           height: 80,
           ...styles.shadow,
         },

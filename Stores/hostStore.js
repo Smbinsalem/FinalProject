@@ -1,4 +1,4 @@
-import { makeAutoObservable, makeObservable, observable, action } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 
 // What we need CRUD
@@ -16,8 +16,10 @@ class HostStore {
   fetchHosts = async () => {
     try {
       const response = await instance.get(`/users/petHosts`);
-      this.hosts = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.hosts = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("HostStore -> fetchHosts -> error", error);
     }

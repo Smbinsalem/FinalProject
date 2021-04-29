@@ -263,8 +263,8 @@ export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
-  width:375px;
-  left:18px;
+  width: 375px;
+  left: 18px;
   background-color: #f0ba00;
   border-radius: 100px;
 `;
@@ -272,7 +272,7 @@ export const AuthButton = styled.TouchableOpacity`
 export const AuthButtonText = styled.Text`
   color: #fcfdff;
   text-align: center;
-  font-weight:bold;
+  font-weight: bold;
 
   align-self: stretch;
   align-items: center;
@@ -336,7 +336,7 @@ const MenuButtonStyled = styled.TouchableOpacity`
   margin-left: auto;
   margin-bottom: 10%;
   width: 90%;
-  border-radius:100px;
+  border-radius: 100px;
 `;
 const MenutICONStyled = styled(Icon)`
   color: white;
@@ -345,13 +345,13 @@ const SignoutTextStyled = styled.Text`
   color: red;
 `;
 const MenuTextStyled = styled.Text`
-font-weight:bold;
+  font-weight: bold;
   color: white;
 `;
 const StyledView = styled.View`
   position: absolute;
   padding: 1%;
-  top: 60;
+  top: 60px;
 `;
 const StyledTouchableOpacity = styled.TouchableOpacity`
   padding: 1.5%;
