@@ -8,11 +8,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
-import HomeScreen from "../Screens/HomeScreen";
-import ExploreScreen from "../Screens/ExploreScreen";
-import ChatScreen from "../Screens/ChatScreen";
-import PostScreen from "../Screens/PostScreen";
-import ProfileScreen from "../Screens/ProfileScreen";
 import HostProfilePage from "../Screens/HostProfilePage";
 import HostHome from "../Screens/HostScreens/HostHome";
 import BookingDetails from "../Components/Booking/BookingDetails";

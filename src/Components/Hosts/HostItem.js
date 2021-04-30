@@ -5,17 +5,12 @@ import { observer } from "mobx-react";
 import { TouchableOpacity, View, Text, Image } from "react-native";
 import hostStore from "../../../Stores/hostStore";
 
-const TextStyled = styled.Text`
-  color: black;
-  font-size: 10;
-  margin-top: 10;
-  margin-bottom: 10;
-  margin-left: 16;
-  width: 100%;
-`;
+
+
 
 const HostItem = ({ user, navigation }) => {
   const hostProfile = hostStore.hosts.find((host) => host.userId === user.id);
+  hostStore.averageReview(hostProfile.id);
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("HostDetails", { user: user })}
@@ -51,7 +46,7 @@ const HostItem = ({ user, navigation }) => {
       />
       <View
         style={{
-          flexDirection: "row",
+          // flexDirection: "row",
           paddingTop: 10,
           paddingHorizontal: 10,
         }}
@@ -62,9 +57,21 @@ const HostItem = ({ user, navigation }) => {
             color: "#ffff",
           }}
         >
-          {user.firstName} {user.lastName}
+          {user.firstName} {user.lastName} {`\n`}
         </Text>
+        <Text
+          style={{
+            
+            top:-15,
+            fontSize:11,
+            color: "#ffff",
+          }}
+        >
+          {hostProfile.bio}
+        </Text>
+       
       </View>
+  
     </TouchableOpacity>
   );
 };

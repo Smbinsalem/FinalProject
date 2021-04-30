@@ -18,11 +18,14 @@ const HostList = ({ navigation }) => {
   useEffect(() => {
     authStore.fetchUsers();
   }, []);
+  
+  
+  
   if (!authStore.allUsers) return <Spinner />;
   const hostList = authStore.allUsers
-    .filter((user) => user.petHost)
-    .map((user) => (
-      <HostItem navigation={navigation} user={user} key={user.id} />
+  .filter((user) => user.petHost)
+  .map((user) => (
+    <HostItem navigation={navigation} user={user} key={user.id} />
     ));
 
   return (
@@ -31,20 +34,24 @@ const HostList = ({ navigation }) => {
     </StyledView>
   );
 };
+
 export default observer(HostList);
 const styles = StyleSheet.create({
   card: {
-    // marginLeft: 400,
-    width: 400,
+    marginLeft: 30,
+    marginRight: 30,
+    width: "100%",
+    paddingRight:"100%",
     flexDirection: "row",
+
   },
 
   proContainer: {
-    marginRight: 20,
+    // marginRight: 20,
     alignSelf: "center",
   },
 });
 
 const StyledView = styled.View`
-  flex-direction: row-reverse;
+/* padding-right:100%; */
 `;

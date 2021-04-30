@@ -1,30 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { ListItem } from "native-base";
-import { Image, View, Text } from "react-native";
-import { observer, Spinner } from "mobx-react";
+import { Image, View} from "react-native";
+import { observer } from "mobx-react";
 import { TouchableOpacity, ScrollView } from "react-native";
-
-// import petStore from "../../../Stores/petStore";
-// import authStore from "../../../Stores/authStore";
 
 //images
 import { completeImgPath } from "../../../util";
 
-import pet6 from "../../../assets/images/Pet6.png";
-
 const PetItem = ({ navigation, pet }) => {
-  // const { pet } = route.params;
   const mypet = pet;
 
-  // if (authStore.loading) return <Spinner />;
-  // if (petStore.loading) return <Spinner />;
 
   return (
     <ScrollView>
       <ListItem>
         <TouchableOpacity
-          onPress={() => navigation.navigate("PetDetails", { petId: mypet.id })}
+          onPress={() => navigation.navigate("PetDetails", { pet: mypet })}
           style={{
             height: 100,
             backgroundColor: "rgba(23, 42, 58, 1)",

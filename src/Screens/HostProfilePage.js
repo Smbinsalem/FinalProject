@@ -129,6 +129,7 @@ const HostProfileScreen = ({ navigation, route }) => {
             width: "100%",
           }}
         >
+          
           <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
