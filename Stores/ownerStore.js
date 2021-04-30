@@ -1,4 +1,4 @@
-import { makeAutoObservable, makeObservable, observable, action } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 import authStore from "./authStore";
 // What we need CRUD
@@ -16,8 +16,10 @@ class OwnerStore {
   fetchOwners = async () => {
     try {
       const response = await instance.get(`/users/petOwners`);
-      this.owners = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.owners = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("OwnerStore -> fetchOwners -> error", error);
     }

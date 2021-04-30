@@ -16,7 +16,7 @@ const HostHome = ({ navigation, route }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
+          height: "12%",
           // paddingTop: "%",
           paddingHorizontal: 20,
         }}
@@ -25,15 +25,14 @@ const HostHome = ({ navigation, route }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "10%",
-            width: "100%",
+            marginLeft: 145,
           }}
         >
           <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
-                top: -40,
-                fontSize: 32,
+                top: -20,
+                fontSize: 24,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
@@ -46,10 +45,7 @@ const HostHome = ({ navigation, route }) => {
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
           height: 100,
-          marginTop: -10,
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20,
         }}
@@ -67,6 +63,6 @@ export default observer(HostHome);
 export const PostWrapper = styled.View`
   margin-top: -10%;
   margin-bottom: 10px;
-  font-size: 25px;
+  font-size: 12px;
   padding: -1%;
 `;

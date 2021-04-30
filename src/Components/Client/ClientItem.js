@@ -40,12 +40,11 @@ const ClientItem = ({ booking, navigation }) => {
         }
         style={{
           height: 100,
-          elevation: 2,
           backgroundColor: "rgba(23, 42, 58, 1)",
           marginLeft: 3,
           borderRadius: 15,
           marginBottom: 20,
-          borderRadius: 30,
+          borderRadius: 10,
           width: "99%",
         }}
       >

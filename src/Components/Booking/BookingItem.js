@@ -46,7 +46,7 @@ const BookingItem = ({ booking, navigation }) => {
           marginLeft: 3,
           borderRadius: 15,
           marginBottom: 20,
-          borderRadius: 30,
+          borderRadius: 10,
           width: "99%",
         }}
       >

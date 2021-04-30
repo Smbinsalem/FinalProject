@@ -14,24 +14,21 @@ const ClientScreen = ({ navigation, route }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-          height: "20%",
-          paddingTop: -15,
-          paddingHorizontal: 20,
+          height: "12%",
         }}
       >
         <View
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: "10%",
-            width: "100%",
+            marginLeft: 130,
           }}
         >
           <View style={{ marginTop: "30%", width: "50%" }}>
             <Text
               style={{
                 top: -40,
-                fontSize: 32,
+                fontSize: 24,
                 color: "#FFF",
                 fontWeight: "bold",
               }}
@@ -44,12 +41,8 @@ const ClientScreen = ({ navigation, route }) => {
       <LinearGradient
         colors={["rgba(23, 42, 58,0.8)", "transparent"]}
         style={{
-          left: 0,
-          right: 0,
           height: 100,
           marginTop: -10,
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
         }}
       ></LinearGradient>
       <PostWrapper>

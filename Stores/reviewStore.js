@@ -1,5 +1,5 @@
 import instance from "./instance";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 class ReviewStore {
   reviews = null;
@@ -11,8 +11,10 @@ class ReviewStore {
   fetchReviews = async () => {
     try {
       const response = await instance.get(`/reviews`);
-      this.reviews = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.reviews = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("ReviewStore -> fetchReviews -> error", error);
     }

@@ -1,4 +1,4 @@
-import { makeObservable, makeAutoObservable, observable, action } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 
 // ***NOTE***
@@ -15,8 +15,10 @@ class PetStore {
   fetchPets = async () => {
     try {
       const response = await instance.get(`/users/petOwners/pets`);
-      this.pets = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.pets = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("PetStore -> fetchPets -> error", error);
     }

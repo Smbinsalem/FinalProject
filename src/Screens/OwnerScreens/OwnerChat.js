@@ -10,7 +10,6 @@ const OwnerChat = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#172A3A",
-
           height: "12%",
         }}
       >

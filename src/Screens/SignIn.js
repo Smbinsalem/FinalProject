@@ -151,7 +151,7 @@ export const AuthButton = styled.TouchableOpacity`
   align-items: center;
   background-color: #f0ba00;
   margin-top: 30px;
-  border-radius:100px;
+  border-radius: 100px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -166,6 +166,6 @@ export const AuthOther = styled.Text`
 `;
 
 export const Iconstyled = styled(Icon)`
-  margin-top: 5;
+  margin-top: 5px;
   color: #f0ba00;
 `;

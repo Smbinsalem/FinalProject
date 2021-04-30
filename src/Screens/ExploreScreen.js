@@ -6,16 +6,16 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import HostList from "../Components/Hosts/HostList";
 import { observer } from "mobx-react";
-import ImageSlider from 'react-native-image-slider';
-
+import ImageSlider from "react-native-image-slider";
 const ExploreScreen = ({ navigation }) => {
 
 
+
   const images = [
-    'https://images.unsplash.com/photo-1601890706207-fc44ed4305e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1565486019940-10cfb255721d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1615652997634-055866fc1f70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80',
-    'https://images.unsplash.com/photo-1557431518-1f8e3d83c2b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+    "https://images.unsplash.com/photo-1601890706207-fc44ed4305e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://images.unsplash.com/photo-1565486019940-10cfb255721d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    "https://images.unsplash.com/photo-1615652997634-055866fc1f70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80",
+    "https://images.unsplash.com/photo-1557431518-1f8e3d83c2b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
   ];
   return (
     <>
@@ -66,14 +66,21 @@ const ExploreScreen = ({ navigation }) => {
           flex: 1,
         }}
       >
-       
-
-        <View style={{ padding:"1%",width: "100%", height:"100%",alignItems: "flex-end" }}>
-        <ImageSlider images={images} style={{height:"100%",width: "100%"}}/>
+        <View
+          style={{
+            padding: "1%",
+            width: "100%",
+            height: "100%",
+            alignItems: "flex-end",
+          }}
+        >
+          <ImageSlider
+            images={images}
+            style={{ height: "100%", width: "100%" }}
+          />
         </View>
-      
-     
-        <View style={{ width: "100%", height:"10%", margin:10 }}>
+
+        <View style={{ width: "100%", height: "10%", margin: 10 }}>
           <Text
             style={{
               fontWeight: "bold",
@@ -109,11 +116,15 @@ const ExploreScreen = ({ navigation }) => {
         <View style={{ width: "100%",right:25,top:-10, height:"100%", margin:-9, }}>
         <ScrollView
           horizontal
-       
           showsHorizontalScrollIndicator={false}
         >
-          <HostList navigation={navigation} />
-        </ScrollView>
+          <ScrollView
+            horizontal
+            style={styles.proContainer}
+            showsHorizontalScrollIndicator={false}
+          >
+            <HostList navigation={navigation} />
+          </ScrollView>
         </View>
       </ScrollView>
     </>

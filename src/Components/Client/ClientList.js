@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components/native";
-import { Text, List, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import bookingStore from "../../../Stores/bookingStore";
 import authStore from "../../../Stores/authStore";
 import ClientItem from "./ClientItem";

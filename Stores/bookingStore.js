@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { runInAction, makeAutoObservable } from "mobx";
 import instance from "./instance";
 
 class BookingStore {
@@ -23,8 +23,10 @@ class BookingStore {
     try {
       this.loading = true;
       const response = await instance.get("/bookings");
-      this.bookings = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.bookings = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("BookStore -> fetchBookings -> error", error);
     }
