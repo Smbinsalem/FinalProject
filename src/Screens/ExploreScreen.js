@@ -7,9 +7,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import HostList from "../Components/Hosts/HostList";
 import { observer } from "mobx-react";
 import ImageSlider from "react-native-image-slider";
+import { LogBox } from 'react-native';
+import {YellowBox} from 'react-native';
 const ExploreScreen = ({ navigation }) => {
+  console.disableYellowBox = true; 
+  YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
 
-
+// RN < 0.52
+console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
+  LogBox.ignoreLogs(['Warning: ...']);
 
   const images = [
     "https://images.unsplash.com/photo-1601890706207-fc44ed4305e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -125,6 +131,7 @@ const ExploreScreen = ({ navigation }) => {
           >
             <HostList navigation={navigation} />
           </ScrollView>
+          </ScrollView>
         </View>
       </ScrollView>
     </>
@@ -138,3 +145,6 @@ const styles = StyleSheet.create({
     alignSelf: "auto",
   },
 });
+
+
+
