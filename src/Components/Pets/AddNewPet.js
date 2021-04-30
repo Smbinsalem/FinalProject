@@ -6,20 +6,14 @@ import petStore from "../../../Stores/petStore";
 
 //Style
 import styled from "styled-components/native";
-import { Alert } from "react-native";
 import { observer } from "mobx-react";
 import { RadioButton } from "react-native-paper";
 
 //Calendar
 import DatePicker from "react-native-datepicker";
 
-// //Native content
-// import DropDownPicker from "react-native-dropdown-picker";
 
-//Images
-// import Pet1 from "../../../assets/images/Pet8.jpeg";
-
-const AddNewPet = ({ navigation, hideModal }) => {
+const AddNewPet = ({ hideModal }) => {
   const [pet, setPet] = useState({
     name: "",
     type: "",
@@ -30,17 +24,10 @@ const AddNewPet = ({ navigation, hideModal }) => {
     personality: "",
   });
 
-  const [checked, setChecked] = React.useState(null);
-
   const handleSubmit = () => {
     petStore.addNewPet(pet);
     hideModal();
   };
-
-  // const handleSubmit = async () => {
-  //   await petStore.addNewPet(pet);
-  //   if (petStore.pets) navigation.navigate("Post");
-  // };
 
   return (
     <>
@@ -70,7 +57,6 @@ const AddNewPet = ({ navigation, hideModal }) => {
         mode="date"
         placeholder="Date of Birth *"
         format="YYYY-MM-DD"
-        maxDate="2021-04-27"
         confirmBtnText="Confirm"
         showIcon={false}
         cancelBtnText="Cancel"

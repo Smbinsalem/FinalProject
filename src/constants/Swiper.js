@@ -7,19 +7,17 @@ const SwiperComponent = () => {
     <Swiper
       style={StyleSheet.wrapper}
       dotStyle={{
-        marginTop: -200,
         width: 15,
-        height: 6,
+        height: 4,
         borderRadius: 30,
-        backgroundColor: "#172A3A",
+        backgroundColor: "gray",
       }}
-      activeDotColor="#172A3A"
+      activeDotColor="black"
       activeDotStyle={{
-        marginTop: -200,
         width: 30,
         height: 7,
         borderRadius: 10,
-        backgroundColor: "#172A3A",
+        backgroundColor: "black",
         activeDotColor: "#172A3A",
       }}
     >
@@ -54,7 +52,7 @@ const SwiperComponent = () => {
       </View>
       <View style={styles.slide}>
         <Image
-          source={require("../../assets/images/Room3.jpeg")}
+          source={require("../../assets/images/Home.jpeg")}
           resizeMode="contain"
           style={{
             marginBottom: 60,
@@ -70,14 +68,15 @@ const SwiperComponent = () => {
   );
 };
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: {
+//  top:-100,
+  },
   slide: {
-    flex: 1,
-    marginBottom: 150,
-
+    flex: 0.6,
+    marginBottom: 280,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#172A3A",
+    backgroundColor: "#fff",
   },
 });
 export default SwiperComponent;

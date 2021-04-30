@@ -17,6 +17,7 @@ import { RadioButton } from "react-native-paper";
 import { View, Image } from "react-native";
 //Calendar
 import DatePicker from "react-native-datepicker";
+import { ScrollView } from "react-native-gesture-handler";
 
 const AddPet = ({ navigation }) => {
   const [pet, setPet] = useState({
@@ -77,8 +78,8 @@ const AddPet = ({ navigation }) => {
           onValueChange={(vaccinated) => setPet({ ...pet, vaccinated })}
           value={pet.vaccinated}
         >
-          <RadioButton.Item labelColor="red" label="Yes" value="True" />
-          <RadioButton.Item label="No" value="False" />
+          <RadioButton.Item  label="Yes" value="True" labelStyle={{color:"#fff"}} />
+          <RadioButton.Item label="No" value="False" labelStyle={{color:"#fff"}} style={{marginBottom:28,}} />
         </RadioButton.Group>
         <DatePicker
           style={{
@@ -90,8 +91,6 @@ const AddPet = ({ navigation }) => {
           mode="date"
           placeholder="Date of Birth *"
           format="YYYY-MM-DD"
-          // minDate="2016-05-01"
-          maxDate="2003-06-30"
           confirmBtnText="Confirm"
           showIcon={false}
           cancelBtnText="Cancel"
@@ -102,13 +101,12 @@ const AddPet = ({ navigation }) => {
               marginLeft: 0,
             },
             dateInput: {
-              right: 20,
+              right: 40,
               borderColor: "#f0ba00",
               color: "white",
               marginLeft: 36,
-              marginBottom: 20,
-              width: 120,
-              fontSize: "100px",
+              marginRight:7,
+              marginBottom: 48,
               borderRadius: 10,
             },
           }}
@@ -133,12 +131,11 @@ const AddPet = ({ navigation }) => {
     </>
   );
 };
+export default AddPet;
 
 const LabelStyle = styled.Text`
   color: white;
   font-size: 16px;
-  margin-top: 7%;
-  /* padding: 1%; */
   border-bottom-color: #f0ba00;
   border-bottom-width: 1px;
 `;
@@ -195,4 +192,3 @@ export const Container = styled.View`
   padding-left: 60px;
   background-color: #172a3a;
 `;
-export default AddPet;

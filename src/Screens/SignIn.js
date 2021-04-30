@@ -45,7 +45,7 @@ const SignIn = ({ navigation }) => {
           source={Pet2}
           style={{
             top: -20,
-            right: 10,
+            // right: 10,
             height: 200,
             width: 300,
           }}
@@ -54,7 +54,7 @@ const SignIn = ({ navigation }) => {
           source={Pet5}
           style={{
             top: -20,
-            right: 10,
+            // right: 15,
             height: 100,
             width: 150,
           }}

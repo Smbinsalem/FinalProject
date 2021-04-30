@@ -24,7 +24,7 @@ const HostList = ({ navigation }) => {
   if (!authStore.allUsers) return <Spinner />;
   const hostList = authStore.allUsers
   .filter((user) => user.petHost)
-  .map((user) => (
+  .slice(2, 6).map((user) => (
     <HostItem navigation={navigation} user={user} key={user.id} />
     ));
 
