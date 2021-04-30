@@ -11,15 +11,22 @@ import PetOwner from "./src/Screens/SignUp/PetOwnerSignUp";
 import Host from "./src/Screens/SignUp/HostSignUp";
 import SignUpAs from "./src/Screens/SignUp/SignUpAS";
 import AddPet from "./src/Screens/SignUp/AddPet";
-// import ImagePicker from "./src/Components/ImagePicker/ImagePicker";
-// import PetDetail from "./src/Components/Pets/PetDetail";
+
+//Ignore all warnings 
+import { LogBox } from 'react-native';
+import {YellowBox} from 'react-native';
 
 //Tab Screens
 import Tabs from "./src/Navigation/Tabs";
 import HostTabs from "./src/Navigation/HostTabs";
 
 const { Navigator, Screen } = createStackNavigator();
+console.disableYellowBox = true; 
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
 
+// RN < 0.52
+console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
+LogBox.ignoreLogs(['Warning: ...']);
 export default function App() {
   return (
     <NavigationContainer>
