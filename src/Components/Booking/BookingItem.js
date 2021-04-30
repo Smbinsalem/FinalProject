@@ -25,10 +25,10 @@ const BookingItem = ({ booking, navigation }) => {
       return petOwnerId;
     }
   });
-  const petOwner = ownerStore.owners.find(
+  const petOwner = ownerStore.owners?.find(
     (owner) => owner.id === booking.petOwnerId
   );
-  const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
+  const bookPet = petStore.pets?.find((pet) => pet.id === booking.petId);
   return (
     <>
       <TouchableOpacity

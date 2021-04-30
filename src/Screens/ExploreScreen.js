@@ -1,17 +1,15 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import {
-  TextInput,
-  TouchableOpacity,
   ScrollView,
 } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import HostList from "../Components/Hosts/HostList";
 import { observer } from "mobx-react";
 import ImageSlider from 'react-native-image-slider';
-import Apollo from "../../assets/images/Apollo.png"  
 
 const ExploreScreen = ({ navigation }) => {
+
 
   const images = [
     'https://images.unsplash.com/photo-1601890706207-fc44ed4305e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -25,8 +23,6 @@ const ExploreScreen = ({ navigation }) => {
         style={{
           backgroundColor: "#172A3A",
           height: "12%",
-
-          // paddingTop: "%",
         }}
       >
         <View
@@ -89,7 +85,7 @@ const ExploreScreen = ({ navigation }) => {
           </Text>
         </View>
         <View style={{ width: "100%", alignItems: "flex-end" }}>
-          <View
+          <TouchableOpacity
             style={{
               backgroundColor: "#F0BA00",
               top: -40,
@@ -97,6 +93,7 @@ const ExploreScreen = ({ navigation }) => {
               paddingVertical: 5,
               borderRadius: 15,
             }}
+            onPress={() => navigation.navigate("MoreHosts")}
           >
             <Text
               style={{
@@ -107,12 +104,12 @@ const ExploreScreen = ({ navigation }) => {
             >
               More
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
-        <View style={{ width: "100%",right:25,top:-10, height:"100%", margin:-10 }}>
+        <View style={{ width: "100%",right:25,top:-10, height:"100%", margin:-9, }}>
         <ScrollView
           horizontal
-          style={styles.proContainer}
+       
           showsHorizontalScrollIndicator={false}
         >
           <HostList navigation={navigation} />

@@ -3,6 +3,8 @@ import { View, Text, Image } from "react-native";
 import SwiperComponent from "../../constants/Swiper";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
+import { AirbnbRating } from "react-native-ratings";
+
 
 const HostProfileDetails = ({ navigation, route }) => {
   const { host } = route.params;
@@ -27,25 +29,16 @@ const HostProfileDetails = ({ navigation, route }) => {
           <View
             style={{
               flexDirection: "row",
-              marginTop: -80,
-              marginHorizontal: 20,
+              marginBottom: -80,
               alignItems: "center",
             }}
           >
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 28,
-                color: "#172A3A",
-              }}
-            >
-              Average Rating: {hostStore.average}
-            </Text>
+         
           </View>
           <View
             style={{
               flexDirection: "row",
-              marginTop: -80,
+              marginTop: -50,
               marginHorizontal: 20,
               alignItems: "center",
             }}
@@ -53,35 +46,42 @@ const HostProfileDetails = ({ navigation, route }) => {
             <Text
               style={{
                 fontWeight: "bold",
+                top:20,
                 fontSize: 28,
                 color: "#172A3A",
               }}
             >
-              {host.firstName} {host.lastName}
+              {host.firstName} {host.lastName} {`\n`}
             </Text>
           </View>
+            <Text
+              style={{
+                fontWeight: "bold",
+                left:10,
+                
+                fontSize: 28,
+                color: "#172A3A",
+              }}
+            >
+               <AirbnbRating
+              count={hostStore?.average}
+              showRating={false}
+              
+              selectedColor="#f0ba00"
+              UnSelectedColor="#f0ba00"
+              size={25}
+            />
+            </Text>
 
           <Text
             style={{
-              paddingHorizontal: 20,
+              paddingHorizontal: 30,
               fontWeight: "bold",
               color: "#172A3A",
-              paddingTop: 3,
+              paddingBottom: 5,
               fontSize: 20,
-            }}
-          >
+            }}>
             {hostProfile.bio}
-          </Text>
-          <Text
-            style={{
-              paddingHorizontal: 20,
-              fontWeight: "bold",
-              color: "#172A3A",
-
-              fontSize: 20,
-            }}
-          >
-            {host.username}
           </Text>
           <View
             style={{
@@ -90,38 +90,15 @@ const HostProfileDetails = ({ navigation, route }) => {
               width: "100%",
             }}
           >
-            {/* <View
-              style={{
-                width: "30%",
-
-                backgroundColor: "#f0ba00",
-                height: 50,
-                marginTop: 20,
-                marginBottom: 30,
-                borderRadius: 25,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Text
-                style={{
-                  color: "#FFF",
-                  fontWeight: "bold",
-                  fontSize: 17,
-                }}
-              >
-                Meow
-              </Text>
-            </View> */}
-
+          </View>
             <View
               style={{
                 width: "30%",
-
                 backgroundColor: "#f0ba00",
                 height: 50,
+                top:40,
+                left:150,
                 marginBottom: 100,
-                marginLeft: 350,
                 borderRadius: 25,
                 alignItems: "center",
                 justifyContent: "center",
@@ -142,7 +119,6 @@ const HostProfileDetails = ({ navigation, route }) => {
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
         </View>
       </ScrollView>
     </View>

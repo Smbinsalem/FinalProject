@@ -1,19 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text } from "react-native";
 import SwiperComponent from "../../constants/Swiper";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
-import { Modal } from "react-native-paper";
-import AddBooking from "../Booking/AddBooking";
 import authStore from "../../../Stores/authStore";
-import ownerStore from "../../../Stores/ownerStore";
 import petStore from "../../../Stores/petStore";
 import reviewStore from "../../../Stores/reviewStore";
 import { AirbnbRating } from "react-native-ratings";
-import Constants from "expo-constants";
+
 
 const HostDetails = ({ navigation, route }) => {
   const { user } = route.params;
+  
   const hostProfile = hostStore.hosts?.find((host) => host.userId === user.id);
   const pets = petStore.pets.filter(
     (pet) => pet.petOwnerId === authStore.user?.petOwnerId
@@ -67,6 +65,8 @@ const HostDetails = ({ navigation, route }) => {
             <AirbnbRating
               count={hostStore?.average}
               showRating={false}
+              selectedColor="#f0ba00"
+              UnSelectedColor="#f0ba00"
               size={30}
             />
           </Text>

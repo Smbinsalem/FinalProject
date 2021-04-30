@@ -10,6 +10,7 @@ class HostStore {
   hosts = [];
   loading = true;
   average = null;
+  files=[];
   constructor() {
     makeAutoObservable(this);
   }
@@ -73,6 +74,20 @@ class HostStore {
     }
   };
 }
+
+addLocationImage = async(files) => {
+try{
+  const formData = new FormData();
+  for (const i of Object.keys(this.files)) 
+  {
+    formData.append('files', this.files[i])
+  }
+  
+    const response = await instance.post(`/users/petHosts/addLocationImage`, formData);
+  this.files.push(response.data);
+}catch(error){
+ console.log
+}}
 const hostStore = new HostStore();
 hostStore.fetchHosts();
 

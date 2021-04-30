@@ -8,9 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Importing Screens
-import HomeScreen from "../Screens/HomeScreen";
 import ExploreScreen from "../Screens/ExploreScreen";
-import ChatScreen from "../Screens/ChatScreen";
 import PostScreen from "../Screens/PostScreen";
 import ProfileScreen from "../Screens/ProfileScreen";
 import HostDetails from "../Components/Hosts/HostDetails";
@@ -24,6 +22,7 @@ import OwnerChatDetails from "../Components/OwnerChat/OwnerChatDetails";
 import HostProfileDetails from "../Components/OwnerChat/HostProfileDetails";
 import ReviewList from "../Components/Review/ReviewList";
 import AddBooking from "../Components/Booking/AddBooking";
+import MoreHosts from "../Components/Hosts/MoreHosts";
 //images
 
 const Tab = createBottomTabNavigator();
@@ -38,15 +37,10 @@ const ExploreNavigator = () => {
       initialRouteName={"Explore"}
     >
       <ExploreStack.Screen name="Explore" component={ExploreScreen} />
-      <ExploreStack.Screen
-        name="HostDetails"
-        component={HostDetails}
-        style={{ headerShown: true, headerTransparent: true }}
-      />
+      <ExploreStack.Screen name="HostDetails" component={HostDetails}/>
       <ExploreStack.Screen name="ReviewList" component={ReviewList} />
       <ExploreStack.Screen name="AddBooking" component={AddBooking} />
-      {/* <Stacks.Screen name="PetDetails" component={PetDetail} />
-      <Stacks.Screen name="Client" component={ClientScreen} /> */}
+      <ExploreStack.Screen name="MoreHosts" component={MoreHosts} />
     </ExploreStack.Navigator>
   );
 };
