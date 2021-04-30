@@ -11,11 +11,8 @@ import authStore from "../../../Stores/authStore";
 
 // ********** MAIN FUNCTION *********
 const PetDetail = ({ navigation, route }) => {
-  // const pet = petStore.pets[0];
-  //comment2
 
-  const { petId } = route.params;
-  const pet = petStore.pets?.find((pet) => pet.id === petId);
+  const { pet } = route.params;
 
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);

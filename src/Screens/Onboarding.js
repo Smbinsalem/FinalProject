@@ -34,7 +34,7 @@ const onBoardings = [
   {
     title: "We got you",
     description:
-      "At petly you have the opportunity to leave your pet in safe hands",
+      "At petly, you have the opportunity to leave your pet in safe hands",
     img: onboarding1a,
   },
 ];

@@ -26,7 +26,7 @@ const OwnerChatItem = ({ booking, navigation }) => {
   // if (hostStore.loading) return <Spinner />;
 
   //Getting Pet Owner Details
-  const requester = authStore.allUsers.find((owner) => {
+  const requester = authStore.allUsers?.find((owner) => {
     const petOwnerId = owner.petOwner.id || 0;
     if (petOwnerId === booking.petOwnerId) {
       counter++;
@@ -35,8 +35,8 @@ const OwnerChatItem = ({ booking, navigation }) => {
   });
 
   // Getting Host Details
-  const petHostId = hostStore.hosts.find((user) => user.id === booking.hostId);
-  const hostDetails = authStore.allUsers.find(
+  const petHostId = hostStore.hosts?.find((user) => user.id === booking.hostId);
+  const hostDetails = authStore.allUsers?.find(
     (hostUser) => hostUser.id === petHostId.userId
   );
   // for Pet Owner profile img
@@ -45,9 +45,9 @@ const OwnerChatItem = ({ booking, navigation }) => {
   // );
 
   // for Pet Host profile img
-  const petHost = hostStore.hosts.find((host) => host.id === booking.hostId);
+  const petHost = hostStore.hosts?.find((host) => host.id === booking.hostId);
 
-  const bookPet = petStore.pets.find((pet) => pet.id === booking.petId);
+  const bookPet = petStore.pets?.find((pet) => pet.id === booking.petId);
 
   return (
     <>
