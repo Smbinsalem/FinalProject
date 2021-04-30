@@ -1,7 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 //Screens
 import onBoarding from "./src/Screens/Onboarding";
 import SplashPage from "./src/Screens/SplashPage";
@@ -24,7 +23,6 @@ const { Navigator, Screen } = createStackNavigator();
 console.disableYellowBox = true; 
 YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
 
-// RN < 0.52
 console.ignoredYellowBox = ['Warning: ReactNative.createElement'];
 LogBox.ignoreLogs(['Warning: ...']);
 export default function App() {

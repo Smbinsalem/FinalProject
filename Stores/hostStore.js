@@ -76,6 +76,7 @@ class HostStore {
     }
   };
 }
+ 
 
 addLocationImage = async(files) => {
 try{
@@ -88,7 +89,7 @@ try{
     const response = await instance.post(`/users/petHosts/addLocationImage`, formData);
   this.files.push(response.data);
 }catch(error){
- console.log
+  console.error("HostStore -> addLocationImage -> error", error);
 }}
 const hostStore = new HostStore();
 hostStore.fetchHosts();

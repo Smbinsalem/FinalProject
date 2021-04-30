@@ -172,7 +172,7 @@ const SignUp = ({ navigation }) => {
           </AuthOther>
         </AuthContainer>
       </ScrollView>
-      {/* </BackgroundIMG> */}
+
     </>
   );
 };
@@ -246,9 +246,6 @@ export const Iconstyled = styled(Icon)`
 `;
 export const FieldView = styled.View`
   flex-direction: row;
-  /* color: white; */
-  /* background-color: rgba(255, 255, 255, 0.3); */
-
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;

@@ -3,6 +3,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 
 class ReviewStore {
   reviews = null;
+  TopFour =null;
   loading = true;
   constructor() {
     makeAutoObservable(this);
@@ -13,6 +14,18 @@ class ReviewStore {
       const response = await instance.get(`/reviews`);
       runInAction(() => {
         this.reviews = response.data;
+        this.loading = false;
+      });
+    } catch (error) {
+      console.error("ReviewStore -> fetchReviews -> error", error);
+    }
+  };
+
+  topReviews = async () => {
+    try {
+      const response = await instance.get(`/tophosts`);
+      runInAction(() => {
+        this.TopFour = response.data;
         this.loading = false;
       });
     } catch (error) {

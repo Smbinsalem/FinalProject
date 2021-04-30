@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text,Image } from "react-native";
 import SwiperComponent from "../../constants/Swiper";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import hostStore from "../../../Stores/hostStore";
 import authStore from "../../../Stores/authStore";
 import petStore from "../../../Stores/petStore";
 import reviewStore from "../../../Stores/reviewStore";
+import { completeImgPath } from "../../../util";
+
 import { AirbnbRating } from "react-native-ratings";
 
 
@@ -20,25 +22,42 @@ const HostDetails = ({ navigation, route }) => {
   hostStore.averageReview(hostProfile.id);
 
   return (
+    <>
+        <ScrollView>
     <View
       style={{
-        paddingBottom: 105,
-        backgroundColor: "#fff",
+        backgroundColor:"#172A3A",
       }}
     >
-      <ScrollView>
+      <Image
+        source={
+          hostProfile?.image
+            ? { uri: completeImgPath(hostProfile?.image) }
+            : null
+        }
+        style={{
+          flex: 1,
+          width: 150,
+          height: 150,
+          marginLeft: "auto",
+          marginRight: "auto",
+          borderRadius: 100,
+          marginBottom: -100,
+          marginTop: 50,
+
+        }}
+      />
         <View
           style={{
-            flex: 1,
-            backgroundColor: "#fff",
+            flex:1,
+            marginTop:200,
+            
           }}
         >
-          <SwiperComponent />
-
+      
           <View
             style={{
               flexDirection: "row",
-
               marginTop: -80,
               marginHorizontal: 20,
               alignItems: "center",
@@ -48,29 +67,14 @@ const HostDetails = ({ navigation, route }) => {
               style={{
                 fontWeight: "bold",
                 fontSize: 28,
-                color: "#172A3A",
+                marginLeft:"auto",
+                marginRight:"auto",
+                color: "#fff",
               }}
             >
               {user.firstName} {user.lastName}
             </Text>
           </View>
-          <Text
-            style={{
-              paddingHorizontal: 20,
-              fontWeight: "bold",
-              color: "#172A3A",
-              left: 18,
-            }}
-          >
-            <AirbnbRating
-              count={hostStore?.average}
-              showRating={false}
-              selectedColor="#f0ba00"
-              UnSelectedColor="#f0ba00"
-              size={30}
-            />
-          </Text>
-
           <View
             style={{
               flexDirection: "row",
@@ -141,8 +145,11 @@ const HostDetails = ({ navigation, route }) => {
             </View>
           </View>
         </View>
-      </ScrollView>
+      
     </View>
+            <SwiperComponent />
+            </ScrollView>
+    </>
   );
 };
 export default HostDetails;
